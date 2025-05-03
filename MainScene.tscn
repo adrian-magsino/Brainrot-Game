@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://03kwatux05d3"]
+
+[ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://player.tscn" id="1_3mqji"]
+[ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://ground.tscn" id="2_x4av3"]
+[ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://touch_controls.tscn" id="3_rpqi1"]
+[ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://sample_gun.tscn" id="4_uxrcv"]
+[ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://sample_gun2.tscn" id="5_rf2cd"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Ground" parent="." instance=ExtResource("2_x4av3")]
+position = Vector2(-123, -10)
+
+[node name="player" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(575, 318)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TouchControls" parent="Control" instance=ExtResource("3_rpqi1")]
+
+[node name="SampleGun" parent="." instance=ExtResource("4_uxrcv")]
+position = Vector2(863, 485)
+
+[node name="SampleGun2" parent="." instance=ExtResource("5_rf2cd")]
+position = Vector2(568, 587)

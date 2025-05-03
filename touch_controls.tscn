@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://2ieahs4qt14v"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_1gcqp"]
+[ext_resource type="Script" uid="uid://dgh120kriwdvv" path="res://addons/virtual_joystick/aiming_joystick.gd" id="2_qaoo7"]
+
+[node name="TouchControls" type="CanvasLayer"]
+
+[node name="Movement Joystick" parent="." instance=ExtResource("1_1gcqp")]
+offset_left = -4.0
+offset_top = -310.0
+offset_right = 296.0
+offset_bottom = -10.0
+pressed_color = Color(0.205352, 0.818775, 1, 1)
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Aiming Joystick" parent="." instance=ExtResource("1_1gcqp")]
+offset_left = 820.0
+offset_top = -319.0
+offset_right = 1120.0
+offset_bottom = -19.0
+script = ExtResource("2_qaoo7")
+action_left = "aim_left"
+action_right = "aim_right"
+action_up = "aim_up"
+action_down = "aim_down"

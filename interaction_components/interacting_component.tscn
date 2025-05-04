@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnsyorrcrvea4"]
+
+[ext_resource type="Script" uid="uid://s1cx80euee7t" path="res://Scripts/interacting_component.gd" id="1_xa01l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqmmv"]
+radius = 50.0899
+
+[node name="InteractingComponent" type="Node2D"]
+script = ExtResource("1_xa01l")
+
+[node name="InteractRange" type="Area2D" parent="."]
+scale = Vector2(1.01243, 1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
+shape = SubResource("CircleShape2D_lqmmv")
+
+[node name="InteractLabel" type="Button" parent="."]
+z_index = 10
+offset_left = 292.0
+offset_top = -131.0
+offset_right = 398.0
+offset_bottom = -100.0
+scale = Vector2(2.16311, 4.20735)
+text = "Q to Interact"
+
+[connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]

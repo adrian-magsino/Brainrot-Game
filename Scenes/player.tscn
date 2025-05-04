@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bki2lv8s3kkvd"]
+[gd_scene load_steps=6 format=3 uid="uid://bki2lv8s3kkvd"]
 
 [ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://interaction_components/interacting_component.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 26.0
@@ -32,3 +33,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, 14)
 shape = SubResource("CircleShape2D_onrkg")
+
+[node name="InteractingComponent" parent="." instance=ExtResource("3_6t5aa")]
+position = Vector2(0, 12)

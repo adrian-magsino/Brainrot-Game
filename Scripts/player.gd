@@ -12,6 +12,8 @@ var score: int = 0
 #pickup mechanics
 var held_gun: Node = null
 
+var facing_left: bool = false
+
 	
 func _physics_process(delta):
 	
@@ -37,31 +39,36 @@ func _physics_process(delta):
 	
 	#FLIP SPRITES HORIZONTALLY
 	var aim_direction = get_aim_direction()
-	if aim_direction.length() > 0.1:
-		sprite.flip_h = aim_direction.x < 0
-		# Rotate the gun based on aim direction
-		if held_gun:
-			var angle = aim_direction.angle()
-			held_gun.rotation = angle
-			# Flip the gun sprite (through aiming)
-			if held_gun.has_node("Sprite2D"):
-				var gun_sprite = held_gun.get_node("Sprite2D")
-				gun_sprite.flip_v = angle > PI/2 or angle < -PI/2
-		
-		if Input.is_action_pressed("shoot"):
-			if held_gun and held_gun.has_method("shoot"):
-				held_gun.shoot(aim_direction)
-				
+	var use_aiming = aim_direction.length() > 0.1
+	
+	
+	if use_aiming:
+		facing_left = aim_direction.x < 0 #aiming joystick
 	elif input_vector.x != 0:
-		sprite.flip_h = input_vector.x < 0
-		#Flip gun sprite (by movement)
-		if held_gun and held_gun.has_node("Sprite2D"):
-			var gun_sprite = held_gun.get_node("Sprite2D")
-			gun_sprite.flip_h = sprite.flip_h
-			
-			
+		facing_left = input_vector.x < 0 #movement joystick
 	
+	sprite.flip_h = facing_left #flip character sprite
 	
+	# Rotate the gun based on aim direction
+	if held_gun:
+		var gun_holder = held_gun.get_parent()
+		# Flip the gun sprite through aiming
+		if gun_holder and use_aiming:
+			var angle = aim_direction.angle()
+			var is_flipped = angle > PI/2 or angle < -PI/2
+			
+			gun_holder.scale.x = -1 if is_flipped else 1
+			
+			held_gun.rotation = PI - angle if is_flipped else angle
+			
+		#Flip the gun sprite by movement
+		if gun_holder:
+			gun_holder.scale.x = -1 if facing_left else 1
+	
+	if use_aiming and Input.is_action_pressed("shoot"):
+		if held_gun and held_gun.has_method("shoot"):
+			held_gun.shoot(aim_direction)
+				
 
 func pickup_or_drop_gun():
 	var pickup_area = $PickupArea

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=8 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://Scenes/player.tscn" id="1_3mqji"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/ground.tscn" id="2_x4av3"]
+[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/control.gd" id="3_q68mp"]
 [ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/touch_controls.tscn" id="3_rpqi1"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/sample_gun.tscn" id="4_uxrcv"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/sample_gun2.tscn" id="5_rf2cd"]
@@ -20,8 +21,48 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_q68mp")
 
 [node name="TouchControls" parent="Control" instance=ExtResource("3_rpqi1")]
+
+[node name="Menu" type="CanvasLayer" parent="Control"]
+
+[node name="MenuButton" type="Button" parent="Control/Menu"]
+offset_right = 57.0
+offset_bottom = 31.0
+scale = Vector2(2.19225, 2.27682)
+text = "MENU
+"
+
+[node name="MenuPanel" type="Panel" parent="Control/Menu"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.225
+anchor_right = 0.5
+anchor_bottom = 0.225
+offset_left = -220.0
+offset_top = -86.8
+offset_right = -180.0
+offset_bottom = -46.8
+scale = Vector2(3.78829, 3.91214)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Menu/MenuPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResumeButton" type="Button" parent="Control/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "RESUME
+"
+
+[node name="SettingsButton" type="Button" parent="Control/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="Control/Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
 
 [node name="SampleGun" parent="." instance=ExtResource("4_uxrcv")]
 position = Vector2(863, 485)
@@ -33,5 +74,9 @@ position = Vector2(568, 587)
 position = Vector2(683, 320)
 
 [connection signal="pressed" from="Control/TouchControls/Pickup Gun" to="player" method="_on_pickup_gun_pressed"]
+[connection signal="pressed" from="Control/Menu/MenuButton" to="Control" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/SettingsButton" to="Control" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ExitButton" to="Control" method="_on_exit_button_pressed"]
 
 [editable path="Control/TouchControls"]

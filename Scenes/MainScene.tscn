@@ -31,3 +31,7 @@ position = Vector2(568, 587)
 
 [node name="Door" parent="." instance=ExtResource("7_q68mp")]
 position = Vector2(683, 320)
+
+[connection signal="pressed" from="Control/TouchControls/Pickup Gun" to="player" method="_on_pickup_gun_pressed"]
+
+[editable path="Control/TouchControls"]

@@ -4,6 +4,7 @@ var score: int = 0
 
 #components
 @onready var sprite = $PlayerSprite
+@onready var pickup_button = get_node("/root/MainScene/Control/TouchControls/Pickup Gun")
 
 #physics
 @export var move_speed: int = 200
@@ -30,6 +31,8 @@ func _physics_process(delta):
 	#PICKUP/DROP MECHANICS
 	if Input.is_action_just_pressed("pickup_or_drop"):
 		pickup_or_drop_gun()
+	
+	update_pickup_button_visibility()
 		
 	
 	#FLIP SPRITES HORIZONTALLY
@@ -58,7 +61,7 @@ func _physics_process(delta):
 			
 			
 	
-		
+	
 
 func pickup_or_drop_gun():
 	var pickup_area = $PickupArea
@@ -89,3 +92,19 @@ func get_aim_direction() -> Vector2:
 	aim_vector.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
 	aim_vector.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
 	return aim_vector.normalized()
+
+
+func _on_pickup_gun_pressed() -> void:
+	pickup_or_drop_gun()
+	
+func update_pickup_button_visibility():
+	var pickup_area = $PickupArea
+	var overlapping = pickup_area.get_overlapping_areas()
+	var found_gun = false
+	
+	for area in overlapping:
+		if area.has_method("pick_up") and !area.is_picked_up:
+			found_gun = true
+			break
+			
+	pickup_button.visible = found_gun

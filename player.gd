@@ -35,24 +35,25 @@ func _physics_process(delta):
 	var aim_direction = get_aim_direction()
 	if aim_direction.length() > 0.1:
 		sprite.flip_h = aim_direction.x < 0
+		# Rotate the gun based on aim direction
+		if held_gun:
+			var angle = aim_direction.angle()
+			held_gun.rotation = angle
+			# Flip the gun sprite (through aiming)
+			if held_gun.has_node("Sprite2D"):
+				var gun_sprite = held_gun.get_node("Sprite2D")
+				gun_sprite.flip_v = angle > PI/2 or angle < -PI/2
+				
 	elif input_vector.x != 0:
 		sprite.flip_h = input_vector.x < 0
 		#Flip gun sprite (by movement)
 		if held_gun and held_gun.has_node("Sprite2D"):
 			var gun_sprite = held_gun.get_node("Sprite2D")
 			gun_sprite.flip_h = sprite.flip_h
-			sprite.flip_h = gun_sprite.flip_h
 			
-	#AIMING
-	if aim_direction.length() > 0.1 and held_gun:
-		# Rotate the gun based on aim direction
-		var angle = aim_direction.angle()
-		held_gun.rotation = angle
-
-		# Flip the gun sprite (through aiming)
-		if held_gun.has_node("Sprite2D"):
-			var gun_sprite = held_gun.get_node("Sprite2D")
-			gun_sprite.flip_v = angle > PI/2 or angle < -PI/2
+			
+	
+		
 
 func pickup_or_drop_gun():
 	var pickup_area = $PickupArea

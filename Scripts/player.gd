@@ -30,6 +30,7 @@ func _physics_process(delta):
 	#PICKUP/DROP MECHANICS
 	if Input.is_action_just_pressed("pickup_or_drop"):
 		pickup_or_drop_gun()
+		
 	
 	#FLIP SPRITES HORIZONTALLY
 	var aim_direction = get_aim_direction()
@@ -43,6 +44,10 @@ func _physics_process(delta):
 			if held_gun.has_node("Sprite2D"):
 				var gun_sprite = held_gun.get_node("Sprite2D")
 				gun_sprite.flip_v = angle > PI/2 or angle < -PI/2
+		
+		if Input.is_action_pressed("shoot"):
+			if held_gun and held_gun.has_method("shoot"):
+				held_gun.shoot(aim_direction)
 				
 	elif input_vector.x != 0:
 		sprite.flip_h = input_vector.x < 0

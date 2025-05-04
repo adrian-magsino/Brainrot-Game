@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgvbp030j84nb"]
+
+[ext_resource type="Script" uid="uid://dquywlno42iaq" path="res://Scripts/door.gd" id="1_fahql"]
+[ext_resource type="Texture2D" uid="uid://cv05gh2sk8oau" path="res://Game Assets/Alvir Assets/Door2.png" id="1_p0e35"]
+[ext_resource type="PackedScene" uid="uid://ngtkvkt1lv61" path="res://interaction_components/interactable.tscn" id="2_fahql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
+size = Vector2(8.00084, 48)
+
+[sub_resource type="Animation" id="Animation_burcv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_a43ba"]
+resource_name = "door_animation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.333333, 0.433333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kj2pw"]
+_data = {
+&"RESET": SubResource("Animation_burcv"),
+&"door_animation": SubResource("Animation_a43ba")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c32u"]
+size = Vector2(59.6949, 42.3969)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_fahql")
+
+[node name="Door2" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(2.74447, 2.03036)
+texture = ExtResource("1_p0e35")
+hframes = 6
+frame = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Door2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2/StaticBody2D"]
+position = Vector2(-19.5, 6)
+scale = Vector2(1.12488, 1)
+shape = SubResource("RectangleShape2D_ab4ky")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Door2")
+libraries = {
+&"": SubResource("AnimationLibrary_kj2pw")
+}
+
+[node name="Interactable" parent="." instance=ExtResource("2_fahql")]
+interact_name = "Open Door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-53.8242, 10.0249)
+scale = Vector2(1.11378, 2.24147)
+shape = SubResource("RectangleShape2D_8c32u")

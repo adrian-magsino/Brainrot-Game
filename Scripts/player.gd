@@ -12,7 +12,8 @@ var score: int = 0
 #pickup mechanics
 var held_gun: Node = null
 
-var facing_left: bool = false
+
+var facing_left: bool = false #Sprite flipping
 
 	
 func _physics_process(delta):
@@ -28,8 +29,6 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	move_and_slide()
 	
-	
-	
 	#PICKUP/DROP MECHANICS
 	if Input.is_action_just_pressed("pickup_or_drop"):
 		pickup_or_drop_gun()
@@ -40,35 +39,39 @@ func _physics_process(delta):
 	#FLIP SPRITES HORIZONTALLY
 	var aim_direction = get_aim_direction()
 	var use_aiming = aim_direction.length() > 0.1
-	
-	
 	if use_aiming:
 		facing_left = aim_direction.x < 0 #aiming joystick
 	elif input_vector.x != 0:
 		facing_left = input_vector.x < 0 #movement joystick
 	
 	sprite.flip_h = facing_left #flip character sprite
-	
 	# Rotate the gun based on aim direction
 	if held_gun:
 		var gun_holder = held_gun.get_parent()
 		# Flip the gun sprite through aiming
 		if gun_holder and use_aiming:
 			var angle = aim_direction.angle()
-			var is_flipped = angle > PI/2 or angle < -PI/2
-			
-			gun_holder.scale.x = -1 if is_flipped else 1
-			
-			held_gun.rotation = PI - angle if is_flipped else angle
+			var is_flipped = angle > PI/2 or angle < -PI/2		
+			gun_holder.scale.x = -1 if is_flipped else 1 #Flip gun holder node
+			held_gun.rotation = PI - angle if is_flipped else angle 
 			
 		#Flip the gun sprite by movement
 		if gun_holder:
 			gun_holder.scale.x = -1 if facing_left else 1
 	
+	#SHOOTING
 	if use_aiming and Input.is_action_pressed("shoot"):
 		if held_gun and held_gun.has_method("shoot"):
 			held_gun.shoot(aim_direction)
-				
+	
+	#RELOADING
+	if Input.is_action_just_pressed("reload_gun") and held_gun:
+		held_gun.start_reload()
+		
+	if held_gun:
+		var hud = get_node("/root/MainScene/Control/HUD")
+		hud.update_ammo(held_gun.current_magazine, held_gun.total_ammo)
+		
 
 func pickup_or_drop_gun():
 	var pickup_area = $PickupArea
@@ -80,7 +83,7 @@ func pickup_or_drop_gun():
 				print("Holding a gun")
 				# Drop current gun before picking up the new one
 				drop_gun()
-			held_gun = area
+			equip_gun(area)
 			held_gun.pick_up($GunHolder)
 			return
 			
@@ -88,7 +91,6 @@ func pickup_or_drop_gun():
 	if held_gun:
 		drop_gun()
 	
-
 func drop_gun():
 	if held_gun:
 		held_gun.drop(self.global_position + Vector2(0, 16), get_tree().current_scene)
@@ -115,3 +117,19 @@ func update_pickup_button_visibility():
 			break
 			
 	pickup_button.visible = found_gun
+
+
+func _on_reload_gun_pressed() -> void:
+	if held_gun:
+		held_gun.start_reload()
+
+func equip_gun(gun: Node):
+	held_gun = gun
+	held_gun.connect("ammo_changed", Callable(self, "_on_ammo_changed"))
+	held_gun.connect("reload_started", Callable(self, "_on_reload_started"))
+	
+func _on_ammo_changed(current_mag, total_ammo):
+	get_node("/root/MainScene/Control/HUD").update_ammo(current_mag, total_ammo)
+	
+func _on_reload_started(duration: float):
+	get_node("/root/MainScene/Control/HUD").start_reload_bar(duration)

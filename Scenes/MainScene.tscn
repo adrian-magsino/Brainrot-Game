@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=9 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://Scenes/player.tscn" id="1_3mqji"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/ground.tscn" id="2_x4av3"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/control.gd" id="3_q68mp"]
 [ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/touch_controls.tscn" id="3_rpqi1"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/sample_gun.tscn" id="4_uxrcv"]
+[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/HUD.gd" id="5_f140w"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/sample_gun2.tscn" id="5_rf2cd"]
 [ext_resource type="PackedScene" uid="uid://cgvbp030j84nb" path="res://Scenes/door.tscn" id="7_q68mp"]
 
@@ -82,6 +83,37 @@ text = "SETTINGS"
 layout_mode = 2
 text = "EXIT"
 
+[node name="HUD" type="CanvasLayer" parent="Control"]
+script = ExtResource("5_f140w")
+
+[node name="AmmoLabel" type="Label" parent="Control/HUD"]
+offset_left = 689.0
+offset_top = 568.0
+offset_right = 809.0
+offset_bottom = 591.0
+text = "Ammo: --/--"
+
+[node name="ReloadProgress" type="ProgressBar" parent="Control/HUD"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+offset_left = 660.0
+offset_top = 543.0
+offset_right = 813.0
+offset_bottom = 570.0
+max_value = 1.0
+show_percentage = false
+
+[node name="ReloadBarLabel" type="Label" parent="Control/HUD/ReloadProgress"]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 3.0
+offset_right = 130.0
+offset_bottom = 26.0
+text = "RELOADING..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SampleGun" parent="." instance=ExtResource("4_uxrcv")]
 position = Vector2(863, 485)
 
@@ -92,6 +124,7 @@ position = Vector2(568, 587)
 position = Vector2(683, 320)
 
 [connection signal="pressed" from="Control/TouchControls/Pickup Gun" to="player" method="_on_pickup_gun_pressed"]
+[connection signal="pressed" from="Control/TouchControls/Reload Gun" to="player" method="_on_reload_gun_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuButton" to="Control" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/SettingsButton" to="Control" method="_on_settings_button_pressed"]

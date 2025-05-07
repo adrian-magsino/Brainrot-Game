@@ -21,3 +21,4 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_5pdue")
 
 [node name="BulletPos" type="Node2D" parent="."]
+position = Vector2(39, -2)

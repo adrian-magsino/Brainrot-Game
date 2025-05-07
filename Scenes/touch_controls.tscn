@@ -36,3 +36,10 @@ offset_bottom = 580.0
 text = "Pickup
 "
 script = ExtResource("3_s3nib")
+
+[node name="Reload Gun" type="Button" parent="."]
+offset_left = 676.0
+offset_top = 448.0
+offset_right = 764.0
+offset_bottom = 500.0
+text = "Reload"

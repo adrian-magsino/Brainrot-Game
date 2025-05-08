@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=12 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://Scenes/player.tscn" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://bw3kxf7kd6frm" path="res://Scenes/main_scene.gd" id="1_4b75m"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/ground.tscn" id="2_x4av3"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/control.gd" id="3_q68mp"]
 [ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/touch_controls.tscn" id="3_rpqi1"]
@@ -8,8 +9,11 @@
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/HUD.gd" id="5_f140w"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/sample_gun2.tscn" id="5_rf2cd"]
 [ext_resource type="PackedScene" uid="uid://cgvbp030j84nb" path="res://Scenes/door.tscn" id="7_q68mp"]
+[ext_resource type="PackedScene" uid="uid://d2uyc78wpy0qj" path="res://Scenes/dummy.tscn" id="9_0iob3"]
+[ext_resource type="PackedScene" uid="uid://bvqlhp8buct05" path="res://Scenes/dummy_spawner.tscn" id="11_8ju71"]
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_4b75m")
 
 [node name="Ground" parent="." instance=ExtResource("2_x4av3")]
 position = Vector2(2, 7)
@@ -122,6 +126,21 @@ position = Vector2(568, 587)
 
 [node name="Door" parent="." instance=ExtResource("7_q68mp")]
 position = Vector2(683, 320)
+
+[node name="Dummy" parent="." instance=ExtResource("9_0iob3")]
+position = Vector2(850, 241)
+
+[node name="DummySpawners" type="Node" parent="."]
+
+[node name="DummySpawner" parent="DummySpawners" instance=ExtResource("11_8ju71")]
+position = Vector2(736, 111)
+
+[node name="DummySpawner2" parent="DummySpawners" instance=ExtResource("11_8ju71")]
+position = Vector2(1029, 236)
+
+[node name="DummySpawner3" parent="DummySpawners" instance=ExtResource("11_8ju71")]
+position = Vector2(1061, 495)
+initial_spawn = false
 
 [connection signal="pressed" from="Control/TouchControls/Pickup Gun" to="player" method="_on_pickup_gun_pressed"]
 [connection signal="pressed" from="Control/TouchControls/Reload Gun" to="player" method="_on_reload_gun_pressed"]

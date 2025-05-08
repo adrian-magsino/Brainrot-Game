@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2uyc78wpy0qj"]
+
+[ext_resource type="Script" uid="uid://3oavkd7mbdgs" path="res://Scripts/dummy.gd" id="1_5d6mj"]
+[ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_x66xh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d6mj"]
+size = Vector2(67.6214, 73.5)
+
+[node name="Dummy" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_5d6mj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x66xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+scale = Vector2(1.03, 1)
+shape = SubResource("RectangleShape2D_5d6mj")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -40.0
+offset_top = -33.0
+offset_right = 49.0
+offset_bottom = -6.0
+scale = Vector2(0.962244, 0.524096)

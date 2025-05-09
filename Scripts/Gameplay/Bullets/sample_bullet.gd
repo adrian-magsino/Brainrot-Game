@@ -20,3 +20,11 @@ func _process(delta):
 	
 	if distance_traveled >= max_distance:
 		queue_free()
+		
+		
+func _on_body_entered(body):
+	print("Hit: ", body.name)
+	if body.has_method("take_damage"):
+		print("Hit dummy!: ", body.name)
+		body.take_damage(damage)
+		queue_free()

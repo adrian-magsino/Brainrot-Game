@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvqlhp8buct05"]
+
+[ext_resource type="Script" uid="uid://c1pocnf3c6env" path="res://Scripts/Gameplay/Dummies/dummy_spawner.gd" id="1_exo7x"]
+[ext_resource type="Texture2D" uid="uid://csa5txdlxyyex" path="res://Game Assets/GodotPlatformerAssets/Sprites/Enemy.png" id="2_8xxsq"]
+
+[node name="DummySpawner" type="Node2D" groups=["dummy_spawners"]]
+script = ExtResource("1_exo7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 33)
+texture = ExtResource("2_8xxsq")

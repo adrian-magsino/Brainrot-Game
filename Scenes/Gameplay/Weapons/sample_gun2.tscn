@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7ocaoh6b0jdq"]
 
-[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/sample_gun.gd" id="1_v2s45"]
-[ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/sample_bullet.tscn" id="2_ct3ky"]
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/sample_gun.gd" id="1_v2s45"]
+[ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/Gameplay/Bullets/sample_bullet.tscn" id="2_ct3ky"]
 [ext_resource type="Texture2D" uid="uid://dlywgmduvc282" path="res://Game Assets/guns_gameassets/PNG/assaultrifle2.png" id="2_v2s45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
@@ -21,3 +21,4 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_5pdue")
 
 [node name="BulletPos" type="Node2D" parent="."]
+position = Vector2(39, -2)

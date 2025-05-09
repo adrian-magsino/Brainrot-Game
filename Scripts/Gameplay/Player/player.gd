@@ -4,7 +4,7 @@ var score: int = 0
 
 #components
 @onready var sprite = $PlayerSprite
-@onready var pickup_button = get_node("/root/MainScene/Control/TouchControls/Pickup Gun")
+@onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 
 #physics
 @export var move_speed: int = 200
@@ -69,7 +69,7 @@ func _physics_process(delta):
 		held_gun.start_reload()
 		
 	if held_gun:
-		var hud = get_node("/root/MainScene/Control/HUD")
+		var hud = get_node("/root/GameplayScene/Control/HUD")
 		hud.update_ammo(held_gun.current_magazine, held_gun.total_ammo)
 		
 
@@ -104,6 +104,8 @@ func get_aim_direction() -> Vector2:
 
 
 func _on_pickup_gun_pressed() -> void:
+	if held_gun and held_gun.is_reloading: #Can't pickup guns while reloading
+		return
 	pickup_or_drop_gun()
 	
 func update_pickup_button_visibility():
@@ -124,12 +126,19 @@ func _on_reload_gun_pressed() -> void:
 		held_gun.start_reload()
 
 func equip_gun(gun: Node):
+	
+	if gun.is_connected("ammo_changed", Callable(self, "_on_ammo_changed")):
+		gun.disconnect("ammo_changed", Callable(self, "_on_ammo_changed"))
+	if gun.is_connected("reload_started", Callable(self, "_on_reload_started")):
+		gun.disconnect("reload_started", Callable(self, "_on_reload_started"))
+
 	held_gun = gun
 	held_gun.connect("ammo_changed", Callable(self, "_on_ammo_changed"))
 	held_gun.connect("reload_started", Callable(self, "_on_reload_started"))
+
 	
 func _on_ammo_changed(current_mag, total_ammo):
-	get_node("/root/MainScene/Control/HUD").update_ammo(current_mag, total_ammo)
+	get_node("/root/GameplayScene/Control/HUD").update_ammo(current_mag, total_ammo)
 	
 func _on_reload_started(duration: float):
-	get_node("/root/MainScene/Control/HUD").start_reload_bar(duration)
+	get_node("/root/GameplayScene/Control/HUD").start_reload_bar(duration)

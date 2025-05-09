@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://bc04tqmejn02p"]
 
-[ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/sample_bullet.gd" id="1_hvuup"]
-[ext_resource type="Texture2D" uid="uid://2deouuc1mqgy" path="res://Game Assets/Laser Sprites/01.png" id="2_dww5c"]
+[ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/Gameplay/Bullets/sample_bullet.gd" id="1_dqbn7"]
+[ext_resource type="Texture2D" uid="uid://2deouuc1mqgy" path="res://Game Assets/Laser Sprites/01.png" id="2_52xpt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
 radius = 2.0
 
 [node name="SampleBullet" type="Area2D"]
-script = ExtResource("1_hvuup")
+z_index = 1
+script = ExtResource("1_dqbn7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_dww5c")
+texture = ExtResource("2_52xpt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8m36q")

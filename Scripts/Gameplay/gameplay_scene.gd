@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var dummy_scene = preload("res://Scenes/dummy.tscn")
+@onready var dummy_scene = preload("res://Scenes/Gameplay/Dummies/dummy.tscn")
 @onready var spawners = []
 @export var max_dummies := 3
 

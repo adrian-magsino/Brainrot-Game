@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd4aqlsgemo8m"]
+
+[ext_resource type="Texture2D" uid="uid://cmrpv08x6ql3y" path="res://Game Assets/GodotPlatformerAssets/Sprites/Tile.png" id="1_37cna"]
+
+[node name="PlayerSpawnPoint1" type="Node2D" groups=["player_spawners"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_37cna")

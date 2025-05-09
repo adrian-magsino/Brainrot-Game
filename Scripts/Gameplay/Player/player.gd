@@ -5,11 +5,12 @@ var score: int = 0
 #components
 @onready var sprite = $PlayerSprite
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
-
+@onready var respawn_delay: float = 2.0
 #attributes
 @export var move_speed: int = 200
 @export var max_health: int = 100
 var current_health: int
+var is_dead: bool = false
 #pickup mechanics
 var held_gun: Node = null
 
@@ -33,8 +34,35 @@ func update_health_bar():
 		bar.value = current_health
 
 func die():
-	queue_free() # or trigger game over logic
+	if is_dead:
+		return
+	is_dead = true
+
+	if held_gun:
+		call_deferred("drop_gun")
 	
+	get_node("/root/GameplayScene/Control/HUD").reset_hud()
+	
+	visible = false
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+
+	await get_tree().create_timer(respawn_delay).timeout
+	respawn()
+func respawn():
+	current_health = max_health
+	update_health_bar()
+	
+	# Get spawn points in the scene
+	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
+	if spawn_points.size() > 0:
+		var random_spawn = spawn_points[randi() % spawn_points.size()]
+		global_position = random_spawn.global_position
+	
+	visible = true
+	set_physics_process(true)
+	$CollisionShape2D.disabled = false
+	is_dead = false
 
 func _physics_process(delta):
 	

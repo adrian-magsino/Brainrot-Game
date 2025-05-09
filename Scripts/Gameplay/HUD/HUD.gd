@@ -23,3 +23,8 @@ func start_reload_bar(duration: float):
 func on_reload_bar_complete():
 	$ReloadProgress.visible = false
 	$ReloadProgress/ReloadBarLabel.visible = false
+	
+func reset_hud():
+	$AmmoLabel.text = "Ammo: -- / --"
+	$ReloadProgress.visible = false
+	$ReloadProgress/ReloadBarLabel.visible = false

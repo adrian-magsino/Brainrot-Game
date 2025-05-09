@@ -6,16 +6,36 @@ var score: int = 0
 @onready var sprite = $PlayerSprite
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 
-#physics
+#attributes
 @export var move_speed: int = 200
-
+@export var max_health: int = 100
+var current_health: int
 #pickup mechanics
 var held_gun: Node = null
 
-
 var facing_left: bool = false #Sprite flipping
 
+func _ready():
+	current_health = max_health
+	update_health_bar()
 	
+func take_damage(amount: int):
+	current_health -= amount
+	current_health = max(current_health, 0)
+	update_health_bar()
+	if current_health <= 0:
+		die()
+		
+func update_health_bar():
+	if has_node("HealthBar"):
+		var bar = $HealthBar
+		bar.max_value = max_health
+		bar.value = current_health
+
+func die():
+	queue_free() # or trigger game over logic
+	
+
 func _physics_process(delta):
 	
 	#MOVEMENTS

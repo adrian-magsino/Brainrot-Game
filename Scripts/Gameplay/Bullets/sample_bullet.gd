@@ -2,16 +2,23 @@ extends Area2D
 
 @export var speed: float = 300.0
 @export var damage: int = 10
+@export var can_damage_owner: bool = false 
+#^^^change the value only if the initialize function is not being used
+#^^^example: bullet traps
 
 var direction: Vector2 = Vector2.ZERO
 var distance_traveled := 0.0
 var max_distance := 500.0
 var pass_through_walls := false
 
-func initialize(dir: Vector2, max_dist: float, can_pass_walls: bool):
+var owner_player: Node = null
+
+func initialize(dir: Vector2, max_dist: float, can_pass_walls: bool, shooter: Node, allow_self_damage: bool = false):
 	direction = dir.normalized()
 	max_distance = max_dist
 	pass_through_walls = can_pass_walls
+	owner_player = shooter
+	can_damage_owner = allow_self_damage
 	
 func _process(delta):
 	var movement = direction * speed * delta
@@ -23,8 +30,12 @@ func _process(delta):
 		
 		
 func _on_body_entered(body):
+	
+	if body == owner_player and not can_damage_owner:
+		return
+	
 	print("Hit: ", body.name)
 	if body.has_method("take_damage"):
-		print("Hit dummy!: ", body.name)
+		print("Damage!: ", body.name)
 		body.take_damage(damage)
 		queue_free()

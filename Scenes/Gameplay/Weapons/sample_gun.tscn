@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d38bbldhidf1x"]
 
 [ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/sample_gun.gd" id="1_5pdue"]
-[ext_resource type="Texture2D" uid="uid://dw8t3j448uquu" path="res://Game Assets/guns_gameassets/PNG/assaultrifle.png" id="1_d3fln"]
 [ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/Gameplay/Bullets/sample_bullet.tscn" id="2_5c0cm"]
+[ext_resource type="Texture2D" uid="uid://d4ksfy2qcdh1x" path="res://Game Assets/guns_gameassets/PNG/Alternative color/assaultrifle.png" id="3_gg8hv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
 size = Vector2(360, 145)
@@ -13,7 +13,7 @@ bullet_scene = ExtResource("2_5c0cm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_d3fln")
+texture = ExtResource("3_gg8hv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1.5)

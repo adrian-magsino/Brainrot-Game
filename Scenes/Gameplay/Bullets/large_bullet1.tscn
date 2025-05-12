@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://iiiiypa3rn0l"]
+
+[ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/Gameplay/Bullets/sample_bullet.gd" id="1_w4yiv"]
+[ext_resource type="Texture2D" uid="uid://bck47tym6wyl7" path="res://Game Assets/guns_gameassets/PNG/large_bullet.png" id="2_w4yiv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
+radius = 2.0
+
+[node name="large_bullet1" type="Area2D"]
+z_index = 1
+script = ExtResource("1_w4yiv")
+speed = 800.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_w4yiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.8882, 0.74789)
+shape = SubResource("CircleShape2D_8m36q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

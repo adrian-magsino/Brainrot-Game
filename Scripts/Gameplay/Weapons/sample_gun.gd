@@ -25,8 +25,8 @@ var owner_player: Node = null
 
 #SHOOTING
 var last_shot_time := 0.0
-var current_magazine := magazine_capacity
-var total_ammo := max_ammo
+var current_magazine: int
+var total_ammo: int
 var is_reloading: bool = false
 
 #SIGNALS
@@ -121,7 +121,8 @@ func _on_reload_timeout():
 	is_reloading = false
 
 func _ready():
-	pass
+	current_magazine = magazine_capacity
+	total_ammo = max_ammo
 	
 func pick_up(parent_node: Node2D):
 	is_picked_up = true

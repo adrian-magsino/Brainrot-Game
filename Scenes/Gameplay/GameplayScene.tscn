@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=18 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="Script" uid="uid://bw3kxf7kd6frm" path="res://Scripts/Gameplay/gameplay_scene.gd" id="1_ger4l"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/Gameplay/Environment/ground.tscn" id="2_ip6ma"]
@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://d2uyc78wpy0qj" path="res://Scenes/Gameplay/Dummies/dummy.tscn" id="10_y1ncx"]
 [ext_resource type="PackedScene" uid="uid://bvqlhp8buct05" path="res://Scenes/Gameplay/Dummies/dummy_spawner.tscn" id="11_cfnoy"]
 [ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Environment/player_spawn_point_1.tscn" id="12_ip6ma"]
+[ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/Assault_rifle.tscn" id="13_eafbr"]
+[ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg.tscn" id="14_be5vd"]
+[ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="15_pomnc"]
+[ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol.tscn" id="16_pomnc"]
+[ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="17_toudt"]
 
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_ger4l")
@@ -20,7 +25,7 @@ script = ExtResource("1_ger4l")
 position = Vector2(2, 7)
 
 [node name="player" parent="." instance=ExtResource("3_eafbr")]
-position = Vector2(575, 318)
+position = Vector2(76, 231)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -120,14 +125,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SampleGun" parent="." instance=ExtResource("7_toudt")]
-position = Vector2(863, 485)
+position = Vector2(560, 81)
 
 [node name="SampleGun2" parent="." instance=ExtResource("8_ilcth")]
-position = Vector2(568, 587)
+position = Vector2(559, 145)
 self_damage_bullets = true
 
 [node name="Door" parent="." instance=ExtResource("9_j5vce")]
-position = Vector2(683, 320)
+position = Vector2(814, 351)
 
 [node name="Dummy" parent="." instance=ExtResource("10_y1ncx")]
 position = Vector2(850, 241)
@@ -151,6 +156,21 @@ position = Vector2(326, 178)
 
 [node name="PlayerSpawnPoint2" parent="PlayerSpawnPoints" instance=ExtResource("12_ip6ma")]
 position = Vector2(335, 557)
+
+[node name="Assault_rifle" parent="." instance=ExtResource("13_eafbr")]
+position = Vector2(557, 201)
+
+[node name="smg" parent="." instance=ExtResource("14_be5vd")]
+position = Vector2(555, 258)
+
+[node name="shotgun" parent="." instance=ExtResource("15_pomnc")]
+position = Vector2(555, 306)
+
+[node name="pistol" parent="." instance=ExtResource("16_pomnc")]
+position = Vector2(552, 362)
+
+[node name="sniper" parent="." instance=ExtResource("17_toudt")]
+position = Vector2(551, 431)
 
 [connection signal="pressed" from="Control/TouchControls/Pickup Gun" to="player" method="_on_pickup_gun_pressed"]
 [connection signal="pressed" from="Control/TouchControls/Reload Gun" to="player" method="_on_reload_gun_pressed"]

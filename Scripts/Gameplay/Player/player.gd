@@ -83,15 +83,19 @@ func _physics_process(delta):
 	
 	update_pickup_button_visibility()
 		
-	
-	#FLIP SPRITES HORIZONTALLY
-	var aim_direction = get_aim_direction()
-	var use_aiming = aim_direction.length() > 0.1
+	#Handle Aim inputs
+	var aim_input = get_aim_input()
+	var aim_direction = aim_input.direction
+	var aim_strength = aim_input.strength
+	var AIM_THRESHOLD = 0.2
+	var SHOOT_THRESHOLD = 0.9
+	var use_aiming = aim_strength >= AIM_THRESHOLD
 	if use_aiming:
 		facing_left = aim_direction.x < 0 #aiming joystick
 	elif input_vector.x != 0:
 		facing_left = input_vector.x < 0 #movement joystick
-	
+		
+	#FLIP SPRITES HORIZONTALLY
 	sprite.flip_h = facing_left #flip character sprite
 	# Rotate the gun based on aim direction
 	if held_gun:
@@ -108,7 +112,7 @@ func _physics_process(delta):
 			gun_holder.scale.x = -1 if facing_left else 1
 	
 	#SHOOTING
-	if use_aiming and Input.is_action_pressed("shoot"):
+	if aim_strength >= SHOOT_THRESHOLD and Input.is_action_pressed("shoot"):
 		if held_gun and held_gun.has_method("shoot"):
 			held_gun.shoot(aim_direction)
 	
@@ -120,6 +124,16 @@ func _physics_process(delta):
 		var hud = get_node("/root/GameplayScene/Control/HUD")
 		hud.update_ammo(held_gun.current_magazine, held_gun.total_ammo)
 		
+func get_aim_input() -> Dictionary:
+	var aim_vector = Vector2(
+		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
+		Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
+	)
+	
+	return {
+		"direction": aim_vector.normalized(),
+		"strength": aim_vector.length()
+	}
 
 func pickup_or_drop_gun():
 	var pickup_area = $PickupArea
@@ -143,14 +157,6 @@ func drop_gun():
 	if held_gun:
 		held_gun.drop(self.global_position + Vector2(0, 16), get_tree().current_scene)
 		held_gun = null
-		
-func get_aim_direction() -> Vector2:
-	var aim_vector = Vector2.ZERO
-	aim_vector.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
-	aim_vector.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
-	return aim_vector.normalized()
-
-
 func _on_pickup_gun_pressed() -> void:
 	if held_gun and held_gun.is_reloading: #Can't pickup guns while reloading
 		return
@@ -168,7 +174,6 @@ func update_pickup_button_visibility():
 			
 	pickup_button.visible = found_gun
 
-
 func _on_reload_gun_pressed() -> void:
 	if held_gun:
 		held_gun.start_reload()
@@ -184,7 +189,6 @@ func equip_gun(gun: Node):
 	held_gun.connect("ammo_changed", Callable(self, "_on_ammo_changed"))
 	held_gun.connect("reload_started", Callable(self, "_on_reload_started"))
 
-	
 func _on_ammo_changed(current_mag, total_ammo):
 	get_node("/root/GameplayScene/Control/HUD").update_ammo(current_mag, total_ammo)
 	

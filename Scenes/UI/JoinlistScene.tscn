@@ -75,7 +75,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_vccmi")
 
-[node name="Game Title" type="TextureRect" parent="."]
+[node name="GameTitle" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0

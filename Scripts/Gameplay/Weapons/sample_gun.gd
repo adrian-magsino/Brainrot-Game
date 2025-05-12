@@ -135,8 +135,14 @@ func pick_up(parent_node: Node2D):
 func drop(position: Vector2, parent_node: Node):
 	is_picked_up = false
 	owner_player = null
-	self.get_parent().remove_child(self)
+
+	# Defer reparenting and collision enabling to avoid physics flush conflict
+	call_deferred("_deferred_drop", position, parent_node)
+
+func _deferred_drop(position: Vector2, parent_node: Node):
+	if self.get_parent():
+		self.get_parent().remove_child(self)
 	parent_node.add_child(self)
 	self.global_position = position
-	get_node("CollisionShape2D").set_deferred("disabled", false)
+	get_node("CollisionShape2D").disabled = false
 	

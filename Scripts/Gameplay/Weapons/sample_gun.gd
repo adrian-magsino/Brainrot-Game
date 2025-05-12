@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var gun_name: String = "SampleGun"
+@onready var icon_texture: Texture2D = $Sprite2D.texture #Get gun sprite as texture
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.05
 @export var range: float = 500.0

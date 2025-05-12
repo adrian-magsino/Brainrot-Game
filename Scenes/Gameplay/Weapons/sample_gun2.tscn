@@ -9,6 +9,7 @@ size = Vector2(360, 145)
 
 [node name="SampleGun2" type="Area2D"]
 script = ExtResource("1_v2s45")
+gun_name = "SampleGun2"
 bullet_scene = ExtResource("2_ct3ky")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -9,6 +9,7 @@ size = Vector2(360, 145)
 
 [node name="smg" type="Area2D"]
 script = ExtResource("1_8ahkb")
+gun_name = "SMG"
 bullet_scene = ExtResource("2_8ahkb")
 range = 1000.0
 max_ammo = 200

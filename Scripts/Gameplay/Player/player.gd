@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var score: int = 0
 @export var default_gun_scene: PackedScene
+@onready var hud = get_node("/root/GameplayScene/Control/HUD")
 # Components
 @onready var sprite = $PlayerSprite
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
@@ -138,7 +139,8 @@ func switch_gun():
 		hide_gun_visual(get_held_gun())
 		current_gun_index = 1 - current_gun_index
 		show_gun_visual(get_held_gun())
-
+		hud.update_current_gun(get_held_gun())
+		
 func hide_gun_visual(gun: Node):
 	if gun:
 		gun.visible = false
@@ -193,11 +195,6 @@ func drop_guns_on_death():
 		gun_inventory[1] = null
 	current_gun_index = 0
 	
-func _on_pickup_gun_pressed() -> void:
-	if get_held_gun() and get_held_gun().is_reloading:
-		return
-	pickup_or_drop_gun()
-	
 func update_pickup_button_visibility():
 	var pickup_area = $PickupArea
 	var overlapping = pickup_area.get_overlapping_areas()
@@ -207,10 +204,6 @@ func update_pickup_button_visibility():
 			found_gun = true
 			break
 	pickup_button.visible = found_gun
-	
-func _on_reload_gun_pressed() -> void:
-	if get_held_gun():
-		get_held_gun().start_reload()
 
 func equip_gun(gun: Node):
 	for g in gun_inventory:
@@ -222,9 +215,23 @@ func equip_gun(gun: Node):
 		gun.disconnect("reload_started", Callable(self, "_on_reload_started"))
 	gun.connect("ammo_changed", Callable(self, "_on_ammo_changed"))
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
+	
+	hud.update_current_gun(gun)
 
 func _on_ammo_changed(current_mag, total_ammo):
 	get_node("/root/GameplayScene/Control/HUD").update_ammo(current_mag, total_ammo)
 
 func _on_reload_started(duration: float):
 	get_node("/root/GameplayScene/Control/HUD").start_reload_bar(duration)
+
+func _on_pickup_gun_pressed() -> void:
+	if is_dead or get_held_gun() and get_held_gun().is_reloading:
+		return
+	pickup_or_drop_gun()
+	
+func _on_reload_gun_pressed() -> void:
+	if get_held_gun():
+		get_held_gun().start_reload()
+		
+func _on_switch_gun_pressed() -> void:
+	switch_gun()

@@ -9,6 +9,7 @@ size = Vector2(360, 145)
 
 [node name="pistol" type="Area2D"]
 script = ExtResource("1_wruma")
+gun_name = "pistol"
 bullet_scene = ExtResource("2_qu127")
 fire_rate = 0.5
 range = 1000.0

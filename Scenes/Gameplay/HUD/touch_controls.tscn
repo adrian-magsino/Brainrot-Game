@@ -43,3 +43,9 @@ offset_top = 448.0
 offset_right = 764.0
 offset_bottom = 500.0
 text = "Reload"
+
+[node name="Switch Gun" type="TextureButton" parent="."]
+offset_left = 538.0
+offset_top = 456.0
+offset_right = 633.0
+offset_bottom = 487.0

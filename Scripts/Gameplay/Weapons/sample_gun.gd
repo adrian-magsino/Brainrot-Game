@@ -7,8 +7,16 @@ extends Area2D
 @export var max_ammo: int = 100
 @export var magazine_capacity: int = 50
 @export var reload_time: float = 1.5
+
+#Special Conditions
 @export var bullet_pass_through_walls: bool = false
-@export var self_damage_bullets: bool = false
+@export var ricochet: bool = false #bullets bounce
+@export var self_damage_bullets: bool = false #bullets damage the shooter
+
+#Bullet Spread Mode
+@export var bullet_spread: bool = false
+@export var bullet_spread_amount: int = 3
+@export var spread_angle_step_deg: float = 5.0
 
 
 #PICKUP/DROP MECHANICS
@@ -30,29 +38,74 @@ func _process(delta):
 		last_shot_time += delta
 
 func shoot(direction: Vector2):
-	
-	if is_reloading or last_shot_time < fire_rate: 
+	if is_reloading or last_shot_time < fire_rate:
 		return
-		
+
 	if current_magazine <= 0:
 		start_reload()
 		return
+
 	last_shot_time = 0.0
-	current_magazine -= 1
+
+	if bullet_spread:
+		shoot_bullet_spread(direction)
+	else:
+		shoot_single_bullet(direction)
+
 	emit_signal("ammo_changed", current_magazine, total_ammo)
-	var bullet_instance = bullet_scene.instantiate()
-	bullet_instance.global_position = $BulletPos.global_position
-	bullet_instance.rotation = direction.angle()
-	
-	if bullet_instance.has_method("initialize"):
-		print(self_damage_bullets)
-		bullet_instance.initialize(direction, range, bullet_pass_through_walls, owner_player, self_damage_bullets)
-	
-	get_tree().current_scene.add_child(bullet_instance)
-	
+
 	if current_magazine == 0:
 		start_reload()
 
+func shoot_single_bullet(direction: Vector2):
+	if current_magazine <= 0:
+		return
+
+	current_magazine -= 1
+
+	var bullet_instance = bullet_scene.instantiate()
+	bullet_instance.global_position = $BulletPos.global_position
+	bullet_instance.rotation = direction.angle()
+
+	if bullet_instance.has_method("initialize"):
+		bullet_instance.initialize(
+			direction,
+			range,
+			bullet_pass_through_walls,
+			owner_player,
+			self_damage_bullets
+		)
+
+	get_tree().current_scene.add_child(bullet_instance)
+	
+func shoot_bullet_spread(direction: Vector2):
+	var bullets_to_fire = bullet_spread_amount
+	var angle_step = deg_to_rad(spread_angle_step_deg) # Adjust for tighter/wider spread
+	var base_angle = direction.angle()
+
+	for i in range(bullets_to_fire):
+		if current_magazine <= 0:
+			break
+		current_magazine -= 1
+
+		var spread_index = i - (bullets_to_fire - 1) / 2
+		var spread_angle = base_angle + (spread_index * angle_step)
+		var spread_direction = Vector2.RIGHT.rotated(spread_angle)
+
+		var bullet_instance = bullet_scene.instantiate()
+		bullet_instance.global_position = $BulletPos.global_position
+		bullet_instance.rotation = spread_angle
+
+		if bullet_instance.has_method("initialize"):
+			bullet_instance.initialize(
+				spread_direction,
+				range,
+				bullet_pass_through_walls,
+				owner_player,
+				self_damage_bullets
+			)
+
+		get_tree().current_scene.add_child(bullet_instance)
 func start_reload():
 	if is_reloading or current_magazine == magazine_capacity or total_ammo == 0:
 		return

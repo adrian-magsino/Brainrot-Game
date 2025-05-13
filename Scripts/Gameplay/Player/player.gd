@@ -25,44 +25,6 @@ func _ready():
 	update_health_bar()
 	set_default_gun()
 
-func take_damage(amount: int):
-	current_health -= amount
-	current_health = max(current_health, 0)
-	update_health_bar()
-	if current_health <= 0:
-		die()
-
-func update_health_bar():
-	if has_node("HealthBar"):
-		var bar = $HealthBar
-		bar.max_value = max_health
-		bar.value = current_health
-
-func die():
-	if is_dead:
-		return
-	is_dead = true
-	drop_guns_on_death()
-	get_node("/root/GameplayScene/Control/HUD").reset_hud()
-	visible = false
-	set_physics_process(false)
-	$CollisionShape2D.set_deferred("disabled", true)
-	await get_tree().create_timer(respawn_delay).timeout
-	respawn()
-
-func respawn():
-	current_health = max_health
-	update_health_bar()
-	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
-	if spawn_points.size() > 0:
-		var random_spawn = spawn_points[randi() % spawn_points.size()]
-		global_position = random_spawn.global_position
-	visible = true
-	set_physics_process(true)
-	$CollisionShape2D.disabled = false
-	is_dead = false
-	set_default_gun()
-
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -109,6 +71,44 @@ func _physics_process(delta):
 			gun.start_reload()
 		var hud = get_node("/root/GameplayScene/Control/HUD")
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
+		
+func take_damage(amount: int):
+	current_health -= amount
+	current_health = max(current_health, 0)
+	update_health_bar()
+	if current_health <= 0:
+		die()
+
+func update_health_bar():
+	if has_node("HealthBar"):
+		var bar = $HealthBar
+		bar.max_value = max_health
+		bar.value = current_health
+
+func die():
+	if is_dead:
+		return
+	is_dead = true
+	drop_guns_on_death()
+	get_node("/root/GameplayScene/Control/HUD").reset_hud()
+	visible = false
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+	await get_tree().create_timer(respawn_delay).timeout
+	respawn()
+
+func respawn():
+	current_health = max_health
+	update_health_bar()
+	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
+	if spawn_points.size() > 0:
+		var random_spawn = spawn_points[randi() % spawn_points.size()]
+		global_position = random_spawn.global_position
+	visible = true
+	set_physics_process(true)
+	$CollisionShape2D.disabled = false
+	is_dead = false
+	set_default_gun()
 
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(
@@ -177,6 +177,36 @@ func pickup_or_drop_gun():
 	if get_held_gun():
 		drop_gun()
 
+func pickup_item():
+	var pickup_area = $PickupArea
+	var overlapping = pickup_area.get_overlapping_areas()
+	for area in overlapping:
+		if area.has_method("can_be_picked_up") and area.can_be_picked_up():
+			if area.has_method("pick_up"):
+				match area.item_type:
+					"gun":
+						_pickup_gun(area)
+					"attachment":
+						_pickup_attachment(area)
+					# Add more types as needed
+				return
+				
+func _pickup_gun(gun: Node):
+	if gun_inventory[0] == null:
+		gun_inventory[0] = gun
+		current_gun_index = 0
+	elif gun_inventory[1] == null:
+		gun_inventory[1] = gun
+		current_gun_index = 1
+	else:
+		drop_gun()
+		gun_inventory[current_gun_index] = gun
+	equip_gun(gun)
+	gun.pick_up($GunHolder)
+
+func _pickup_attachment(attachment: Node):
+	attachment.pick_up(self)
+	
 func drop_gun():
 	var gun = get_held_gun()
 	if gun:
@@ -218,16 +248,21 @@ func equip_gun(gun: Node):
 	
 	hud.update_current_gun(gun)
 
+
+#SIGNALS
+
 func _on_ammo_changed(current_mag, total_ammo):
 	get_node("/root/GameplayScene/Control/HUD").update_ammo(current_mag, total_ammo)
 
 func _on_reload_started(duration: float):
 	get_node("/root/GameplayScene/Control/HUD").start_reload_bar(duration)
 
+#BUTTON PRESS FUNCTION
+
 func _on_pickup_gun_pressed() -> void:
 	if is_dead or get_held_gun() and get_held_gun().is_reloading:
 		return
-	pickup_or_drop_gun()
+	pickup_item()
 	
 func _on_reload_gun_pressed() -> void:
 	if get_held_gun():

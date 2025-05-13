@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var item_type: String = "attachment"
+
 var range: float = 500
 var is_active: bool = false
 var owner_player: Node = null
@@ -58,3 +60,42 @@ func update_laser_sight(direction: Vector2):
 	laser_line.add_point(Vector2.ZERO)
 	laser_line.add_point(hit_position)
 	laser_line.visible = true
+
+func can_be_picked_up() -> bool:
+	return !is_picked_up
+	
+func pick_up(player: Node):
+	is_picked_up = true
+	owner_player = player
+
+	var gun = player.get_held_gun()
+	if gun and gun.has_method("replace_attachment"):
+		gun.replace_attachment(self, player)
+
+	$Sprite2D.visible = false
+	activate(player)
+
+func on_attach_to_gun(gun: Node, player: Node):
+	parent_gun = gun
+	owner_player = player
+
+func drop(drop_position: Vector2 = Vector2.ZERO, parent_node: Node = null):
+	is_picked_up = false
+	is_active = false
+	call_deferred("_deferred_drop", drop_position, parent_node)
+
+func _deferred_drop(drop_position: Vector2, parent_node: Node):
+	if get_parent():
+		get_parent().remove_child(self)
+
+	if parent_node:
+		parent_node.add_child(self)
+	else:
+		# Fallback to the root if no parent_node was provided
+		get_tree().root.add_child(self)
+
+	global_position = drop_position
+	owner_player = null
+	parent_gun = null
+	$Sprite2D.visible = true
+	deactivate()

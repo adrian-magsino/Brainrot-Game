@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var item_type: String = "gun"
 @export var gun_name: String = "SampleGun"
 @onready var icon_texture: Texture2D = $Sprite2D.texture #Get gun sprite as texture
 @export var bullet_scene: PackedScene
@@ -129,6 +130,9 @@ func _ready():
 	current_magazine = magazine_capacity
 	total_ammo = max_ammo
 	
+func can_be_picked_up() -> bool:
+	return !is_picked_up
+	
 func pick_up(parent_node: Node2D):
 	is_picked_up = true
 	owner_player = parent_node.get_parent()
@@ -140,16 +144,46 @@ func pick_up(parent_node: Node2D):
 func drop(position: Vector2, parent_node: Node):
 	is_picked_up = false
 	owner_player = null
-
+	
+	drop_attachments(position, parent_node)
+	
 	# Defer reparenting and collision enabling to avoid physics flush conflict
 	call_deferred("_deferred_drop", position, parent_node)
 	
 func _deferred_drop(position: Vector2, parent_node: Node):
+	
 	if self.get_parent():
 		self.get_parent().remove_child(self)
 	parent_node.add_child(self)
 	self.global_position = position
 	get_node("CollisionShape2D").disabled = false
+	
+func drop_attachments(position: Vector2, parent_node: Node):
+	if has_node("BulletPos"):
+		for child in $BulletPos.get_children():
+			if child.has_method("drop"):
+				child.drop(position, parent_node)
+	
+func replace_attachment(new_attachment: Node, player: Node):
+	if not has_node("BulletPos"):
+		return
+
+	var bullet_pos = $BulletPos
+
+	# Drop existing attachment
+	for child in bullet_pos.get_children():
+		if child.has_method("drop"):
+			child.drop(self.global_position, player.get_parent())  # or get_tree().current_scene if needed
+
+	# Attach the new one
+	if new_attachment.get_parent():
+		new_attachment.get_parent().remove_child(new_attachment)
+	bullet_pos.add_child(new_attachment)
+	new_attachment.position = Vector2.ZERO
+
+	# Set ownership info
+	if new_attachment.has_method("on_attach_to_gun"):
+		new_attachment.on_attach_to_gun(self, player)
 
 
 			

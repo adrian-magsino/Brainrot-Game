@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d38bbldhidf1x"]
+[gd_scene load_steps=6 format=3 uid="uid://d38bbldhidf1x"]
 
 [ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/sample_gun.gd" id="1_5pdue"]
 [ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/Gameplay/Bullets/sample_bullet.tscn" id="2_5c0cm"]
 [ext_resource type="Texture2D" uid="uid://d4ksfy2qcdh1x" path="res://Game Assets/guns_gameassets/PNG/Alternative color/assaultrifle.png" id="3_gg8hv"]
+[ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items_and_Attachments/LaserSight.tscn" id="4_t0c3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
 size = Vector2(360, 145)
@@ -22,3 +23,5 @@ shape = SubResource("RectangleShape2D_5pdue")
 
 [node name="BulletPos" type="Node2D" parent="."]
 position = Vector2(40, -5)
+
+[node name="LaserSight" parent="BulletPos" instance=ExtResource("4_t0c3r")]

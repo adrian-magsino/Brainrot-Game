@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/interaction_components/interacting_component.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 41.0
+radius = 26.0
 height = 82.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
@@ -30,6 +30,7 @@ shape = SubResource("CapsuleShape2D_onrkg")
 position = Vector2(3, 21)
 
 [node name="PickupArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, 14)

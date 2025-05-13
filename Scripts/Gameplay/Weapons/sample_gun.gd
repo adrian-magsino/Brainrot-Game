@@ -13,6 +13,7 @@ extends Area2D
 @export var bullet_pass_through_walls: bool = false
 @export var ricochet: bool = false #bullets bounce
 @export var self_damage_bullets: bool = false #bullets damage the shooter
+@export var laser_sight_equipped: bool = false
 
 #Bullet Spread Mode
 @export var bullet_spread: bool = false
@@ -37,6 +38,9 @@ signal reload_started(duration)
 func _process(delta):
 	if is_picked_up:
 		last_shot_time += delta
+		if owner_player and $BulletPos.has_node("LaserSight"):
+			var laser_sight = $BulletPos.get_node("LaserSight")
+			laser_sight.activate(owner_player)
 
 func shoot(direction: Vector2):
 	if is_reloading or last_shot_time < fire_rate:
@@ -132,18 +136,23 @@ func pick_up(parent_node: Node2D):
 	self.get_parent().remove_child(self)
 	parent_node.add_child(self)
 	self.position = Vector2.ZERO  # reset relative position
-
+	
 func drop(position: Vector2, parent_node: Node):
 	is_picked_up = false
 	owner_player = null
 
 	# Defer reparenting and collision enabling to avoid physics flush conflict
 	call_deferred("_deferred_drop", position, parent_node)
-
+	
 func _deferred_drop(position: Vector2, parent_node: Node):
 	if self.get_parent():
 		self.get_parent().remove_child(self)
 	parent_node.add_child(self)
 	self.global_position = position
 	get_node("CollisionShape2D").disabled = false
+
+
+			
+
+	
 	

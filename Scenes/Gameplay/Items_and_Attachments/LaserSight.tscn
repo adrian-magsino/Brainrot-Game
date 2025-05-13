@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://8i2skftme4x6"]
+
+[ext_resource type="Texture2D" uid="uid://dnbwe41edvc4i" path="res://Game Assets/guns_gameassets/PNG/Alternative color/magazine3.png" id="1_10pl3"]
+[ext_resource type="Script" uid="uid://dsm0xsoh4uux0" path="res://Scenes/Gameplay/Items_and_Attachments/laser_sight.gd" id="1_a1xfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1xfy"]
+size = Vector2(38, 49)
+
+[node name="LaserSight" type="Area2D"]
+script = ExtResource("1_a1xfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_10pl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_a1xfy")
+
+[node name="LaserRay" type="RayCast2D" parent="."]
+
+[node name="LaserLine" type="Line2D" parent="."]
+width = 0.5
+default_color = Color(1, 0, 0, 1)

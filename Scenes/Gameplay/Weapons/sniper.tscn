@@ -16,6 +16,7 @@ range = 1500.0
 max_ammo = 50
 magazine_capacity = 10
 reload_time = 2.0
+zoom_distance = Array[float]([1.0, 0.8, 0.6])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)

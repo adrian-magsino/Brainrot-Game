@@ -9,6 +9,8 @@ extends Area2D
 @export var max_ammo: int = 100
 @export var magazine_capacity: int = 50
 @export var reload_time: float = 1.5
+@export var zoom_distance: Array[float] = [1.0]
+#Zoom Distance Mapping = [1.0, 0.9, 0.8, 0.7, 0.6] # Level 1, 2, 3, 4, etc.
 
 #Special Conditions
 @export var bullet_pass_through_walls: bool = false

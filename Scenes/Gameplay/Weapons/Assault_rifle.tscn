@@ -14,6 +14,7 @@ bullet_scene = ExtResource("2_slbc5")
 fire_rate = 0.1
 range = 1000.0
 reload_time = 2.0
+zoom_distance = Array[float]([0.9, 0.8])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)

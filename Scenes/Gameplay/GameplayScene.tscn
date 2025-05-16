@@ -241,5 +241,6 @@ position = Vector2(816, 612)
 [connection signal="pressed" from="Control/TouchControls/Pickup Gun" to="player" method="_on_pickup_gun_pressed"]
 [connection signal="pressed" from="Control/TouchControls/Reload Gun" to="player" method="_on_reload_gun_pressed"]
 [connection signal="pressed" from="Control/TouchControls/Switch Gun" to="player" method="_on_switch_gun_pressed"]
+[connection signal="pressed" from="Control/TouchControls/Zoom Button" to="player" method="_on_zoom_button_pressed"]
 
 [editable path="Control/TouchControls"]

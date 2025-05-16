@@ -14,6 +14,7 @@ bullet_scene = ExtResource("2_tx3qh")
 fire_rate = 1.0
 range = 300.0
 reload_time = 2.5
+zoom_distance = Array[float]([1.0, 0.9])
 bullet_spread = true
 bullet_spread_amount = 5
 

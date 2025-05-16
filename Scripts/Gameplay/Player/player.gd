@@ -6,7 +6,12 @@ var score: int = 0
 # Components
 @onready var sprite = $PlayerSprite
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
+@onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
 @onready var respawn_delay: float = 2.0
+
+#Camera
+@onready var camera = $Camera2D
+var current_zoom_index: int = 0
 
 # Attributes
 @export var move_speed: int = 200
@@ -35,11 +40,15 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
-
+	
+	
 	if Input.is_action_just_pressed("pickup_or_drop"):
 		pickup_or_drop_gun()
 	if Input.is_action_just_pressed("switch_gun"):
 		switch_gun()
+	if Input.is_action_just_pressed("zoom_in") or Input.is_action_just_pressed("zoom_out"):
+		cycle_zoom()
+
 
 	update_pickup_button_visibility()
 
@@ -138,9 +147,11 @@ func switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:
 		hide_gun_visual(get_held_gun())
 		current_gun_index = 1 - current_gun_index
-		show_gun_visual(get_held_gun())
-		hud.update_current_gun(get_held_gun())
-		
+		var new_gun = get_held_gun()
+		show_gun_visual(new_gun)
+		equip_gun(new_gun) # <- Ensures correct zoom setup
+		hud.update_current_gun(new_gun)
+
 func hide_gun_visual(gun: Node):
 	if gun:
 		gun.visible = false
@@ -247,6 +258,39 @@ func equip_gun(gun: Node):
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
 	
 	hud.update_current_gun(gun)
+	
+	current_zoom_index = 0
+	if "zoom_distance" in gun:
+		if gun.zoom_distance.size() > 0:
+			camera.zoom = Vector2.ONE * gun.zoom_distance[current_zoom_index]
+			update_zoom_button_label(current_zoom_index + 1)
+
+
+
+func cycle_zoom():
+	var gun = get_held_gun()
+	if not gun or not ("zoom_distance" in gun):
+		return
+
+	var distances: Array = gun.zoom_distance
+	if distances.size() == 0:
+		return
+
+	current_zoom_index += 1
+	if current_zoom_index >= distances.size():
+		current_zoom_index = 0
+
+	var zoom_value = distances[current_zoom_index]
+	camera.zoom = Vector2.ONE * zoom_value
+
+	# Update HUD
+	update_zoom_button_label(current_zoom_index + 1)
+
+func update_zoom_button_label(level: int):
+	if zoom_button:
+		zoom_button.text = "Zoom x%d" % level
+
+
 
 
 #SIGNALS
@@ -270,3 +314,8 @@ func _on_reload_gun_pressed() -> void:
 		
 func _on_switch_gun_pressed() -> void:
 	switch_gun()
+
+func _on_zoom_button_pressed() -> void:
+	if is_dead:
+		return
+	cycle_zoom()

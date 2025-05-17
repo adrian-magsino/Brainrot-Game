@@ -10,6 +10,8 @@ var active_dummies := []
 @onready var multiplayer_ui = $MultiplayerUI/Multiplayer
 var peer = ENetMultiplayerPeer.new()
 
+var players: Array[Player] = []
+
 func _on_host_button_pressed() -> void:
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer

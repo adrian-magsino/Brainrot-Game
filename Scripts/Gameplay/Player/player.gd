@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 var score: int = 0
@@ -44,16 +45,26 @@ func _enter_tree():
 func _ready():
 	if !is_multiplayer_authority():
 		$PlayerName.modulate = Color.RED
+		camera.enabled = false
+	else:
+		# Only connect UI buttons if this is the local player's instance
+		camera.enabled = true
+		pickup_button.pressed.connect(_on_pickup_gun_pressed)
+		zoom_button.pressed.connect(_on_zoom_button_pressed)
+		get_node("/root/GameplayScene/Control/TouchControls/Reload Gun").pressed.connect(_on_reload_gun_pressed)
+		get_node("/root/GameplayScene/Control/TouchControls/Switch Gun").pressed.connect(_on_switch_gun_pressed)
+		get_node("/root/GameplayScene/Control/TouchControls/Dash Button").pressed.connect(_on_dash_button_pressed)
+	
 	player_name_label.text = player_name
 	current_health = max_health
 	update_health_bar()
 	set_default_gun()
-	
-	#Dash movement
+	# Dash movement
 	add_child(dash_timer)
 	dash_timer.one_shot = true
 	dash_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timeout"))
 	dash_progress_bar.visible = false
+
 func _physics_process(delta):
 	if !is_multiplayer_authority():
 		return

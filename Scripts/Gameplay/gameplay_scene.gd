@@ -3,10 +3,35 @@ extends Node2D
 @onready var dummy_scene = preload("res://Scenes/Gameplay/Dummies/dummy.tscn")
 @onready var spawners = []
 @export var max_dummies := 3
+@export var player_scene: PackedScene
 
 var active_dummies := []
 
+@onready var multiplayer_ui = $MultiplayerUI/Multiplayer
+var peer = ENetMultiplayerPeer.new()
 
+func _on_host_button_pressed() -> void:
+	peer.create_server(135)
+	multiplayer.multiplayer_peer = peer
+	print("Successfully Hosted a Game")
+	
+	multiplayer.peer_connected.connect(
+		func(pid):
+			print("Peer " + str(pid) + " has joined the game!")
+			add_player(pid)
+	)
+	add_player(multiplayer.get_unique_id()) #Host
+	
+	multiplayer_ui.hide()
+func _on_join_button_pressed() -> void:
+	peer.create_client("localhost", 135)
+	multiplayer.multiplayer_peer = peer
+	multiplayer_ui.hide()
+func add_player(pid):
+	var player = player_scene.instantiate()
+	player.name = str(pid)
+	add_child(player)
+	
 func _ready():
 	spawners = get_tree().get_nodes_in_group("dummy_spawners")
 	spawn_initial_dummies()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bki2lv8s3kkvd"]
+[gd_scene load_steps=8 format=3 uid="uid://bki2lv8s3kkvd"]
 
 [ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
@@ -11,6 +11,11 @@ height = 82.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 50.04
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_skuam"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
@@ -54,3 +59,6 @@ offset_bottom = -17.0
 text = "PLAYER NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_skuam")

@@ -38,8 +38,12 @@ var gun_inventory: Array[Node] = [null, null] # Two gun slots
 var current_gun_index: int = 0
 
 var facing_left: bool = false # Sprite flipping
+func _enter_tree():
+	set_multiplayer_authority(int(str(name)))
 
 func _ready():
+	if !is_multiplayer_authority():
+		$PlayerName.modulate = Color.RED
 	player_name_label.text = player_name
 	current_health = max_health
 	update_health_bar()
@@ -51,7 +55,9 @@ func _ready():
 	dash_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timeout"))
 	dash_progress_bar.visible = false
 func _physics_process(delta):
-	
+	if !is_multiplayer_authority():
+		return
+		
 	var input_vector = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")

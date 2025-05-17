@@ -1,16 +1,22 @@
 extends CharacterBody2D
 
 var score: int = 0
+
+#Nodes and Scenes
 @export var default_gun_scene: PackedScene
-@onready var hud = get_node("/root/GameplayScene/Control/HUD")
-# Components
 @onready var sprite = $PlayerSprite
+@onready var camera = $Camera2D
+@onready var player_name_label = $PlayerName
+@onready var hud = get_node("/root/GameplayScene/Control/HUD")
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 @onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
-@onready var respawn_delay: float = 2.0
+@onready var dash_progress_bar = get_node("/root/GameplayScene/Control/TouchControls/Dash Button/Dash Cooldown")
 
-#Camera
-@onready var camera = $Camera2D
+#Other Properties
+@onready var respawn_delay: float = 2.0
+@export var player_name = "Adrian"
+
+#Camera zoom feature
 var current_zoom_index: int = 0
 
 # Attributes
@@ -19,29 +25,51 @@ var current_zoom_index: int = 0
 var current_health: int
 var is_dead: bool = false
 
-# Inventory System
+#Dash movement
+@export var dash_distance: float = 150.0
+@export var dash_cooldown: float = 1.5
+@export var dash_duration: float = 0.1  # Duration of dash movement
+var can_dash: bool = true
+var dash_velocity: Vector2 = Vector2.ZERO
+var dash_timer := Timer.new()
+
+#Gun Inventory System
 var gun_inventory: Array[Node] = [null, null] # Two gun slots
 var current_gun_index: int = 0
 
 var facing_left: bool = false # Sprite flipping
 
 func _ready():
+	player_name_label.text = player_name
 	current_health = max_health
 	update_health_bar()
 	set_default_gun()
-
+	
+	#Dash movement
+	add_child(dash_timer)
+	dash_timer.one_shot = true
+	dash_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timeout"))
+	dash_progress_bar.visible = false
 func _physics_process(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	if input_vector != Vector2.ZERO:
-		input_vector = input_vector.normalized()
-		velocity = input_vector * move_speed
+	
+	var input_vector = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	)
+	#Dash movement
+	var is_dashing = dash_velocity != Vector2.ZERO
+	if is_dashing:
+		velocity = dash_velocity
 	else:
-		velocity = Vector2.ZERO
+		if input_vector != Vector2.ZERO:
+			input_vector = input_vector.normalized()
+			velocity = input_vector * move_speed
+		else:
+			velocity = Vector2.ZERO
+
 	move_and_slide()
-	
-	
+
+	# Gun pickup/drop
 	if Input.is_action_just_pressed("pickup_or_drop"):
 		pickup_or_drop_gun()
 	if Input.is_action_just_pressed("switch_gun"):
@@ -49,27 +77,29 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("zoom_in") or Input.is_action_just_pressed("zoom_out"):
 		cycle_zoom()
 
-
 	update_pickup_button_visibility()
 
+	# Aiming logic
 	var aim_input = get_aim_input()
 	var aim_direction = aim_input.direction
 	var aim_strength = aim_input.strength
 	var AIM_THRESHOLD = 0.2
 	var SHOOT_THRESHOLD = 0.9
 	var use_aiming = aim_strength >= AIM_THRESHOLD
+
 	if use_aiming:
 		facing_left = aim_direction.x < 0
 	elif input_vector.x != 0:
 		facing_left = input_vector.x < 0
 
 	sprite.flip_h = facing_left
+
 	var gun = get_held_gun()
 	if gun:
 		var gun_holder = gun.get_parent()
 		if gun_holder and use_aiming:
 			var angle = aim_direction.angle()
-			var is_flipped = angle > PI/2 or angle < -PI/2
+			var is_flipped = angle > PI / 2 or angle < -PI / 2
 			gun_holder.scale.x = -1 if is_flipped else 1
 			gun.rotation = PI - angle if is_flipped else angle
 		if gun_holder:
@@ -78,9 +108,8 @@ func _physics_process(delta):
 			gun.shoot(aim_direction)
 		if Input.is_action_just_pressed("reload_gun"):
 			gun.start_reload()
-		var hud = get_node("/root/GameplayScene/Control/HUD")
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
-		
+
 func take_damage(amount: int):
 	current_health -= amount
 	current_health = max(current_health, 0)
@@ -236,16 +265,6 @@ func drop_guns_on_death():
 		gun_inventory[1] = null
 	current_gun_index = 0
 	
-func update_pickup_button_visibility():
-	var pickup_area = $PickupArea
-	var overlapping = pickup_area.get_overlapping_areas()
-	var found_gun = false
-	for area in overlapping:
-		if area.has_method("pick_up") and !area.is_picked_up:
-			found_gun = true
-			break
-	pickup_button.visible = found_gun
-
 func equip_gun(gun: Node):
 	for g in gun_inventory:
 		if g and g != gun:
@@ -264,8 +283,6 @@ func equip_gun(gun: Node):
 		if gun.zoom_distance.size() > 0:
 			camera.zoom = Vector2.ONE * gun.zoom_distance[current_zoom_index]
 			update_zoom_button_label(current_zoom_index + 1)
-
-
 
 func cycle_zoom():
 	var gun = get_held_gun()
@@ -286,14 +303,40 @@ func cycle_zoom():
 	# Update HUD
 	update_zoom_button_label(current_zoom_index + 1)
 
-func update_zoom_button_label(level: int):
-	if zoom_button:
-		zoom_button.text = "Zoom x%d" % level
+func dash():
+	if not can_dash or is_dead:
+		return
 
+	var input_vector = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	)
 
+	if input_vector == Vector2.ZERO:
+		return
 
+	can_dash = false
+	dash_velocity = input_vector.normalized() * (dash_distance / dash_duration)
 
-#SIGNALS
+	# Start dash cooldown visual
+	dash_progress_bar.visible = true
+	dash_progress_bar.max_value = dash_cooldown
+	dash_progress_bar.value = 0
+
+	var tween = create_tween()
+	tween.tween_property(dash_progress_bar, "value", dash_cooldown, dash_cooldown)
+	tween.connect("finished", func():
+		dash_progress_bar.visible = false
+	)
+
+	dash_timer.start(dash_cooldown)
+	$CollisionShape2D.disabled = true
+
+	await get_tree().create_timer(dash_duration).timeout
+	dash_velocity = Vector2.ZERO
+	$CollisionShape2D.disabled = false
+
+#SIGNALS and HUD UPDATES
 
 func _on_ammo_changed(current_mag, total_ammo):
 	get_node("/root/GameplayScene/Control/HUD").update_ammo(current_mag, total_ammo)
@@ -301,6 +344,26 @@ func _on_ammo_changed(current_mag, total_ammo):
 func _on_reload_started(duration: float):
 	get_node("/root/GameplayScene/Control/HUD").start_reload_bar(duration)
 
+func update_pickup_button_visibility():
+	var pickup_area = $PickupArea
+	var overlapping = pickup_area.get_overlapping_areas()
+	var found_gun = false
+	for area in overlapping:
+		if area.has_method("pick_up") and !area.is_picked_up:
+			found_gun = true
+			break
+	pickup_button.visible = found_gun
+	
+func _on_dash_cooldown_timeout():
+	can_dash = true
+
+func update_dash_cooldown_progress(value: float):
+	dash_progress_bar.value = value
+	
+func update_zoom_button_label(level: int):
+	if zoom_button:
+		zoom_button.text = "Zoom x%d" % level
+		
 #BUTTON PRESS FUNCTION
 
 func _on_pickup_gun_pressed() -> void:
@@ -319,3 +382,6 @@ func _on_zoom_button_pressed() -> void:
 	if is_dead:
 		return
 	cycle_zoom()
+
+func _on_dash_button_pressed() -> void:
+	dash()

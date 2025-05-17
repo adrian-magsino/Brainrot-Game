@@ -57,3 +57,18 @@ offset_right = 1007.0
 offset_bottom = 80.0
 text = "Zoom
 "
+
+[node name="Dash Button" type="Button" parent="."]
+offset_left = 413.0
+offset_top = 418.0
+offset_right = 460.0
+offset_bottom = 449.0
+text = "Dash"
+
+[node name="Dash Cooldown" type="ProgressBar" parent="Dash Button"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 27.0
+max_value = 1.0
+value = 1.0
+show_percentage = false

@@ -44,6 +44,10 @@ func _process(delta):
 		if owner_player and $BulletPos.has_node("LaserSight"):
 			var laser_sight = $BulletPos.get_node("LaserSight")
 			laser_sight.activate(owner_player)
+			
+@rpc("authority", "reliable")
+func shoot_rpc(direction: Vector2):
+	shoot(direction)
 
 func shoot(direction: Vector2):
 	if is_reloading or last_shot_time < fire_rate:
@@ -65,15 +69,11 @@ func shoot(direction: Vector2):
 	if current_magazine == 0:
 		start_reload()
 
-func shoot_single_bullet(direction: Vector2):
-	if current_magazine <= 0:
-		return
-
-	current_magazine -= 1
-
+@rpc("any_peer", "reliable")
+func spawn_bullet(position: Vector2, direction: Vector2, rotation: float):
 	var bullet_instance = bullet_scene.instantiate()
-	bullet_instance.global_position = $BulletPos.global_position
-	bullet_instance.rotation = direction.angle()
+	bullet_instance.global_position = position
+	bullet_instance.rotation = rotation
 
 	if bullet_instance.has_method("initialize"):
 		bullet_instance.initialize(
@@ -85,10 +85,25 @@ func shoot_single_bullet(direction: Vector2):
 		)
 
 	get_tree().current_scene.add_child(bullet_instance)
+
+func shoot_single_bullet(direction: Vector2):
+	if current_magazine <= 0:
+		return
+
+	current_magazine -= 1
+
+	var bullet_pos = $BulletPos.global_position
+	var angle = direction.angle()
+
+	# Spawn locally
+	spawn_bullet(bullet_pos, direction, angle)
+
+	# Tell others to spawn
+	spawn_bullet.rpc(bullet_pos, direction, angle)
 	
 func shoot_bullet_spread(direction: Vector2):
 	var bullets_to_fire = bullet_spread_amount
-	var angle_step = deg_to_rad(spread_angle_step_deg) # Adjust for tighter/wider spread
+	var angle_step = deg_to_rad(spread_angle_step_deg)
 	var base_angle = direction.angle()
 
 	for i in range(bullets_to_fire):
@@ -99,21 +114,14 @@ func shoot_bullet_spread(direction: Vector2):
 		var spread_index = i - (bullets_to_fire - 1) / 2
 		var spread_angle = base_angle + (spread_index * angle_step)
 		var spread_direction = Vector2.RIGHT.rotated(spread_angle)
+		var bullet_pos = $BulletPos.global_position
 
-		var bullet_instance = bullet_scene.instantiate()
-		bullet_instance.global_position = $BulletPos.global_position
-		bullet_instance.rotation = spread_angle
+		# Spawn locally
+		spawn_bullet(bullet_pos, spread_direction, spread_angle)
 
-		if bullet_instance.has_method("initialize"):
-			bullet_instance.initialize(
-				spread_direction,
-				range,
-				bullet_pass_through_walls,
-				owner_player,
-				self_damage_bullets
-			)
+		# Tell others to spawn
+		spawn_bullet.rpc(bullet_pos, spread_direction, spread_angle)
 
-		get_tree().current_scene.add_child(bullet_instance)
 func start_reload():
 	if is_reloading or current_magazine == magazine_capacity or total_ammo == 0:
 		return

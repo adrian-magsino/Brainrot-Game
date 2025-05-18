@@ -126,7 +126,10 @@ func _physics_process(delta):
 		if gun_holder:
 			gun_holder.scale.x = -1 if facing_left else 1
 		if aim_strength >= SHOOT_THRESHOLD and Input.is_action_pressed("shoot"):
-			gun.shoot(aim_direction)
+			if gun.is_multiplayer_authority():
+				gun.shoot(aim_direction)
+			else:
+				gun.shoot_rpc.rpc_id(gun.get_multiplayer_authority(), aim_direction)
 		if Input.is_action_just_pressed("reload_gun"):
 			gun.start_reload()
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)

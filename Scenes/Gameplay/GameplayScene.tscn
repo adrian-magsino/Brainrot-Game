@@ -104,6 +104,7 @@ layout_mode = 2
 text = "EXIT"
 
 [node name="TouchControls" parent="Control" instance=ExtResource("5_be5vd")]
+layer = 2
 
 [node name="Pickup Gun" parent="Control/TouchControls" index="2"]
 anchors_preset = 7

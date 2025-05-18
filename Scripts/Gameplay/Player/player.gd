@@ -119,7 +119,10 @@ func _physics_process(delta):
 			var is_flipped = angle > PI / 2 or angle < -PI / 2
 			gun_holder.scale.x = -1 if is_flipped else 1
 			var final_angle = PI - angle if is_flipped else angle
-			gun.set_gun_rotation.rpc(final_angle)
+			
+			gun.rotation = final_angle
+			sync_gun_rotation.rpc(final_angle)
+			
 		if gun_holder:
 			gun_holder.scale.x = -1 if facing_left else 1
 		if aim_strength >= SHOOT_THRESHOLD and Input.is_action_pressed("shoot"):
@@ -128,8 +131,11 @@ func _physics_process(delta):
 			gun.start_reload()
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
 
-
-
+@rpc("any_peer")
+func sync_gun_rotation(rotation: float):
+	var gun = get_held_gun()
+	if gun:
+		gun.rotation = rotation
 func die():
 	if is_dead:
 		return
@@ -153,7 +159,8 @@ func sync_death():
 	$CollisionShape2D.disabled = true
 	is_dead = true
 	hud.reset_hud()
-
+	drop_guns_on_death()
+	
 func respawn():
 	current_health = max_health
 	update_health_bar()
@@ -181,6 +188,7 @@ func sync_respawn(pos: Vector2):
 	$CollisionShape2D.disabled = false
 	is_dead = false
 	update_health_bar()
+	set_default_gun()
 	
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(
@@ -282,7 +290,7 @@ func drop_guns_on_death():
 		gun_inventory[1].drop(global_position + drop_offset.rotated(deg_to_rad(-10)), get_tree().current_scene)
 		gun_inventory[1] = null
 	current_gun_index = 0
-	
+
 func equip_gun(gun: Node):
 	for g in gun_inventory:
 		if g and g != gun:
@@ -295,6 +303,9 @@ func equip_gun(gun: Node):
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
 	gun.set_multiplayer_authority(get_multiplayer_authority())
 	hud.update_current_gun(gun)
+	
+
+
 	print("Current Gun Path: ", gun.get_path())
 	
 	current_zoom_index = 0

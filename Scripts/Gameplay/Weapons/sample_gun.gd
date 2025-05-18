@@ -187,9 +187,7 @@ func replace_attachment(new_attachment: Node, player: Node):
 	if new_attachment.has_method("on_attach_to_gun"):
 		new_attachment.on_attach_to_gun(self, player)
 
-@rpc("any_peer", "call_local")
-func set_gun_rotation(angle: float):
-	rotation = angle
+
 
 			
 

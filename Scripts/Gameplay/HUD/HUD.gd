@@ -29,7 +29,7 @@ func reset_hud():
 	$ReloadProgress/ReloadBarLabel.visible = false
 	$GunDisplay/Panel/CurrentGunIcon.texture = null
 	$GunDisplay/Panel/CurrentGunLabel.text = ""
-	$"../TouchControls/Zoom Button".text = "Zoom --"
+	
 func update_current_gun(gun: Node):
 	var gun_sprite: Sprite2D = gun.get_node("Sprite2D")
 	var texture = gun_sprite.texture

@@ -12,12 +12,14 @@ var max_distance := 500.0
 var pass_through_walls := false
 
 var owner_player: Node = null
+var owner_player_id: int
 
 func initialize(dir: Vector2, max_dist: float, can_pass_walls: bool, shooter: Node, allow_self_damage: bool = false):
 	direction = dir.normalized()
 	max_distance = max_dist
 	pass_through_walls = can_pass_walls
 	owner_player = shooter
+	#owner_player_id = shooter_id
 	can_damage_owner = allow_self_damage
 	
 func _process(delta):
@@ -36,6 +38,9 @@ func _on_body_entered(body):
 	
 	print("Hit: ", body.name)
 	if body.has_method("take_damage"):
+		if body == owner_player and can_damage_owner:
+			body.take_damage(damage)
+		else:
+			body.take_damage.rpc_id(body.get_multiplayer_authority(), damage)
 		print("Damage!: ", body.name)
-		body.take_damage(damage)
 		queue_free()

@@ -1,5 +1,6 @@
 class_name Player
 extends CharacterBody2D
+#extends "res://Scripts/Gameplay/Damageable.gd"
 
 var score: int = 0
 
@@ -8,7 +9,7 @@ var score: int = 0
 @onready var sprite = $PlayerSprite
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
-@onready var hud = get_node("/root/GameplayScene/Control/HUD")
+@onready var hud = $Camera2D/HUD
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 @onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
 @onready var dash_progress_bar = get_node("/root/GameplayScene/Control/TouchControls/Dash Button/Dash Cooldown")
@@ -41,6 +42,7 @@ var current_gun_index: int = 0
 var facing_left: bool = false # Sprite flipping
 func _enter_tree():
 	set_multiplayer_authority(int(str(name)))
+	print("PLAYER HAS SPAWNED: " + str(get_multiplayer_authority()))
 
 func _ready():
 	if !is_multiplayer_authority():
@@ -88,7 +90,7 @@ func _physics_process(delta):
 
 	# Gun pickup/drop
 	if Input.is_action_just_pressed("pickup_or_drop"):
-		pickup_or_drop_gun()
+		pickup_item()
 	if Input.is_action_just_pressed("switch_gun"):
 		switch_gun()
 	if Input.is_action_just_pressed("zoom_in") or Input.is_action_just_pressed("zoom_out"):
@@ -118,7 +120,8 @@ func _physics_process(delta):
 			var angle = aim_direction.angle()
 			var is_flipped = angle > PI / 2 or angle < -PI / 2
 			gun_holder.scale.x = -1 if is_flipped else 1
-			gun.rotation = PI - angle if is_flipped else angle
+			var final_angle = PI - angle if is_flipped else angle
+			gun.set_gun_rotation.rpc(final_angle)
 		if gun_holder:
 			gun_holder.scale.x = -1 if facing_left else 1
 		if aim_strength >= SHOOT_THRESHOLD and Input.is_action_pressed("shoot"):
@@ -127,10 +130,19 @@ func _physics_process(delta):
 			gun.start_reload()
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
 
+@rpc("any_peer")
 func take_damage(amount: int):
+	if not is_multiplayer_authority():
+		return
+		
 	current_health -= amount
 	current_health = max(current_health, 0)
+	
+	#Update Health Bar locally
 	update_health_bar()
+	
+	#Update Health Bar on all peers
+	update_health_bar_networked.rpc(current_health)
 	if current_health <= 0:
 		die()
 
@@ -139,32 +151,63 @@ func update_health_bar():
 		var bar = $HealthBar
 		bar.max_value = max_health
 		bar.value = current_health
+@rpc("call_local")
+func update_health_bar_networked(new_health: int):
+	current_health = new_health
+	update_health_bar()
 
 func die():
 	if is_dead:
 		return
 	is_dead = true
+
+	# Broadcast death to others (for visibility, sound, effects)
+	sync_death.rpc()
+
 	drop_guns_on_death()
-	get_node("/root/GameplayScene/Control/HUD").reset_hud()
+	hud.reset_hud()
 	visible = false
 	set_physics_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
+
 	await get_tree().create_timer(respawn_delay).timeout
 	respawn()
+@rpc("authority", "reliable")
+func sync_death():
+	visible = false
+	set_physics_process(false)
+	$CollisionShape2D.disabled = true
+	is_dead = true
+	hud.reset_hud()
 
 func respawn():
 	current_health = max_health
 	update_health_bar()
+	update_health_bar_networked.rpc(current_health)
+	
 	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
 	if spawn_points.size() > 0:
 		var random_spawn = spawn_points[randi() % spawn_points.size()]
 		global_position = random_spawn.global_position
+
+	# Tell others that the player has respawned
+	sync_respawn.rpc(global_position)
+
 	visible = true
 	set_physics_process(true)
 	$CollisionShape2D.disabled = false
 	is_dead = false
 	set_default_gun()
-
+	
+@rpc("authority", "reliable")
+func sync_respawn(pos: Vector2):
+	global_position = pos
+	visible = true
+	set_physics_process(true)
+	$CollisionShape2D.disabled = false
+	is_dead = false
+	update_health_bar()
+	
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(
 		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
@@ -178,17 +221,25 @@ func get_aim_input() -> Dictionary:
 func set_default_gun():
 	if default_gun_scene and gun_inventory[0] == null and gun_inventory[1] == null:
 		var default_gun = default_gun_scene.instantiate()
-		get_tree().current_scene.add_child.call_deferred(default_gun)
+		
+		# Set the owner before adding to the tree to ensure correct multiplayer sync
+		default_gun.set_multiplayer_authority(get_multiplayer_authority())
+		
+		#Add default gun in the root scene before being picked up
+		get_tree().current_scene.add_child(default_gun)
 		default_gun.global_position = global_position
-		await default_gun.ready
+		
+		#call pick_up *locally* only, not over the network
+		#immediately pick up default gun after spawn/respawn
 		default_gun.pick_up($GunHolder)
 		gun_inventory[0] = default_gun
 		current_gun_index = 0
 		equip_gun(default_gun)
-		
+
 func get_held_gun() -> Node:
 	return gun_inventory[current_gun_index]
 
+@rpc("call_local")
 func switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:
 		hide_gun_visual(get_held_gun())
@@ -208,32 +259,7 @@ func show_gun_visual(gun: Node):
 		gun.visible = true
 		gun.set_physics_process(true)
 
-func pickup_or_drop_gun():
-	var pickup_area = $PickupArea
-	var overlapping = pickup_area.get_overlapping_areas()
-	for area in overlapping:
-		if area.has_method("pick_up") and !area.is_picked_up:
-			if gun_inventory[0] == null:
-				gun_inventory[0] = area
-				current_gun_index = 0
-				equip_gun(area)
-				area.pick_up($GunHolder)
-				return
-			elif gun_inventory[1] == null:
-				gun_inventory[1] = area
-				current_gun_index = 1
-				equip_gun(area)
-				area.pick_up($GunHolder)
-				return
-			else:
-				drop_gun()
-				gun_inventory[current_gun_index] = area
-				equip_gun(area)
-				area.pick_up($GunHolder)
-				return
-	if get_held_gun():
-		drop_gun()
-
+@rpc("call_local")
 func pickup_item():
 	var pickup_area = $PickupArea
 	var overlapping = pickup_area.get_overlapping_areas()
@@ -269,7 +295,8 @@ func drop_gun():
 	if gun:
 		gun.drop(self.global_position + Vector2(0, 16), get_tree().current_scene)
 		gun_inventory[current_gun_index] = null
-		
+
+
 func drop_guns_on_death():
 	var drop_offset = Vector2(0, 16)
 	if gun_inventory[0]:
@@ -292,8 +319,9 @@ func equip_gun(gun: Node):
 		gun.disconnect("reload_started", Callable(self, "_on_reload_started"))
 	gun.connect("ammo_changed", Callable(self, "_on_ammo_changed"))
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
-	
+	gun.set_multiplayer_authority(get_multiplayer_authority())
 	hud.update_current_gun(gun)
+	print("Current Gun Path: ", gun.get_path())
 	
 	current_zoom_index = 0
 	if "zoom_distance" in gun:
@@ -356,10 +384,10 @@ func dash():
 #SIGNALS and HUD UPDATES
 
 func _on_ammo_changed(current_mag, total_ammo):
-	get_node("/root/GameplayScene/Control/HUD").update_ammo(current_mag, total_ammo)
+	hud.update_ammo(current_mag, total_ammo)
 
 func _on_reload_started(duration: float):
-	get_node("/root/GameplayScene/Control/HUD").start_reload_bar(duration)
+	hud.start_reload_bar(duration)
 
 func update_pickup_button_visibility():
 	var pickup_area = $PickupArea
@@ -386,14 +414,14 @@ func update_zoom_button_label(level: int):
 func _on_pickup_gun_pressed() -> void:
 	if is_dead or get_held_gun() and get_held_gun().is_reloading:
 		return
-	pickup_item()
+	pickup_item.rpc()
 	
 func _on_reload_gun_pressed() -> void:
 	if get_held_gun():
 		get_held_gun().start_reload()
 		
 func _on_switch_gun_pressed() -> void:
-	switch_gun()
+	switch_gun.rpc()
 
 func _on_zoom_button_pressed() -> void:
 	if is_dead:

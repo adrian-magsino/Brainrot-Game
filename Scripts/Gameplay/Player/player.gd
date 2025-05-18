@@ -1,6 +1,6 @@
 class_name Player
-extends CharacterBody2D
-#extends "res://Scripts/Gameplay/Damageable.gd"
+#extends CharacterBody2D
+extends "res://Scripts/Gameplay/Shared_Scripts/Damageable.gd"
 
 var score: int = 0
 
@@ -23,9 +23,7 @@ var current_zoom_index: int = 0
 
 # Attributes
 @export var move_speed: int = 200
-@export var max_health: int = 100
-var current_health: int
-var is_dead: bool = false
+
 
 #Dash movement
 @export var dash_distance: float = 150.0
@@ -130,31 +128,7 @@ func _physics_process(delta):
 			gun.start_reload()
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
 
-@rpc("any_peer")
-func take_damage(amount: int):
-	if not is_multiplayer_authority():
-		return
-		
-	current_health -= amount
-	current_health = max(current_health, 0)
-	
-	#Update Health Bar locally
-	update_health_bar()
-	
-	#Update Health Bar on all peers
-	update_health_bar_networked.rpc(current_health)
-	if current_health <= 0:
-		die()
 
-func update_health_bar():
-	if has_node("HealthBar"):
-		var bar = $HealthBar
-		bar.max_value = max_health
-		bar.value = current_health
-@rpc("call_local")
-func update_health_bar_networked(new_health: int):
-	current_health = new_health
-	update_health_bar()
 
 func die():
 	if is_dead:

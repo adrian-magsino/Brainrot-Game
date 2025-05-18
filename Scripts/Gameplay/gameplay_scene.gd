@@ -35,8 +35,9 @@ func add_player(pid):
 	add_child(player)
 	
 func _ready():
-	spawners = get_tree().get_nodes_in_group("dummy_spawners")
-	spawn_initial_dummies()
+	if multiplayer.is_server():
+		spawners = get_tree().get_nodes_in_group("dummy_spawners")
+		spawn_initial_dummies()
 	
 func spawn_initial_dummies():
 	var available_spawners = spawners.filter(func(spawner):
@@ -48,14 +49,14 @@ func spawn_initial_dummies():
 		spawn_dummy_at_spawner(spawner)
 	
 func spawn_dummy_at_spawner(spawner):
-	var dummy = dummy_scene.instantiate()
-	dummy.spawner_node = spawner
-	add_child(dummy)
-	dummy.global_position = spawner.global_position
-	dummy.connect("died", Callable(self, "_on_dummy_died"))
-	spawner.is_occupied = true
+	if multiplayer.is_server():
+		spawn_dummy_networked.rpc(spawner.get_path()) # Call on all peers
+
 
 func _on_dummy_died(spawner_node, _position):
+	if not multiplayer.is_server():
+		return # Only server handles respawning
+		
 	await get_tree().create_timer(2.0).timeout #respawn timer
 	spawner_node.is_occupied = false
 	spawn_dummy_at_free_spawner()
@@ -68,4 +69,17 @@ func spawn_dummy_at_free_spawner():
 		print("No available spawners!")
 		return
 	var chosen_spawner = free_spawners[randi() % free_spawners.size()]
-	spawn_dummy_at_spawner(chosen_spawner)
+	spawn_dummy_networked.rpc(chosen_spawner.get_path())
+
+	
+@rpc("call_local")
+func spawn_dummy_networked(spawner_path: NodePath):
+	var spawner = get_node(spawner_path)
+	var dummy = dummy_scene.instantiate()
+	dummy.spawner_node = spawner
+	add_child(dummy)
+	dummy.set_multiplayer_authority(1) # Host is the authority
+	dummy.global_position = spawner.global_position
+	dummy.connect("died", Callable(self, "_on_dummy_died"))
+	spawner.is_occupied = true
+	active_dummies.append(dummy)

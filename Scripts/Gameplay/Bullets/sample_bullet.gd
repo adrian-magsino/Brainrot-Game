@@ -38,9 +38,13 @@ func _on_body_entered(body):
 	
 	print("Hit: ", body.name)
 	if body.has_method("take_damage"):
+		var authority_id = body.get_multiplayer_authority()
 		if body == owner_player and can_damage_owner:
 			body.take_damage(damage)
+		if authority_id != 0: # <- 0 is the invalid/default
+			body.take_damage.rpc_id(authority_id, damage)
 		else:
-			body.take_damage.rpc_id(body.get_multiplayer_authority(), damage)
+			body.take_damage(damage)
 		print("Damage!: ", body.name)
+		print("Damaged Body Path: ", body.get_path())
 		queue_free()

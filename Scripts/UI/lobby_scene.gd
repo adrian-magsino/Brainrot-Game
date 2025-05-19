@@ -10,9 +10,5 @@ func _on_select_map_pressed() -> void:
 func _on_select_mode_pressed() -> void:
 	selectmode.visible = true
 
-func _on_back_to_lobby_pressed() -> void:
-	selectmode.visible = false
-	selectmap.visible = false
-
 func _on_back_to_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/JoinmenuScene.tscn")

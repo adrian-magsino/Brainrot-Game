@@ -224,15 +224,29 @@ func set_default_gun():
 func get_held_gun() -> Node:
 	return gun_inventory[current_gun_index]
 
-@rpc("call_local")
+#@rpc("call_local")
 func switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:
-		hide_gun_visual(get_held_gun())
+		var prev_gun = get_held_gun()
+		hide_gun_visual(prev_gun)
 		current_gun_index = 1 - current_gun_index
 		var new_gun = get_held_gun()
 		show_gun_visual(new_gun)
 		equip_gun(new_gun) # <- Ensures correct zoom setup
-		hud.update_current_gun(new_gun)
+		#if is_multiplayer_authority():
+			#hud.update_current_gun(new_gun)
+		sync_switch_gun.rpc()
+		
+		#hud.update_current_gun(new_gun)
+@rpc("authority", "reliable")
+func sync_switch_gun():
+	if gun_inventory[0] != null and gun_inventory[1] != null:
+		var prev_gun = get_held_gun()
+		hide_gun_visual(prev_gun)
+		current_gun_index = 1 - current_gun_index
+		var new_gun = get_held_gun()
+		show_gun_visual(new_gun)
+		
 
 func hide_gun_visual(gun: Node):
 	if gun:
@@ -281,7 +295,6 @@ func drop_gun():
 		gun.drop(self.global_position + Vector2(0, 16), get_tree().current_scene)
 		gun_inventory[current_gun_index] = null
 
-
 func drop_guns_on_death():
 	var drop_offset = Vector2(0, 16)
 	if gun_inventory[0]:
@@ -305,9 +318,10 @@ func equip_gun(gun: Node):
 	gun.connect("ammo_changed", Callable(self, "_on_ammo_changed"))
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
 	gun.set_multiplayer_authority(get_multiplayer_authority())
-	hud.update_current_gun(gun)
 	
-
+	
+	hud.update_current_gun(gun)
+	print("Equipping gun:", gun.gun_name, "HUD valid:", hud != null, "Multiplayer ID:", multiplayer.get_unique_id(), "Authority:", get_multiplayer_authority())
 
 	print("Current Gun Path: ", gun.get_path())
 	
@@ -409,7 +423,7 @@ func _on_reload_gun_pressed() -> void:
 		get_held_gun().start_reload()
 		
 func _on_switch_gun_pressed() -> void:
-	switch_gun.rpc()
+	switch_gun()
 
 func _on_zoom_button_pressed() -> void:
 	if is_dead:

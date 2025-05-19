@@ -25,7 +25,6 @@ var current_zoom_index: int = 0
 # Attributes
 @export var move_speed: int = 200
 
-
 #Dash movement
 @export var dash_distance: float = 150.0
 @export var dash_cooldown: float = 1.5
@@ -136,67 +135,6 @@ func _physics_process(delta):
 			gun.start_reload()
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
 		
-
-@rpc("any_peer")
-func sync_gun_rotation(rotation: float):
-	var gun = get_held_gun()
-	if gun:
-		gun.rotation = rotation
-func die():
-	if is_dead:
-		return
-	is_dead = true
-
-	# Broadcast death to others (for visibility, sound, effects)
-	sync_death.rpc()
-
-	drop_guns_on_death()
-	hud.reset_hud()
-	visible = false
-	set_physics_process(false)
-	$CollisionShape2D.set_deferred("disabled", true)
-
-	await get_tree().create_timer(respawn_delay).timeout
-	respawn()
-	
-@rpc("authority", "reliable")
-func sync_death():
-	visible = false
-	set_physics_process(false)
-	$CollisionShape2D.disabled = true
-	is_dead = true
-	
-	drop_guns_on_death()
-	
-func respawn():
-	current_health = max_health
-	update_health_bar()
-	update_health_bar_networked.rpc(current_health)
-	
-	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
-	if spawn_points.size() > 0:
-		var random_spawn = spawn_points[randi() % spawn_points.size()]
-		global_position = random_spawn.global_position
-
-	# Tell others that the player has respawned
-	sync_respawn.rpc(global_position)
-
-	visible = true
-	set_physics_process(true)
-	$CollisionShape2D.disabled = false
-	is_dead = false
-	set_default_gun()
-	
-@rpc("authority", "reliable")
-func sync_respawn(pos: Vector2):
-	global_position = pos
-	visible = true
-	set_physics_process(true)
-	$CollisionShape2D.disabled = false
-	is_dead = false
-	update_health_bar()
-	set_default_gun()
-	
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(
 		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),
@@ -225,39 +163,9 @@ func set_default_gun():
 		current_gun_index = 0
 		equip_gun(default_gun)
 		update_gun_in_HUD()
-
-
-func update_gun_in_HUD():
-	var gun = get_held_gun()
-	if gun:
-		hud.update_current_gun(gun)
-		print("THIS PLAYER'S GUN IS: ", gun.gun_name)
 		
 func get_held_gun() -> Node:
 	return gun_inventory[current_gun_index]
-
-#@rpc("call_local")
-func switch_gun():
-	if gun_inventory[0] != null and gun_inventory[1] != null:
-		var prev_gun = get_held_gun()
-		hide_gun_visual(prev_gun)
-		current_gun_index = 1 - current_gun_index
-		var new_gun = get_held_gun()
-		show_gun_visual(new_gun)
-		equip_gun(new_gun) # <- Ensures correct zoom setup
-		
-		sync_switch_gun.rpc()
-		
-		
-@rpc("authority", "reliable")
-func sync_switch_gun():
-	if gun_inventory[0] != null and gun_inventory[1] != null:
-		var prev_gun = get_held_gun()
-		hide_gun_visual(prev_gun)
-		current_gun_index = 1 - current_gun_index
-		var new_gun = get_held_gun()
-		show_gun_visual(new_gun)
-		
 
 func hide_gun_visual(gun: Node):
 	if gun:
@@ -330,11 +238,6 @@ func equip_gun(gun: Node):
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
 	gun.set_multiplayer_authority(get_multiplayer_authority())
 	
-	#hud.update_current_gun(gun)
-	print("Equipping gun:", gun.gun_name, "HUD valid:", hud != null, "Multiplayer ID:", multiplayer.get_unique_id(), "Authority:", get_multiplayer_authority())
-
-	print("Current Gun Path: ", gun.get_path())
-	
 	current_zoom_index = 0
 	if "zoom_distance" in gun:
 		if gun.zoom_distance.size() > 0:
@@ -393,8 +296,94 @@ func dash():
 	dash_velocity = Vector2.ZERO
 	$CollisionShape2D.disabled = false
 
-#SIGNALS and HUD UPDATES
+#SYNCHRONIZED ACTIONS FOR MULTIPLAYER
+@rpc("any_peer")
+func sync_gun_rotation(rotation: float):
+	var gun = get_held_gun()
+	if gun:
+		gun.rotation = rotation
+		
+func die():
+	if is_dead:
+		return
+	is_dead = true
 
+	# Broadcast death to others (for visibility, sound, effects)
+	sync_death.rpc()
+
+	drop_guns_on_death()
+	hud.reset_hud()
+	visible = false
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+
+	await get_tree().create_timer(respawn_delay).timeout
+	respawn()
+	
+@rpc("authority", "reliable")
+func sync_death():
+	visible = false
+	set_physics_process(false)
+	$CollisionShape2D.disabled = true
+	is_dead = true
+	
+	drop_guns_on_death()
+	
+func respawn():
+	current_health = max_health
+	update_health_bar()
+	update_health_bar_networked.rpc(current_health)
+	
+	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
+	if spawn_points.size() > 0:
+		var random_spawn = spawn_points[randi() % spawn_points.size()]
+		global_position = random_spawn.global_position
+
+	# Tell others that the player has respawned
+	sync_respawn.rpc(global_position)
+
+	visible = true
+	set_physics_process(true)
+	$CollisionShape2D.disabled = false
+	is_dead = false
+	set_default_gun()
+	
+@rpc("authority", "reliable")
+func sync_respawn(pos: Vector2):
+	global_position = pos
+	visible = true
+	set_physics_process(true)
+	$CollisionShape2D.disabled = false
+	is_dead = false
+	update_health_bar()
+	set_default_gun()
+	
+func switch_gun():
+	if gun_inventory[0] != null and gun_inventory[1] != null:
+		var prev_gun = get_held_gun()
+		hide_gun_visual(prev_gun)
+		current_gun_index = 1 - current_gun_index
+		var new_gun = get_held_gun()
+		show_gun_visual(new_gun)
+		equip_gun(new_gun) # <- Ensures correct zoom setup
+		
+		sync_switch_gun.rpc()
+			
+@rpc("authority", "reliable")
+func sync_switch_gun():
+	if gun_inventory[0] != null and gun_inventory[1] != null:
+		var prev_gun = get_held_gun()
+		hide_gun_visual(prev_gun)
+		current_gun_index = 1 - current_gun_index
+		var new_gun = get_held_gun()
+		show_gun_visual(new_gun)
+	
+#SIGNALS and HUD UPDATES
+func update_gun_in_HUD():
+	var gun = get_held_gun()
+	if gun:
+		hud.update_current_gun(gun)
+	
 func _on_ammo_changed(current_mag, total_ammo):
 	hud.update_ammo(current_mag, total_ammo)
 

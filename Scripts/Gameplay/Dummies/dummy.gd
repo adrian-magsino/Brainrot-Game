@@ -15,6 +15,6 @@ func _networked_die():
 	emit_signal("died", spawner_node, global_position)
 	queue_free()
 
-func die():
+func die(damager: Node):
 	if is_multiplayer_authority():
 		_networked_die.rpc() # Call on all peers

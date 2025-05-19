@@ -36,10 +36,10 @@ func _on_body_entered(body):
 	if body == owner_player and not can_damage_owner:
 		return
 	
-	print("Hit: ", body.name)
+	#print("Hit: ", body.name)
 	if body.has_method("take_damage"):
 		var authority_id = body.get_multiplayer_authority()
-		body.take_damage(damage)
-		print("Damage!: ", body.name)
-		print("Damaged Body Path: ", body.get_path())
+		body.take_damage(damage, owner_player)
+		#print("Damage!: ", body.name)
+		#print("Damaged Body Path: ", body.get_path())
 		queue_free()

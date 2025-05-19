@@ -13,7 +13,7 @@ func _ready():
 	update_health_bar()
 
 #@rpc("any_peer", "call_local")
-func take_damage(amount: int):
+func take_damage(amount: int, damager: Node):
 	if not is_multiplayer_authority():
 		return
 
@@ -23,7 +23,7 @@ func take_damage(amount: int):
 	update_health_bar_networked.rpc(current_health)
 	
 	if current_health <= 0:
-		die()
+		die(damager)
 
 @rpc("call_local")
 func update_health_bar_networked(new_health: int):
@@ -36,7 +36,7 @@ func update_health_bar():
 		bar.max_value = max_health
 		bar.value = current_health
 
-func die():
+func die(damager: Node):
 	if is_dead:
 		return
 	is_dead = true

@@ -29,15 +29,21 @@ func _on_join_button_pressed() -> void:
 	peer.create_client("localhost", 135)
 	multiplayer.multiplayer_peer = peer
 	multiplayer_ui.hide()
+	
 func add_player(pid):
 	var player = player_scene.instantiate()
 	player.name = str(pid)
+	player.set_multiplayer_authority(pid)
 	add_child(player)
+	players.append(player)
+	print(players)
+	
 	
 func _ready():
 	if multiplayer.is_server():
 		spawners = get_tree().get_nodes_in_group("dummy_spawners")
 		spawn_initial_dummies()
+		
 	
 func spawn_initial_dummies():
 	var available_spawners = spawners.filter(func(spawner):

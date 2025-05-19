@@ -2,7 +2,10 @@ class_name Player
 #extends CharacterBody2D
 extends "res://Scripts/Gameplay/Shared_Scripts/Damageable.gd"
 
-var score: int = 0
+var is_a_player = true
+var player_score: int = 0
+var player_deaths: int = 0
+
 
 #Nodes and Scenes
 @export var default_gun_scene: PackedScene
@@ -10,6 +13,7 @@ var score: int = 0
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
 #@onready var hud = $Camera2D/HUD
+@onready var scoreboard = get_node("/root/GameplayScene/Scoreboard")
 @onready var hud = get_node("/root/GameplayScene/Control/HUD")
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 @onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
@@ -296,19 +300,53 @@ func dash():
 	dash_velocity = Vector2.ZERO
 	$CollisionShape2D.disabled = false
 
+
 #SYNCHRONIZED ACTIONS FOR MULTIPLAYER
 @rpc("any_peer")
 func sync_gun_rotation(rotation: float):
 	var gun = get_held_gun()
 	if gun:
 		gun.rotation = rotation
+
+@rpc("authority", "reliable")
+func increment_score():
+	player_score += 1
+	print("%s's Score: %d" % [str(get_multiplayer_authority()), player_score])
+	# TODO: Update HUD
+@rpc("any_peer")
+func request_increment_score():
+	if is_multiplayer_authority():
+		increment_score()
 		
-func die():
+@rpc("authority", "reliable")
+func increment_deaths():
+	player_deaths += 1
+	print("%s's Deaths: %d" % [str(get_multiplayer_authority()), player_deaths])
+	# TODO: Update HUD
+	
+@rpc("authority", "reliable")
+func show_stats():
+	print("")
+	print("PLAYER STATS")
+	print("%s's Score: %d" % [str(get_multiplayer_authority()), player_score])
+	print("%s's Deaths: %d" % [str(get_multiplayer_authority()), player_deaths])
+	print("")
+	
+func die(damager: Node):
 	if is_dead:
 		return
 	is_dead = true
 
-	# Broadcast death to others (for visibility, sound, effects)
+	# Track kill if damager is a Player
+	if damager.is_a_player:
+		# Tell the killer to increase their score
+		damager.request_increment_score.rpc_id(damager.get_multiplayer_authority())
+		
+	# Increase own death count
+	
+	increment_deaths.rpc()
+	show_stats.rpc()
+	# Broadcast death
 	sync_death.rpc()
 
 	drop_guns_on_death()
@@ -319,6 +357,7 @@ func die():
 
 	await get_tree().create_timer(respawn_delay).timeout
 	respawn()
+
 	
 @rpc("authority", "reliable")
 func sync_death():
@@ -430,6 +469,7 @@ func _on_zoom_button_pressed() -> void:
 	if is_dead:
 		return
 	cycle_zoom()
+	
 
 func _on_dash_button_pressed() -> void:
 	dash()

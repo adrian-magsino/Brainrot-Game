@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=22 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="Script" uid="uid://bw3kxf7kd6frm" path="res://Scripts/Gameplay/gameplay_scene.gd" id="1_ger4l"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/Gameplay/Environment/ground.tscn" id="2_ip6ma"]
 [ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://Scenes/Gameplay/Player/player.tscn" id="3_eafbr"]
+[ext_resource type="PackedScene" uid="uid://bxw2rpkvk4y6k" path="res://Scenes/Gameplay/Scoreboard.tscn" id="3_y1ncx"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scripts/Gameplay/HUD/control.gd" id="4_lh1ly"]
 [ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/Gameplay/HUD/touch_controls.tscn" id="5_be5vd"]
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/Gameplay/HUD/HUD.gd" id="6_j5vce"]
@@ -25,6 +26,8 @@
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_ger4l")
 player_scene = ExtResource("3_eafbr")
+
+[node name="Scoreboard" parent="." instance=ExtResource("3_y1ncx")]
 
 [node name="Ground" parent="." instance=ExtResource("2_ip6ma")]
 position = Vector2(2, 7)

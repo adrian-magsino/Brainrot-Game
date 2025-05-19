@@ -30,6 +30,7 @@ func reset_hud():
 	$GunDisplay/Panel/CurrentGunIcon.texture = null
 	$GunDisplay/Panel/CurrentGunLabel.text = ""
 	
+
 func update_current_gun(gun: Node):
 	print("HUD: Updating gun to", gun.gun_name)
 	var gun_sprite: Sprite2D = gun.get_node("Sprite2D")

@@ -9,7 +9,8 @@ var score: int = 0
 @onready var sprite = $PlayerSprite
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
-@onready var hud = $Camera2D/HUD
+#@onready var hud = $Camera2D/HUD
+@onready var hud = get_node("/root/GameplayScene/Control/HUD")
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 @onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
 @onready var dash_progress_bar = get_node("/root/GameplayScene/Control/TouchControls/Dash Button/Dash Cooldown")
@@ -46,6 +47,7 @@ func _ready():
 	if !is_multiplayer_authority():
 		$PlayerName.modulate = Color.RED
 		camera.enabled = false
+		
 	else:
 		# Only connect UI buttons if this is the local player's instance
 		camera.enabled = true
@@ -133,6 +135,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("reload_gun"):
 			gun.start_reload()
 		hud.update_ammo(gun.current_magazine, gun.total_ammo)
+		
 
 @rpc("any_peer")
 func sync_gun_rotation(rotation: float):
@@ -155,13 +158,14 @@ func die():
 
 	await get_tree().create_timer(respawn_delay).timeout
 	respawn()
+	
 @rpc("authority", "reliable")
 func sync_death():
 	visible = false
 	set_physics_process(false)
 	$CollisionShape2D.disabled = true
 	is_dead = true
-	hud.reset_hud()
+	
 	drop_guns_on_death()
 	
 func respawn():
@@ -220,7 +224,15 @@ func set_default_gun():
 		gun_inventory[0] = default_gun
 		current_gun_index = 0
 		equip_gun(default_gun)
+		update_gun_in_HUD()
 
+
+func update_gun_in_HUD():
+	var gun = get_held_gun()
+	if gun:
+		hud.update_current_gun(gun)
+		print("THIS PLAYER'S GUN IS: ", gun.gun_name)
+		
 func get_held_gun() -> Node:
 	return gun_inventory[current_gun_index]
 
@@ -233,11 +245,10 @@ func switch_gun():
 		var new_gun = get_held_gun()
 		show_gun_visual(new_gun)
 		equip_gun(new_gun) # <- Ensures correct zoom setup
-		#if is_multiplayer_authority():
-			#hud.update_current_gun(new_gun)
+		
 		sync_switch_gun.rpc()
 		
-		#hud.update_current_gun(new_gun)
+		
 @rpc("authority", "reliable")
 func sync_switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:
@@ -319,8 +330,7 @@ func equip_gun(gun: Node):
 	gun.connect("reload_started", Callable(self, "_on_reload_started"))
 	gun.set_multiplayer_authority(get_multiplayer_authority())
 	
-	
-	hud.update_current_gun(gun)
+	#hud.update_current_gun(gun)
 	print("Equipping gun:", gun.gun_name, "HUD valid:", hud != null, "Multiplayer ID:", multiplayer.get_unique_id(), "Authority:", get_multiplayer_authority())
 
 	print("Current Gun Path: ", gun.get_path())
@@ -417,6 +427,7 @@ func _on_pickup_gun_pressed() -> void:
 	if is_dead or get_held_gun() and get_held_gun().is_reloading:
 		return
 	pickup_item.rpc()
+	update_gun_in_HUD()
 	
 func _on_reload_gun_pressed() -> void:
 	if get_held_gun():
@@ -424,7 +435,8 @@ func _on_reload_gun_pressed() -> void:
 		
 func _on_switch_gun_pressed() -> void:
 	switch_gun()
-
+	update_gun_in_HUD()
+	
 func _on_zoom_button_pressed() -> void:
 	if is_dead:
 		return

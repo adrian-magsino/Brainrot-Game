@@ -6,14 +6,14 @@ var is_a_player = true
 var player_score: int = 0
 var player_deaths: int = 0
 
-
 #Nodes and Scenes
 @export var default_gun_scene: PackedScene
 @onready var sprite = $PlayerSprite
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
 #@onready var hud = $Camera2D/HUD
-@onready var scoreboard = get_node("/root/GameplayScene/Scoreboard")
+@onready var gameplay_scene = get_node("/root/GameplayScene")
+@onready var scoreboard = get_node("/root/GameplayScene/Control/Scoreboard")
 @onready var hud = get_node("/root/GameplayScene/Control/HUD")
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
 @onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
@@ -21,7 +21,7 @@ var player_deaths: int = 0
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
-@export var player_name = "Adrian"
+var player_name: String
 
 #Camera zoom feature
 var current_zoom_index: int = 0
@@ -45,13 +45,17 @@ var facing_left: bool = false # Sprite flipping
 func _enter_tree():
 	set_multiplayer_authority(int(str(name)))
 	print("PLAYER HAS SPAWNED: " + str(get_multiplayer_authority()))
+	player_name = "Player %d" % get_multiplayer_authority()
+	print("PLAYER NAME: " + player_name)
 
 func _ready():
+	
 	if !is_multiplayer_authority():
 		$PlayerName.modulate = Color.RED
 		camera.enabled = false
 		
 	else:
+			
 		# Only connect UI buttons if this is the local player's instance
 		camera.enabled = true
 		pickup_button.pressed.connect(_on_pickup_gun_pressed)
@@ -69,7 +73,8 @@ func _ready():
 	dash_timer.one_shot = true
 	dash_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timeout"))
 	dash_progress_bar.visible = false
-
+	scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)	
+	
 func _physics_process(delta):
 	if !is_multiplayer_authority():
 		return
@@ -308,44 +313,33 @@ func sync_gun_rotation(rotation: float):
 	if gun:
 		gun.rotation = rotation
 
-@rpc("authority", "reliable")
-func increment_score():
+@rpc("any_peer", "call_local")
+func increment_score(killer_id):
 	player_score += 1
-	print("%s's Score: %d" % [str(get_multiplayer_authority()), player_score])
-	# TODO: Update HUD
-@rpc("any_peer")
-func request_increment_score():
-	if is_multiplayer_authority():
-		increment_score()
-		
-@rpc("authority", "reliable")
-func increment_deaths():
-	player_deaths += 1
-	print("%s's Deaths: %d" % [str(get_multiplayer_authority()), player_deaths])
-	# TODO: Update HUD
+	scoreboard.update_scoreboard(killer_id, player_name, player_score, player_deaths)
+
 	
-@rpc("authority", "reliable")
-func show_stats():
-	print("")
-	print("PLAYER STATS")
-	print("%s's Score: %d" % [str(get_multiplayer_authority()), player_score])
-	print("%s's Deaths: %d" % [str(get_multiplayer_authority()), player_deaths])
-	print("")
+@rpc("any_peer", "call_local")
+func increment_deaths():	
+	player_deaths += 1
+	scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)
+				
+	
 	
 func die(damager: Node):
+	
 	if is_dead:
 		return
 	is_dead = true
 
-	# Track kill if damager is a Player
-	if damager.is_a_player:
+	# Track kill if damager is a Player and if player didn't kill their self
+	if damager.is_a_player and damager != self:
 		# Tell the killer to increase their score
-		damager.request_increment_score.rpc_id(damager.get_multiplayer_authority())
+		damager.increment_score.rpc(damager.get_multiplayer_authority())
 		
 	# Increase own death count
-	
 	increment_deaths.rpc()
-	show_stats.rpc()
+	
 	# Broadcast death
 	sync_death.rpc()
 
@@ -365,7 +359,7 @@ func sync_death():
 	set_physics_process(false)
 	$CollisionShape2D.disabled = true
 	is_dead = true
-	
+
 	drop_guns_on_death()
 	
 func respawn():

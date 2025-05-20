@@ -27,8 +27,6 @@
 script = ExtResource("1_ger4l")
 player_scene = ExtResource("3_eafbr")
 
-[node name="Scoreboard" parent="." instance=ExtResource("3_y1ncx")]
-
 [node name="Ground" parent="." instance=ExtResource("2_ip6ma")]
 position = Vector2(2, 7)
 
@@ -212,6 +210,8 @@ text = "Sample Gun"
 horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Scoreboard" parent="Control" instance=ExtResource("3_y1ncx")]
 
 [node name="SampleGun" parent="." instance=ExtResource("7_toudt")]
 position = Vector2(560, 81)

@@ -1,15 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxw2rpkvk4y6k"]
+[gd_scene load_steps=2 format=3 uid="uid://bxw2rpkvk4y6k"]
 
-[ext_resource type="Script" uid="uid://dr2ax8cxtto2x" path="res://Scenes/Gameplay/scoreboard.gd" id="1_5ihnb"]
-[ext_resource type="PackedScene" uid="uid://duer77h2qt8ko" path="res://Scenes/Gameplay/ScoreboardRow.tscn" id="2_iwvfa"]
+[ext_resource type="Script" uid="uid://dr2ax8cxtto2x" path="res://Scripts/Gameplay/scoreboard.gd" id="1_5ihnb"]
 
-[node name="Scoreboard" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Scoreboard" type="CanvasLayer"]
 script = ExtResource("1_5ihnb")
-player_row_scene = ExtResource("2_iwvfa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.5
+offset_right = 196.5
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Player1Score" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="VBoxContainer/Player1Score"]
+layout_mode = 2
+text = "PLAYER 1 NAME"
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/Player1Score"]
+layout_mode = 2
+text = "PLAYER 1 SCORE"
+
+[node name="DeathCountLabel" type="Label" parent="VBoxContainer/Player1Score"]
+layout_mode = 2
+text = "PLAYER 1 DEATHS"
+
+[node name="Player2Score" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="VBoxContainer/Player2Score"]
+layout_mode = 2
+text = "PLAYER 2 NAME"
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/Player2Score"]
+layout_mode = 2
+text = "PLAYER 2 SCORE"
+
+[node name="DeathCountLabel" type="Label" parent="VBoxContainer/Player2Score"]
+layout_mode = 2
+text = "PLAYER 2 DEATHS"

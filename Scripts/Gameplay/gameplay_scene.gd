@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var scoreboard = $Control/Scoreboard
 @onready var dummy_scene = preload("res://Scenes/Gameplay/Dummies/dummy.tscn")
 @onready var spawners = []
 @export var max_dummies := 3
@@ -37,7 +38,7 @@ func add_player(pid):
 	add_child(player)
 	players.append(player)
 	print(players)
-	
+
 	
 func _ready():
 	if multiplayer.is_server():

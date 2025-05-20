@@ -1,6 +1,6 @@
-# Damageable.gd
+# EntityHealthManager.gd
 extends CharacterBody2D
-class_name Damageable
+class_name DamageableEntity
 
 @export var max_health: int = 100
 var current_health: int
@@ -16,7 +16,7 @@ func _ready():
 func take_damage(amount: int, damager: Node):
 	if not is_multiplayer_authority():
 		return
-
+	
 	current_health -= amount
 	current_health = max(current_health, 0)
 	update_health_bar()
@@ -41,4 +41,5 @@ func die(damager: Node):
 		return
 	is_dead = true
 	emit_signal("died")
+	
 	queue_free()

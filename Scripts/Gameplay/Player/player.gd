@@ -1,6 +1,6 @@
 class_name Player
 #extends CharacterBody2D
-extends "res://Scripts/Gameplay/Shared_Scripts/Damageable.gd"
+extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
 
 var is_a_player = true
 var player_score: int = 0

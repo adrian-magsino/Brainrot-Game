@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=24 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="Script" uid="uid://bw3kxf7kd6frm" path="res://Scripts/Gameplay/gameplay_scene.gd" id="1_ger4l"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/Gameplay/Environment/ground.tscn" id="2_ip6ma"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol.tscn" id="16_pomnc"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="17_toudt"]
 [ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items_and_Attachments/LaserSight.tscn" id="19_j5vce"]
+[ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="21_cfnoy"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/ExplosiveBarrel.tscn" id="22_eaa56"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfnoy"]
 
@@ -229,13 +231,13 @@ position = Vector2(850, 241)
 [node name="DummySpawners" type="Node" parent="."]
 
 [node name="DummySpawner" parent="DummySpawners" instance=ExtResource("11_cfnoy")]
-position = Vector2(736, 111)
+position = Vector2(1032, 107)
 
 [node name="DummySpawner2" parent="DummySpawners" instance=ExtResource("11_cfnoy")]
-position = Vector2(1029, 236)
+position = Vector2(1033, 217)
 
 [node name="DummySpawner3" parent="DummySpawners" instance=ExtResource("11_cfnoy")]
-position = Vector2(1061, 495)
+position = Vector2(1032, 331)
 initial_spawn = false
 
 [node name="PlayerSpawnPoints" type="Node" parent="."]
@@ -247,29 +249,44 @@ position = Vector2(326, 178)
 position = Vector2(335, 557)
 
 [node name="Assault_rifle" parent="." instance=ExtResource("13_eafbr")]
-position = Vector2(557, 201)
+position = Vector2(327, 264)
 
 [node name="smg" parent="." instance=ExtResource("14_be5vd")]
-position = Vector2(555, 258)
+position = Vector2(327, 325)
 
 [node name="shotgun" parent="." instance=ExtResource("15_pomnc")]
-position = Vector2(555, 306)
+position = Vector2(562, 254)
 
 [node name="pistol" parent="." instance=ExtResource("16_pomnc")]
-position = Vector2(552, 362)
+position = Vector2(553, 341)
 
 [node name="sniper" parent="." instance=ExtResource("17_toudt")]
-position = Vector2(551, 431)
+position = Vector2(550, 402)
 
 [node name="LaserSight" parent="." instance=ExtResource("19_j5vce")]
-position = Vector2(763, 588)
+position = Vector2(317, 423)
 
 [node name="LaserSight2" parent="." instance=ExtResource("19_j5vce")]
-position = Vector2(816, 612)
+position = Vector2(361, 474)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bki2lv8s3kkvd")
 spawn_path = NodePath("..")
+
+[node name="DestructibleObject" parent="." instance=ExtResource("21_cfnoy")]
+position = Vector2(767, 160)
+
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("22_eaa56")]
+position = Vector2(869, 98)
+max_health = 50
+
+[node name="ExplosiveBarrel2" parent="." instance=ExtResource("22_eaa56")]
+position = Vector2(840, 525)
+max_health = 50
+
+[node name="ExplosiveBarrel3" parent="." instance=ExtResource("22_eaa56")]
+position = Vector2(854, 621)
+max_health = 50
 
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

@@ -30,7 +30,6 @@ func _process(delta):
 	if distance_traveled >= max_distance:
 		queue_free()
 		
-		
 func _on_body_entered(body):
 	
 	if body == owner_player and not can_damage_owner:

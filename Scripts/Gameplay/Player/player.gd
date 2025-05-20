@@ -8,7 +8,8 @@ var player_deaths: int = 0
 
 #Nodes and Scenes
 @export var default_gun_scene: PackedScene
-@onready var sprite = $PlayerSprite
+#@onready var sprite = $PlayerSprite
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
 #@onready var hud = $Camera2D/HUD
@@ -87,12 +88,15 @@ func _physics_process(delta):
 	var is_dashing = dash_velocity != Vector2.ZERO
 	if is_dashing:
 		velocity = dash_velocity
+		animated_sprite.play("Dash")
 	else:
 		if input_vector != Vector2.ZERO:
 			input_vector = input_vector.normalized()
 			velocity = input_vector * move_speed
+			animated_sprite.play("Walk")
 		else:
 			velocity = Vector2.ZERO
+			animated_sprite.play("Idle")
 
 	move_and_slide()
 
@@ -119,7 +123,8 @@ func _physics_process(delta):
 	elif input_vector.x != 0:
 		facing_left = input_vector.x < 0
 
-	sprite.flip_h = facing_left
+	#sprite.flip_h = facing_left
+	animated_sprite.flip_h = facing_left
 
 	var gun = get_held_gun()
 	if gun:

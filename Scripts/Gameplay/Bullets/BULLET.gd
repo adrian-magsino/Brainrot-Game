@@ -3,6 +3,7 @@ extends Area2D
 @export var speed: float = 300.0
 @export var damage: int = 10
 @export var can_damage_owner: bool = false 
+@export var BulletParticle: PackedScene
 #^^^change the value only if the initialize function is not being used
 #^^^example: bullet traps
 
@@ -36,9 +37,22 @@ func _on_body_entered(body):
 		return
 	
 	#print("Hit: ", body.name)
-	if body.has_method("take_damage"):
-		var authority_id = body.get_multiplayer_authority()
-		body.take_damage(damage, owner_player)
-		#print("Damage!: ", body.name)
-		#print("Damaged Body Path: ", body.get_path())
+	if body.has_node("CollisionShape2D"):
+		if body.has_method("take_damage"):
+			var authority_id = body.get_multiplayer_authority()
+			body.take_damage(damage, owner_player)
+			#print("Damage!: ", body.name)
+			#print("Damaged Body Path: ", body.get_path())
+		hit_animation()
 		queue_free()
+		
+func hit_animation():
+	var _particle = BulletParticle.instantiate()
+	_particle.position = global_position
+	_particle.rotation = global_rotation
+	_particle.emitting = true
+	get_tree().current_scene.add_child(_particle)
+	
+	
+	
+	

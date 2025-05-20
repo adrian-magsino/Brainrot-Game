@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://75p78212eqdw"]
+[gd_scene load_steps=6 format=3 uid="uid://75p78212eqdw"]
 
-[ext_resource type="Script" uid="uid://b46losmqe2ea0" path="res://Scenes/Gameplay/Interactable_Objects/explosive_barrel.gd" id="1_cqdxx"]
+[ext_resource type="Script" uid="uid://b46losmqe2ea0" path="res://Scripts/Gameplay/Interactable_Objects/explosive_barrel.gd" id="1_cqdxx"]
 [ext_resource type="Texture2D" uid="uid://bbkkoxpg4fmjl" path="res://Game Assets/guns_gameassets/PNG/Alternative color/grenade.png" id="1_wk7n4"]
+[ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="2_yu8lb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cqdxx"]
 radius = 12.6667
@@ -10,6 +11,7 @@ radius = 12.6667
 
 [node name="ExplosiveBarrel" type="StaticBody2D"]
 script = ExtResource("1_cqdxx")
+ExplosionParticles = ExtResource("2_yu8lb")
 max_health = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -30,5 +32,5 @@ one_shot = true
 [node name="ExplosionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
-scale = Vector2(12, 12)
+scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_yu8lb")

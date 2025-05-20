@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://xupcql5cguau"]
+
+[ext_resource type="Texture2D" uid="uid://cmrpv08x6ql3y" path="res://Game Assets/GodotPlatformerAssets/Sprites/Tile.png" id="1_hy1wr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l40vm"]
+
+[node name="IndestructibleBox" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hy1wr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_l40vm")

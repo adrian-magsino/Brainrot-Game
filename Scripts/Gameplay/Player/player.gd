@@ -8,6 +8,7 @@ var player_deaths: int = 0
 
 #Nodes and Scenes
 @export var default_gun_scene: PackedScene
+@export var BloodParticle: PackedScene
 #@onready var sprite = $PlayerSprite
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
@@ -329,7 +330,12 @@ func increment_deaths():
 	player_deaths += 1
 	scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)
 				
-	
+func play_death_animation():
+	var _particle = BloodParticle.instantiate()
+	_particle.position = global_position
+	_particle.rotation = global_rotation
+	_particle.emitting = true
+	get_tree().current_scene.add_child(_particle)
 	
 func die(damager: Node):
 	
@@ -344,7 +350,7 @@ func die(damager: Node):
 		
 	# Increase own death count
 	increment_deaths.rpc()
-	
+	play_death_animation()
 	# Broadcast death
 	sync_death.rpc()
 
@@ -353,18 +359,19 @@ func die(damager: Node):
 	visible = false
 	set_physics_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
-
+	
 	await get_tree().create_timer(respawn_delay).timeout
 	respawn()
 
 	
 @rpc("authority", "reliable")
 func sync_death():
+	play_death_animation()
 	visible = false
 	set_physics_process(false)
 	$CollisionShape2D.disabled = true
 	is_dead = true
-
+	
 	drop_guns_on_death()
 	
 func respawn():

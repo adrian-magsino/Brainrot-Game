@@ -3,6 +3,7 @@ extends Destructible
 @onready var explosion_area = $ExplosionArea
 @export var explosion_damage: int = 50
 @export var explosion_radius: float = 100.0
+@export var ExplosionParticles: PackedScene
 
 func destroy(damager: Node):
 	if not is_multiplayer_authority():
@@ -10,7 +11,7 @@ func destroy(damager: Node):
 
 	# Show explosion VFX here (optional)
 	#spawn_explosion_effect()
-
+	play_explosion_animation.rpc()
 	# Damage nearby bodies
 	apply_explosion_damage_all.rpc(damager.get_path())
 
@@ -35,6 +36,13 @@ func apply_explosion_damage_all(damager_path: NodePath):
 			print(damager)
 	explosion_area.monitoring = false
 
+@rpc("any_peer", "call_local")
+func play_explosion_animation():
+	var _particle = ExplosionParticles.instantiate()
+	_particle.position = global_position
+	_particle.rotation = global_rotation
+	_particle.emitting = true
+	get_tree().current_scene.add_child(_particle)
 	
 #func spawn_explosion_effect():
 	#var explosion_scene = preload("res://effects/Explosion.tscn")

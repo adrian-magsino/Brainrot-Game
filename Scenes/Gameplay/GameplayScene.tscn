@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=25 format=3 uid="uid://03kwatux05d3"]
 
 [ext_resource type="Script" uid="uid://bw3kxf7kd6frm" path="res://Scripts/Gameplay/gameplay_scene.gd" id="1_ger4l"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/Gameplay/Environment/ground.tscn" id="2_ip6ma"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Environment/player_spawn_point_1.tscn" id="12_ip6ma"]
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/Assault_rifle.tscn" id="13_eafbr"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg.tscn" id="14_be5vd"]
+[ext_resource type="PackedScene" uid="uid://xupcql5cguau" path="res://Scenes/Gameplay/Environment/IndestructibleBox.tscn" id="15_msos4"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="15_pomnc"]
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol.tscn" id="16_pomnc"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="17_toudt"]
@@ -248,6 +249,9 @@ position = Vector2(326, 178)
 [node name="PlayerSpawnPoint2" parent="PlayerSpawnPoints" instance=ExtResource("12_ip6ma")]
 position = Vector2(335, 557)
 
+[node name="IndestructibleBox" parent="PlayerSpawnPoints" instance=ExtResource("15_msos4")]
+position = Vector2(509, 603)
+
 [node name="Assault_rifle" parent="." instance=ExtResource("13_eafbr")]
 position = Vector2(327, 264)
 
@@ -278,15 +282,12 @@ position = Vector2(767, 160)
 
 [node name="ExplosiveBarrel" parent="." instance=ExtResource("22_eaa56")]
 position = Vector2(869, 98)
-max_health = 50
 
 [node name="ExplosiveBarrel2" parent="." instance=ExtResource("22_eaa56")]
 position = Vector2(840, 525)
-max_health = 50
 
 [node name="ExplosiveBarrel3" parent="." instance=ExtResource("22_eaa56")]
 position = Vector2(854, 621)
-max_health = 50
 
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

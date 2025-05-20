@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://iiiiypa3rn0l"]
+[gd_scene load_steps=5 format=3 uid="uid://iiiiypa3rn0l"]
 
 [ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_w4yiv"]
+[ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_kdpmd"]
 [ext_resource type="Texture2D" uid="uid://bck47tym6wyl7" path="res://Game Assets/guns_gameassets/PNG/large_bullet.png" id="2_w4yiv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
@@ -10,6 +11,7 @@ radius = 2.0
 z_index = 1
 script = ExtResource("1_w4yiv")
 speed = 800.0
+BulletParticle = ExtResource("2_kdpmd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

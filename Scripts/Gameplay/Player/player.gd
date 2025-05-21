@@ -13,7 +13,7 @@ var player_deaths: int = 0
 @export var BloodParticle: PackedScene
 @onready var animated_sprite = $AnimatedSprite2D
 
-#Nodes and Scenes
+##Nodes and Scenes
 @export var default_gun_scene: PackedScene
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName

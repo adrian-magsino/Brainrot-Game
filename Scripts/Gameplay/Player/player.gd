@@ -171,8 +171,8 @@ func set_default_gun():
 		# Set the owner before adding to the tree to ensure correct multiplayer sync
 		default_gun.set_multiplayer_authority(get_multiplayer_authority())
 		
-		#Add default gun in the root scene before being picked up
-		get_tree().current_scene.add_child(default_gun)
+		#Add default gun in the scene before being picked up
+		get_tree().current_scene.get_node("Guns").add_child(default_gun)
 		default_gun.global_position = global_position
 		
 		#call pick_up *locally* only, not over the network
@@ -330,7 +330,6 @@ func increment_score(killer_id):
 	player_score += 1
 	scoreboard.update_scoreboard(killer_id, player_name, player_score, player_deaths)
 
-	
 @rpc("any_peer", "call_local")
 func increment_deaths():	
 	player_deaths += 1

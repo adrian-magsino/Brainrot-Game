@@ -216,13 +216,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Scoreboard" parent="Control" instance=ExtResource("3_y1ncx")]
 
-[node name="SampleGun" parent="." instance=ExtResource("7_toudt")]
-position = Vector2(560, 81)
-
-[node name="SampleGun2" parent="." instance=ExtResource("8_ilcth")]
-position = Vector2(559, 145)
-self_damage_bullets = true
-
 [node name="Door" parent="." instance=ExtResource("9_j5vce")]
 position = Vector2(814, 351)
 
@@ -260,42 +253,55 @@ position = Vector2(335, 557)
 [node name="IndestructibleBox" parent="PlayerRespawnPoints" instance=ExtResource("15_msos4")]
 position = Vector2(509, 603)
 
-[node name="Assault_rifle" parent="." instance=ExtResource("13_eafbr")]
+[node name="Guns" type="Node" parent="."]
+
+[node name="Assault_rifle" parent="Guns" instance=ExtResource("13_eafbr")]
 position = Vector2(327, 264)
 
-[node name="smg" parent="." instance=ExtResource("14_be5vd")]
+[node name="smg" parent="Guns" instance=ExtResource("14_be5vd")]
 position = Vector2(327, 325)
 
-[node name="shotgun" parent="." instance=ExtResource("15_pomnc")]
+[node name="shotgun" parent="Guns" instance=ExtResource("15_pomnc")]
 position = Vector2(562, 254)
 
-[node name="pistol" parent="." instance=ExtResource("16_pomnc")]
+[node name="pistol" parent="Guns" instance=ExtResource("16_pomnc")]
 position = Vector2(553, 341)
 
-[node name="sniper" parent="." instance=ExtResource("17_toudt")]
+[node name="sniper" parent="Guns" instance=ExtResource("17_toudt")]
 position = Vector2(550, 402)
 
-[node name="LaserSight" parent="." instance=ExtResource("19_j5vce")]
+[node name="SampleGun" parent="Guns" instance=ExtResource("7_toudt")]
+position = Vector2(560, 81)
+
+[node name="SampleGun2" parent="Guns" instance=ExtResource("8_ilcth")]
+position = Vector2(559, 145)
+self_damage_bullets = true
+
+[node name="PickableItems" type="Node" parent="."]
+
+[node name="LaserSight" parent="PickableItems" instance=ExtResource("19_j5vce")]
 position = Vector2(317, 423)
 
-[node name="LaserSight2" parent="." instance=ExtResource("19_j5vce")]
+[node name="LaserSight2" parent="PickableItems" instance=ExtResource("19_j5vce")]
 position = Vector2(361, 474)
+
+[node name="DestructibleObjects" type="Node" parent="."]
+
+[node name="DestructibleObject" parent="DestructibleObjects" instance=ExtResource("21_cfnoy")]
+position = Vector2(767, 160)
+
+[node name="ExplosiveBarrel" parent="DestructibleObjects" instance=ExtResource("22_eaa56")]
+position = Vector2(869, 98)
+
+[node name="ExplosiveBarrel2" parent="DestructibleObjects" instance=ExtResource("22_eaa56")]
+position = Vector2(840, 525)
+
+[node name="ExplosiveBarrel3" parent="DestructibleObjects" instance=ExtResource("22_eaa56")]
+position = Vector2(854, 621)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bki2lv8s3kkvd")
 spawn_path = NodePath("..")
-
-[node name="DestructibleObject" parent="." instance=ExtResource("21_cfnoy")]
-position = Vector2(767, 160)
-
-[node name="ExplosiveBarrel" parent="." instance=ExtResource("22_eaa56")]
-position = Vector2(869, 98)
-
-[node name="ExplosiveBarrel2" parent="." instance=ExtResource("22_eaa56")]
-position = Vector2(840, 525)
-
-[node name="ExplosiveBarrel3" parent="." instance=ExtResource("22_eaa56")]
-position = Vector2(854, 621)
 
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

@@ -45,7 +45,7 @@ func _process(delta):
 			var laser_sight = $BulletPos.get_node("LaserSight")
 			laser_sight.activate(owner_player)
 			
-@rpc("authority", "reliable")
+@rpc("any_peer", "reliable")
 func shoot_rpc(direction: Vector2):
 	shoot(direction)
 

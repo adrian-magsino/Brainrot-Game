@@ -11,6 +11,8 @@ var current_guns: Array[Node] = []
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
+var game_started := false
+
 func _ready():
 	if gun_scenes.is_empty():
 		print("GUN SPAWNER IS EMPTY")
@@ -26,12 +28,16 @@ func _ready():
 		color_rect.position = -shape.extents
 		color_rect.color = Color(1, 0, 0, 0.3) # semi-transparent red
 		
+	
+func on_game_started():
+	game_started = true
+
 	if is_multiplayer_authority():
 		print("GUN SPAWN TIMER SET")
 		spawn_timer.wait_time = spawn_interval
 		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 		spawn_timer.start()
-
+		
 func _on_spawn_timer_timeout():
 	print("GUN SPAWNER TIMEOUT")
 	if current_guns.size() >= max_guns:
@@ -72,8 +78,6 @@ func sync_spawn_gun(spawn_position: Vector2, gun_index: int):
 	var gun_scene = gun_scenes[gun_index]
 	var gun = gun_scene.instantiate()
 	var global_spawn_position = spawn_position
-	#var global_spawn_position = global_position + spawn_position
-	#var global_spawn_position = to_global(spawn_position)
 	gun.global_position = global_spawn_position
 	
 	add_child(gun, true) # replicate ownership if needed

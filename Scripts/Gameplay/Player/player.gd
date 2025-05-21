@@ -175,6 +175,9 @@ func set_default_gun():
 		get_tree().current_scene.get_node("Guns").add_child(default_gun)
 		default_gun.global_position = global_position
 		
+		await get_tree().process_frame
+		if default_gun and is_instance_valid(default_gun):
+			print("THE DEFAULT GUN IS VALID")
 		#call pick_up *locally* only, not over the network
 		#immediately pick up default gun after spawn/respawn
 		default_gun.pick_up($GunHolder)

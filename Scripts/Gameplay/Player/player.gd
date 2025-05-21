@@ -6,15 +6,19 @@ var is_a_player = true
 var player_score: int = 0
 var player_deaths: int = 0
 
+#Root Scene
+@onready var gameplay_scene = get_node("/root/GameplayScene")
+
+#Animations
+@export var BloodParticle: PackedScene
+@onready var animated_sprite = $AnimatedSprite2D
+
 #Nodes and Scenes
 @export var default_gun_scene: PackedScene
-@export var BloodParticle: PackedScene
-#@onready var sprite = $PlayerSprite
-@onready var animated_sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
-#@onready var hud = $Camera2D/HUD
-@onready var gameplay_scene = get_node("/root/GameplayScene")
+
+#HUD and Controls
 @onready var scoreboard = get_node("/root/GameplayScene/Control/Scoreboard")
 @onready var hud = get_node("/root/GameplayScene/Control/HUD")
 @onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
@@ -177,7 +181,9 @@ func set_default_gun():
 		gun_inventory[0] = default_gun
 		current_gun_index = 0
 		equip_gun(default_gun)
-		update_gun_in_HUD()
+		
+		if is_multiplayer_authority():
+			update_gun_in_HUD()
 		
 func get_held_gun() -> Node:
 	return gun_inventory[current_gun_index]
@@ -379,6 +385,7 @@ func respawn():
 	update_health_bar()
 	update_health_bar_networked.rpc(current_health)
 	
+	#THESE ARE SPAWN POINTS FOR RESPAWN ONLY
 	var spawn_points = get_tree().get_nodes_in_group("player_spawners")
 	if spawn_points.size() > 0:
 		var random_spawn = spawn_points[randi() % spawn_points.size()]

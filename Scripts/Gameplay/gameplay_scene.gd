@@ -13,6 +13,12 @@ var peer = ENetMultiplayerPeer.new()
 
 var players: Array[Player] = []
 
+func _ready():
+	$MultiplayerSpawner.spawn_function = add_player
+	if multiplayer.is_server():
+		spawners = get_tree().get_nodes_in_group("dummy_spawners")
+		spawn_initial_dummies()
+		
 func _on_host_button_pressed() -> void:
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer
@@ -21,9 +27,11 @@ func _on_host_button_pressed() -> void:
 	multiplayer.peer_connected.connect(
 		func(pid):
 			print("Peer " + str(pid) + " has joined the game!")
-			add_player(pid)
+			#add_player(pid)
+			$MultiplayerSpawner.spawn(pid)
 	)
-	add_player(multiplayer.get_unique_id()) #Host
+	$MultiplayerSpawner.spawn(multiplayer.get_unique_id())
+	#add_player(multiplayer.get_unique_id()) #Host
 	
 	multiplayer_ui.hide()
 func _on_join_button_pressed() -> void:
@@ -35,15 +43,17 @@ func add_player(pid):
 	var player = player_scene.instantiate()
 	player.name = str(pid)
 	player.set_multiplayer_authority(pid)
-	add_child(player)
+	
+	player.global_position = $PlayerInitialSpawnPoints.get_child(players.size()).global_position
 	players.append(player)
+	
+	return player
+	#add_child(player)
+	
 	print(players)
 
 	
-func _ready():
-	if multiplayer.is_server():
-		spawners = get_tree().get_nodes_in_group("dummy_spawners")
-		spawn_initial_dummies()
+
 		
 	
 func spawn_initial_dummies():

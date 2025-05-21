@@ -241,15 +241,23 @@ position = Vector2(1033, 217)
 position = Vector2(1032, 331)
 initial_spawn = false
 
-[node name="PlayerSpawnPoints" type="Node" parent="."]
+[node name="PlayerInitialSpawnPoints" type="Node" parent="."]
 
-[node name="PlayerSpawnPoint1" parent="PlayerSpawnPoints" instance=ExtResource("12_ip6ma")]
+[node name="InitialSpawnPoint" type="Marker2D" parent="PlayerInitialSpawnPoints"]
+position = Vector2(123, 256)
+
+[node name="InitialSpawnPoint2" type="Marker2D" parent="PlayerInitialSpawnPoints"]
+position = Vector2(1202, 254)
+
+[node name="PlayerRespawnPoints" type="Node" parent="."]
+
+[node name="PlayerSpawnPoint1" parent="PlayerRespawnPoints" instance=ExtResource("12_ip6ma")]
 position = Vector2(326, 178)
 
-[node name="PlayerSpawnPoint2" parent="PlayerSpawnPoints" instance=ExtResource("12_ip6ma")]
+[node name="PlayerSpawnPoint2" parent="PlayerRespawnPoints" instance=ExtResource("12_ip6ma")]
 position = Vector2(335, 557)
 
-[node name="IndestructibleBox" parent="PlayerSpawnPoints" instance=ExtResource("15_msos4")]
+[node name="IndestructibleBox" parent="PlayerRespawnPoints" instance=ExtResource("15_msos4")]
 position = Vector2(509, 603)
 
 [node name="Assault_rifle" parent="." instance=ExtResource("13_eafbr")]

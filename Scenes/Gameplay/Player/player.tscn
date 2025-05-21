@@ -69,8 +69,8 @@ properties/5/replication_mode = 1
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_onrkg")
-default_gun_scene = ExtResource("2_skuam")
 BloodParticle = ExtResource("3_h3jkl")
+default_gun_scene = ExtResource("2_skuam")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ymmdj")

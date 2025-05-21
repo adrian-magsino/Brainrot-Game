@@ -9,19 +9,27 @@ extends Node2D
 var active_dummies := []
 
 @onready var multiplayer_ui = $MultiplayerUI/Multiplayer
+@onready var oid_lbl = $MultiplayerUI/Multiplayer/VBoxContainer/OID
+@onready var oid_input = $MultiplayerUI/Multiplayer/VBoxContainer/LineEdit
+
 var peer = ENetMultiplayerPeer.new()
 
 var players: Array[Player] = []
 
 func _ready():
 	$MultiplayerSpawner.spawn_function = add_player
+	
+	await MultiplayerManager.noray_connected
+	oid_lbl.text = Noray.oid
+	
 	if multiplayer.is_server():
 		spawners = get_tree().get_nodes_in_group("dummy_spawners")
 		spawn_initial_dummies()
 		
 func _on_host_button_pressed() -> void:
-	peer.create_server(135)
-	multiplayer.multiplayer_peer = peer
+	MultiplayerManager.host()
+	#peer.create_server(135)
+	#multiplayer.multiplayer_peer = peer
 	print("Successfully Hosted a Game")
 	
 	multiplayer.peer_connected.connect(
@@ -35,8 +43,9 @@ func _on_host_button_pressed() -> void:
 	
 	multiplayer_ui.hide()
 func _on_join_button_pressed() -> void:
-	peer.create_client("localhost", 135)
-	multiplayer.multiplayer_peer = peer
+	MultiplayerManager.join(oid_input.text)
+	#peer.create_client("localhost", 135)
+	#multiplayer.multiplayer_peer = peer
 	multiplayer_ui.hide()
 	
 func add_player(pid):
@@ -100,3 +109,7 @@ func spawn_dummy_networked(spawner_path: NodePath):
 	dummy.connect("died", Callable(self, "_on_dummy_died"))
 	spawner.is_occupied = true
 	active_dummies.append(dummy)
+
+
+func _on_copy_oid_pressed() -> void:
+	DisplayServer.clipboard_set(Noray.oid)

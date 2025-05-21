@@ -57,9 +57,25 @@ text = "MULTIPLAYER"
 layout_mode = 2
 text = "HOST"
 
+[node name="CopyOID" type="Button" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
+layout_mode = 2
+text = "COPY OID"
+
+[node name="HSeparator" type="HSeparator" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Host OID"
+
 [node name="JoinButton" type="Button" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
 layout_mode = 2
 text = "JOIN"
+
+[node name="OID" type="Label" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
+layout_mode = 2
+text = "Loading..."
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -314,6 +330,7 @@ gun_scenes = Array[PackedScene]([ExtResource("8_ilcth"), ExtResource("15_pomnc")
 spawn_area_extents = Vector2(200, 200)
 
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/CopyOID" to="." method="_on_copy_oid_pressed"]
 [connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuButton" to="Control" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]

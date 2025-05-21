@@ -12,3 +12,7 @@ func _on_select_mode_pressed() -> void:
 
 func _on_back_to_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/JoinmenuScene.tscn")
+
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Gameplay/GameplayScene.tscn")

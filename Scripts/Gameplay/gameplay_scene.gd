@@ -69,7 +69,9 @@ func add_player(pid):
 	return player
 	#add_child(player)
 	
-	print(players)
+
+func _on_copy_oid_pressed() -> void:
+	DisplayServer.clipboard_set(Noray.oid)
 
 func start_game():
 	game_started = true
@@ -79,7 +81,6 @@ func start_game():
 		spawners = get_tree().get_nodes_in_group("dummy_spawners")
 		spawn_initial_dummies()
 
-	
 func spawn_initial_dummies():
 	var available_spawners = spawners.filter(func(spawner):
 		return spawner.initial_spawn and not spawner.is_occupied	
@@ -102,6 +103,8 @@ func _on_dummy_died(spawner_node, _position):
 	spawn_dummy_at_free_spawner()
 	
 func spawn_dummy_at_free_spawner():
+	if !multiplayer.is_server():
+		return
 	var free_spawners = spawners.filter(func(spawner):
 		return not spawner.is_occupied
 	)
@@ -111,7 +114,7 @@ func spawn_dummy_at_free_spawner():
 	var chosen_spawner = free_spawners[randi() % free_spawners.size()]
 	spawn_dummy_networked.rpc(chosen_spawner.get_path())
 
-@rpc("call_local")
+@rpc("call_local", "reliable")
 func spawn_dummy_networked(spawner_path: NodePath):
 	var spawner = get_node(spawner_path)
 	var dummy = dummy_scene.instantiate()
@@ -122,6 +125,3 @@ func spawn_dummy_networked(spawner_path: NodePath):
 	dummy.connect("died", Callable(self, "_on_dummy_died"))
 	spawner.is_occupied = true
 	active_dummies.append(dummy)
-
-func _on_copy_oid_pressed() -> void:
-	DisplayServer.clipboard_set(Noray.oid)

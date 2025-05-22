@@ -73,7 +73,7 @@ func _ready():
 	player_name_label.text = player_name
 	current_health = max_health
 	update_health_bar()
-	set_default_gun.rpc()
+	#set_default_gun.rpc()
 	# Dash movement
 	add_child(dash_timer)
 	dash_timer.one_shot = true
@@ -163,7 +163,7 @@ func get_aim_input() -> Dictionary:
 		"direction": aim_vector.normalized(),
 		"strength": aim_vector.length()
 	}
-@rpc("any_peer","call_local")
+@rpc("any_peer", "call_local", "reliable")
 func set_default_gun():
 	if default_gun_scene and gun_inventory[0] == null and gun_inventory[1] == null:
 		var default_gun = default_gun_scene.instantiate()
@@ -401,7 +401,7 @@ func respawn():
 	set_physics_process(true)
 	$CollisionShape2D.disabled = false
 	is_dead = false
-	set_default_gun.rpc()
+	#set_default_gun.rpc()
 	
 @rpc("authority", "reliable")
 func sync_respawn(pos: Vector2):
@@ -411,7 +411,7 @@ func sync_respawn(pos: Vector2):
 	$CollisionShape2D.disabled = false
 	is_dead = false
 	update_health_bar()
-	set_default_gun()
+	#set_default_gun()
 	
 func switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:

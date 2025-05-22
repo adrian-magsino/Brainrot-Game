@@ -39,8 +39,6 @@ func on_game_started():
 		spawn_timer.start()
 		
 func _on_spawn_timer_timeout():
-	if !multiplayer.is_server():
-		return
 	#print("GUN SPAWNER TIMEOUT")
 	if current_guns.size() >= max_guns:
 		#print("MAX LIMIT REACHED")
@@ -53,7 +51,7 @@ func _on_spawn_timer_timeout():
 
 
 func spawn_gun():
-	if not multiplayer.is_server():
+	if !multiplayer.is_server():
 		return
 	
 	if gun_scenes.is_empty():
@@ -71,14 +69,13 @@ func spawn_gun():
 	sync_spawn_gun.rpc(spawn_position, gun_index)
 
 	
-@rpc("call_local")
+@rpc("any_peer", "call_local", "reliable")
 func sync_spawn_gun(spawn_position: Vector2, gun_index: int):
 	if gun_index < 0 or gun_index >= gun_scenes.size():
 		print("Invalid gun index received")
 		return
 
-	var gun_scene = gun_scenes[gun_index]
-	var gun = gun_scene.instantiate()
+	var gun = gun_scenes[gun_index].instantiate()
 	var global_spawn_position = spawn_position
 	gun.global_position = global_spawn_position
 

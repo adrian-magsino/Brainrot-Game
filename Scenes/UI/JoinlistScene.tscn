@@ -1,0 +1,382 @@
+[gd_scene load_steps=23 format=3 uid="uid://dfi7bmlaipfvy"]
+
+[ext_resource type="Script" uid="uid://0t8mfftioxr4" path="res://Scripts/UI/joinlist_scene.gd" id="1_nemof"]
+[ext_resource type="Texture2D" uid="uid://bsbieobp3chn5" path="res://Game Assets/Join List Assets/container.png" id="1_vccmi"]
+[ext_resource type="Texture2D" uid="uid://dgqklptuyhl87" path="res://Game Assets/Join List Assets/game_title.png" id="2_cktq5"]
+[ext_resource type="Texture2D" uid="uid://bammkjhmgtfo0" path="res://Game Assets/Join List Assets/join1.png" id="3_qjtfr"]
+[ext_resource type="Texture2D" uid="uid://btf4ckpsjuqgs" path="res://Game Assets/Join List Assets/join2.png" id="4_fmr14"]
+[ext_resource type="Texture2D" uid="uid://yo4j4aw32l8y" path="res://Game Assets/Join List Assets/back1.png" id="5_q5c5t"]
+[ext_resource type="Texture2D" uid="uid://dhkddukhy53a1" path="res://Game Assets/Join List Assets/back2.png" id="6_nemof"]
+[ext_resource type="Texture2D" uid="uid://jbwpojauihcf" path="res://Game Assets/Join List Assets/scrollbar2.png" id="7_fmr14"]
+[ext_resource type="Texture2D" uid="uid://btxtce3x1q5xn" path="res://Game Assets/Join List Assets/online_cell1.png" id="7_qjtfr"]
+[ext_resource type="Texture2D" uid="uid://ci2yvlaaqvpra" path="res://Game Assets/Join List Assets/online_cell2.png" id="8_fmr14"]
+[ext_resource type="Script" uid="uid://7sv5j1g1proo" path="res://Scripts/UI/JoinlistScene_v_box_container.gd" id="9_jijma"]
+[ext_resource type="FontFile" uid="uid://hyamchga0ptd" path="res://Game Assets/Join List Assets/PKMN RBYGSC.ttf" id="10_q5c5t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jijma"]
+atlas = ExtResource("3_qjtfr")
+region = Rect2(634.956, 513.336, 152.081, 65.311)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7u4g"]
+atlas = ExtResource("4_fmr14")
+region = Rect2(634.956, 513.336, 152.081, 65.311)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vccmi"]
+atlas = ExtResource("5_q5c5t")
+region = Rect2(362.629, 517.92, 147.372, 59.2654)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cktq5"]
+atlas = ExtResource("6_nemof")
+region = Rect2(362.629, 517.92, 147.372, 59.265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjtfr"]
+atlas = ExtResource("7_fmr14")
+region = Rect2(725.149, 184.975, 22.1605, 216.308)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmr14"]
+texture = SubResource("AtlasTexture_qjtfr")
+
+[sub_resource type="Theme" id="Theme_fmr14"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_fmr14")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_fmr14")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_fmr14")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_q5c5t"]
+allow_unpress = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nemof"]
+atlas = ExtResource("7_qjtfr")
+region = Rect2(415.972, 186.724, 305.629, 45.851)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxjxc"]
+atlas = ExtResource("8_fmr14")
+region = Rect2(415.972, 186.724, 305.629, 45.851)
+
+[node name="JoinlistScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nemof")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vccmi")
+
+[node name="GameTitle" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_cktq5")
+
+[node name="Join" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 513.0
+offset_right = 786.0
+offset_bottom = 578.0
+disabled = true
+texture_normal = SubResource("AtlasTexture_jijma")
+texture_pressed = SubResource("AtlasTexture_w7u4g")
+texture_disabled = SubResource("AtlasTexture_w7u4g")
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 517.0
+offset_right = 512.0
+offset_bottom = 576.0
+texture_normal = SubResource("AtlasTexture_vccmi")
+texture_pressed = SubResource("AtlasTexture_cktq5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 189.0
+offset_right = 744.0
+offset_bottom = 497.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fmr14")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("9_jijma")
+
+[node name="Lobby 1" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 1"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 1"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 2" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 2"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 2"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 3" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 3"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 3"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 4" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 4"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 4"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 5" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 5"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 5"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 6" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 6"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 6"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 7" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 7"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 7"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 8" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 8"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 8"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[node name="Lobby 9" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c5t")
+texture_normal = SubResource("AtlasTexture_nemof")
+texture_pressed = SubResource("AtlasTexture_bxjxc")
+
+[node name="Player Name" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 9"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 10.0
+offset_right = 212.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Slot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Lobby 9"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.254902, 0.239216, 0.321569, 1)
+theme_override_fonts/font = ExtResource("10_q5c5t")
+text = "1/2"
+
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

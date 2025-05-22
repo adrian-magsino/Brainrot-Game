@@ -39,9 +39,11 @@ func on_game_started():
 		spawn_timer.start()
 		
 func _on_spawn_timer_timeout():
-	print("GUN SPAWNER TIMEOUT")
+	if !multiplayer.is_server():
+		return
+	#print("GUN SPAWNER TIMEOUT")
 	if current_guns.size() >= max_guns:
-		print("MAX LIMIT REACHED")
+		#print("MAX LIMIT REACHED")
 		# Don't spawn more guns yet
 		spawn_timer.start()
 		return
@@ -64,8 +66,8 @@ func spawn_gun():
 		randf_range(-shape.extents.x, shape.extents.x),
 		randf_range(-shape.extents.y, shape.extents.y)
 	)
-	print("SPAWNER EXTENTS: ", -shape.extents.x, shape.extents.x, -shape.extents.y, shape.extents.y)
-	print("SPAWNED GUN IN: ", spawn_position)
+	#print("SPAWNER EXTENTS: ", -shape.extents.x, shape.extents.x, -shape.extents.y, shape.extents.y)
+	#print("SPAWNED GUN IN: ", spawn_position)
 	sync_spawn_gun.rpc(spawn_position, gun_index)
 
 	
@@ -79,9 +81,9 @@ func sync_spawn_gun(spawn_position: Vector2, gun_index: int):
 	var gun = gun_scene.instantiate()
 	var global_spawn_position = spawn_position
 	gun.global_position = global_spawn_position
-	
+
 	add_child(gun, true) # replicate ownership if needed
-	
+	print("GUN HAS BEEN SPAWNED: ", gun.get_path())
 	current_guns.append(gun)
 	if gun.has_signal("tree_exited"):
 		gun.tree_exited.connect(_on_gun_removed.bind(gun))

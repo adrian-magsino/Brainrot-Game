@@ -73,7 +73,7 @@ func _ready():
 	player_name_label.text = player_name
 	current_health = max_health
 	update_health_bar()
-	set_default_gun()
+	set_default_gun.rpc()
 	# Dash movement
 	add_child(dash_timer)
 	dash_timer.one_shot = true
@@ -163,7 +163,7 @@ func get_aim_input() -> Dictionary:
 		"direction": aim_vector.normalized(),
 		"strength": aim_vector.length()
 	}
-
+@rpc("any_peer","call_local")
 func set_default_gun():
 	if default_gun_scene and gun_inventory[0] == null and gun_inventory[1] == null:
 		var default_gun = default_gun_scene.instantiate()
@@ -174,7 +174,7 @@ func set_default_gun():
 		#Add default gun in the scene before being picked up
 		get_tree().current_scene.get_node("Guns").add_child(default_gun)
 		default_gun.global_position = global_position
-		
+		print("SET DEFAULT GUN: ", default_gun.get_path())
 		await get_tree().process_frame
 		if default_gun and is_instance_valid(default_gun):
 			print("THE DEFAULT GUN IS VALID")
@@ -237,7 +237,7 @@ func drop_gun():
 	if gun:
 		gun.drop(self.global_position + Vector2(0, 16), get_tree().current_scene)
 		gun_inventory[current_gun_index] = null
-
+@rpc("call_local")
 func drop_guns_on_death():
 	var drop_offset = Vector2(0, 16)
 	if gun_inventory[0]:
@@ -337,7 +337,7 @@ func increment_score(killer_id):
 func increment_deaths():	
 	player_deaths += 1
 	scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)
-				
+@rpc("any_peer", "call_local")				
 func play_death_animation():
 	var _particle = BloodParticle.instantiate()
 	_particle.position = global_position
@@ -358,11 +358,12 @@ func die(damager: Node):
 		
 	# Increase own death count
 	increment_deaths.rpc()
-	play_death_animation()
+	play_death_animation.rpc()
+	drop_guns_on_death.rpc()
 	# Broadcast death
-	sync_death.rpc()
+	#sync_death.rpc()
 
-	drop_guns_on_death()
+	
 	hud.reset_hud()
 	visible = false
 	set_physics_process(false)
@@ -394,13 +395,13 @@ func respawn():
 		global_position = random_spawn.global_position
 
 	# Tell others that the player has respawned
-	sync_respawn.rpc(global_position)
+	#sync_respawn.rpc(global_position)
 
 	visible = true
 	set_physics_process(true)
 	$CollisionShape2D.disabled = false
 	is_dead = false
-	set_default_gun()
+	set_default_gun.rpc()
 	
 @rpc("authority", "reliable")
 func sync_respawn(pos: Vector2):

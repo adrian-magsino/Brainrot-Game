@@ -24,7 +24,7 @@ func take_damage(amount: int, damager: Node):
 	current_health -= amount
 	current_health = max(current_health, 0)
 	update_health_bar()
-	update_health_bar_networked.rpc(current_health)
+	#update_health_bar_networked.rpc(current_health)
 	
 	health_bar.visible = true
 	hide_healthbar_timer.start()
@@ -32,7 +32,7 @@ func take_damage(amount: int, damager: Node):
 	if current_health <= 0:
 		call_deferred("destroy", damager) 
 
-@rpc("call_local")
+@rpc("call_local") ##THIS FUNCTION IS NOT BEING CALLED FOR NOW
 func update_health_bar_networked(new_health: int):
 	current_health = new_health
 	update_health_bar()
@@ -42,7 +42,8 @@ func update_health_bar_networked(new_health: int):
 func update_health_bar():
 	health_bar.max_value = max_health
 	health_bar.value = current_health
-	
+	health_bar.visible = true
+	hide_healthbar_timer.start()
 func _on_hide_timer_timeout():
 	health_bar.visible = false
 	

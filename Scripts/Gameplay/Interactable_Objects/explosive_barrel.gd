@@ -6,21 +6,18 @@ extends Destructible
 @export var ExplosionParticles: PackedScene
 
 func destroy(damager: Node):
-	if not is_multiplayer_authority():
-		return
-
 	# Show explosion VFX here (optional)
 	#spawn_explosion_effect()
-	play_explosion_animation.rpc()
+	play_explosion_animation()
 	# Damage nearby bodies
-	apply_explosion_damage_all.rpc(damager.get_path())
+	apply_explosion_damage_all(damager)
+	if is_destroyed:
+		return
+	is_destroyed = true
+	emit_signal("destroyed")
+	queue_free()
 
-	# Continue with base destruction logic
-	sync_destroy.rpc()
-
-@rpc("call_local")
-func apply_explosion_damage_all(damager_path: NodePath):
-	var damager = get_node_or_null(damager_path)
+func apply_explosion_damage_all(damager: Node):
 	if not damager:
 		return
 
@@ -36,7 +33,6 @@ func apply_explosion_damage_all(damager_path: NodePath):
 			print(damager)
 	explosion_area.monitoring = false
 
-@rpc("any_peer", "call_local")
 func play_explosion_animation():
 	var _particle = ExplosionParticles.instantiate()
 	_particle.position = global_position
@@ -44,8 +40,3 @@ func play_explosion_animation():
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
 	
-#func spawn_explosion_effect():
-	#var explosion_scene = preload("res://effects/Explosion.tscn")
-	#var explosion_instance = explosion_scene.instantiate()
-	#get_tree().current_scene.add_child(explosion_instance)
-	#explosion_instance.global_position = global_position

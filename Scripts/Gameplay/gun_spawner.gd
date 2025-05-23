@@ -11,8 +11,6 @@ var current_guns: Array[Node] = []
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
-var game_started := false
-
 func _ready():
 	if gun_scenes.is_empty():
 		print("GUN SPAWNER IS EMPTY")
@@ -28,15 +26,11 @@ func _ready():
 		color_rect.position = -shape.extents
 		color_rect.color = Color(1, 0, 0, 0.3) # semi-transparent red
 		
+	print("GUN SPAWN TIMER SET")
+	spawn_timer.wait_time = spawn_interval
+	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	spawn_timer.start()
 	
-func on_game_started():
-	game_started = true
-
-	if is_multiplayer_authority():
-		print("GUN SPAWN TIMER SET")
-		spawn_timer.wait_time = spawn_interval
-		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-		spawn_timer.start()
 		
 func _on_spawn_timer_timeout():
 	#print("GUN SPAWNER TIMEOUT")
@@ -51,13 +45,12 @@ func _on_spawn_timer_timeout():
 
 
 func spawn_gun():
-	if !multiplayer.is_server():
-		return
-	
 	if gun_scenes.is_empty():
 		return
 
-	var gun_index = randi() % gun_scenes.size()
+	var gun_scene = gun_scenes.pick_random()
+	var gun = gun_scene.instantiate()
+	
 	var shape: RectangleShape2D = collision_shape.shape
 	var jitter = 100.0
 	var spawn_position = Vector2(
@@ -66,10 +59,13 @@ func spawn_gun():
 	)
 	#print("SPAWNER EXTENTS: ", -shape.extents.x, shape.extents.x, -shape.extents.y, shape.extents.y)
 	#print("SPAWNED GUN IN: ", spawn_position)
-	sync_spawn_gun.rpc(spawn_position, gun_index)
+	gun.global_position = spawn_position
+	add_child(gun, true) # replicate ownership if needed
+	print("GUN HAS BEEN SPAWNED: ", gun.get_path())
+	current_guns.append(gun)
+	if gun.has_signal("tree_exited"):
+		gun.tree_exited.connect(_on_gun_removed.bind(gun))
 
-	
-@rpc("any_peer", "call_local", "reliable")
 func sync_spawn_gun(spawn_position: Vector2, gun_index: int):
 	if gun_index < 0 or gun_index >= gun_scenes.size():
 		print("Invalid gun index received")

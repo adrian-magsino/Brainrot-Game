@@ -9,12 +9,8 @@ var  spawner_node: Node = null
 func _ready():
 	current_health = max_health
 	update_health_bar()
-		
-@rpc("any_peer", "call_local", "reliable")
-func _networked_die():
-	emit_signal("died", spawner_node, global_position)
-	queue_free()
+
 
 func die(damager: Node):
-	if is_multiplayer_authority():
-		_networked_die.rpc() # Call on all peers
+	emit_signal("died", spawner_node, global_position)
+	queue_free()

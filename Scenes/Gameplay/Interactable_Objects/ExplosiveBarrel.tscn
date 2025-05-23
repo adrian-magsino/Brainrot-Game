@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://75p78212eqdw"]
+[gd_scene load_steps=6 format=3 uid="uid://75p78212eqdw"]
 
 [ext_resource type="Script" uid="uid://b46losmqe2ea0" path="res://Scripts/Gameplay/Interactable_Objects/explosive_barrel.gd" id="1_cqdxx"]
 [ext_resource type="Texture2D" uid="uid://bbkkoxpg4fmjl" path="res://Game Assets/guns_gameassets/PNG/Alternative color/grenade.png" id="1_wk7n4"]
@@ -8,20 +8,6 @@
 radius = 12.6667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yu8lb"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yu8lb"]
-properties/0/path = NodePath("HealthBar:min_value")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("HealthBar:max_value")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("HealthBar:value")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("HealthBar:visible")
-properties/3/spawn = true
-properties/3/replication_mode = 1
 
 [node name="ExplosiveBarrel" type="StaticBody2D"]
 script = ExtResource("1_cqdxx")
@@ -48,6 +34,3 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_yu8lb")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_yu8lb")

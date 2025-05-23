@@ -19,15 +19,10 @@ func take_damage(amount: int, damager: Node):
 	current_health -= amount
 	current_health = max(current_health, 0)
 	update_health_bar()
-	#update_health_bar_networked.rpc(current_health)
+
 	
 	if current_health <= 0:
 		die(damager)
-
-@rpc("call_local")  ##THIS FUNCTION IS NOT BEING CALLED FOR NOW
-func update_health_bar_networked(new_health: int):
-	current_health = new_health
-	update_health_bar()
 
 func update_health_bar():
 	if has_node("HealthBar"):

@@ -45,10 +45,6 @@ func _process(delta):
 			var laser_sight = $BulletPos.get_node("LaserSight")
 			laser_sight.activate(owner_player)
 			
-@rpc("any_peer", "reliable")
-func shoot_rpc(direction: Vector2):
-	shoot(direction)
-
 func shoot(direction: Vector2):
 	if is_reloading or last_shot_time < fire_rate:
 		return
@@ -69,7 +65,7 @@ func shoot(direction: Vector2):
 	if current_magazine == 0:
 		start_reload()
 
-@rpc("any_peer", "reliable")
+
 func spawn_bullet(position: Vector2, direction: Vector2, rotation: float):
 	var bullet_instance = bullet_scene.instantiate()
 	bullet_instance.global_position = position
@@ -99,7 +95,7 @@ func shoot_single_bullet(direction: Vector2):
 	spawn_bullet(bullet_pos, direction, angle)
 
 	# Tell others to spawn
-	spawn_bullet.rpc(bullet_pos, direction, angle)
+	spawn_bullet(bullet_pos, direction, angle)
 	
 func shoot_bullet_spread(direction: Vector2):
 	var bullets_to_fire = bullet_spread_amount
@@ -120,7 +116,7 @@ func shoot_bullet_spread(direction: Vector2):
 		spawn_bullet(bullet_pos, spread_direction, spread_angle)
 
 		# Tell others to spawn
-		spawn_bullet.rpc(bullet_pos, spread_direction, spread_angle)
+		spawn_bullet(bullet_pos, spread_direction, spread_angle)
 
 func start_reload():
 	if is_reloading or current_magazine == magazine_capacity or total_ammo == 0:
@@ -129,6 +125,7 @@ func start_reload():
 	emit_signal("reload_started", reload_time)
 	get_tree().create_timer(reload_time).connect("timeout", Callable(self, "_on_reload_timeout"))
 	emit_signal("ammo_changed", current_magazine, total_ammo)
+	
 func _on_reload_timeout():
 	var needed = magazine_capacity - current_magazine
 	var to_reload = min(needed, total_ammo)

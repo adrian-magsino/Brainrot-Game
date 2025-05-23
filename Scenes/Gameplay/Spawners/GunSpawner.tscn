@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhym4hmx5jhhh"]
 
-[ext_resource type="Script" uid="uid://bcqo5clfnjg1x" path="res://Scenes/Gameplay/gun_spawner.gd" id="1_fvu2m"]
+[ext_resource type="Script" uid="uid://bcqo5clfnjg1x" path="res://Scripts/Gameplay/gun_spawner.gd" id="1_fvu2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cicbb"]
 size = Vector2(0, 0)

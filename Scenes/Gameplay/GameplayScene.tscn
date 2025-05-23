@@ -23,59 +23,15 @@
 [ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items_and_Attachments/LaserSight.tscn" id="19_j5vce"]
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="21_cfnoy"]
 [ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/ExplosiveBarrel.tscn" id="22_eaa56"]
-[ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/GunSpawner.tscn" id="24_4tt48"]
+[ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="24_4tt48"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfnoy"]
 
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_ger4l")
-player_scene = ExtResource("3_eafbr")
 
 [node name="Ground" parent="." instance=ExtResource("2_ip6ma")]
 position = Vector2(2, 7)
-
-[node name="MultiplayerUI" type="CanvasLayer" parent="."]
-
-[node name="Multiplayer" type="Control" parent="MultiplayerUI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerUI/Multiplayer"]
-layout_mode = 0
-offset_left = 262.0
-offset_top = 14.0
-offset_right = 369.0
-offset_bottom = 107.0
-
-[node name="Title" type="Label" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-text = "MULTIPLAYER"
-
-[node name="HostButton" type="Button" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-text = "HOST"
-
-[node name="CopyOID" type="Button" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-text = "COPY OID"
-
-[node name="HSeparator" type="HSeparator" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-placeholder_text = "Host OID"
-
-[node name="JoinButton" type="Button" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-text = "JOIN"
-
-[node name="OID" type="Label" parent="MultiplayerUI/Multiplayer/VBoxContainer"]
-layout_mode = 2
-text = "Loading..."
-horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -236,6 +192,8 @@ metadata/_edit_use_anchors_ = true
 [node name="Door" parent="." instance=ExtResource("9_j5vce")]
 position = Vector2(814, 351)
 
+[node name="player" parent="." instance=ExtResource("3_eafbr")]
+
 [node name="Dummy" parent="." instance=ExtResource("10_y1ncx")]
 position = Vector2(850, 241)
 
@@ -316,10 +274,6 @@ position = Vector2(840, 525)
 [node name="ExplosiveBarrel3" parent="DestructibleObjects" instance=ExtResource("22_eaa56")]
 position = Vector2(854, 621)
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bki2lv8s3kkvd")
-spawn_path = NodePath("..")
-
 [node name="GunSpawner" parent="." instance=ExtResource("24_4tt48")]
 position = Vector2(65, 176)
 gun_scenes = Array[PackedScene]([ExtResource("13_eafbr"), ExtResource("7_toudt"), ExtResource("17_toudt")])
@@ -329,9 +283,6 @@ position = Vector2(76, 504)
 gun_scenes = Array[PackedScene]([ExtResource("8_ilcth"), ExtResource("15_pomnc"), ExtResource("14_be5vd")])
 spawn_area_extents = Vector2(200, 200)
 
-[connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/CopyOID" to="." method="_on_copy_oid_pressed"]
-[connection signal="pressed" from="MultiplayerUI/Multiplayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuButton" to="Control" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/SettingsButton" to="Control" method="_on_settings_button_pressed"]

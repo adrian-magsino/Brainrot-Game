@@ -21,10 +21,6 @@ func update_scoreboard(peer_id: int, name: String, score: int, deaths: int):
 		name_label_p2.text = "PLAYER" + str(name)
 		score_label_p2.text = "SCORE: " + str(score)
 		deaths_label_p2.text = "DEATHS: " + str(deaths)
-#@onready var container = $VBoxContainer
-#@export var player_row_scene: PackedScene
-
-
 
 func toggle_visibility():
 	visible = not visible

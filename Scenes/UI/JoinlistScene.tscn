@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dfi7bmlaipfvy"]
 
-[ext_resource type="Script" uid="uid://0t8mfftioxr4" path="res://Scripts/UI/joinlist_scene.gd" id="1_nemof"]
+[ext_resource type="Script" path="res://Scripts/UI/joinlist_scene.gd" id="1_nemof"]
 [ext_resource type="Texture2D" uid="uid://bsbieobp3chn5" path="res://Game Assets/Join List Assets/container.png" id="1_vccmi"]
 [ext_resource type="Texture2D" uid="uid://dgqklptuyhl87" path="res://Game Assets/Join List Assets/game_title.png" id="2_cktq5"]
 [ext_resource type="Texture2D" uid="uid://bammkjhmgtfo0" path="res://Game Assets/Join List Assets/join1.png" id="3_qjtfr"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://jbwpojauihcf" path="res://Game Assets/Join List Assets/scrollbar2.png" id="7_fmr14"]
 [ext_resource type="Texture2D" uid="uid://btxtce3x1q5xn" path="res://Game Assets/Join List Assets/online_cell1.png" id="7_qjtfr"]
 [ext_resource type="Texture2D" uid="uid://ci2yvlaaqvpra" path="res://Game Assets/Join List Assets/online_cell2.png" id="8_fmr14"]
-[ext_resource type="Script" uid="uid://7sv5j1g1proo" path="res://Scripts/UI/JoinlistScene_v_box_container.gd" id="9_jijma"]
+[ext_resource type="Script" path="res://Scripts/UI/JoinlistScene_v_box_container.gd" id="9_jijma"]
 [ext_resource type="FontFile" uid="uid://hyamchga0ptd" path="res://Game Assets/Join List Assets/PKMN RBYGSC.ttf" id="10_q5c5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jijma"]

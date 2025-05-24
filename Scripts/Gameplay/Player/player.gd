@@ -7,7 +7,7 @@ var player_score: int = 0
 var player_deaths: int = 0
 
 #Root Scene
-@onready var gameplay_scene = get_node("/root/GameplayScene")
+@onready var gameplay_scene = get_parent()
 
 #Animations
 @export var BloodParticle: PackedScene
@@ -19,11 +19,18 @@ var player_deaths: int = 0
 @onready var player_name_label = $PlayerName
 
 #HUD and Controls
-@onready var scoreboard = get_node("/root/GameplayScene/Control/Scoreboard")
-@onready var hud = get_node("/root/GameplayScene/Control/HUD")
-@onready var pickup_button = get_node("/root/GameplayScene/Control/TouchControls/Pickup Gun")
-@onready var zoom_button = get_node("/root/GameplayScene/Control/TouchControls/Zoom Button")
-@onready var dash_progress_bar = get_node("/root/GameplayScene/Control/TouchControls/Dash Button/Dash Cooldown")
+@onready var control_node = get_parent().get_node("Control")
+#@onready var scoreboard = control_node.get_node("Scoreboard")
+@onready var hud = control_node.get_node("HUD")
+
+@onready var touch_controls = control_node.get_node("TouchControls")
+@onready var pickup_button = control_node.get_node("TouchControls/Pickup Gun")
+@onready var zoom_button = control_node.get_node("TouchControls/Zoom Button")
+@onready var reload_button = control_node.get_node("TouchControls/Reload Gun")
+@onready var switch_gun_button = control_node.get_node("TouchControls/Switch Gun")
+@onready var dash_button = control_node.get_node("TouchControls/Dash Button")
+
+@onready var dash_progress_bar = control_node.get_node("TouchControls/Dash Button/Dash Cooldown")
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
@@ -52,13 +59,14 @@ func _enter_tree():
 	print("PLAYER NAME: " + player_name)
 
 func _ready():
+	print("CURRENT ROOT SCENE: ", gameplay_scene)
 	#$PlayerName.modulate = Color.RED
 	camera.enabled = true
 	pickup_button.pressed.connect(_on_pickup_gun_pressed)
 	zoom_button.pressed.connect(_on_zoom_button_pressed)
-	get_node("/root/GameplayScene/Control/TouchControls/Reload Gun").pressed.connect(_on_reload_gun_pressed)
-	get_node("/root/GameplayScene/Control/TouchControls/Switch Gun").pressed.connect(_on_switch_gun_pressed)
-	get_node("/root/GameplayScene/Control/TouchControls/Dash Button").pressed.connect(_on_dash_button_pressed)
+	reload_button.pressed.connect(_on_reload_gun_pressed)
+	switch_gun_button.pressed.connect(_on_switch_gun_pressed)
+	dash_button.pressed.connect(_on_dash_button_pressed)
 
 	player_name_label.text = player_name
 	current_health = max_health
@@ -69,7 +77,7 @@ func _ready():
 	dash_timer.one_shot = true
 	dash_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timeout"))
 	dash_progress_bar.visible = false
-	scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)	
+	#scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)	
 	
 func _physics_process(delta):		
 	var input_vector = Vector2(
@@ -304,12 +312,12 @@ func dash():
 
 func increment_score(killer_id):
 	player_score += 1
-	scoreboard.update_scoreboard(killer_id, player_name, player_score, player_deaths)
+	#scoreboard.update_scoreboard(killer_id, player_name, player_score, player_deaths)
 
 
 func increment_deaths():	
 	player_deaths += 1
-	scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)
+	#scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)
 
 func play_death_animation():
 	var _particle = BloodParticle.instantiate()

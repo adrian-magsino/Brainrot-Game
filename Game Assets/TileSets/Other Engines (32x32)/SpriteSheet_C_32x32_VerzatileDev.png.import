@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwjs38new8jjw"
-path="res://.godot/imported/SpriteSheet_C_32x32_VerzatileDev.png-6e2d20460a0736d306d9d7a1dec2fd02.ctex"
+path="res://.godot/imported/SpriteSheet_C_32x32_VerzatileDev.png-e29ae7858bec406fdba8450d6e69a6a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png"
-dest_files=["res://.godot/imported/SpriteSheet_C_32x32_VerzatileDev.png-6e2d20460a0736d306d9d7a1dec2fd02.ctex"]
+source_file="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png"
+dest_files=["res://.godot/imported/SpriteSheet_C_32x32_VerzatileDev.png-e29ae7858bec406fdba8450d6e69a6a6.ctex"]
 
 [params]
 

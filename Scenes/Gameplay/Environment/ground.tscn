@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1vpei63tq3x"]
 
-[ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_yh8r4"]
+[ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_yh8r4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7tip"]
 texture = ExtResource("1_yh8r4")

@@ -66,21 +66,6 @@ func spawn_gun():
 	if gun.has_signal("tree_exited"):
 		gun.tree_exited.connect(_on_gun_removed.bind(gun))
 
-func sync_spawn_gun(spawn_position: Vector2, gun_index: int):
-	if gun_index < 0 or gun_index >= gun_scenes.size():
-		print("Invalid gun index received")
-		return
-
-	var gun = gun_scenes[gun_index].instantiate()
-	var global_spawn_position = spawn_position
-	gun.global_position = global_spawn_position
-
-	add_child(gun, true) # replicate ownership if needed
-	print("GUN HAS BEEN SPAWNED: ", gun.get_path())
-	current_guns.append(gun)
-	if gun.has_signal("tree_exited"):
-		gun.tree_exited.connect(_on_gun_removed.bind(gun))
-
 
 func _on_gun_removed(gun: Node):
 	print("GUN REMOVED FROM SPAWNER")

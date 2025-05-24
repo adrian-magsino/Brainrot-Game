@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8pxnphb10onu"
-path="res://.godot/imported/SpriteSheet_B_32x32_VerzatileDev.png-ae664cf9ee7ce1bf4b575be975f27d13.ctex"
+uid="uid://4kuop82n61fi"
+path="res://.godot/imported/SpriteSheet_A_32x32_VerzatileDev.png-177aa59b8f5f604ff29ac4637325f854.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Other Engines (32x32)/SpriteSheet_B_32x32_VerzatileDev.png"
-dest_files=["res://.godot/imported/SpriteSheet_B_32x32_VerzatileDev.png-ae664cf9ee7ce1bf4b575be975f27d13.ctex"]
+source_file="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_A_32x32_VerzatileDev.png"
+dest_files=["res://.godot/imported/SpriteSheet_A_32x32_VerzatileDev.png-177aa59b8f5f604ff29ac4637325f854.ctex"]
 
 [params]
 

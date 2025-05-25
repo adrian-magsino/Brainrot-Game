@@ -34,7 +34,7 @@ var player_deaths: int = 0
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
-var player_name: String
+var player_name: String = "PLAYER"
 
 #Camera zoom feature
 var current_zoom_index: int = 0
@@ -60,7 +60,6 @@ func _enter_tree():
 
 func _ready():
 	print("CURRENT ROOT SCENE: ", gameplay_scene)
-	#$PlayerName.modulate = Color.RED
 	camera.enabled = true
 	pickup_button.pressed.connect(_on_pickup_gun_pressed)
 	zoom_button.pressed.connect(_on_zoom_button_pressed)
@@ -158,25 +157,18 @@ func set_default_gun():
 	if default_gun_scene and gun_inventory[0] == null and gun_inventory[1] == null:
 		var default_gun = default_gun_scene.instantiate()
 		
-		# Set the owner before adding to the tree to ensure correct multiplayer sync
-		default_gun.set_multiplayer_authority(get_multiplayer_authority())
-		
 		#Add default gun in the scene before being picked up
 		get_tree().current_scene.get_node("Guns").add_child(default_gun)
 		default_gun.global_position = global_position
-		print("SET DEFAULT GUN: ", default_gun.get_path())
 		await get_tree().process_frame
-		if default_gun and is_instance_valid(default_gun):
-			print("THE DEFAULT GUN IS VALID")
-		#call pick_up *locally* only, not over the network
+
 		#immediately pick up default gun after spawn/respawn
 		default_gun.pick_up($GunHolder)
 		gun_inventory[0] = default_gun
 		current_gun_index = 0
 		equip_gun(default_gun)
-		
-		if is_multiplayer_authority():
-			update_gun_in_HUD()
+
+		update_gun_in_HUD()
 		
 func get_held_gun() -> Node:
 	return gun_inventory[current_gun_index]
@@ -313,7 +305,6 @@ func dash():
 func increment_score(killer_id):
 	player_score += 1
 	#scoreboard.update_scoreboard(killer_id, player_name, player_score, player_deaths)
-
 
 func increment_deaths():	
 	player_deaths += 1

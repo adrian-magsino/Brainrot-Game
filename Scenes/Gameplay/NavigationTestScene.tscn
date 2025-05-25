@@ -93,6 +93,10 @@ tile_set = ExtResource("2_pdpfa")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
 
+[node name="DestructibleObject" parent="TileMap/NavigationRegion2D" instance=ExtResource("13_e1uv0")]
+position = Vector2(413.5, 456)
+scale = Vector2(0.5, 0.5)
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -258,9 +262,6 @@ position = Vector2(1440, 870)
 [node name="GunSpawner" parent="." instance=ExtResource("9_yth3r")]
 position = Vector2(993, 804)
 gun_scenes = Array[PackedScene]([ExtResource("10_e1uv0"), ExtResource("11_mxli8"), ExtResource("12_hbser")])
-
-[node name="DestructibleObject" parent="." instance=ExtResource("13_e1uv0")]
-position = Vector2(987, 1133)
 
 [connection signal="pressed" from="Control/Menu/MenuButton" to="Control" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]

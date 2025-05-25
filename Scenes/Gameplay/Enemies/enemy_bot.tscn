@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://l3qn4yfj57o6"]
+[gd_scene load_steps=5 format=3 uid="uid://l3qn4yfj57o6"]
 
 [ext_resource type="Script" uid="uid://c7p5gkndlvof6" path="res://Scenes/Gameplay/Enemies/enemy_bot.gd" id="1_exuau"]
 [ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="1_g8aw4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
+radius = 80.0
 
 [node name="EnemyBot" type="CharacterBody2D"]
 modulate = Color(1, 0, 0.172549, 1)
@@ -16,13 +20,14 @@ script = ExtResource("1_exuau")
 texture = ExtResource("1_g8aw4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(6.03576, -5.54811)
+visible = false
 shape = SubResource("CircleShape2D_exuau")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 debug_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="NavigationTimer" type="Timer" parent="NavigationAgent2D"]
 wait_time = 0.5
 autostart = true
 
@@ -35,4 +40,14 @@ offset_bottom = -65.0
 [node name="HideHealthBarTimer" type="Timer" parent="HealthBar"]
 wait_time = 3.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="DamageCooldownTimer" type="Timer" parent="."]
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_g8hl7")
+
+[connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

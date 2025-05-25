@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bki2lv8s3kkvd"]
+[gd_scene load_steps=13 format=3 uid="uid://bsk752rdhvtha"]
 
 [ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
@@ -49,7 +49,7 @@ radius = 50.04
 
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 1
-collision_mask = 3
+collision_layer = 3
 script = ExtResource("1_onrkg")
 BloodParticle = ExtResource("3_h3jkl")
 default_gun_scene = ExtResource("2_skuam")

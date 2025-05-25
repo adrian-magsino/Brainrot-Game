@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/Gameplay/HUD/HUD.gd" id="3_6nt6t"]
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_uubsx"]
 [ext_resource type="PackedScene" uid="uid://bxw2rpkvk4y6k" path="res://Scenes/Gameplay/Scoreboard.tscn" id="5_4nmwt"]
-[ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="6_080b4"]
+[ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="6_080b4"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="9_uubsx"]
 [ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="12_guuxl"]
 

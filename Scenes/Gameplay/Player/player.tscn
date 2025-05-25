@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsk752rdhvtha"]
+[gd_scene load_steps=30 format=3 uid="uid://bsk752rdhvtha"]
 
 [ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cuabl74y7iggb" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Walk1.png" id="3_iy3i1"]
 [ext_resource type="Texture2D" uid="uid://cmbrr4tixmjax" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Jump.png" id="3_ymmdj"]
 [ext_resource type="Texture2D" uid="uid://c6had2agbjiys" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Walk2.png" id="4_j8v31"]
+[ext_resource type="Texture2D" uid="uid://dwrcwk6yvlqou" path="res://Game Assets/Character Sprites/char_tungsahur-Sheet.png" id="8_g2c3n"]
 [ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="9_68apu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ymmdj"]
@@ -40,6 +41,124 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkk7g"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(0, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibv1r"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(115, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy7c4"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(230, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8qg6"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(345, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqjgx"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(0, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c2yp"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(115, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xknu7"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(230, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkgba"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(345, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmidh"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(460, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32dgo"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(575, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msxvm"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(0, 230, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kjf4"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(115, 230, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apray"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(230, 230, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50e6w"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(345, 230, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j6le"]
+atlas = ExtResource("8_g2c3n")
+region = Rect2(460, 230, 115, 115)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_envpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkk7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibv1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy7c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8qg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqjgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c2yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xknu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkgba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmidh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32dgo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msxvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kjf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apray")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50e6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j6le")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 26.0
 height = 82.0
@@ -55,8 +174,13 @@ BloodParticle = ExtResource("3_h3jkl")
 default_gun_scene = ExtResource("2_skuam")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_ymmdj")
-animation = &"Dash"
+animation = &"Walk"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_envpl")
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 14)

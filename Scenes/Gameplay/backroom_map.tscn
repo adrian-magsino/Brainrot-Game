@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dc2c61q4aubwe"]
+[gd_scene load_steps=28 format=4 uid="uid://dc2c61q4aubwe"]
 
 [ext_resource type="Texture2D" uid="uid://bptpd6mrx2ql7" path="res://Game Assets/TileSets/backroom2.png" id="2_1cabf"]
 [ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="2_xexoj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="8_ednb5"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg.tscn" id="9_ni3g6"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="10_ednb5"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/ExplosiveBarrel.tscn" id="11_ni3g6"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nbvl1"]
 tile_data = PackedInt32Array(0, 262148, 3, 1, 393220, 3)
@@ -195,3 +196,9 @@ position = Vector2(652, 947)
 
 [node name="sniper" parent="." instance=ExtResource("10_ednb5")]
 position = Vector2(1185, 950)
+
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("11_ni3g6")]
+position = Vector2(881, 949)
+
+[node name="ExplosiveBarrel2" parent="." instance=ExtResource("11_ni3g6")]
+position = Vector2(1141, 1183)

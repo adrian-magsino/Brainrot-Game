@@ -8,7 +8,7 @@ extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
 
 #Animations
 @export var BloodParticle: PackedScene
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D2
 
 ##Nodes and Scenes
 @export var default_gun_scene: PackedScene
@@ -89,7 +89,7 @@ func _physics_process(delta):
 	var is_dashing = dash_velocity != Vector2.ZERO
 	if is_dashing:
 		velocity = dash_velocity
-		animated_sprite.play("Dash")
+		#animated_sprite.play("Dash")
 	else:
 		if input_vector != Vector2.ZERO:
 			input_vector = input_vector.normalized()

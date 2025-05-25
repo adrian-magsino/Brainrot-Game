@@ -22,6 +22,6 @@ offset_right = 65.0
 offset_bottom = -32.0
 scale = Vector2(0.664746, 1.03741)
 
-[node name="HideHealthBarTimer" type="Timer" parent="."]
+[node name="HideHealthBarTimer" type="Timer" parent="HealthBar"]
 wait_time = 3.0
 one_shot = true

@@ -3,7 +3,7 @@ extends StaticBody2D
 class_name Destructible
 
 @onready var health_bar = $HealthBar
-@onready var hide_healthbar_timer = $HideHealthBarTimer
+@onready var hide_healthbar_timer = $HealthBar/HideHealthBarTimer
 @export var max_health: int = 100
 var current_health: int
 var is_destroyed: bool = false

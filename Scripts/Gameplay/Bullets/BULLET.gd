@@ -39,12 +39,15 @@ func _on_body_entered(body):
 	#print("Hit: ", body.name)
 	if body.has_node("CollisionShape2D"):
 		if body.has_method("take_damage"):
-			var authority_id = body.get_multiplayer_authority()
 			body.take_damage(damage, owner_player)
 			#print("Damage!: ", body.name)
 			#print("Damaged Body Path: ", body.get_path())
 		hit_animation()
 		queue_free()
+	elif body is TileMapLayer:
+		hit_animation()
+		queue_free()
+		
 		
 func hit_animation():
 	var _particle = BulletParticle.instantiate()

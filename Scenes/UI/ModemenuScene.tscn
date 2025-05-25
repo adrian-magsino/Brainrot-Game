@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=3 uid="uid://c86kuk8te74on"]
+
+[ext_resource type="Script" uid="uid://ucq6bclhi2vd" path="res://Scripts/UI/joinmenu_scene.gd" id="1_tgvyv"]
+[ext_resource type="Texture2D" uid="uid://bwavxx4q3lksq" path="res://Game Assets/Mode Menu Assets/container.png" id="2_2p0kx"]
+[ext_resource type="Texture2D" uid="uid://bxyje3j80xww3" path="res://Game Assets/Mode Menu Assets/game_title1.png" id="3_i1s1d"]
+[ext_resource type="Texture2D" uid="uid://c4co8l1has8js" path="res://Game Assets/Mode Menu Assets/escape1.png" id="4_adio4"]
+[ext_resource type="Texture2D" uid="uid://7xbtlvcyc1yr" path="res://Game Assets/Mode Menu Assets/escape2.png" id="5_w7h8f"]
+[ext_resource type="Texture2D" uid="uid://cyy34yvotjax8" path="res://Game Assets/Mode Menu Assets/survival1.png" id="6_aqtv4"]
+[ext_resource type="Texture2D" uid="uid://bmgnrcnl3kygv" path="res://Game Assets/Mode Menu Assets/survival2.png" id="7_3hc4o"]
+[ext_resource type="Texture2D" uid="uid://b6opjc7aem7s" path="res://Game Assets/Mode Menu Assets/back1.png" id="8_rnl1a"]
+[ext_resource type="Texture2D" uid="uid://cd3cagv2ib2vb" path="res://Game Assets/Mode Menu Assets/back2.png" id="9_01o7k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3pcw"]
+atlas = ExtResource("4_adio4")
+region = Rect2(404, 238, 345, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri248"]
+atlas = ExtResource("5_w7h8f")
+region = Rect2(404, 238, 345, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gsd0"]
+atlas = ExtResource("6_aqtv4")
+region = Rect2(404, 353, 345, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unxxa"]
+atlas = ExtResource("7_3hc4o")
+region = Rect2(404, 353, 345, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehlni"]
+atlas = ExtResource("8_rnl1a")
+region = Rect2(401.321, 455.977, 152.517, 68.3697)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsyba"]
+atlas = ExtResource("9_01o7k")
+region = Rect2(401.321, 455.977, 152.517, 68.37)
+
+[node name="ModemenuScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tgvyv")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_2p0kx")
+
+[node name="GameTitle" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_i1s1d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 390.0
+offset_top = 234.0
+offset_right = -408.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Escape" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_v3pcw")
+texture_pressed = SubResource("AtlasTexture_ri248")
+
+[node name="Survival" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_3gsd0")
+texture_pressed = SubResource("AtlasTexture_unxxa")
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 390.0
+offset_top = 461.0
+offset_right = 542.0
+offset_bottom = 529.0
+texture_normal = SubResource("AtlasTexture_ehlni")
+texture_pressed = SubResource("AtlasTexture_dsyba")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Escape" to="." method="_on_escape_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Survival" to="." method="_on_survival_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

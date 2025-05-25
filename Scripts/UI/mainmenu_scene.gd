@@ -1,7 +1,7 @@
 extends Control
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/UI/JoinmenuScene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/ModemenuScene.tscn")
 
 func _on_settings_pressed() -> void:
 	#get_tree().change_scene_to_file()

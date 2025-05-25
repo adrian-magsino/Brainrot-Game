@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://03kwatux05d3"]
+[gd_scene load_steps=28 format=4 uid="uid://03kwatux05d3"]
 
 [ext_resource type="Script" uid="uid://bw3kxf7kd6frm" path="res://Scripts/Gameplay/gameplay_scene.gd" id="1_ger4l"]
 [ext_resource type="PackedScene" uid="uid://c1vpei63tq3x" path="res://Scenes/Gameplay/Environment/ground.tscn" id="2_ip6ma"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample_gun.tscn" id="7_toudt"]
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="7_y1ncx"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="8_ilcth"]
-[ext_resource type="PackedScene" uid="uid://cgvbp030j84nb" path="res://Scenes/Gameplay/Interactable_Objects/door.tscn" id="9_j5vce"]
 [ext_resource type="PackedScene" uid="uid://d2uyc78wpy0qj" path="res://Scenes/Gameplay/Dummies/dummy.tscn" id="10_y1ncx"]
 [ext_resource type="PackedScene" uid="uid://bvqlhp8buct05" path="res://Scenes/Gameplay/Dummies/dummy_spawner.tscn" id="11_cfnoy"]
 [ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Environment/player_spawn_point_1.tscn" id="12_ip6ma"]
@@ -246,9 +245,6 @@ vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Scoreboard" parent="Control" instance=ExtResource("3_y1ncx")]
-
-[node name="Door" parent="." instance=ExtResource("9_j5vce")]
-position = Vector2(814, 351)
 
 [node name="player" parent="." instance=ExtResource("3_eafbr")]
 

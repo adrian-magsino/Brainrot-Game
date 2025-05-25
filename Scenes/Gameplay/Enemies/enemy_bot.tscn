@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://l3qn4yfj57o6"]
 
-[ext_resource type="Script" uid="uid://c7p5gkndlvof6" path="res://Scenes/Gameplay/Enemies/enemy_bot.gd" id="1_exuau"]
+[ext_resource type="Script" path="res://Scenes/Gameplay/Enemies/enemy_bot.gd" id="1_exuau"]
 [ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="1_g8aw4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]

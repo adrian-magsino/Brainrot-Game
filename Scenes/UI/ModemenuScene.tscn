@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c86kuk8te74on"]
+[gd_scene load_steps=16 format=3 uid="uid://g0ps874aa0nl"]
 
 [ext_resource type="Script" uid="uid://ucq6bclhi2vd" path="res://Scripts/UI/joinmenu_scene.gd" id="1_tgvyv"]
 [ext_resource type="Texture2D" uid="uid://bwavxx4q3lksq" path="res://Game Assets/Mode Menu Assets/container.png" id="2_2p0kx"]

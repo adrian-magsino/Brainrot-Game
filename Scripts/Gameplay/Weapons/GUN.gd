@@ -23,6 +23,8 @@ extends Area2D
 @export var bullet_spread_amount: int = 3
 @export var spread_angle_step_deg: float = 5.0
 
+@onready var sfx_shoot: AudioStreamPlayer2D = $SFX_shoot
+
 
 #PICKUP/DROP MECHANICS
 var is_picked_up: bool = false
@@ -33,6 +35,7 @@ var last_shot_time := 0.0
 var current_magazine: int
 var total_ammo: int
 var is_reloading: bool = false
+
 
 #SIGNALS
 signal ammo_changed(current_mag, total_ammo) #Update ammo label
@@ -92,7 +95,7 @@ func shoot_single_bullet(direction: Vector2):
 	var angle = direction.angle()
 
 	spawn_bullet(bullet_pos, direction, angle)
-	
+	sfx_shoot.play()
 func shoot_bullet_spread(direction: Vector2):
 	var bullets_to_fire = bullet_spread_amount
 	var angle_step = deg_to_rad(spread_angle_step_deg)
@@ -109,7 +112,7 @@ func shoot_bullet_spread(direction: Vector2):
 		var bullet_pos = $BulletPos.global_position
 
 		spawn_bullet(bullet_pos, spread_direction, spread_angle)
-
+		sfx_shoot.play()
 func start_reload():
 	if is_reloading or current_magazine == magazine_capacity or total_ammo == 0:
 		return

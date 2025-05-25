@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bxw2rpkvk4y6k" path="res://Scenes/Gameplay/Scoreboard.tscn" id="5_4nmwt"]
 [ext_resource type="PackedScene" uid="uid://bki2lv8s3kkvd" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="6_080b4"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="9_uubsx"]
-[ext_resource type="PackedScene" uid="uid://bi2o8rvoqhm4i" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="12_guuxl"]
+[ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="12_guuxl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uubsx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -317,10 +317,9 @@ position = Vector2(283, 184)
 
 [node name="Guns" type="Node" parent="."]
 
-[node name="SampleEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_uubsx")]
+[node name="SampleEnemy" parent="." instance=ExtResource("9_uubsx")]
 z_index = 1
 position = Vector2(910, 365)
-player = NodePath("../player")
 
 [node name="EnemyBot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_guuxl")]
 z_index = 1

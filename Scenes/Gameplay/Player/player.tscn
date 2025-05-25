@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bki2lv8s3kkvd"]
+[gd_scene load_steps=13 format=3 uid="uid://bki2lv8s3kkvd"]
 
 [ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cuabl74y7iggb" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Walk1.png" id="3_iy3i1"]
 [ext_resource type="Texture2D" uid="uid://cmbrr4tixmjax" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Jump.png" id="3_ymmdj"]
 [ext_resource type="Texture2D" uid="uid://c6had2agbjiys" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Walk2.png" id="4_j8v31"]
+[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="9_68apu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ymmdj"]
 animations = [{
@@ -91,3 +92,6 @@ offset_bottom = -17.0
 text = "PLAYER NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_68apu")

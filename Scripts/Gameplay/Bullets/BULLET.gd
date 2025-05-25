@@ -9,7 +9,7 @@ extends Area2D
 
 var direction: Vector2 = Vector2.ZERO
 var distance_traveled := 0.0
-var max_distance := 500.0
+var max_distance := 800.0
 var pass_through_walls := false
 
 var owner_player: Node = null

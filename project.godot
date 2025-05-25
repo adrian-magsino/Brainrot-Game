@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GunGame"
-run/main_scene="uid://co3ey84463uls"
+run/main_scene="uid://dc2c61q4aubwe"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

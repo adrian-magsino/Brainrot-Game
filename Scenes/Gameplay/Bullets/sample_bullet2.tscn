@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhvb2buxlqtpm"]
+
+[ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_h7ids"]
+[ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_gtxnk"]
+[ext_resource type="Texture2D" uid="uid://dai0phk4rblv3" path="res://Game Assets/Laser Sprites/19.png" id="3_h7ids"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ucdfp"]
+radius = 5.55556
+height = 11.1111
+
+[node name="sample_bullet2" type="Area2D"]
+z_index = 1
+script = ExtResource("1_h7ids")
+speed = 800.0
+BulletParticle = ExtResource("2_gtxnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0840991, 0.17502)
+texture = ExtResource("3_h7ids")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.08, 0.48)
+shape = SubResource("CapsuleShape2D_ucdfp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -24,3 +24,5 @@ shape = SubResource("RectangleShape2D_5pdue")
 
 [node name="BulletPos" type="Node2D" parent="."]
 position = Vector2(39, -2)
+
+[node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]

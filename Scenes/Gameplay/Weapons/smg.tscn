@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brdif4njw8dbr"]
+[gd_scene load_steps=6 format=3 uid="uid://brdif4njw8dbr"]
 
 [ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_8ahkb"]
-[ext_resource type="PackedScene" uid="uid://ccostg0j4du7g" path="res://Scenes/Gameplay/Bullets/small_bullet1.tscn" id="2_8ahkb"]
+[ext_resource type="PackedScene" uid="uid://dhvb2buxlqtpm" path="res://Scenes/Gameplay/Bullets/sample_bullet2.tscn" id="2_ldgli"]
 [ext_resource type="Texture2D" uid="uid://dfjerxhwwty1x" path="res://Game Assets/guns_gameassets/PNG/smg.png" id="3_8ahkb"]
+[ext_resource type="AudioStream" uid="uid://dqx0fcfpopkoi" path="res://Game Assets/Audio/Gun vol 1/TomC_ItchSFX_Guns_33.mp3" id="4_ldgli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
 size = Vector2(360, 145)
@@ -10,7 +11,8 @@ size = Vector2(360, 145)
 [node name="smg" type="Area2D"]
 script = ExtResource("1_8ahkb")
 gun_name = "SMG"
-bullet_scene = ExtResource("2_8ahkb")
+bullet_scene = ExtResource("2_ldgli")
+fire_rate = 0.09
 range = 1000.0
 max_ammo = 200
 zoom_distance = Array[float]([1.0, 0.9, 0.8])
@@ -26,3 +28,6 @@ shape = SubResource("RectangleShape2D_5pdue")
 
 [node name="BulletPos" type="Node2D" parent="."]
 position = Vector2(36, -6)
+
+[node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ldgli")

@@ -9,11 +9,13 @@ extends DamageableEntity
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var dammage_cooldown_timer := $DamageCooldownTimer
 @onready var damage_area := $DamageArea
+@onready var sfx_bot: AudioStreamPlayer2D = $SFX_bot
 
 var can_damage: bool = true
 var player_in_range: DamageableEntity = null
 
 func _ready() -> void:
+	sfx_bot.play()
 	current_health = max_health
 	update_health_bar()
 	health_bar.visible = false
@@ -34,10 +36,8 @@ func make_path() -> void:
 func _on_timer_timeout() -> void:
 	make_path()
 
-
-
 func _on_damage_area_body_entered(body: Node2D) -> void:
-	if body is DamageableEntity and body != self:
+	if body is Player:
 		player_in_range = body
 		deal_damage()
 

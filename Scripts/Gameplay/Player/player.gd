@@ -2,9 +2,6 @@ class_name Player
 #extends CharacterBody2D
 extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
 
-var is_a_player = true
-var player_score: int = 0
-var player_deaths: int = 0
 
 #Root Scene
 @onready var gameplay_scene = get_parent()
@@ -29,12 +26,17 @@ var player_deaths: int = 0
 @onready var reload_button = control_node.get_node("TouchControls/Reload Gun")
 @onready var switch_gun_button = control_node.get_node("TouchControls/Switch Gun")
 @onready var dash_button = control_node.get_node("TouchControls/Dash Button")
-
 @onready var dash_progress_bar = control_node.get_node("TouchControls/Dash Button/Dash Cooldown")
+@onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
+
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
 var player_name: String = "PLAYER"
+
+var is_a_player = true
+var player_score: int = 0
+var player_deaths: int = 0
 
 #Camera zoom feature
 var current_zoom_index: int = 0
@@ -158,7 +160,8 @@ func set_default_gun():
 		var default_gun = default_gun_scene.instantiate()
 		
 		#Add default gun in the scene before being picked up
-		get_tree().current_scene.get_node("Guns").add_child(default_gun)
+		await get_tree().process_frame
+		get_tree().current_scene.add_child(default_gun)
 		default_gun.global_position = global_position
 		await get_tree().process_frame
 
@@ -316,6 +319,7 @@ func play_death_animation():
 	_particle.rotation = global_rotation
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
+	sfx_blood.play()
 	
 func die(damager: Node):
 	

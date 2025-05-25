@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://niv5mtmuaq3d"
+path="res://.godot/imported/TomC_ItchSFX_Guns_38.mp3-cc159ff7befbf4fb71ec51d39c6024c4.mp3str"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Gun vol 1/TomC_ItchSFX_Guns_38.mp3"
+dest_files=["res://.godot/imported/TomC_ItchSFX_Guns_38.mp3-cc159ff7befbf4fb71ec51d39c6024c4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

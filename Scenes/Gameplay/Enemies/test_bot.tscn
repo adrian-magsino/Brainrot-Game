@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi2o8rvoqhm4i"]
+
+[ext_resource type="Script" uid="uid://ckaouupkdurvl" path="res://Scenes/Gameplay/testbot.gd" id="1_7le48"]
+[ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="2_um6no"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
+
+[node name="TestBot" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_7le48")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_um6no")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.10397, 6.39846)
+shape = SubResource("CircleShape2D_g8hl7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

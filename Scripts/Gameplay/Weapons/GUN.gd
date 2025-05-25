@@ -91,10 +91,6 @@ func shoot_single_bullet(direction: Vector2):
 	var bullet_pos = $BulletPos.global_position
 	var angle = direction.angle()
 
-	# Spawn locally
-	spawn_bullet(bullet_pos, direction, angle)
-
-	# Tell others to spawn
 	spawn_bullet(bullet_pos, direction, angle)
 	
 func shoot_bullet_spread(direction: Vector2):
@@ -112,10 +108,6 @@ func shoot_bullet_spread(direction: Vector2):
 		var spread_direction = Vector2.RIGHT.rotated(spread_angle)
 		var bullet_pos = $BulletPos.global_position
 
-		# Spawn locally
-		spawn_bullet(bullet_pos, spread_direction, spread_angle)
-
-		# Tell others to spawn
 		spawn_bullet(bullet_pos, spread_direction, spread_angle)
 
 func start_reload():

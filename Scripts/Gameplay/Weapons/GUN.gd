@@ -68,7 +68,6 @@ func shoot(direction: Vector2):
 	if current_magazine == 0:
 		start_reload()
 
-
 func spawn_bullet(position: Vector2, direction: Vector2, rotation: float):
 	var bullet_instance = bullet_scene.instantiate()
 	bullet_instance.global_position = position
@@ -82,7 +81,7 @@ func spawn_bullet(position: Vector2, direction: Vector2, rotation: float):
 			owner_player,
 			self_damage_bullets
 		)
-
+		
 	get_tree().current_scene.add_child(bullet_instance)
 
 func shoot_single_bullet(direction: Vector2):

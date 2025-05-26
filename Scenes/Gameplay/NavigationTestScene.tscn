@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="1_fuyb5"]
 [ext_resource type="TileSet" uid="uid://b41wqudk8urvu" path="res://Game Assets/TileSets/TopDown StoneAndBridge - DungeonFloor GODOT/tileset_TopDown StoneAndBridge - DungeonFloor GODOT.tres" id="2_pdpfa"]
 [ext_resource type="PackedScene" uid="uid://bepthki51qwup" path="res://Scenes/Gameplay/Player/control.tscn" id="3_pdpfa"]
-[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="8_p2521"]
 [ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="9_yth3r"]
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/Assault_rifle.tscn" id="10_e1uv0"]
+[ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="10_pdpfa"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg.tscn" id="11_mxli8"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample_gun.tscn" id="12_hbser"]
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="13_e1uv0"]
@@ -93,10 +93,7 @@ tile_set = ExtResource("2_pdpfa")
 [node name="Guns" type="Node" parent="."]
 
 [node name="PLAYER" parent="." instance=ExtResource("1_fuyb5")]
-position = Vector2(1037, 646)
-
-[node name="EnemyBot" parent="." instance=ExtResource("8_p2521")]
-position = Vector2(1440, 870)
+position = Vector2(1282, 1262)
 
 [node name="GunSpawner" parent="." instance=ExtResource("9_yth3r")]
 position = Vector2(993, 804)
@@ -104,3 +101,9 @@ gun_scenes = Array[PackedScene]([ExtResource("10_e1uv0"), ExtResource("11_mxli8"
 
 [node name="DestructibleObject" parent="." instance=ExtResource("13_e1uv0")]
 position = Vector2(990, 1013)
+
+[node name="SampleGun" parent="." instance=ExtResource("12_hbser")]
+position = Vector2(1430, 1144)
+
+[node name="TestBot" parent="." instance=ExtResource("10_pdpfa")]
+position = Vector2(1652, 1052)

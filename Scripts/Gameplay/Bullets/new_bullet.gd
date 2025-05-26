@@ -1,7 +1,6 @@
 extends Area2D
 
 @export var speed: float = 300.0
-@export var damage: int = 10
 @export var can_damage_owner: bool = false 
 @export var BulletParticle: PackedScene
 #^^^change the value only if the initialize function is not being used
@@ -15,13 +14,16 @@ var pass_through_walls := false
 var shooter: Node = null
 var shooter_id: int
 
-func initialize(dir: Vector2, max_dist: float, can_pass_walls: bool, shooter: Node, allow_self_damage: bool = false):
+@onready var attack_component = $AttackComponent
+
+func initialize(dir: Vector2, max_dist: float, can_pass_walls: bool, shooter_node: Node, allow_self_damage: bool = false):
 	direction = dir.normalized()
 	max_distance = max_dist
 	pass_through_walls = can_pass_walls
-	shooter = shooter
-	#owner_player_id = shooter_id
+	shooter = shooter_node
 	can_damage_owner = allow_self_damage
+	
+	get_node("AttackComponent").attacker = shooter_node
 	
 func _process(delta):
 	var movement = direction * speed * delta
@@ -35,16 +37,8 @@ func _on_body_entered(body):
 	
 	if body == shooter and not can_damage_owner:
 		return
-	
-	#print("Hit: ", body.name)
-	if body.has_node("CollisionShape2D"):
-		if body.has_method("take_damage"):
-			body.take_damage(damage, shooter)
-			#print("Damage!: ", body.name)
-			#print("Damaged Body Path: ", body.get_path())
-		hit_animation()
-		queue_free()
-	elif body is TileMapLayer:
+		
+	if body is TileMapLayer:
 		hit_animation()
 		queue_free()
 		
@@ -55,6 +49,10 @@ func hit_animation():
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
 	
-	
-	
-	
+func _on_area_entered(area: Area2D) -> void:
+	if area is HitboxComponent:
+		area.take_damage(attack_component)
+		print("DAMAGE: ", attack_component.attack_damage)
+		print("SHOOTER: ", attack_component.attacker)
+		hit_animation()
+		queue_free()

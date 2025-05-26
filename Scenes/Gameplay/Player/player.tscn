@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bsk752rdhvtha"]
+[gd_scene load_steps=33 format=3 uid="uid://bsk752rdhvtha"]
 
 [ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c6had2agbjiys" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Walk2.png" id="4_j8v31"]
 [ext_resource type="Texture2D" uid="uid://dwrcwk6yvlqou" path="res://Game Assets/Character Sprites/char_tungsahur-Sheet.png" id="8_g2c3n"]
 [ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="9_68apu"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="11_ibv1r"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="12_uy7c4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ymmdj"]
 animations = [{
@@ -166,6 +168,10 @@ height = 82.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 50.04
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8qg6"]
+radius = 30.0
+height = 100.0
+
 [node name="PLAYER" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 3
@@ -183,6 +189,7 @@ sprite_frames = SubResource("SpriteFrames_envpl")
 animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_onrkg")
 
@@ -202,12 +209,6 @@ shape = SubResource("CircleShape2D_onrkg")
 visible = false
 position = Vector2(0, 12)
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -44.0
-offset_top = -63.0
-offset_right = 54.0
-offset_bottom = -36.0
-
 [node name="PlayerName" type="Label" parent="."]
 offset_left = -50.0
 offset_top = -40.0
@@ -219,3 +220,17 @@ vertical_alignment = 1
 
 [node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_68apu")
+
+[node name="HealthComponent" parent="." instance=ExtResource("11_ibv1r")]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -38.0
+offset_top = -81.0
+offset_right = 45.0
+offset_bottom = -54.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_uy7c4")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_h8qg6")

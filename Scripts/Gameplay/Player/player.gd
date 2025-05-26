@@ -1,6 +1,6 @@
 class_name Player
-#extends CharacterBody2D
-extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
+extends CharacterBody2D
+#extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
 
 
 #Root Scene
@@ -29,6 +29,7 @@ extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
 @onready var dash_progress_bar = control_node.get_node("TouchControls/Dash Button/Dash Cooldown")
 @onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
 
+@onready var health_component = get_node("HealthComponent")
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
@@ -37,6 +38,7 @@ var player_name: String = "PLAYER"
 var is_a_player = true
 var player_score: int = 0
 var player_deaths: int = 0
+var is_dead: bool = false
 
 #Camera zoom feature
 var current_zoom_index: int = 0
@@ -70,8 +72,7 @@ func _ready():
 	dash_button.pressed.connect(_on_dash_button_pressed)
 
 	player_name_label.text = player_name
-	current_health = max_health
-	update_health_bar()
+	health_component.update_health_bar()
 	set_default_gun()
 	# Dash movement
 	add_child(dash_timer)
@@ -321,11 +322,12 @@ func play_death_animation():
 	get_tree().current_scene.add_child(_particle)
 	sfx_blood.play()
 	
-func die(damager: Node):
+func die(attack: AttackComponent):
 	
 	if is_dead:
 		return
 	is_dead = true
+	
 
 	# Track kill if damager is a Player and if player didn't kill their self
 	#if damager.is_a_player and damager != self:
@@ -346,8 +348,8 @@ func die(damager: Node):
 	respawn()
 	
 func respawn():
-	current_health = max_health
-	update_health_bar()
+
+	health_component.reset_health()
 	
 	#THESE ARE SPAWN POINTS FOR RESPAWN ONLY
 	var spawn_points = get_tree().get_nodes_in_group("player_spawners")

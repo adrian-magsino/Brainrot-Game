@@ -1,28 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://l3qn4yfj57o6"]
+[gd_scene load_steps=9 format=3 uid="uid://c7yctmqia22b"]
 
-[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared_Scripts/ENEMY_BOT.gd" id="1_uh7xe"]
-[ext_resource type="Texture2D" uid="uid://b4ilsyj2n8n77" path="res://Game Assets/Bot_sprites/FREDDY_face.jpg" id="2_ft6ej"]
-[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_ft6ej"]
-[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_uh7xe"]
-[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_bvn0o"]
-[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_ncjgi"]
+[ext_resource type="Script" uid="uid://dhr1m5abae3cq" path="res://Scenes/Gameplay/Enemies/fast_bot.gd" id="1_a0jud"]
+[ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="2_a0jud"]
+[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_1r74b"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_xwnov"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_xcw16"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_bbg4t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
 radius = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
-radius = 80.0
+radius = 200.0
 
-[node name="EnemyBot" type="CharacterBody2D"]
-collision_layer = 4
+[node name="FastBot" type="CharacterBody2D"]
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_uh7xe")
+script = ExtResource("1_a0jud")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0861754, 0.101357)
-texture = ExtResource("2_ft6ej")
+scale = Vector2(0.852, 1)
+texture = ExtResource("2_a0jud")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_exuau")
@@ -40,16 +39,17 @@ autostart = true
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+modulate = Color(1, 0, 0, 1)
 shape = SubResource("CircleShape2D_g8hl7")
 
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ft6ej")
+stream = ExtResource("3_1r74b")
 parameters/looping = true
 
-[node name="AttackComponent" parent="." instance=ExtResource("4_uh7xe")]
+[node name="AttackComponent" parent="." instance=ExtResource("4_xwnov")]
 attack_damage = 10.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_bvn0o")]
+[node name="HealthComponent" parent="." instance=ExtResource("5_xcw16")]
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
 offset_left = -50.0
@@ -60,7 +60,7 @@ offset_bottom = -55.0
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
 wait_time = 3.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ncjgi")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_bbg4t")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

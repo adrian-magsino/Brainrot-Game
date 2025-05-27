@@ -5,8 +5,6 @@ class_name EnemyBot
 @export var bot_name: String = "ENEMY BOT"
 @export var attack_cooldown: float = 1.0
 @export var can_destroy_objects: bool = false
-
-@onready var target_player = get_parent().get_node("PLAYER")
 @onready var nav_agent := $NavigationAgent2D
 @onready var attack_cooldown_timer := $AttackCooldownTimer
 @onready var attack_area: Area2D = $AttackArea
@@ -14,10 +12,13 @@ class_name EnemyBot
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var attack_component: AttackComponent = $AttackComponent
 
+var target_player: Node2D
 var can_attack: bool = true
 var damageable_in_range: Node = null
-
+var is_dead: bool = false
+	
 func _ready() -> void:
+	target_player = get_tree().get_first_node_in_group("player")
 	sfx_bot.play()
 	health_component.update_health_bar()
 	attack_cooldown_timer.wait_time = attack_cooldown
@@ -61,3 +62,11 @@ func _attack_target() -> void:
 			hitbox.take_damage(attack_component)
 			can_attack = false
 			attack_cooldown_timer.start()
+			
+func die(attack: AttackComponent):
+	if is_dead:
+		return
+	is_dead = true
+	
+	print("Score increased for: ", attack.attacker)
+	queue_free()

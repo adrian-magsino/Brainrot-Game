@@ -1,6 +1,6 @@
 # Damageable.gd
 extends StaticBody2D
-class_name Destructible
+#class_name Destructible
 
 @onready var health_bar = $HealthBar
 @onready var hide_healthbar_timer = $HealthBar/HideHealthBarTimer

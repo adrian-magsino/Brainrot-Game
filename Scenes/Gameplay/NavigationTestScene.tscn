@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://eu538jjmqo7k"]
+[gd_scene load_steps=18 format=4 uid="uid://eu538jjmqo7k"]
 
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_aa3tx"]
 [ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="1_fuyb5"]
@@ -7,9 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="9_yth3r"]
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/Assault_rifle.tscn" id="10_e1uv0"]
 [ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="10_pdpfa"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/ExplosiveBarrel.tscn" id="11_f4fwx"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg.tscn" id="11_mxli8"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample_gun.tscn" id="12_hbser"]
+[ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_mxli8"]
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="13_e1uv0"]
+[ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="13_hbser"]
+[ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="14_4f16d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -99,11 +103,32 @@ position = Vector2(1282, 1262)
 position = Vector2(993, 804)
 gun_scenes = Array[PackedScene]([ExtResource("10_e1uv0"), ExtResource("11_mxli8"), ExtResource("12_hbser")])
 
-[node name="DestructibleObject" parent="." instance=ExtResource("13_e1uv0")]
-position = Vector2(990, 1013)
-
 [node name="SampleGun" parent="." instance=ExtResource("12_hbser")]
 position = Vector2(1430, 1144)
 
 [node name="TestBot" parent="." instance=ExtResource("10_pdpfa")]
 position = Vector2(1652, 1052)
+
+[node name="DestructibleObject" parent="." instance=ExtResource("13_e1uv0")]
+position = Vector2(1030, 1225)
+
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("11_f4fwx")]
+position = Vector2(1679, 1190)
+
+[node name="ExplosiveBarrel2" parent="." instance=ExtResource("11_f4fwx")]
+position = Vector2(1592, 1266)
+
+[node name="assault_rifle" parent="." instance=ExtResource("10_e1uv0")]
+position = Vector2(2040, 691)
+
+[node name="SampleGun2" parent="." instance=ExtResource("12_mxli8")]
+position = Vector2(2276, 698)
+
+[node name="shotgun" parent="." instance=ExtResource("13_hbser")]
+position = Vector2(2033, 757)
+
+[node name="sniper" parent="." instance=ExtResource("14_4f16d")]
+position = Vector2(2031, 837)
+
+[node name="smg" parent="." instance=ExtResource("11_mxli8")]
+position = Vector2(2024, 915)

@@ -1,8 +1,7 @@
 extends Area2D
+class_name Gun
 
-@export var item_type: String = "gun"
 @export var gun_name: String = "SampleGun"
-@onready var icon_texture: Texture2D = $Sprite2D.texture #Get gun sprite as texture
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.05
 @export var range: float = 500.0
@@ -23,8 +22,8 @@ extends Area2D
 @export var bullet_spread_amount: int = 3
 @export var spread_angle_step_deg: float = 5.0
 
+@onready var icon_texture: Texture2D = $Sprite2D.texture #Get gun sprite as texture
 @onready var sfx_shoot: AudioStreamPlayer2D = $SFX_shoot
-
 
 #PICKUP/DROP MECHANICS
 var is_picked_up: bool = false
@@ -35,7 +34,6 @@ var last_shot_time := 0.0
 var current_magazine: int
 var total_ammo: int
 var is_reloading: bool = false
-
 
 #SIGNALS
 signal ammo_changed(current_mag, total_ammo) #Update ammo label
@@ -51,7 +49,6 @@ func _process(delta):
 func shoot(direction: Vector2):
 	if is_reloading or last_shot_time < fire_rate:
 		return
-
 	if current_magazine <= 0:
 		start_reload()
 		return
@@ -64,7 +61,6 @@ func shoot(direction: Vector2):
 		shoot_single_bullet(direction)
 
 	emit_signal("ammo_changed", current_magazine, total_ammo)
-
 	if current_magazine == 0:
 		start_reload()
 
@@ -145,9 +141,7 @@ func pick_up(parent_node: Node2D):
 func drop(position: Vector2, parent_node: Node):
 	is_picked_up = false
 	owner_player = null
-	
 	drop_attachments(position, parent_node)
-	
 	# Defer reparenting and collision enabling to avoid physics flush conflict
 	call_deferred("_deferred_drop", position, parent_node)
 	

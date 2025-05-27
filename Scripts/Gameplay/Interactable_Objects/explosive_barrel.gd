@@ -1,36 +1,34 @@
-extends Destructible
+extends StaticBody2D
 
-@onready var explosion_area = $ExplosionArea
-@export var explosion_damage: int = 50
+#@export var explosion_damage: int = 50
 @export var explosion_radius: float = 100.0
 @export var ExplosionParticles: PackedScene
 
-func destroy(damager: Node):
-	# Show explosion VFX here (optional)
-	#spawn_explosion_effect()
-	play_explosion_animation()
-	# Damage nearby bodies
-	apply_explosion_damage_all(damager)
+@onready var explosion_area = $ExplosionArea
+@onready var attack_component = $AttackComponent
+
+var is_destroyed: bool = false
+
+func destroy(attack: AttackComponent):
 	if is_destroyed:
 		return
 	is_destroyed = true
-	emit_signal("destroyed")
+	#The destroyer of this explosive
+	attack_component.attacker = attack.attacker 
+	print("DESTROYER: ", attack_component.attacker)
+	# Damage nearby bodies
+	apply_explosion_damage_all(attack_component)
+	play_explosion_animation()
+	
 	queue_free()
 
-func apply_explosion_damage_all(damager: Node):
-	if not damager:
+func apply_explosion_damage_all(attack: AttackComponent):
+	if not attack:
 		return
-
-	print("EXPLODED")
 	explosion_area.monitoring = true
-	for body in explosion_area.get_overlapping_bodies():
-		print("SOMETHING IN RANGE")
-		if body == self:
-			continue
-		if body.has_method("take_damage"):
-			body.take_damage(explosion_damage, damager)
-			print("DAMAGED SOMETHING")
-			print(damager)
+	for area in explosion_area.get_overlapping_areas():
+		if area is HitboxComponent and area != get_node("HitboxComponent"):
+			area.take_damage(attack)
 	explosion_area.monitoring = false
 
 func play_explosion_animation():

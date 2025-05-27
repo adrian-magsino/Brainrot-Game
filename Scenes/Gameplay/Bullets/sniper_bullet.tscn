@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyj8gp27ebnw4"]
+[gd_scene load_steps=6 format=3 uid="uid://dyj8gp27ebnw4"]
 
-[ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_h60f1"]
+[ext_resource type="Script" uid="uid://do33uu8hr1m5r" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_h60f1"]
 [ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_dopty"]
 [ext_resource type="Texture2D" uid="uid://df2x5kfc2vkvr" path="res://Game Assets/guns_gameassets/PNG/large_bullet2.png" id="2_h60f1"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_cc56y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
 radius = 2.0
@@ -11,7 +12,6 @@ radius = 2.0
 z_index = 1
 script = ExtResource("1_h60f1")
 speed = 1500.0
-damage = 50
 BulletParticle = ExtResource("2_dopty")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,4 +23,8 @@ texture = ExtResource("2_h60f1")
 scale = Vector2(3.8882, 0.74789)
 shape = SubResource("CircleShape2D_8m36q")
 
+[node name="AttackComponent" parent="." instance=ExtResource("4_cc56y")]
+attack_damage = 50.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

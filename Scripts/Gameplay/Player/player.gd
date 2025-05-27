@@ -186,20 +186,18 @@ func show_gun_visual(gun: Node):
 	if gun:
 		gun.visible = true
 		gun.set_physics_process(true)
-
+		
 func pickup_item():
 	var pickup_area = $PickupArea
 	var overlapping = pickup_area.get_overlapping_areas()
 	for area in overlapping:
 		if area.has_method("can_be_picked_up") and area.can_be_picked_up():
 			if area.has_method("pick_up"):
-				match area.item_type:
-					"gun":
-						_pickup_gun(area)
-					"attachment":
-						_pickup_attachment(area)
-					# Add more types as needed
-				return
+				if area is Gun:
+					_pickup_gun(area)
+				elif area is Attachment:
+					_pickup_attachment(area)
+			return
 				
 func _pickup_gun(gun: Node):
 	if gun_inventory[0] == null:
@@ -323,18 +321,9 @@ func play_death_animation():
 	sfx_blood.play()
 	
 func die(attack: AttackComponent):
-	
 	if is_dead:
 		return
 	is_dead = true
-	
-
-	# Track kill if damager is a Player and if player didn't kill their self
-	#if damager.is_a_player and damager != self:
-		# Tell the killer to increase their score
-		#damager.increment_score.rpc(damager.get_multiplayer_authority())
-		
-	# Increase own death count
 	increment_deaths()
 	play_death_animation()
 	drop_guns_on_death()
@@ -348,7 +337,6 @@ func die(attack: AttackComponent):
 	respawn()
 	
 func respawn():
-
 	health_component.reset_health()
 	
 	#THESE ARE SPAWN POINTS FOR RESPAWN ONLY
@@ -356,9 +344,6 @@ func respawn():
 	if spawn_points.size() > 0:
 		var random_spawn = spawn_points[randi() % spawn_points.size()]
 		global_position = random_spawn.global_position
-
-	# Tell others that the player has respawned
-
 
 	visible = true
 	set_physics_process(true)

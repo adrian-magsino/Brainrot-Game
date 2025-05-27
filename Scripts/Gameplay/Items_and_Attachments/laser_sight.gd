@@ -1,6 +1,5 @@
 extends Area2D
-
-@export var item_type: String = "attachment"
+class_name Attachment
 
 var range: float = 500
 var is_active: bool = false

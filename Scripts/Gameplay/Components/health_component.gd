@@ -24,9 +24,11 @@ func damage(attack: AttackComponent):
 	if health <= 0:
 		if get_parent().has_method("die"):
 			get_parent().die(attack)
-		if get_parent().has_method("destroy"):
+		elif get_parent().has_method("destroy"):
 			get_parent().destroy(attack)
-		#get_parent().queue_free()
+		else:
+			get_parent().queue_free()
+
 	
 func update_health_bar():
 	if health_bar:

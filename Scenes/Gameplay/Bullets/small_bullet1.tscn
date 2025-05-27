@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccostg0j4du7g"]
+[gd_scene load_steps=6 format=3 uid="uid://ccostg0j4du7g"]
 
-[ext_resource type="Script" uid="uid://yebep3vh5o2y" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_ucdfp"]
+[ext_resource type="Script" uid="uid://do33uu8hr1m5r" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_ucdfp"]
 [ext_resource type="Texture2D" uid="uid://wposvvr2tjmq" path="res://Game Assets/guns_gameassets/PNG/small_bullet.png" id="2_h0a5a"]
 [ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_yhkq8"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_yhkq8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ucdfp"]
 radius = 4.0
@@ -23,4 +24,8 @@ texture = ExtResource("2_h0a5a")
 scale = Vector2(1.08, 0.48)
 shape = SubResource("CapsuleShape2D_ucdfp")
 
+[node name="AttackComponent" parent="." instance=ExtResource("4_yhkq8")]
+attack_damage = 5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

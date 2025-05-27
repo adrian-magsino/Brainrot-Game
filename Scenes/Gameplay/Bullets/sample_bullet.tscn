@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc04tqmejn02p"]
 
-[ext_resource type="Script" uid="uid://do33uu8hr1m5r" path="res://Scripts/Gameplay/Bullets/new_bullet.gd" id="1_52xpt"]
+[ext_resource type="Script" uid="uid://do33uu8hr1m5r" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_52xpt"]
 [ext_resource type="Texture2D" uid="uid://2deouuc1mqgy" path="res://Game Assets/Laser Sprites/01.png" id="2_52xpt"]
 [ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_gagrx"]
-[ext_resource type="Script" uid="uid://dvv13pnv4yvpq" path="res://Scenes/Gameplay/Bullets/attack_component.gd" id="4_gagrx"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_gagrx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
 radius = 2.0
@@ -20,8 +20,7 @@ texture = ExtResource("2_52xpt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8m36q")
 
-[node name="AttackComponent" type="Node2D" parent="."]
-script = ExtResource("4_gagrx")
+[node name="AttackComponent" parent="." instance=ExtResource("4_gagrx")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

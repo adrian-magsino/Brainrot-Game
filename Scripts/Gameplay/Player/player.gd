@@ -197,6 +197,8 @@ func pickup_item():
 					_pickup_gun(area)
 				elif area is Attachment:
 					_pickup_attachment(area)
+				elif area is AmmoBox:
+					area.pick_up(self)
 			return
 				
 func _pickup_gun(gun: Node):
@@ -250,7 +252,13 @@ func equip_gun(gun: Node):
 		if gun.zoom_distance.size() > 0:
 			camera.zoom = Vector2.ONE * gun.zoom_distance[current_zoom_index]
 			update_zoom_button_label(current_zoom_index + 1)
-
+			
+func add_ammo_to_current_gun():
+	var gun = gun_inventory[current_gun_index]
+	if gun and gun is Gun:
+		gun.total_ammo += gun.max_ammo
+		gun.emit_signal("ammo_changed", gun.current_magazine, gun.total_ammo)
+		
 func cycle_zoom():
 	var gun = get_held_gun()
 	if not gun or not ("zoom_distance" in gun):

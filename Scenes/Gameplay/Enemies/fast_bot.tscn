@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7yctmqia22b"]
 
-[ext_resource type="Script" uid="uid://dhr1m5abae3cq" path="res://Scenes/Gameplay/Enemies/fast_bot.gd" id="1_a0jud"]
+[ext_resource type="Script" uid="uid://dhr1m5abae3cq" path="res://Scripts/fast_bot.gd" id="1_a0jud"]
 [ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="2_a0jud"]
 [ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_1r74b"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_xwnov"]

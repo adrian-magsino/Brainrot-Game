@@ -171,15 +171,12 @@ position = Vector2(165, 281)
 
 [node name="EnemyBot" parent="." instance=ExtResource("4_t1nbi")]
 position = Vector2(634, 224)
-max_health = 1000
 
 [node name="EnemyBot2" parent="." instance=ExtResource("4_t1nbi")]
 position = Vector2(1387, 701)
-max_health = 1000
 
 [node name="EnemyBot3" parent="." instance=ExtResource("4_t1nbi")]
 position = Vector2(1089, 1888)
-max_health = 1000
 
 [node name="SampleGun" parent="." instance=ExtResource("5_bmvbp")]
 position = Vector2(172, 696)

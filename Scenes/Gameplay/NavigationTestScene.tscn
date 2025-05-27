@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://eu538jjmqo7k"]
+[gd_scene load_steps=19 format=4 uid="uid://eu538jjmqo7k"]
 
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_aa3tx"]
 [ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="1_fuyb5"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="13_e1uv0"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="13_hbser"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="14_4f16d"]
+[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="15_hbser"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -132,3 +133,6 @@ position = Vector2(2031, 837)
 
 [node name="smg" parent="." instance=ExtResource("11_mxli8")]
 position = Vector2(2024, 915)
+
+[node name="EnemyBot" parent="." instance=ExtResource("15_hbser")]
+position = Vector2(2092, 1104)

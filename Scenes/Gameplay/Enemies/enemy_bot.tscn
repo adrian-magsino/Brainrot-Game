@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://l3qn4yfj57o6"]
+[gd_scene load_steps=9 format=3 uid="uid://l3qn4yfj57o6"]
 
 [ext_resource type="Script" uid="uid://c7p5gkndlvof6" path="res://Scripts/Gameplay/enemy_bot.gd" id="1_exuau"]
 [ext_resource type="Texture2D" uid="uid://b4ilsyj2n8n77" path="res://Game Assets/Bot_sprites/FREDDY_face.jpg" id="2_ft6ej"]
 [ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_ft6ej"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_uh7xe"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_bvn0o"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_ncjgi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
 radius = 60.0
@@ -31,28 +34,40 @@ debug_enabled = true
 wait_time = 0.5
 autostart = true
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -57.0
-offset_top = -92.0
-offset_right = 57.0
-offset_bottom = -65.0
+[node name="AttackCooldownTimer" type="Timer" parent="."]
 
-[node name="HideHealthBarTimer" type="Timer" parent="HealthBar"]
-wait_time = 3.0
+[node name="AttackArea" type="Area2D" parent="."]
 
-[node name="DamageCooldownTimer" type="Timer" parent="."]
-
-[node name="DamageArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ft6ej")
 parameters/looping = true
 
+[node name="AttackComponent" parent="." instance=ExtResource("4_uh7xe")]
+attack_damage = 10.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_bvn0o")]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -50.0
+offset_top = -82.0
+offset_right = 48.0
+offset_bottom = -55.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
+wait_time = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ncjgi")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_exuau")
+
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
-[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_damage_area_body_exited"]

@@ -1,0 +1,272 @@
+[gd_scene load_steps=6 format=3 uid="uid://catksw5vrohwm"]
+
+[ext_resource type="Texture2D" uid="uid://cqmjoyetn4gjd" path="res://Game Assets/LevelScenePlaceholder/BG.png" id="1_01gsp"]
+[ext_resource type="Texture2D" uid="uid://c2fwnvtqsho57" path="res://Game Assets/LevelScenePlaceholder/Button.png" id="1_5ts51"]
+[ext_resource type="Script" uid="uid://dusaysracghyj" path="res://Scripts/UI/level_scene.gd" id="1_h211i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ts51"]
+atlas = ExtResource("1_5ts51")
+region = Rect2(548, 668, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s38wi"]
+atlas = ExtResource("1_5ts51")
+region = Rect2(1179, 668, 181, 189)
+
+[node name="LevelScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h211i")
+
+[node name="LevelContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Theme1" type="TextureRect" parent="LevelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+texture = ExtResource("1_01gsp")
+expand_mode = 1
+
+[node name="Level1" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme1"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 341.0
+offset_right = 315.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme1/Level1"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "1"
+
+[node name="Level2" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme1"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 338.0
+offset_right = 694.0
+offset_bottom = 527.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme1/Level2"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "2"
+
+[node name="Level3" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme1"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 341.0
+offset_right = 1063.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme1/Level3"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "3"
+
+[node name="Theme2" type="TextureRect" parent="LevelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+texture = ExtResource("1_01gsp")
+expand_mode = 1
+
+[node name="Level4" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme2"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 341.0
+offset_right = 315.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme2/Level4"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "4"
+
+[node name="Level5" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme2"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 338.0
+offset_right = 694.0
+offset_bottom = 527.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme2/Level5"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "5"
+
+[node name="Level6" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme2"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 341.0
+offset_right = 1063.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme2/Level6"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "6"
+
+[node name="Theme3" type="TextureRect" parent="LevelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+texture = ExtResource("1_01gsp")
+expand_mode = 1
+
+[node name="Level7" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme3"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 341.0
+offset_right = 315.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme3/Level7"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "7"
+
+[node name="Level8" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme3"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 338.0
+offset_right = 551.0
+offset_bottom = 527.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme3/Level8"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "8"
+
+[node name="Level9" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme3"]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 341.0
+offset_right = 818.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme3/Level9"]
+layout_mode = 0
+offset_left = 69.8344
+offset_top = 35.6665
+offset_right = 109.834
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "9"
+
+[node name="Level10" type="TextureButton" parent="LevelContainer/HBoxContainer/Theme3"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 341.0
+offset_right = 1063.0
+offset_bottom = 530.0
+scale = Vector2(0.673021, 0.700938)
+disabled = true
+texture_normal = SubResource("AtlasTexture_5ts51")
+texture_pressed = SubResource("AtlasTexture_5ts51")
+texture_disabled = SubResource("AtlasTexture_s38wi")
+
+[node name="Label" type="Label" parent="LevelContainer/HBoxContainer/Theme3/Level10"]
+layout_mode = 0
+offset_left = 44.5751
+offset_top = 35.6665
+offset_right = 124.575
+offset_bottom = 131.667
+theme_override_font_sizes/font_size = 70
+text = "10"
+
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme1/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme1/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme1/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme2/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme2/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme2/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme3/Level7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme3/Level8" to="." method="_on_level_8_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme3/Level9" to="." method="_on_level_9_pressed"]
+[connection signal="pressed" from="LevelContainer/HBoxContainer/Theme3/Level10" to="." method="_on_level_10_pressed"]

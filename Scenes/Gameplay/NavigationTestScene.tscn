@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://eu538jjmqo7k"]
 
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_aa3tx"]
-[ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="1_fuyb5"]
+[ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/player.tscn" id="1_fuyb5"]
 [ext_resource type="TileSet" uid="uid://b41wqudk8urvu" path="res://Game Assets/TileSets/TopDown StoneAndBridge - DungeonFloor GODOT/tileset_TopDown StoneAndBridge - DungeonFloor GODOT.tres" id="2_pdpfa"]
 [ext_resource type="PackedScene" uid="uid://bepthki51qwup" path="res://Scenes/Gameplay/Player/control.tscn" id="3_pdpfa"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="8_p2521"]

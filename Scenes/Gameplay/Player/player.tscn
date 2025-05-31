@@ -223,6 +223,7 @@ vertical_alignment = 1
 stream = ExtResource("9_68apu")
 
 [node name="HealthComponent" parent="." instance=ExtResource("11_ibv1r")]
+can_regenerate = true
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
 offset_left = -38.0

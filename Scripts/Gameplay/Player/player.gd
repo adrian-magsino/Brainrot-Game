@@ -53,6 +53,8 @@ var current_zoom_index: int = 0
 var can_dash: bool = true
 var dash_velocity: Vector2 = Vector2.ZERO
 var dash_timer := Timer.new()
+var is_dashing = false
+var dash_time_remaining = 0.0
 
 #Gun Inventory System
 var gun_inventory: Array[Node] = [null, null] # Two gun slots
@@ -82,6 +84,14 @@ func _ready():
 	#scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)	
 	
 func _physics_process(delta):		
+	# DASH HANDLING
+	if is_dashing:
+		var collision = move_and_collide(dash_velocity * delta)
+		dash_time_remaining -= delta
+		if collision or dash_time_remaining <= 0.0:
+			is_dashing = false
+			dash_velocity = Vector2.ZERO
+	
 	var input_vector = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -277,7 +287,11 @@ func cycle_zoom():
 
 	# Update HUD
 	update_zoom_button_label(current_zoom_index + 1)
-
+	
+func start_dashing():
+	is_dashing = true
+	dash_time_remaining = dash_duration
+	
 func dash():
 	if not can_dash or is_dead:
 		return
@@ -293,7 +307,7 @@ func dash():
 	can_dash = false
 	dash_velocity = input_vector.normalized() * (dash_distance / dash_duration)
 
-	# Start dash cooldown visual
+	# Dash cooldown UI
 	dash_progress_bar.visible = true
 	dash_progress_bar.max_value = dash_cooldown
 	dash_progress_bar.value = 0
@@ -305,11 +319,10 @@ func dash():
 	)
 
 	dash_timer.start(dash_cooldown)
-	$CollisionShape2D.disabled = true
 
-	await get_tree().create_timer(dash_duration).timeout
-	dash_velocity = Vector2.ZERO
-	$CollisionShape2D.disabled = false
+	# Start the dash with collision enabled
+	start_dashing()
+
 
 
 func increment_score(killer_id):

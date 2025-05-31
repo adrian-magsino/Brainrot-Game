@@ -144,7 +144,7 @@ pattern_9 = SubResource("TileMapPattern_b7yio")
 [node name="backroom_map" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 format = 2
 
 [node name="floor_seal" type="TileMapLayer" parent="TileMap"]
@@ -167,35 +167,35 @@ tile_set = SubResource("TileSet_cmdsc")
 [node name="Control" parent="." instance=ExtResource("3_bmvbp")]
 
 [node name="PLAYER" parent="." instance=ExtResource("2_xexoj")]
-position = Vector2(165, 281)
+position = Vector2(252, 329)
 
 [node name="EnemyBot" parent="." instance=ExtResource("4_t1nbi")]
-position = Vector2(634, 224)
+position = Vector2(566, 341)
 
 [node name="EnemyBot2" parent="." instance=ExtResource("4_t1nbi")]
-position = Vector2(1387, 701)
+position = Vector2(1654, 701)
 
 [node name="EnemyBot3" parent="." instance=ExtResource("4_t1nbi")]
 position = Vector2(1089, 1888)
 
 [node name="SampleGun" parent="." instance=ExtResource("5_bmvbp")]
-position = Vector2(172, 696)
+position = Vector2(246, 756)
 
 [node name="GunSpawner" parent="." instance=ExtResource("6_t1nbi")]
-position = Vector2(417, 948)
+position = Vector2(288, 1139)
 gun_scenes = Array[PackedScene]([ExtResource("7_1cabf"), ExtResource("8_ednb5"), ExtResource("9_ni3g6")])
 
 [node name="assault_rifle" parent="." instance=ExtResource("7_1cabf")]
-position = Vector2(680, 696)
+position = Vector2(759, 738)
 
 [node name="smg" parent="." instance=ExtResource("9_ni3g6")]
-position = Vector2(652, 947)
+position = Vector2(539, 1187)
 
 [node name="sniper" parent="." instance=ExtResource("10_ednb5")]
-position = Vector2(1185, 950)
+position = Vector2(1109, 925)
 
 [node name="ExplosiveBarrel" parent="." instance=ExtResource("11_ni3g6")]
-position = Vector2(881, 949)
+position = Vector2(1708, 1129)
 
 [node name="ExplosiveBarrel2" parent="." instance=ExtResource("11_ni3g6")]
-position = Vector2(1141, 1183)
+position = Vector2(677, 1584)

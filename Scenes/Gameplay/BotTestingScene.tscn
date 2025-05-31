@@ -321,10 +321,9 @@ position = Vector2(283, 184)
 z_index = 1
 position = Vector2(910, 365)
 
-[node name="EnemyBot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_guuxl")]
+[node name="EnemyBot" parent="." instance=ExtResource("12_guuxl")]
 z_index = 1
 position = Vector2(844, 468)
-player = NodePath("../player")
 
 [connection signal="pressed" from="Control/Menu/MenuButton" to="Control" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/Menu/MenuPanel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]

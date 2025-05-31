@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://eu538jjmqo7k"]
+[gd_scene load_steps=22 format=4 uid="uid://eu538jjmqo7k"]
 
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
 [ext_resource type="TileSet" uid="uid://b41wqudk8urvu" path="res://Game Assets/TileSets/TopDown StoneAndBridge - DungeonFloor GODOT/tileset_TopDown StoneAndBridge - DungeonFloor GODOT.tres" id="2_pu1t2"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="15_55flw"]
 [ext_resource type="PackedScene" uid="uid://c64gxpi768wxo" path="res://Scenes/Gameplay/Items_and_Attachments/ammo_box.tscn" id="16_yx4cu"]
 [ext_resource type="PackedScene" uid="uid://c14pyrs712xn8" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="17_pu1t2"]
+[ext_resource type="PackedScene" uid="uid://hsx7kt1ldtow" path="res://Scenes/Gameplay/LEVEL_EXIT.tscn" id="18_uly7k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -150,3 +151,6 @@ position = Vector2(1363, 729)
 enemy_scenes = Array[PackedScene]([ExtResource("15_55flw")])
 spawn_interval = 1.0
 max_enemies = 5
+
+[node name="LevelExit" parent="." instance=ExtResource("18_uly7k")]
+position = Vector2(2240, 529)

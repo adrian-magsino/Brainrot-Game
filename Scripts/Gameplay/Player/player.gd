@@ -65,6 +65,7 @@ func _enter_tree():
 	print("PLAYER NAME: " + player_name)
 
 func _ready():
+	add_to_group("pauseable") #This node will pause along with the game
 	print("CURRENT ROOT SCENE: ", gameplay_scene)
 	camera.enabled = true
 	pickup_button.pressed.connect(_on_pickup_gun_pressed)

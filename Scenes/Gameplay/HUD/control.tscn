@@ -193,9 +193,69 @@ horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="VictoryScreen" type="CanvasLayer" parent="."]
+
+[node name="VictoryPanel" type="Control" parent="VictoryScreen"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -164.0
+offset_right = -281.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen/VictoryPanel"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 300.0
+color = Color(0, 0.321511, 0.321511, 1)
+
+[node name="Message" type="Label" parent="VictoryScreen/VictoryPanel"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 10.0
+offset_right = 298.0
+offset_bottom = 33.0
+text = "LEVEL CLEARED"
+
+[node name="TotalKillsLabel" type="Label" parent="VictoryScreen/VictoryPanel"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 59.0
+offset_right = 297.0
+offset_bottom = 82.0
+text = "ENEMIES KILLED: 0"
+
+[node name="NextLevelButton" type="Button" parent="VictoryScreen/VictoryPanel"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 235.0
+offset_right = 442.0
+offset_bottom = 266.0
+text = "Next Level
+"
+
+[node name="ExitButton" type="Button" parent="VictoryScreen/VictoryPanel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 71.0
+offset_top = 237.0
+offset_right = 108.0
+offset_bottom = 268.0
+text = "Exit
+"
+
 [connection signal="pressed" from="Menu/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VictoryScreen/VictoryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="VictoryScreen/VictoryPanel/ExitButton" to="." method="_on_exit_button_pressed"]
 
 [editable path="TouchControls"]

@@ -18,6 +18,7 @@ var damageable_in_range: Node = null
 var is_dead: bool = false
 	
 func _ready() -> void:
+	add_to_group("pauseable") #This node will pause along with the game
 	target_player = get_tree().get_first_node_in_group("player")
 	sfx_bot.play()
 	health_component.update_health_bar()

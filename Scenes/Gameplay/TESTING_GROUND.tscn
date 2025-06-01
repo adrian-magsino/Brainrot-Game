@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://eu538jjmqo7k"]
+[gd_scene load_steps=22 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
 [ext_resource type="TileSet" uid="uid://b41wqudk8urvu" path="res://Game Assets/TileSets/TopDown StoneAndBridge - DungeonFloor GODOT/tileset_TopDown StoneAndBridge - DungeonFloor GODOT.tres" id="2_pu1t2"]
@@ -15,9 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="13_r8tjn"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="14_vfnxh"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="15_55flw"]
-[ext_resource type="PackedScene" uid="uid://c64gxpi768wxo" path="res://Scenes/Gameplay/Items_and_Attachments/ammo_box.tscn" id="16_yx4cu"]
-[ext_resource type="PackedScene" uid="uid://c14pyrs712xn8" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="17_pu1t2"]
-[ext_resource type="PackedScene" uid="uid://hsx7kt1ldtow" path="res://Scenes/Gameplay/LEVEL_EXIT.tscn" id="18_uly7k"]
+[ext_resource type="PackedScene" uid="uid://c2ipd31cvr0ra" path="res://Scenes/Gameplay/Items_and_Attachments/ammo_box.tscn" id="16_yx4cu"]
+[ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="17_pu1t2"]
+[ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/LEVEL_EXIT.tscn" id="18_uly7k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)

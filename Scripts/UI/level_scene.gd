@@ -28,7 +28,7 @@ func _ready() -> void:
 
 
 func _on_level_1_pressed() -> void:
-	print("level1")
+	get_tree().change_scene_to_file("res://Scenes/Gameplay/TESTING_GROUND.tscn")
 
 func _on_level_2_pressed() -> void:
 	print("level2")

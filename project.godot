@@ -15,6 +15,11 @@ run/main_scene="uid://co3ey84463uls"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelCore="*res://Scripts/UI/LevelCore.gd"
+Global="*res://Scripts/UI/Global.gd"
+
 [display]
 
 window/stretch/mode="viewport"

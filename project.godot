@@ -25,6 +25,10 @@ PLAYER_DATA="*res://Scripts/UI/PLAYER_DATA.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
+[global_group]
+
+player=""
+
 [input]
 
 move_up={

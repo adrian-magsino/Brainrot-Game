@@ -68,5 +68,8 @@ func die(attack: AttackComponent):
 		return
 	is_dead = true
 	
-	print("Score increased for: ", attack.attacker)
+	if attack.attacker and attack.attacker.is_in_group("player"):
+		var level_node = get_tree().current_scene
+		if level_node.has_method("register_enemy_kill"):
+			level_node.register_enemy_kill(attack.attacker)
 	queue_free()

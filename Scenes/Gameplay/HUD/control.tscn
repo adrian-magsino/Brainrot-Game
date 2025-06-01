@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bepthki51qwup"]
+[gd_scene load_steps=8 format=3 uid="uid://bepthki51qwup"]
 
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scripts/Gameplay/HUD/control.gd" id="1_8hx18"]
 [ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/Gameplay/HUD/touch_controls.tscn" id="2_kuuf2"]
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/Gameplay/HUD/HUD.gd" id="3_s0cjp"]
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_l18jw"]
+
+[sub_resource type="SystemFont" id="SystemFont_voerl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k1yod"]
+font = SubResource("SystemFont_voerl")
+font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yth3r"]
 
@@ -105,6 +111,16 @@ offset_bottom = 58.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("3_s0cjp")
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 465.0
+offset_top = 24.0
+offset_right = 618.0
+offset_bottom = 100.0
+text = "KILLS: 0"
+label_settings = SubResource("LabelSettings_k1yod")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AmmoLabel" type="Label" parent="HUD"]
 offset_left = 634.0

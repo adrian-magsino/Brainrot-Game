@@ -13,17 +13,17 @@ extends Control
 
 func _ready() -> void:
 	# Load progress first if not done already
-	LevelCore.load_progress()
+	GAME_PROGRESS.load_progress()
 
-	level_2.disabled = !LevelCore.level_completed["lvl1"]
-	level_3.disabled = !LevelCore.level_completed["lvl2"]
-	level_4.disabled = !LevelCore.level_completed["lvl3"]
-	level_5.disabled = !LevelCore.level_completed["lvl4"]
-	level_6.disabled = !LevelCore.level_completed["lvl5"]
-	level_7.disabled = !LevelCore.level_completed["lvl6"]
-	level_8.disabled = !LevelCore.level_completed["lvl7"]
-	level_9.disabled = !LevelCore.level_completed["lvl8"]
-	level_10.disabled = !LevelCore.level_completed["lvl9"]
+	level_2.disabled = !GAME_PROGRESS.level_completed["lvl1"]
+	level_3.disabled = !GAME_PROGRESS.level_completed["lvl2"]
+	level_4.disabled = !GAME_PROGRESS.level_completed["lvl3"]
+	level_5.disabled = !GAME_PROGRESS.level_completed["lvl4"]
+	level_6.disabled = !GAME_PROGRESS.level_completed["lvl5"]
+	level_7.disabled = !GAME_PROGRESS.level_completed["lvl6"]
+	level_8.disabled = !GAME_PROGRESS.level_completed["lvl7"]
+	level_9.disabled = !GAME_PROGRESS.level_completed["lvl8"]
+	level_10.disabled = !GAME_PROGRESS.level_completed["lvl9"]
 
 
 

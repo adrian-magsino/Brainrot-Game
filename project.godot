@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LevelCore="*res://Scripts/UI/LevelCore.gd"
-Global="*res://Scripts/UI/Global.gd"
+GAME_PROGRESS="*res://Scripts/UI/GAME_PROGRESS.gd"
+PLAYER_DATA="*res://Scripts/UI/PLAYER_DATA.gd"
 
 [display]
 

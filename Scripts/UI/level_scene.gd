@@ -12,25 +12,18 @@ extends Control
 @onready var level_10: TextureButton = $LevelContainer/HBoxContainer/Theme3/Level10
 
 func _ready() -> void:
-	
-	if LevelCore.lvl1_completed == true:
-		level_2.disabled = false
-	if LevelCore.lvl2_completed == true:
-		level_3.disabled = false
-	if LevelCore.lvl3_completed == true:
-		level_4.disabled = false
-	if LevelCore.lvl4_completed == true:
-		level_5.disabled = false
-	if LevelCore.lvl5_completed == true:
-		level_6.disabled = false
-	if LevelCore.lvl6_completed == true:
-		level_7.disabled = false
-	if LevelCore.lvl7_completed == true:
-		level_8.disabled = false
-	if LevelCore.lvl8_completed == true:
-		level_9.disabled = false	
-	if LevelCore.lvl9_completed == true:
-		level_10.disabled = false
+	# Load progress first if not done already
+	LevelCore.load_progress()
+
+	level_2.disabled = !LevelCore.level_completed["lvl1"]
+	level_3.disabled = !LevelCore.level_completed["lvl2"]
+	level_4.disabled = !LevelCore.level_completed["lvl3"]
+	level_5.disabled = !LevelCore.level_completed["lvl4"]
+	level_6.disabled = !LevelCore.level_completed["lvl5"]
+	level_7.disabled = !LevelCore.level_completed["lvl6"]
+	level_8.disabled = !LevelCore.level_completed["lvl7"]
+	level_9.disabled = !LevelCore.level_completed["lvl8"]
+	level_10.disabled = !LevelCore.level_completed["lvl9"]
 
 
 

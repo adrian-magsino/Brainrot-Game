@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_l18jw"]
 
 [sub_resource type="SystemFont" id="SystemFont_voerl"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_k1yod"]
 font = SubResource("SystemFont_voerl")

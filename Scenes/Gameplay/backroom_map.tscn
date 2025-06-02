@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="8_ednb5"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg.tscn" id="9_ni3g6"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="10_ednb5"]
-[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/ExplosiveBarrel.tscn" id="11_ni3g6"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_ni3g6"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nbvl1"]
 tile_data = PackedInt32Array(0, 262148, 3, 1, 393220, 3)

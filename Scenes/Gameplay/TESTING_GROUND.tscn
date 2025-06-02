@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample_gun.tscn" id="8_8gj7g"]
 [ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="9_a5c1v"]
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="10_5112j"]
-[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/ExplosiveBarrel.tscn" id="11_kxyj4"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_u55dd"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun.tscn" id="13_r8tjn"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper.tscn" id="14_vfnxh"]

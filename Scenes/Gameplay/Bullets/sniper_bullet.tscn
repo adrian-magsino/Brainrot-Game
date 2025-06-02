@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://do33uu8hr1m5r" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_h60f1"]
 [ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_dopty"]
-[ext_resource type="Texture2D" uid="uid://df2x5kfc2vkvr" path="res://Game Assets/guns_gameassets/PNG/large_bullet2.png" id="2_h60f1"]
+[ext_resource type="Texture2D" uid="uid://bnbh3khepfidd" path="res://Game Assets/Laser Sprites/18.png" id="3_cc56y"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_cc56y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
@@ -15,12 +15,13 @@ speed = 1500.0
 BulletParticle = ExtResource("2_dopty")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
+position = Vector2(-1, 0)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_h60f1")
+texture = ExtResource("3_cc56y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(3.8882, 0.74789)
+position = Vector2(5, 0)
+scale = Vector2(3.8882, 1.18616)
 shape = SubResource("CircleShape2D_8m36q")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_cc56y")]

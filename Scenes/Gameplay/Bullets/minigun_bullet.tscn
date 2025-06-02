@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://8f1j5lhn1aeu"]
+
+[ext_resource type="Script" uid="uid://do33uu8hr1m5r" path="res://Scripts/Gameplay/Bullets/BULLET.gd" id="1_i7n13"]
+[ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_ad5ie"]
+[ext_resource type="Texture2D" uid="uid://b1usea0jo8qff" path="res://Game Assets/Laser Sprites/21.png" id="3_i7n13"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_8nno7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
+radius = 3.08626
+
+[node name="minigun_bullet" type="Area2D"]
+z_index = 1
+script = ExtResource("1_i7n13")
+speed = 800.0
+BulletParticle = ExtResource("2_ad5ie")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_i7n13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(3.24862, 0.74789)
+shape = SubResource("CircleShape2D_8m36q")
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_8nno7")]
+attack_damage = 5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

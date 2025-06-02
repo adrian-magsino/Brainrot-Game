@@ -11,6 +11,7 @@ radius = 2.0
 [node name="SampleBullet" type="Area2D"]
 z_index = 1
 script = ExtResource("1_52xpt")
+speed = 800.0
 BulletParticle = ExtResource("2_gagrx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

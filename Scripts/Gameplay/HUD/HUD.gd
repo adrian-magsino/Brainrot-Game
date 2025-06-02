@@ -33,6 +33,7 @@ func reset_hud():
 
 func update_current_gun(gun: Node):
 	var gun_sprite: Sprite2D = gun.get_node("Sprite2D")
+	
 	var texture = gun_sprite.texture
 	var texture_size = texture.get_size()
 	var icon_size = Vector2(32, 32)

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dulufh7d3shm"]
+
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_bhhxw"]
+[ext_resource type="PackedScene" uid="uid://8f1j5lhn1aeu" path="res://Scenes/Gameplay/Bullets/minigun_bullet.tscn" id="2_0icbo"]
+[ext_resource type="Texture2D" uid="uid://blsktftnpnog7" path="res://Scenes/Gameplay/Weapons/minigun/minigun.png" id="3_0icbo"]
+[ext_resource type="AudioStream" uid="uid://ck506qxxu5s66" path="res://Game Assets/Audio/Superior Sound FX/Gun 3.wav" id="4_0icbo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
+size = Vector2(570, 195)
+
+[node name="Minigun" type="Area2D"]
+script = ExtResource("1_bhhxw")
+bullet_scene = ExtResource("2_0icbo")
+range = 1000.0
+max_ammo = 0
+magazine_capacity = 1000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22, -4.5)
+scale = Vector2(3, 3)
+texture = ExtResource("3_0icbo")
+flip_h = true
+region_rect = Rect2(96, 0, 24, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, -2)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_5pdue")
+
+[node name="BulletPos" type="Node2D" parent="."]
+position = Vector2(82, -1.5)
+
+[node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0icbo")

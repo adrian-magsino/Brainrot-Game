@@ -1,35 +1,37 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvc2gysmcvaxv"]
 
 [ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_uof3v"]
-[ext_resource type="PackedScene" uid="uid://dhvb2buxlqtpm" path="res://Scenes/Gameplay/Bullets/sample_bullet2.tscn" id="2_qrugh"]
-[ext_resource type="Texture2D" uid="uid://c07ixw7skht0c" path="res://Game Assets/guns_gameassets/PNG/sniper.png" id="3_uof3v"]
+[ext_resource type="PackedScene" uid="uid://dyj8gp27ebnw4" path="res://Scenes/Gameplay/Bullets/sniper_bullet.tscn" id="2_x2ix8"]
+[ext_resource type="Texture2D" uid="uid://cpptrqmonttwq" path="res://Scenes/Gameplay/Weapons/sniper/sniper.png" id="3_x2ix8"]
 [ext_resource type="AudioStream" uid="uid://bbijad6n1qx5v" path="res://Game Assets/Audio/Gun vol 1/TomC_ItchSFX_Guns_28.mp3" id="4_qrugh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
-size = Vector2(360, 145)
+size = Vector2(538.746, 145)
 
 [node name="sniper" type="Area2D"]
 script = ExtResource("1_uof3v")
 gun_name = "Sniper"
-bullet_scene = ExtResource("2_qrugh")
+bullet_scene = ExtResource("2_x2ix8")
 fire_rate = 1.0
-range = 1500.0
+range = 2000.0
 max_ammo = 50
 magazine_capacity = 10
 reload_time = 2.0
 zoom_distance = Array[float]([1.0, 0.8, 0.6])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_uof3v")
+position = Vector2(10.5, -8)
+scale = Vector2(3, 3)
+texture = ExtResource("3_x2ix8")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1.5)
+position = Vector2(10.5, -8)
 scale = Vector2(0.215315, 0.213324)
 shape = SubResource("RectangleShape2D_5pdue")
 
 [node name="BulletPos" type="Node2D" parent="."]
-position = Vector2(41, -6)
+position = Vector2(70.5, -10)
 
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_qrugh")

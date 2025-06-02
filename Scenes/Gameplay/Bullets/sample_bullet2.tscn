@@ -12,14 +12,16 @@ height = 11.1111
 [node name="sample_bullet2" type="Area2D"]
 z_index = 1
 script = ExtResource("1_h7ids")
+speed = 800.0
 BulletParticle = ExtResource("2_gtxnk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0840991, 0.17502)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("3_h7ids")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.08, 0.48)
+position = Vector2(3, 0)
+scale = Vector2(0.548302, 0.18061)
 shape = SubResource("CapsuleShape2D_ucdfp")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_gtxnk")]

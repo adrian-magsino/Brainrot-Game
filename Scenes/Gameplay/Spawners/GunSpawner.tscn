@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcqo5clfnjg1x" path="res://Scripts/Gameplay/gun_spawner.gd" id="1_fvu2m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cicbb"]
-size = Vector2(0, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pfxa"]
 
 [node name="GunSpawner" type="Area2D"]
 script = ExtResource("1_fvu2m")
@@ -11,17 +10,11 @@ script = ExtResource("1_fvu2m")
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cicbb")
+shape = SubResource("RectangleShape2D_2pfxa")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -50.0
 offset_top = -50.0
 offset_right = 50.0
 offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
+metadata/_edit_use_anchors_ = true

@@ -1,18 +1,18 @@
 extends Area2D
 
-@export var gun_scenes: Array[PackedScene] = []
+@export var item_scenes: Array[PackedScene] = []
 @export var spawn_interval: float = 10.0
-@export var max_guns: int = 3
+@export var max_items: int = 3
 @export var spawn_area_extents: Vector2 = Vector2(100, 100)
 
-var current_guns: Array[Node] = []
+var current_items: Array[Node] = []
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
 func _ready():
-	if gun_scenes.is_empty():
+	if item_scenes.is_empty():
 		print("GUN SPAWNER IS EMPTY")
 		return
 	if collision_shape.shape is RectangleShape2D:
@@ -24,9 +24,9 @@ func _ready():
 		
 		color_rect.size = shape.extents * 2
 		color_rect.position = -shape.extents
-		color_rect.color = Color(0, 0, 1, 0.3) # semi-transparent blue
+		color_rect.color = Color(0, 1, 0, 0.3) # semi-transparent green
 		
-	print("GUN SPAWN TIMER SET")
+	print("ITEM SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
@@ -34,22 +34,22 @@ func _ready():
 		
 func _on_spawn_timer_timeout():
 	#print("GUN SPAWNER TIMEOUT")
-	if current_guns.size() >= max_guns:
+	if current_items.size() >= max_items:
 		#print("MAX LIMIT REACHED")
-		# Don't spawn more guns yet
+		# Don't spawn more items yet
 		spawn_timer.start()
 		return
 	
-	spawn_gun()
+	spawn_items()
 	spawn_timer.start()
 
 
-func spawn_gun():
-	if gun_scenes.is_empty():
+func spawn_items():
+	if item_scenes.is_empty():
 		return
 
-	var gun_scene = gun_scenes.pick_random()
-	var gun = gun_scene.instantiate()
+	var item_scene = item_scenes.pick_random()
+	var item = item_scene.instantiate()
 	
 	var shape: RectangleShape2D = collision_shape.shape
 	var jitter = 100.0
@@ -59,14 +59,14 @@ func spawn_gun():
 	)
 	#print("SPAWNER EXTENTS: ", -shape.extents.x, shape.extents.x, -shape.extents.y, shape.extents.y)
 	#print("SPAWNED GUN IN: ", spawn_position)
-	gun.global_position = spawn_position
-	add_child(gun, true) # replicate ownership if needed
-	print("GUN HAS BEEN SPAWNED: ", gun.get_path())
-	current_guns.append(gun)
-	if gun.has_signal("tree_exited"):
-		gun.tree_exited.connect(_on_gun_removed.bind(gun))
+	item.global_position = spawn_position
+	add_child(item, true) 
+	print("ITEM HAS BEEN SPAWNED: ", item.get_path())
+	current_items.append(item)
+	if item.has_signal("tree_exited"):
+		item.tree_exited.connect(_on_item_removed.bind(item))
 
 
-func _on_gun_removed(gun: Node):
-	print("GUN REMOVED FROM SPAWNER")
-	current_guns.erase(gun)
+func _on_item_removed(item: Node):
+	print("ITEM REMOVED FROM SPAWNER")
+	current_items.erase(item)

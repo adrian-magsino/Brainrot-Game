@@ -1,47 +1,27 @@
 extends CanvasLayer
 
-func update_ammo(current_mag: int, total_ammo: int):
-	$AmmoLabel.text = "Ammo: %d / %d" % [current_mag, total_ammo]
+@onready var menu_panel = $Menu/MenuPanel
+@onready var victory_panel = $VictoryPanel
+@onready var game_scene = get_parent()
 
-func start_reload_bar(duration: float):
-	var progress_bar = $ReloadProgress
-	var progress_label = progress_bar.get_node("ReloadBarLabel")
+func _ready():
+	victory_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	progress_bar.visible = true
-	progress_label.visible = true
-	progress_label.text = "RELOADING..."
-	progress_bar.value = 0
-	progress_bar.max_value = duration
+func _on_menu_button_pressed() -> void:
+	menu_panel.visible = not menu_panel.visible
+	if game_scene.has_method("pause_level"):
+		game_scene.pause_level()
 	
-	
-	#Animate the progress bar 
-	var tween = create_tween()
-	tween.tween_property(progress_bar, "value", duration, duration)
-	tween.connect("finished", Callable(self, "on_reload_bar_complete"))
-	
-func on_reload_bar_complete():
-	$ReloadProgress.visible = false
-	$ReloadProgress/ReloadBarLabel.visible = false
-	
-func reset_hud():
-	$AmmoLabel.text = "Ammo: -- / --"
-	$ReloadProgress.visible = false
-	$ReloadProgress/ReloadBarLabel.visible = false
-	$GunDisplay/Panel/CurrentGunIcon.texture = null
-	$GunDisplay/Panel/CurrentGunLabel.text = ""
-	
+func _on_resume_button_pressed() -> void:
+	menu_panel.visible = false
+	if game_scene.has_method("unpause_level"):
+		game_scene.unpause_level()
 
-func update_current_gun(gun: Node):
-	var gun_sprite: Sprite2D = gun.get_node("Sprite2D")
+func _on_settings_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_exit_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/MainmenuScene.tscn")
 	
-	var texture = gun_sprite.texture
-	var texture_size = texture.get_size()
-	var icon_size = Vector2(32, 32)
-	if gun:
-		$GunDisplay/Panel/CurrentGunIcon.texture = texture
-		$GunDisplay/Panel/CurrentGunIcon.custom_minimum_size = icon_size
-		$GunDisplay/Panel/CurrentGunLabel.text = gun.gun_name
-		
-	else:
-		$GunDisplay/CurrentGunIcon.texture = null
-		$GunDisplay/CurrentGunLabel.text = ""
+func _on_next_level_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/LevelScene.tscn")

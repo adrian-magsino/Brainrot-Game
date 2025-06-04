@@ -1,9 +1,9 @@
 extends Node2D
 class_name Level
 
-@onready var control_node = get_node("Control")
-@onready var score_label = control_node.get_node("HUD/ScoreLabel")
-@onready var victory_panel = control_node.get_node("VictoryScreen/VictoryPanel")
+@onready var HUD = get_node("HUD")
+@onready var score_label = HUD.get_node("GameUI/ScoreLabel")
+@onready var victory_panel = HUD.get_node("VictoryPanel")
 @onready var total_kills_label = victory_panel.get_node("TotalKillsLabel")
 @onready var message_label = victory_panel.get_node("Message")
 

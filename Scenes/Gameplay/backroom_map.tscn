@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=4 uid="uid://dc2c61q4aubwe"]
+[gd_scene load_steps=29 format=4 uid="uid://dc2c61q4aubwe"]
 
+[ext_resource type="Script" uid="uid://gqwu5cxe64bk" path="res://Scenes/Gameplay/LEVEL_MANAGER.gd" id="1_gjmad"]
+[ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/HUD/HUD.tscn" id="1_ni3g6"]
 [ext_resource type="Texture2D" uid="uid://bptpd6mrx2ql7" path="res://Game Assets/TileSets/backroom2.png" id="2_1cabf"]
-[ext_resource type="PackedScene" uid="uid://bsk752rdhvtha" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="2_xexoj"]
-[ext_resource type="PackedScene" uid="uid://bepthki51qwup" path="res://Scenes/Gameplay/HUD/control.tscn" id="3_bmvbp"]
+[ext_resource type="PackedScene" uid="uid://co8v4w5m1wt3h" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="2_xexoj"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="4_t1nbi"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.tscn" id="5_bmvbp"]
 [ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="6_t1nbi"]
@@ -142,6 +143,9 @@ pattern_8 = SubResource("TileMapPattern_ui4jt")
 pattern_9 = SubResource("TileMapPattern_b7yio")
 
 [node name="backroom_map" type="Node2D"]
+script = ExtResource("1_gjmad")
+
+[node name="HUD" parent="." instance=ExtResource("1_ni3g6")]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(5, 5)
@@ -163,8 +167,6 @@ tile_map_data = PackedByteArray("AAABAAEABAAHAAEAAAABAAIABAAGAAIAAAABAAMABAAGAAM
 tile_set = SubResource("TileSet_cmdsc")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
-
-[node name="Control" parent="." instance=ExtResource("3_bmvbp")]
 
 [node name="PLAYER" parent="." instance=ExtResource("2_xexoj")]
 position = Vector2(252, 329)

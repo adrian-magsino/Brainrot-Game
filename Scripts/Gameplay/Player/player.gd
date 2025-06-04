@@ -16,17 +16,18 @@ extends CharacterBody2D
 @onready var player_name_label = $PlayerName
 
 #HUD and Controls
-@onready var control_node = get_parent().get_node("Control")
+@onready var HUD = get_parent().get_node("HUD")
 #@onready var scoreboard = control_node.get_node("Scoreboard")
-@onready var hud = control_node.get_node("HUD")
+#@onready var hud = control_node.get_node("HUD")
+@onready var game_ui = HUD.get_node("GameUI")
 
-@onready var touch_controls = control_node.get_node("TouchControls")
-@onready var pickup_button = control_node.get_node("TouchControls/Pickup Gun")
-@onready var zoom_button = control_node.get_node("TouchControls/Zoom Button")
-@onready var reload_button = control_node.get_node("TouchControls/Reload Gun")
-@onready var switch_gun_button = control_node.get_node("TouchControls/Switch Gun")
-@onready var dash_button = control_node.get_node("TouchControls/Dash Button")
-@onready var dash_progress_bar = control_node.get_node("TouchControls/Dash Button/Dash Cooldown")
+@onready var player_controls = HUD.get_node("PlayerControls")
+@onready var pickup_button = HUD.get_node("PlayerControls/Pickup Gun")
+@onready var zoom_button = HUD.get_node("PlayerControls/Zoom Button")
+@onready var reload_button = HUD.get_node("PlayerControls/Reload Gun")
+@onready var switch_gun_button = HUD.get_node("PlayerControls/Switch Gun")
+@onready var dash_button = HUD.get_node("PlayerControls/Dash Button")
+@onready var dash_progress_bar = HUD.get_node("PlayerControls/Dash Button/Dash Cooldown")
 @onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
 
 @onready var health_component = get_node("HealthComponent")
@@ -155,7 +156,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_pressed("reload_gun"):
 			gun.start_reload()
-		hud.update_ammo(gun.current_magazine, gun.total_ammo)
+		game_ui.update_ammo(gun.current_magazine, gun.total_ammo)
 		
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(
@@ -350,7 +351,7 @@ func die(attack: AttackComponent):
 	play_death_animation()
 	drop_guns_on_death()
 
-	hud.reset_hud()
+	game_ui.reset_display()
 	visible = false
 	set_physics_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -386,13 +387,13 @@ func switch_gun():
 func update_gun_in_HUD():
 	var gun = get_held_gun()
 	if gun:
-		hud.update_current_gun(gun)
+		game_ui.update_current_gun(gun)
 	
 func _on_ammo_changed(current_mag, total_ammo):
-	hud.update_ammo(current_mag, total_ammo)
+	game_ui.update_ammo(current_mag, total_ammo)
 
 func _on_reload_started(duration: float):
-	hud.start_reload_bar(duration)
+	game_ui.start_reload_bar(duration)
 
 func update_pickup_button_visibility():
 	var pickup_area = $PickupArea

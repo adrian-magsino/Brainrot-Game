@@ -1,0 +1,306 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcdvaas54iiga"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_smues"]
+[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scripts/Gameplay/HUD/HUD.gd" id="1_xn0sg"]
+[ext_resource type="Script" uid="uid://dgh120kriwdvv" path="res://addons/virtual_joystick/aiming_joystick.gd" id="2_xn0sg"]
+[ext_resource type="Script" uid="uid://bjekcfcln6mge" path="res://Scripts/Gameplay/HUD/Player_Controls/pickup_gun.gd" id="3_hkytx"]
+[ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_gl8s0"]
+[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/Gameplay/HUD/player_ui.gd" id="5_hkytx"]
+
+[sub_resource type="SystemFont" id="SystemFont_voerl"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpvtn"]
+font = SubResource("SystemFont_voerl")
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lit0b"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xn0sg")
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_hkytx")
+
+[node name="ScoreLabel" type="Label" parent="GameUI"]
+offset_left = 465.0
+offset_top = 24.0
+offset_right = 618.0
+offset_bottom = 100.0
+text = "KILLS: 0"
+label_settings = SubResource("LabelSettings_kpvtn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoLabel" type="Label" parent="GameUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.875
+anchor_right = 0.55
+anchor_bottom = 0.875
+offset_left = 634.0
+offset_top = 467.0
+offset_right = 754.0
+offset_bottom = 490.0
+text = "Ammo: -- / --"
+metadata/_edit_use_anchors_ = true
+
+[node name="ReloadProgress" type="ProgressBar" parent="GameUI"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+offset_left = 643.0
+offset_top = 597.0
+offset_right = 796.0
+offset_bottom = 624.0
+max_value = 1.0
+show_percentage = false
+
+[node name="ReloadBarLabel" type="Label" parent="GameUI/ReloadProgress"]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 3.0
+offset_right = 130.0
+offset_bottom = 26.0
+text = "RELOADING..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GunDisplay" type="Control" parent="GameUI"]
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 33.0
+offset_right = 22.0
+offset_bottom = 33.0
+
+[node name="Panel" type="Panel" parent="GameUI/GunDisplay"]
+offset_left = 608.0
+offset_top = 494.0
+offset_right = 779.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lit0b")
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentGunIcon" type="TextureRect" parent="GameUI/GunDisplay/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.5
+offset_top = 5.0
+offset_right = 127.112
+offset_bottom = 45.0
+grow_horizontal = 2
+texture = ExtResource("4_gl8s0")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentGunLabel" type="Label" parent="GameUI/GunDisplay/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -49.0
+offset_right = 47.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sample Gun"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Movement Joystick" parent="PlayerControls" instance=ExtResource("1_smues")]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 305.0
+offset_right = 303.0
+offset_bottom = 605.0
+pressed_color = Color(0.205352, 0.818775, 1, 1)
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Aiming Joystick" parent="PlayerControls" instance=ExtResource("1_smues")]
+layout_mode = 1
+offset_left = 827.0
+offset_top = 296.0
+offset_right = 1127.0
+offset_bottom = 596.0
+script = ExtResource("2_xn0sg")
+action_left = "aim_left"
+action_right = "aim_right"
+action_up = "aim_up"
+action_down = "aim_down"
+
+[node name="Pickup Gun" type="Button" parent="PlayerControls"]
+offset_left = 439.0
+offset_top = 506.0
+offset_right = 566.0
+offset_bottom = 580.0
+text = "Pickup
+"
+script = ExtResource("3_hkytx")
+
+[node name="Reload Gun" type="Button" parent="PlayerControls"]
+offset_left = 743.0
+offset_top = 403.0
+offset_right = 831.0
+offset_bottom = 455.0
+text = "Reload"
+
+[node name="Switch Gun" type="TextureButton" parent="PlayerControls"]
+offset_left = 674.0
+offset_top = 541.0
+offset_right = 769.0
+offset_bottom = 572.0
+
+[node name="Zoom Button" type="Button" parent="PlayerControls"]
+offset_left = 954.0
+offset_top = 49.0
+offset_right = 1007.0
+offset_bottom = 80.0
+text = "Zoom
+"
+
+[node name="Dash Button" type="Button" parent="PlayerControls"]
+offset_left = 577.0
+offset_top = 416.0
+offset_right = 624.0
+offset_bottom = 447.0
+scale = Vector2(1.33688, 1.31709)
+text = "Dash"
+
+[node name="Dash Cooldown" type="ProgressBar" parent="PlayerControls/Dash Button"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 29.0
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuButton" type="Button" parent="Menu"]
+offset_right = 57.0
+offset_bottom = 31.0
+scale = Vector2(2.19225, 2.27682)
+text = "MENU
+"
+
+[node name="MenuPanel" type="Panel" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 376.0
+offset_top = 91.0
+offset_right = 376.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.78829, 3.91214)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResumeButton" type="Button" parent="Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "RESUME
+"
+
+[node name="SettingsButton" type="Button" parent="Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="Menu/MenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="VictoryPanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = -164.0
+offset_right = -281.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VictoryPanel"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 300.0
+color = Color(0, 0.321511, 0.321511, 1)
+
+[node name="Message" type="Label" parent="VictoryPanel"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 10.0
+offset_right = 298.0
+offset_bottom = 33.0
+text = "LEVEL CLEARED"
+
+[node name="TotalKillsLabel" type="Label" parent="VictoryPanel"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 59.0
+offset_right = 297.0
+offset_bottom = 82.0
+text = "ENEMIES KILLED: 0"
+
+[node name="NextLevelButton" type="Button" parent="VictoryPanel"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 235.0
+offset_right = 442.0
+offset_bottom = 266.0
+text = "Next Level
+"
+
+[node name="ExitButton" type="Button" parent="VictoryPanel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 71.0
+offset_top = 237.0
+offset_right = 108.0
+offset_bottom = 268.0
+text = "Exit
+"
+
+[connection signal="pressed" from="Menu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VictoryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="VictoryPanel/ExitButton" to="." method="_on_exit_button_pressed"]

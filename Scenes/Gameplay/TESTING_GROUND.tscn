@@ -16,13 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="13_r8tjn"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="14_vfnxh"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="15_55flw"]
-[ext_resource type="PackedScene" uid="uid://c2ipd31cvr0ra" path="res://Scenes/Gameplay/Items_and_Attachments/ammo_box.tscn" id="16_yx4cu"]
+[ext_resource type="PackedScene" uid="uid://c2ipd31cvr0ra" path="res://Scenes/Gameplay/Items and Attachments/ammo_box.tscn" id="16_yx4cu"]
 [ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="17_pu1t2"]
-[ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/LEVEL_EXIT.tscn" id="18_uly7k"]
+[ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="18_uly7k"]
 [ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Spawners/player_spawn_point_1.tscn" id="20_fuc0x"]
 [ext_resource type="PackedScene" uid="uid://odblr4vjp1tx" path="res://Scenes/Gameplay/Spawners/ItemSpawner.tscn" id="21_uhyla"]
 [ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="21_woxdx"]
-[ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items_and_Attachments/LaserSight.tscn" id="22_8gj7g"]
+[ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items and Attachments/LaserSight.tscn" id="22_8gj7g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -104,8 +104,6 @@ tile_set = ExtResource("2_pu1t2")
 
 [node name="Control" parent="." instance=ExtResource("3_uly7k")]
 
-[node name="Guns" type="Node" parent="."]
-
 [node name="PLAYER" parent="." instance=ExtResource("4_alghn")]
 position = Vector2(1282, 1262)
 
@@ -154,7 +152,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("15_55flw")])
 spawn_interval = 1.0
 max_enemies = 1
 
-[node name="LevelExit" parent="." instance=ExtResource("18_uly7k")]
+[node name="ExitPortal" parent="." instance=ExtResource("18_uly7k")]
 position = Vector2(2240, 529)
 
 [node name="PlayerSpawnPoint1" parent="." instance=ExtResource("20_fuc0x")]
@@ -167,7 +165,7 @@ position = Vector2(2304, 1244)
 position = Vector2(835, 520)
 
 [node name="Minigun" parent="." instance=ExtResource("21_woxdx")]
-position = Vector2(2265, 1011)
+position = Vector2(2263, 1011)
 
 [node name="ItemSpawner" parent="." instance=ExtResource("21_uhyla")]
 position = Vector2(375, 797)

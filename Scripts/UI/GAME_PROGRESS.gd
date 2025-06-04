@@ -14,13 +14,13 @@ var level_completed = {
 }
 
 func save_progress():
-	var file = FileAccess.open("res://User data/level_progress.json", FileAccess.WRITE)
+	var file = FileAccess.open("res://User data/game_progress.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(level_completed))
 	file.close()
 
 func load_progress():
-	if FileAccess.file_exists("res://User data/level_progress.json"):
-		var file = FileAccess.open("res://User data/level_progress.json", FileAccess.READ)
+	if FileAccess.file_exists("res://User data/game_progress.json"):
+		var file = FileAccess.open("res://User data/game_progress.json", FileAccess.READ)
 		var loaded_data = JSON.parse_string(file.get_as_text())
 		if typeof(loaded_data) == TYPE_DICTIONARY:
 			level_completed = loaded_data

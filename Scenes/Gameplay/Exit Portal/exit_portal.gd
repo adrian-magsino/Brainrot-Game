@@ -9,5 +9,5 @@ func _on_body_entered(body: Node):
 	if body.is_in_group(target_group):
 		print("Victory")
 		var level_node = get_tree().current_scene
-		if level_node.has_method("show_victory_screen"):
-			level_node.show_victory_screen()
+		if level_node.has_method("game_victory"):
+			level_node.game_victory()

@@ -1,5 +1,5 @@
 extends Node2D
-class_name Level
+class_name Level_Manager
 
 @onready var HUD = get_node("HUD")
 @onready var score_label = HUD.get_node("GameUI/ScoreLabel")
@@ -8,14 +8,16 @@ class_name Level
 @onready var message_label = victory_panel.get_node("Message")
 
 var enemies_killed: int = 0
+var level_cleared: bool = false
 
 func register_enemy_kill(attacker: Node) -> void:
 	if attacker.is_in_group("player"):
 		enemies_killed += 1
 		score_label.text = "KILLS: %d" % enemies_killed
 		print("Enemies killed: ", enemies_killed)
-		
-func show_victory_screen():
+
+func game_victory():
+	level_cleared = true
 	pause_level()
 	victory_panel.visible = true
 	total_kills_label.text = "Enemies killed: %d" % enemies_killed

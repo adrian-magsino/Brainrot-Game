@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bepthki51qwup"]
 
-[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scripts/Gameplay/HUD/HUD.gd" id="1_8hx18"]
-[ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/Gameplay/HUD/touch_controls.tscn" id="2_kuuf2"]
-[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scripts/Gameplay/HUD/player_ui.gd" id="3_s0cjp"]
-[ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_l18jw"]
+[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/HUD/HUD.gd" id="1_lktdk"]
+[ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/Gameplay/HUD/TRASHED_touch_controls.tscn" id="2_e688i"]
+[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/HUD/player_ui.gd" id="3_gu110"]
+[ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_buleo"]
 
 [sub_resource type="SystemFont" id="SystemFont_voerl"]
 subpixel_positioning = 0
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8hx18")
+script = ExtResource("1_lktdk")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
@@ -64,7 +64,7 @@ text = "SETTINGS"
 layout_mode = 2
 text = "EXIT"
 
-[node name="TouchControls" parent="." instance=ExtResource("2_kuuf2")]
+[node name="TouchControls" parent="." instance=ExtResource("2_e688i")]
 layer = 2
 
 [node name="Pickup Gun" parent="TouchControls" index="2"]
@@ -110,7 +110,7 @@ offset_right = 149.0
 offset_bottom = 58.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("3_s0cjp")
+script = ExtResource("3_gu110")
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
 offset_left = 465.0
@@ -171,7 +171,7 @@ offset_top = 5.0
 offset_right = 127.112
 offset_bottom = 45.0
 grow_horizontal = 2
-texture = ExtResource("4_l18jw")
+texture = ExtResource("4_buleo")
 expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true

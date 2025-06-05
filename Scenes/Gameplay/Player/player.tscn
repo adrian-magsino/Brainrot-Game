@@ -140,7 +140,7 @@ height = 100.0
 [node name="PLAYER" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 3
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_onrkg")
 BloodParticle = ExtResource("3_h3jkl")
 default_gun_scene = ExtResource("2_skuam")
@@ -166,7 +166,6 @@ position = Vector2(0, 14)
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="InteractingComponent" parent="." instance=ExtResource("3_6t5aa")]
-visible = false
 position = Vector2(0, 12)
 
 [node name="PlayerName" type="Label" parent="."]

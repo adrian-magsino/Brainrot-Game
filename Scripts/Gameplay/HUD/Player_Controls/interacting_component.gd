@@ -37,3 +37,14 @@ func _on_interact_range_area_entered(area: Area2D) -> void:
 	
 func _on_interact_range_area_exited(area: Area2D) -> void:
 	current_interactions.erase(area)
+
+
+func _on_interact_label_pressed() -> void:
+	if can_interact:
+		if current_interactions:
+			can_interact = false
+			interact_label.hide()
+			
+			await current_interactions[0].interact.call()
+			
+			can_interact = true

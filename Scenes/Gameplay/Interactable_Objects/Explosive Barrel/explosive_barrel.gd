@@ -1,50 +1,22 @@
 extends StaticBody2D
 
-#@export var explosion_damage: int = 50
-@export var explosion_radius: float = 100.0
-@export var ExplosionParticles: PackedScene
-
-@onready var explosion_area = $ExplosionArea
-@onready var attack_component = $AttackComponent
-
-#ASSETS
+@onready var explosive_component: ExplosiveComponent = $ExplosiveComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_explosion: AudioStreamPlayer2D = $SFX_explosion
 
 var is_destroyed: bool = false
 
+func _ready():
+	explosive_component.animated_sprite_path = animated_sprite_2d.get_path()
+	explosive_component.explosion_sound_path = sfx_explosion.get_path()
+
 func destroy(attack: AttackComponent):
 	if is_destroyed:
 		return
 	is_destroyed = true
-	#The destroyer of this explosive
-	attack_component.attacker = attack.attacker 
-	print("DESTROYER: ", attack_component.attacker)
-	# Damage nearby bodies
-	apply_explosion_damage_all(attack_component)
-	
-	play_explosion_animation()
-	
+
+	explosive_component.attacker = attack.attacker
+	explosive_component.explode()
+
 	await animated_sprite_2d.animation_finished
 	queue_free()
-
-
-func apply_explosion_damage_all(attack: AttackComponent):
-	if not attack:
-		return
-	explosion_area.monitoring = true
-	for area in explosion_area.get_overlapping_areas():
-		if area is HitboxComponent and area != get_node("HitboxComponent"):
-			area.take_damage(attack)
-	explosion_area.monitoring = false
-
-func play_explosion_animation():
-	sfx_explosion.play()
-	animated_sprite_2d.play("explode")
-	var _particle = ExplosionParticles.instantiate()
-	_particle.position = global_position
-	_particle.rotation = global_rotation
-	_particle.emitting = true
-	get_tree().current_scene.add_child(_particle)
-	
-	#animated_sprite_2d.animation_finished.connect(_on_animated_sprite_2d_animation_finished)

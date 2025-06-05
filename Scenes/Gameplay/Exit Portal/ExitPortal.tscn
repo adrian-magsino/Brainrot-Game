@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dppo6yplor1ak" path="res://Scenes/Gameplay/Exit Portal/exit_portal.gd" id="1_c18fn"]
 [ext_resource type="Texture2D" uid="uid://e3otjpcgqoyn" path="res://Scenes/Gameplay/Exit Portal/scifi_portal_spritesheet_cropped-removebg-preview.png" id="2_ywqkk"]
-[ext_resource type="PackedScene" uid="uid://ngtkvkt1lv61" path="res://Scenes/Gameplay/Interaction Component/interactable.tscn" id="3_7hxko"]
+[ext_resource type="PackedScene" uid="uid://ngtkvkt1lv61" path="res://Scenes/Gameplay/Components/interactable.tscn" id="3_7hxko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xaqhf"]
 atlas = ExtResource("2_ywqkk")

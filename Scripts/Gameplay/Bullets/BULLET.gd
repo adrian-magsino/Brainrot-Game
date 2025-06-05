@@ -17,9 +17,9 @@ var shooter_id: int
 
 @onready var attack_component = $AttackComponent
 
-func initialize(dir: Vector2, max_dist: float, can_pass_walls: bool, shooter_node: Node, allow_self_damage: bool = false):
+func initialize(dir: Vector2, gun_range: float, can_pass_walls: bool, shooter_node: Node, allow_self_damage: bool = false):
 	direction = dir.normalized()
-	max_distance = max_dist
+	max_distance = gun_range
 	pass_through_walls = can_pass_walls
 	shooter = shooter_node
 	can_damage_owner = allow_self_damage

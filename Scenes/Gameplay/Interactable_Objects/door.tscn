@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgvbp030j84nb"]
 
 [ext_resource type="Script" uid="uid://dquywlno42iaq" path="res://Scripts/Gameplay/Interactable_Objects/door.gd" id="1_fahql"]
-[ext_resource type="PackedScene" uid="uid://ngtkvkt1lv61" path="res://Scenes/Gameplay/Interaction Component/interactable.tscn" id="2_fahql"]
+[ext_resource type="PackedScene" uid="uid://ngtkvkt1lv61" path="res://Scenes/Gameplay/Components/interactable.tscn" id="2_fahql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
 size = Vector2(8.00084, 48)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]
-[ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/Interaction Component/interacting_component.tscn" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/Components/interacting_component.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dx1yolru7i14y" path="res://Animations/Particles/BloodParticles.tscn" id="3_h3jkl"]
 [ext_resource type="Texture2D" uid="uid://dwrcwk6yvlqou" path="res://Game Assets/Character Sprites/char_tungsahur-Sheet.png" id="8_g2c3n"]
 [ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="9_68apu"]

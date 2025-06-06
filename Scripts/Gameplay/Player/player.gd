@@ -366,6 +366,8 @@ func die(attack: AttackComponent):
 	print("PLAYER LIVES: ", level_scene.player_lives)
 	if level_scene.player_lives > 0:
 		respawn()
+	else:
+		level_scene.game_defeat()
 	
 func respawn():
 	health_component.reset_health()

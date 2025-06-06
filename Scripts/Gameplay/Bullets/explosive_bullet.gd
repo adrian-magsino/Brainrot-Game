@@ -1,4 +1,5 @@
 extends Bullet
+class_name ExplosiveBullet
 
 @onready var explosive_component: ExplosiveComponent = $ExplosiveComponent
 @onready var sfx_explosion: AudioStreamPlayer2D = $SFX_explosion
@@ -25,15 +26,16 @@ func _on_body_entered(body):
 
 	if body is TileMapLayer:
 		explode()
-
+		
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		if area.get_parent() is Player and not can_damage_owner:
 			return
-		area.take_damage(attack_component)
+		#area.take_damage(attack_component)
 		explode()
 		
+var has_exploded := false
 
 func explode():
 	if explosive_component:
@@ -48,5 +50,3 @@ func explode():
 
 		# Clean it up after it finishes
 		detached_sfx.finished.connect(detached_sfx.queue_free)
-
-	queue_free()

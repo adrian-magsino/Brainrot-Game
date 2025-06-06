@@ -29,7 +29,7 @@ scale = Vector2(3.24862, 0.74789)
 shape = SubResource("CircleShape2D_8m36q")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_iioea")]
-attack_damage = 50.0
+attack_damage = 0.0
 
 [node name="ExplosiveComponent" parent="." instance=ExtResource("4_sekmv")]
 explosion_particles = ExtResource("5_iioea")

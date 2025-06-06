@@ -16,7 +16,8 @@ func destroy(attack: AttackComponent):
 	is_destroyed = true
 
 	explosive_component.attacker = attack.attacker
+	
 	explosive_component.explode()
-
-	await animated_sprite_2d.animation_finished
-	queue_free()
+	
+	
+	

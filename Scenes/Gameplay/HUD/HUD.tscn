@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcdvaas54iiga"]
+[gd_scene load_steps=11 format=3 uid="uid://bcdvaas54iiga"]
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_smues"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/HUD/HUD.gd" id="1_xn0sg"]
 [ext_resource type="Script" uid="uid://dgh120kriwdvv" path="res://addons/virtual_joystick/aiming_joystick.gd" id="2_xn0sg"]
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_gl8s0"]
+[ext_resource type="Texture2D" uid="uid://sseodi2s5r2t" path="res://Scenes/Gameplay/HUD/HUD assets/player life heart/heart.png" id="4_hkytx"]
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/HUD/player_ui.gd" id="5_hkytx"]
 
 [sub_resource type="SystemFont" id="SystemFont_voerl"]
@@ -15,6 +16,9 @@ font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lit0b"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_gl8s0"]
+font_size = 30
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xn0sg")
 
@@ -24,14 +28,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_hkytx")
-
-[node name="PlayerLivesLabel" type="Label" parent="GameUI"]
-layout_mode = 0
-offset_left = 635.0
-offset_top = 51.0
-offset_right = 694.0
-offset_bottom = 74.0
-text = "LIVES: 0"
 
 [node name="ScoreLabel" type="Label" parent="GameUI"]
 layout_mode = 0
@@ -127,6 +123,24 @@ text = "Sample Gun"
 horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerLivesImage" type="TextureRect" parent="GameUI"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 42.0
+offset_right = 682.0
+offset_bottom = 82.0
+texture = ExtResource("4_hkytx")
+
+[node name="PlayerLivesLabel" type="Label" parent="GameUI/PlayerLivesImage"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 102.0
+offset_bottom = 44.0
+text = "x 0"
+label_settings = SubResource("LabelSettings_gl8s0")
+horizontal_alignment = 1
 
 [node name="PlayerControls" type="Control" parent="."]
 layout_mode = 3

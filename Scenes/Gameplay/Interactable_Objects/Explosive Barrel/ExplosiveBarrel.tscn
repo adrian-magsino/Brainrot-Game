@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://75p78212eqdw"]
+[gd_scene load_steps=24 format=3 uid="uid://75p78212eqdw"]
 
 [ext_resource type="Script" uid="uid://b46losmqe2ea0" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/explosive_barrel.gd" id="1_cqdxx"]
 [ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="2_yu8lb"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="3_xwx1j"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="4_r8cg1"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="5_h4i7n"]
-[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="6_3qwfe"]
 [ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/SFX_explosion.mp3" id="7_xwx1j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fomm0"]
@@ -155,9 +154,6 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CapsuleShape2D_cqdxx")
-
-[node name="AttackComponent" parent="." instance=ExtResource("6_3qwfe")]
-attack_damage = 50.0
 
 [node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_xwx1j")

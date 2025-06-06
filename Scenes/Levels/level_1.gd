@@ -8,6 +8,7 @@ const level: String = "lvl1"
 const win_condition = "Kill %d enemies to open the portal"
 
 func _ready() -> void:
+	super._ready()
 	exit_portal.visible = false
 	portal_interactable_component.set_deferred("monitorable", false)
 	portal_interactable_component.set_deferred("monitoring", false)

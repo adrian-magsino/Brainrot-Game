@@ -22,21 +22,34 @@ func explode():
 		return
 	is_exploded = true
 
-	# Assign attacker to the attack component
 	attack_component.attacker = attacker
-
-	# Damage nearby HitboxComponents
 	monitoring = true
+	# Play explosion effects
+	_play_explosion_effects()
+	
+	await get_tree().physics_frame
+	
+	# Let physics engine process overlaps
 	for area in get_overlapping_areas():
-		if area is HitboxComponent:
-			var damaged_entity = area.get_parent()
-			if not can_damage_attacker and damaged_entity == attacker:
-				continue
-			area.take_damage(attack_component)
+		_on_area_entered(area)
+
+	if get_parent():
+		var animated_sprite: AnimatedSprite2D = get_node_or_null(animated_sprite_path)
+		if animated_sprite:
+			await animated_sprite.animation_finished
+		get_parent().queue_free()
+	# After 1 physics frame, disable monitoring
 	monitoring = false
 
-	# Play animation and effects
-	_play_explosion_effects()
+func _on_area_entered(area: Area2D) -> void:
+	if not is_exploded:
+		return
+
+	if area is HitboxComponent:
+		var damaged_entity = area.get_parent()
+		if not can_damage_attacker and damaged_entity == attacker:
+			return
+		area.take_damage(attack_component)
 
 func _play_explosion_effects():
 	if explosion_particles:
@@ -46,9 +59,9 @@ func _play_explosion_effects():
 		particle_instance.emitting = true
 		get_tree().current_scene.add_child(particle_instance)
 
-	var sprite: AnimatedSprite2D = get_node_or_null(animated_sprite_path)
-	if sprite:
-		sprite.play("explode")
+	var animated_sprite: AnimatedSprite2D = get_node_or_null(animated_sprite_path)
+	if animated_sprite:
+		animated_sprite.play("explode")
 
 	var sound: AudioStreamPlayer2D = get_node_or_null(explosion_sound_path)
 	if sound:

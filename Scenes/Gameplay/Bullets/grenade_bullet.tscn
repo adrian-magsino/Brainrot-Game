@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfdb2ju1736w"]
+
+[ext_resource type="Script" uid="uid://cmcbjpp2ggtmx" path="res://Scripts/Gameplay/Bullets/explosive_bullet.gd" id="1_iomw3"]
+[ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_dk64a"]
+[ext_resource type="Texture2D" uid="uid://dal2q0ystp6eb" path="res://Game Assets/guns_gameassets/PNG higher resolution (@2x)/grenade.png" id="3_iomw3"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_okqr4"]
+[ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="5_qo0l1"]
+[ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="6_acfph"]
+[ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/SFX_explosion.mp3" id="7_7ho46"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
+radius = 1.48892
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xk666"]
+radius = 100.0
+
+[node name="grenade_bullet" type="Area2D"]
+z_index = 1
+script = ExtResource("1_iomw3")
+speed = 500.0
+BulletParticle = ExtResource("2_dk64a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_iomw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(4.5156, 5.04111)
+shape = SubResource("CircleShape2D_8m36q")
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_okqr4")]
+attack_damage = 50.0
+
+[node name="ExplosiveComponent" parent="." instance=ExtResource("5_qo0l1")]
+visible = false
+explosion_particles = ExtResource("6_acfph")
+can_damage_attacker = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveComponent"]
+shape = SubResource("CircleShape2D_xk666")
+
+[node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7ho46")
+volume_db = 5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

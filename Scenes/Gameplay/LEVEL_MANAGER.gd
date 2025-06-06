@@ -41,7 +41,7 @@ func game_defeat():
 	pause_level()
 	defeat_panel.visible = true
 	total_kills_label.text = "Enemies killed: %d" % enemies_killed
-	message_label.text = "DEFEAT \n SKILL ISSUE BRO"  
+	message_label.text = "GAME OVER \n SKILL ISSUE BRO"  
 	
 func pause_level():
 	for node in get_tree().get_nodes_in_group("pauseable"):

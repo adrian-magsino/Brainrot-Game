@@ -39,6 +39,8 @@ var player_score: int = 0
 var player_deaths: int = 0
 var is_dead: bool = false
 
+var hit_effect_duration: float = 0.2
+var hit_effect_timer: Timer
 
 #Camera zoom feature
 var current_zoom_index: int = 0
@@ -75,6 +77,12 @@ func _ready():
 	reload_button.pressed.connect(_on_reload_gun_pressed)
 	switch_gun_button.pressed.connect(_on_switch_gun_pressed)
 	dash_button.pressed.connect(_on_dash_button_pressed)
+	
+	hit_effect_timer = Timer.new()
+	hit_effect_timer.wait_time = hit_effect_duration
+	hit_effect_timer.one_shot = true
+	hit_effect_timer.connect("timeout", Callable(self, "_on_hit_effect_timeout"))
+	add_child(hit_effect_timer)
 	
 	#initialize UI elements
 	player_name_label.text = player_name
@@ -339,7 +347,15 @@ func increment_deaths():
 		level_scene.player_lives -= 1
 		level_scene.update_player_lives()
 	
+func hit_effect() -> void:
+	# Change sprite modulate to red
+	animated_sprite.modulate = Color(1, 0, 0)  # bright red
+	hit_effect_timer.start()
 
+func _on_hit_effect_timeout() -> void:
+	# Reset sprite color to normal
+	animated_sprite.modulate = Color(1, 1, 1)  # white (default)
+	
 func play_death_animation():
 	var _particle = BloodParticle.instantiate()
 	_particle.position = global_position

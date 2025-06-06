@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://gqwu5cxe64bk" path="res://Scenes/Gameplay/LEVEL_MANAGER.gd" id="1_gjmad"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/HUD/HUD.tscn" id="1_ni3g6"]
 [ext_resource type="Texture2D" uid="uid://bptpd6mrx2ql7" path="res://Game Assets/TileSets/backroom2.png" id="2_1cabf"]
-[ext_resource type="PackedScene" uid="uid://co8v4w5m1wt3h" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="2_xexoj"]
+[ext_resource type="PackedScene" uid="uid://c373ot3bl24xy" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="2_xexoj"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy bot 1/enemy_bot.tscn" id="4_t1nbi"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.tscn" id="5_bmvbp"]
 [ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="6_t1nbi"]

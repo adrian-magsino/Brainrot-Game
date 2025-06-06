@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://co8v4w5m1wt3h"]
+[gd_scene load_steps=28 format=3 uid="uid://c373ot3bl24xy"]
 
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dc2c61q4aubwe"]
+[gd_scene load_steps=30 format=4 uid="uid://dc2c61q4aubwe"]
 
 [ext_resource type="Script" uid="uid://gqwu5cxe64bk" path="res://Scenes/Gameplay/LEVEL_MANAGER.gd" id="1_gjmad"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/HUD/HUD.tscn" id="1_ni3g6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="9_ni3g6"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="10_ednb5"]
 [ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_ni3g6"]
+[ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="13_e17vq"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nbvl1"]
 tile_data = PackedInt32Array(0, 262148, 3, 1, 393220, 3)
@@ -201,3 +202,9 @@ position = Vector2(1708, 1129)
 
 [node name="ExplosiveBarrel2" parent="." instance=ExtResource("11_ni3g6")]
 position = Vector2(677, 1584)
+
+[node name="KleeEnemyBot" parent="." instance=ExtResource("13_e17vq")]
+position = Vector2(2283, 1132)
+
+[node name="KleeEnemyBot2" parent="." instance=ExtResource("13_e17vq")]
+position = Vector2(1199, 1149)

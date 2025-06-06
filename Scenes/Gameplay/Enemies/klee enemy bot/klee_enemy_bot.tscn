@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://bn83teut6ypt7"]
+[gd_scene load_steps=25 format=3 uid="uid://bn83teut6ypt7"]
 
-[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared_Scripts/ENEMY_BOT.gd" id="1_ew0um"]
+[ext_resource type="Script" uid="uid://j4fmb8wc7kae" path="res://Scenes/Gameplay/Enemies/klee enemy bot/explosive_bot.gd" id="1_55cgj"]
+[ext_resource type="AudioStream" uid="uid://dn5x0sb6fag77" path="res://Scenes/Gameplay/Enemies/klee enemy bot/Let's Go, Crimson Knight!.mp3" id="3_55cgj"]
 [ext_resource type="Texture2D" uid="uid://bigbp4wnpxlrx" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_run.png" id="4_55cgj"]
-[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="6_5pshw"]
+[ext_resource type="AudioStream" uid="uid://dyreb1rd5pkpl" path="res://Scenes/Gameplay/Enemies/klee enemy bot/unyah-boom-boom-bakudan-notification-sound_469OAOSs.mp3" id="7_04xes"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="7_b254j"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="8_ax1ys"]
+[ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="8_divsg"]
+[ext_resource type="AudioStream" uid="uid://5nwptgpukc8b" path="res://Scenes/Gameplay/Enemies/klee enemy bot/explosion-42132.mp3" id="8_pr5bs"]
+[ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="9_55cgj"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="9_180sk"]
-[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="10_ajn4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf15y"]
 atlas = ExtResource("4_55cgj")
@@ -94,18 +97,21 @@ radius = 80.0
 radius = 56.0
 height = 158.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_55cgj"]
+radius = 200.0
+
 [node name="KleeEnemyBot" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_ew0um")
+script = ExtResource("1_55cgj")
 move_speed = 300.0
 can_destroy_objects = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1kprd")
-animation = &"idle"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 35)
@@ -127,7 +133,7 @@ autostart = true
 shape = SubResource("CircleShape2D_g8hl7")
 
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_5pshw")
+stream = ExtResource("3_55cgj")
 parameters/looping = true
 
 [node name="AttackComponent" parent="." instance=ExtResource("7_b254j")]
@@ -151,8 +157,20 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(6, 18)
 shape = SubResource("CapsuleShape2D_rl784")
 
-[node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_ajn4k")
+[node name="SFX_boom_boom_bakudan" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_04xes")
+volume_db = 5.0
+
+[node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pr5bs")
+volume_db = 5.0
+
+[node name="ExplosiveComponent" parent="." instance=ExtResource("8_divsg")]
+explosion_damage = 80.0
+explosion_particles = ExtResource("9_55cgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveComponent"]
+shape = SubResource("CircleShape2D_55cgj")
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

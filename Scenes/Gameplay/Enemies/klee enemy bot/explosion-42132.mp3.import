@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5nwptgpukc8b"
+path="res://.godot/imported/explosion-42132.mp3-e8268a3ac4e75c370fbe3f67c0398c94.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Gameplay/Enemies/klee enemy bot/explosion-42132.mp3"
+dest_files=["res://.godot/imported/explosion-42132.mp3-e8268a3ac4e75c370fbe3f67c0398c94.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -65,5 +65,12 @@ func _play_explosion_effects():
 
 	var sound: AudioStreamPlayer2D = get_node_or_null(explosion_sound_path)
 	if sound:
-		print("PLAY EXPLOSION SOUND")
+		var detached_sfx = sound.duplicate()
+		detached_sfx.global_position = global_position		
+		get_tree().current_scene.add_child(detached_sfx)
+		detached_sfx.play()
+
+		# Clean it up after it finishes
+		detached_sfx.finished.connect(detached_sfx.queue_free)
+		
 		sound.play()

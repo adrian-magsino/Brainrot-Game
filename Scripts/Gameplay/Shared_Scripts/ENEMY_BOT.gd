@@ -30,7 +30,9 @@ func _ready() -> void:
 	sfx_bot.play()
 	health_component.update_health_bar()
 	attack_cooldown_timer.wait_time = attack_cooldown
-	animated_sprite_2d.animation_finished.connect(_on_AnimatedSprite2D_animation_finished)
+	
+	if animated_sprite_2d.sprite_frames.has_animation("attack"):
+		animated_sprite_2d.animation_finished.connect(_on_AnimatedSprite2D_animation_finished)
 
 	object_timer.wait_time = 2.0
 	object_timer.one_shot = true
@@ -53,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		if velocity.length() > 0:
 			animated_sprite_2d.play("run")
 		else:
-			animated_sprite_2d.play("idle") # Optional if you have an idle animation
+			animated_sprite_2d.play("idle") 
 
 	move_and_slide()
 
@@ -99,7 +101,6 @@ func _on_damage_cooldown_timer_timeout() -> void:
 	can_attack = true
 	if damageable_in_range:
 		_attack_target()
-		animated_sprite_2d.play("attack")
 
 func _attack_target() -> void:
 	if damageable_in_range and can_attack:
@@ -108,8 +109,13 @@ func _attack_target() -> void:
 			hitbox.take_damage(attack_component)
 			can_attack = false
 			is_attacking = true
-			animated_sprite_2d.play("attack")
 			attack_cooldown_timer.start()
+			
+			if animated_sprite_2d.sprite_frames.has_animation("attack"):
+				animated_sprite_2d.play("attack")
+			else:
+				is_attacking = false  # No animation, reset immediately
+
 			
 func die(attack: AttackComponent):
 	if is_dead:

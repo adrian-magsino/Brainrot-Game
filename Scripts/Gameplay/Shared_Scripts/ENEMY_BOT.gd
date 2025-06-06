@@ -18,6 +18,11 @@ var can_attack: bool = true
 var is_attacking: bool = false
 var damageable_in_range: Node = null
 var is_dead: bool = false
+
+@onready var object_timer := Timer.new()
+
+var is_near_object: bool = false
+var pending_object_target: Node = null
 	
 func _ready() -> void:
 	add_to_group("pauseable") #This node will pause along with the game
@@ -27,6 +32,11 @@ func _ready() -> void:
 	attack_cooldown_timer.wait_time = attack_cooldown
 	animated_sprite_2d.animation_finished.connect(_on_AnimatedSprite2D_animation_finished)
 
+	object_timer.wait_time = 2.0
+	object_timer.one_shot = true
+	object_timer.connect("timeout", Callable(self, "_on_object_timer_timeout"))
+	add_child(object_timer)
+	
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -36,6 +46,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		var direction = nav_agent.get_next_path_position() - global_position
 		velocity = direction.normalized() * move_speed
+		
+		if direction.x != 0:
+			animated_sprite_2d.flip_h = direction.x < 0
+			
 		if velocity.length() > 0:
 			animated_sprite_2d.play("run")
 		else:
@@ -52,19 +66,34 @@ func _on_timer_timeout() -> void:
 func _on_attack_area_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		var target = area.get_parent()
-		if target == self:
-			return  # Don't damage self
-		if target is EnemyBot:
-			return  # Don't damage other enemies
-		if target.has_node("HealthComponent"):
+		if target == self or target is EnemyBot:
+			return
+
+		if target == target_player:
 			damageable_in_range = target
+			object_timer.stop()
+			pending_object_target = null
 			if can_attack:
 				_attack_target()
-				animated_sprite_2d.play("attack")
+		elif can_destroy_objects and target.has_node("HealthComponent"):
+			pending_object_target = target
+			object_timer.start()
+
 
 func _on_attack_area_area_exited(area: Area2D) -> void:
-	if area is HitboxComponent and area.get_parent() == damageable_in_range:
-		damageable_in_range = null
+	if area is HitboxComponent:
+		var target = area.get_parent()
+		if target == damageable_in_range:
+			damageable_in_range = null
+		if target == pending_object_target:
+			pending_object_target = null
+			object_timer.stop()
+func _on_object_timer_timeout() -> void:
+	if pending_object_target and not damageable_in_range:
+		damageable_in_range = pending_object_target
+		if can_attack:
+			_attack_target()
+
 
 func _on_damage_cooldown_timer_timeout() -> void:
 	can_attack = true

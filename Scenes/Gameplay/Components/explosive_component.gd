@@ -10,6 +10,7 @@ class_name ExplosiveComponent
 
 @onready var attack_component: AttackComponent = $AttackComponent
 
+
 var attacker: Node = null
 var is_exploded: bool = false
 

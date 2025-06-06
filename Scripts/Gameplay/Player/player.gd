@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 
 #Root Scene
-@onready var gameplay_scene = get_parent()
+@onready var level_scene = get_parent()
 
 #Animations
 @export var BloodParticle: PackedScene
@@ -17,9 +17,7 @@ extends CharacterBody2D
 
 #HUD and Controls
 @onready var HUD = get_parent().get_node("HUD")
-#@onready var scoreboard = control_node.get_node("Scoreboard")
-#@onready var hud = control_node.get_node("HUD")
-@onready var game_ui = HUD.get_node("GameUI")
+@onready var game_ui = HUD.get_node("GameUI") #Contains Player exclusive HUD elements
 
 @onready var player_controls = HUD.get_node("PlayerControls")
 @onready var pickup_button = HUD.get_node("PlayerControls/Pickup Gun")
@@ -40,6 +38,7 @@ var is_a_player = true
 var player_score: int = 0
 var player_deaths: int = 0
 var is_dead: bool = false
+
 
 #Camera zoom feature
 var current_zoom_index: int = 0
@@ -67,24 +66,27 @@ func _enter_tree():
 
 func _ready():
 	add_to_group("pauseable") #This node will pause along with the game
-	print("CURRENT ROOT SCENE: ", gameplay_scene)
+
 	camera.enabled = true
+	
+	#connect signals
 	pickup_button.pressed.connect(_on_pickup_gun_pressed)
 	zoom_button.pressed.connect(_on_zoom_button_pressed)
 	reload_button.pressed.connect(_on_reload_gun_pressed)
 	switch_gun_button.pressed.connect(_on_switch_gun_pressed)
 	dash_button.pressed.connect(_on_dash_button_pressed)
-
+	
+	#initialize UI elements
 	player_name_label.text = player_name
 	health_component.update_health_bar()
 	set_default_gun()
-	# Dash movement
+	
+	# setup dash movement components
 	add_child(dash_timer)
 	dash_timer.one_shot = true
 	dash_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timeout"))
 	dash_progress_bar.visible = false
-	#scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)	
-	
+		
 func _physics_process(delta):		
 	# DASH HANDLING
 	if is_dashing:
@@ -329,11 +331,14 @@ func dash():
 
 func increment_score(killer_id):
 	player_score += 1
-	#scoreboard.update_scoreboard(killer_id, player_name, player_score, player_deaths)
+	
 
 func increment_deaths():	
 	player_deaths += 1
-	#scoreboard.update_scoreboard(get_multiplayer_authority(), player_name, player_score, player_deaths)
+	if level_scene.player_lives > 0:
+		level_scene.player_lives -= 1
+		level_scene.update_player_lives()
+	
 
 func play_death_animation():
 	var _particle = BloodParticle.instantiate()
@@ -347,6 +352,7 @@ func die(attack: AttackComponent):
 	if is_dead:
 		return
 	is_dead = true
+	
 	increment_deaths()
 	play_death_animation()
 	drop_guns_on_death()
@@ -357,7 +363,9 @@ func die(attack: AttackComponent):
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	await get_tree().create_timer(respawn_delay).timeout
-	respawn()
+	print("PLAYER LIVES: ", level_scene.player_lives)
+	if level_scene.player_lives > 0:
+		respawn()
 	
 func respawn():
 	health_component.reset_health()

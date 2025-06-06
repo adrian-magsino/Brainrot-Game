@@ -3,13 +3,21 @@ class_name Level_Manager
 
 @onready var HUD = get_node("HUD")
 @onready var score_label = HUD.get_node("GameUI/ScoreLabel")
+@onready var player_lives_label = HUD.get_node("GameUI/PlayerLivesLabel")
 @onready var victory_panel = HUD.get_node("VictoryPanel")
 @onready var total_kills_label = victory_panel.get_node("TotalKillsLabel")
 @onready var message_label = victory_panel.get_node("Message")
 
+@export var player_lives: int = 1
+
 var enemies_killed: int = 0
 var level_cleared: bool = false
 
+func _ready() -> void:
+	update_player_lives()
+func update_player_lives():
+	player_lives_label.text = "LIVES: %d" % player_lives
+	
 func register_enemy_kill(attacker: Node) -> void:
 	if attacker.is_in_group("player"):
 		enemies_killed += 1

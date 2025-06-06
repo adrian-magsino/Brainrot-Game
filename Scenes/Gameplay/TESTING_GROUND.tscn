@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_u55dd"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="13_r8tjn"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="14_vfnxh"]
-[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy_bot.tscn" id="15_55flw"]
+[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy bot 1/enemy_bot.tscn" id="15_55flw"]
 [ext_resource type="PackedScene" uid="uid://c2ipd31cvr0ra" path="res://Scenes/Gameplay/Items and Attachments/ammo_box.tscn" id="16_yx4cu"]
 [ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="17_pu1t2"]
 [ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="18_uly7k"]

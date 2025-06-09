@@ -3,6 +3,7 @@ extends Area2D
 @export var enemy_scenes: Array[PackedScene] = []
 @export var spawn_interval: float = 10.0
 @export var max_enemies: int = 3
+@export var spawn_count: int = 2 #number of enemies spawned every session
 @export var spawn_area_extents: Vector2 = Vector2(100, 100)
 
 var active_enemies: Array[Node] = []
@@ -34,14 +35,18 @@ func _ready():
 	
 		
 func _on_spawn_timer_timeout():
+	var available_slots = max_enemies - active_enemies.size()
 	#print("GUN SPAWNER TIMEOUT")
-	if active_enemies.size() >= max_enemies:
-		#print("MAX LIMIT REACHED")
-		# Don't spawn more guns yet
+	if available_slots <= 0:
+		print("MAX LIMIT REACHED")
+		# Don't spawn more enemies yet
 		spawn_timer.start()
 		return
 	
-	spawn_enemy()
+	var spawn_this_cycle = min(spawn_count, available_slots)
+	for i in spawn_this_cycle:
+		spawn_enemy()
+
 	spawn_timer.start()
 
 
@@ -51,7 +56,7 @@ func spawn_enemy():
 
 	var enemy_scene = enemy_scenes.pick_random()
 	var enemy = enemy_scene.instantiate()
-	enemy.target_player = get_parent().get_node("PLAYER")
+	#enemy.target_player = get_parent().get_node("PLAYER")
 	
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
@@ -74,6 +79,6 @@ func spawn_enemy():
 		enemy.tree_exited.connect(_on_enemy_removed.bind(enemy))
 
 
-func _on_enemy_removed(gun: Node):
-	print("ENEMY KILLED")
-	active_enemies.erase(gun)
+func _on_enemy_removed(enemy: Node):
+	print("Enemy removed:", enemy.name)
+	active_enemies.erase(enemy)

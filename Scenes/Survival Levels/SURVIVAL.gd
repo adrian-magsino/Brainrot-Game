@@ -9,10 +9,10 @@ var all_enemy_scene_paths = [
 ]
 
 var difficulty_stages = [
-	{ "time": 0,   "interval": 10.0, "max_enemies": 3, "enemy_types": ["normal_enemy"] as Array[String] },
-	{ "time": 30, "interval": 7.0,  "max_enemies": 5, "enemy_types": ["normal_enemy", "fast_enemy"] as Array[String] },
-	{ "time": 60, "interval": 1.0,  "max_enemies": 10, "enemy_types": ["normal_enemy", "fast_enemy", "special"] as Array[String]},
-	{ "time": 360, "interval": 5.0,  "max_enemies": 8, "enemy_types": ["normal_enemy", "ranged_enemy", "elite"] as Array[String], "spawn_boss": true }
+	{ "time": 0, "interval": 10.0, "spawn_count": 1, "max_enemies": 3, "enemy_types": ["normal_enemy"] as Array[String] },
+	{ "time": 30, "interval": 7.0, "spawn_count": 2, "max_enemies": 5, "enemy_types": ["normal_enemy", "fast_enemy"] as Array[String] },
+	{ "time": 60, "interval": 1.0, "spawn_count": 3, "max_enemies": 10, "enemy_types": ["normal_enemy", "fast_enemy", "special"] as Array[String]},
+	{ "time": 360, "interval": 5.0, "spawn_count": 4, "max_enemies": 8, "enemy_types": ["normal_enemy", "ranged_enemy", "elite"] as Array[String], "spawn_boss": true }
 ]
 
 var current_difficulty_stage = 0
@@ -38,6 +38,7 @@ func apply_difficulty_stage(stage_index: int):
 	print("Applying difficulty stage:", stage_index, "with tags:", stage.enemy_types)
 	for spawner in get_tree().get_nodes_in_group("enemy_spawner"):
 		spawner.spawn_interval = stage.interval
+		spawner.spawn_count = stage.spawn_count
 		spawner.max_enemies = stage.max_enemies
 		spawner.enemy_scenes = load_enemy_scenes_by_tags(stage.enemy_types)
 		print("Spawner:", spawner.name, "assigned enemies:", spawner.enemy_scenes.size())

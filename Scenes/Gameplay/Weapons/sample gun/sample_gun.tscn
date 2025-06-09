@@ -34,3 +34,4 @@ position = Vector2(37, -12)
 
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_t3dk5")
+bus = &"SFX"

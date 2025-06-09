@@ -26,3 +26,4 @@ shape = SubResource("RectangleShape2D_5pdue")
 position = Vector2(39, -2)
 
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

@@ -224,10 +224,6 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
-[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_qyqo8")
-parameters/looping = true
-
 [node name="AttackComponent" parent="." instance=ExtResource("4_uh7xe")]
 attack_damage = 10.0
 
@@ -249,8 +245,14 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(6, 18)
 shape = SubResource("CapsuleShape2D_rl784")
 
+[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qyqo8")
+bus = &"SFX"
+parameters/looping = true
+
 [node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_bvn0o")
+bus = &"SFX"
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

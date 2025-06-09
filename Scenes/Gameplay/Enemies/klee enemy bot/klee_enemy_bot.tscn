@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="7_b254j"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="8_ax1ys"]
 [ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="8_divsg"]
-[ext_resource type="AudioStream" uid="uid://5nwptgpukc8b" path="res://Scenes/Gameplay/Enemies/klee enemy bot/explosion-42132.mp3" id="8_pr5bs"]
+[ext_resource type="AudioStream" uid="uid://5nwptgpukc8b" path="res://Scenes/Gameplay/Enemies/klee enemy bot/SFX_explosion2.mp3" id="8_pr5bs"]
 [ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="9_55cgj"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="9_180sk"]
 
@@ -132,10 +132,6 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
-[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_55cgj")
-parameters/looping = true
-
 [node name="AttackComponent" parent="." instance=ExtResource("7_b254j")]
 attack_damage = 10.0
 
@@ -157,20 +153,27 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(6, 18)
 shape = SubResource("CapsuleShape2D_rl784")
 
-[node name="SFX_boom_boom_bakudan" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_04xes")
-volume_db = 5.0
-
-[node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_pr5bs")
-volume_db = 5.0
-
 [node name="ExplosiveComponent" parent="." instance=ExtResource("8_divsg")]
 explosion_damage = 80.0
 explosion_particles = ExtResource("9_55cgj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveComponent"]
 shape = SubResource("CircleShape2D_55cgj")
+
+[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_55cgj")
+bus = &"SFX"
+parameters/looping = true
+
+[node name="SFX_boom_boom_bakudan" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_04xes")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pr5bs")
+volume_db = 5.0
+bus = &"SFX"
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

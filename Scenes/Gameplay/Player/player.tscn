@@ -1,11 +1,11 @@
 [gd_scene load_steps=28 format=3 uid="uid://c373ot3bl24xy"]
 
-[ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scenes/Gameplay/Player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]
 [ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/Components/interacting_component.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dx1yolru7i14y" path="res://Animations/Particles/BloodParticles.tscn" id="3_h3jkl"]
 [ext_resource type="Texture2D" uid="uid://dwrcwk6yvlqou" path="res://Game Assets/Character Sprites/char_tungsahur-Sheet.png" id="8_g2c3n"]
-[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="9_68apu"]
+[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/blood-pop.wav" id="9_68apu"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="11_ibv1r"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="12_uy7c4"]
 

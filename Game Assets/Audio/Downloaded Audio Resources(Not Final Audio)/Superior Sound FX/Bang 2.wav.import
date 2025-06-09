@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://y4fbw80n30x7"
+path="res://.godot/imported/Bang 2.wav-9c5c6b5acdc9b73fbbb8bf033315c441.sample"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Superior Sound FX/Bang 2.wav"
+dest_files=["res://.godot/imported/Bang 2.wav-9c5c6b5acdc9b73fbbb8bf033315c441.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

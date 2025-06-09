@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d8bdumllp8my"
+path="res://.godot/imported/Scifi Effect 3.wav-e805ea8e4d24a4549c634a889402f043.sample"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Superior Sound FX/Scifi Effect 3.wav"
+dest_files=["res://.godot/imported/Scifi Effect 3.wav-e805ea8e4d24a4549c634a889402f043.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

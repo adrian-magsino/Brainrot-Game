@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="3_xwx1j"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="4_r8cg1"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="5_h4i7n"]
-[ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/SFX_explosion.mp3" id="7_xwx1j"]
+[ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Game Assets/Audio/Shared SFX/SFX_explosion.mp3" id="7_xwx1j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fomm0"]
 atlas = ExtResource("3_fomm0")

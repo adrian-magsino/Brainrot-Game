@@ -253,6 +253,7 @@ collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_01rsn")
+enemy_type = "fast_enemy"
 move_speed = 300.0
 attack_cooldown = 0.5
 can_destroy_objects = true

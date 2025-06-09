@@ -192,6 +192,7 @@ collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_uh7xe")
+enemy_type = "normal_enemy"
 can_destroy_objects = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

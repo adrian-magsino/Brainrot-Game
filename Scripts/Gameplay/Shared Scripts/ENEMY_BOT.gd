@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name EnemyBot
 
+@export_enum("normal_enemy", "fast_enemy", "ranged_enemy", "special", "elite", "boss")
+var enemy_type: String
+
 @export var move_speed: float = 200.0
 @export var bot_name: String = "ENEMY BOT"
 @export var attack_cooldown: float = 1.0

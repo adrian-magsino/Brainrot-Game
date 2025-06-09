@@ -1,18 +1,19 @@
-[gd_scene load_steps=30 format=4 uid="uid://dc2c61q4aubwe"]
+[gd_scene load_steps=31 format=4 uid="uid://dc2c61q4aubwe"]
 
-[ext_resource type="Script" uid="uid://gqwu5cxe64bk" path="res://Scenes/Gameplay/LEVEL_MANAGER.gd" id="1_gjmad"]
-[ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/HUD/HUD.tscn" id="1_ni3g6"]
-[ext_resource type="Texture2D" uid="uid://bptpd6mrx2ql7" path="res://Game Assets/TileSets/backroom2.png" id="2_1cabf"]
-[ext_resource type="PackedScene" uid="uid://c373ot3bl24xy" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="2_xexoj"]
-[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy bot 1/enemy_bot.tscn" id="4_t1nbi"]
-[ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.tscn" id="5_bmvbp"]
-[ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="6_t1nbi"]
-[ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="7_1cabf"]
-[ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="8_ednb5"]
-[ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="9_ni3g6"]
-[ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="10_ednb5"]
-[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_ni3g6"]
-[ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="13_e17vq"]
+[ext_resource type="Script" uid="uid://clf21q4jvmyl2" path="res://Scenes/Survival Levels/SURVIVAL.gd" id="1_fw3hm"]
+[ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/HUD/HUD.tscn" id="2_fw3hm"]
+[ext_resource type="Texture2D" uid="uid://bptpd6mrx2ql7" path="res://Game Assets/TileSets/backroom2.png" id="3_dyojt"]
+[ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="4_8ndce"]
+[ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="6_34wxx"]
+[ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="7_w4yle"]
+[ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="8_et7fc"]
+[ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="9_jrfjk"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="10_el7cg"]
+[ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="11_fw3hm"]
+[ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Spawners/player_spawn_point_1.tscn" id="12_dyojt"]
+[ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="13_34wxx"]
+[ext_resource type="PackedScene" uid="uid://hwuksxvjcwd1" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.tscn" id="14_w4yle"]
+[ext_resource type="PackedScene" uid="uid://bfdb2ju1736w" path="res://Scenes/Gameplay/Bullets/grenade_bullet.tscn" id="15_et7fc"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nbvl1"]
 tile_data = PackedInt32Array(0, 262148, 3, 1, 393220, 3)
@@ -61,7 +62,7 @@ agent_radius = 0.0
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uk08m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbvl1"]
-texture = ExtResource("2_1cabf")
+texture = ExtResource("3_dyojt")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dks3a")
 1:0/0 = 0
@@ -144,9 +145,9 @@ pattern_8 = SubResource("TileMapPattern_ui4jt")
 pattern_9 = SubResource("TileMapPattern_b7yio")
 
 [node name="backroom_map" type="Node2D"]
-script = ExtResource("1_gjmad")
+script = ExtResource("1_fw3hm")
 
-[node name="HUD" parent="." instance=ExtResource("1_ni3g6")]
+[node name="HUD" parent="." instance=ExtResource("2_fw3hm")]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(5, 5)
@@ -169,42 +170,42 @@ tile_set = SubResource("TileSet_cmdsc")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
 
-[node name="PLAYER" parent="." instance=ExtResource("2_xexoj")]
+[node name="PLAYER" parent="." instance=ExtResource("4_8ndce")]
 position = Vector2(252, 329)
 
-[node name="EnemyBot" parent="." instance=ExtResource("4_t1nbi")]
-position = Vector2(566, 341)
-
-[node name="EnemyBot2" parent="." instance=ExtResource("4_t1nbi")]
-position = Vector2(1654, 701)
-
-[node name="EnemyBot3" parent="." instance=ExtResource("4_t1nbi")]
-position = Vector2(1089, 1888)
-
-[node name="SampleGun" parent="." instance=ExtResource("5_bmvbp")]
-position = Vector2(246, 756)
-
-[node name="GunSpawner" parent="." instance=ExtResource("6_t1nbi")]
+[node name="GunSpawner" parent="." instance=ExtResource("6_34wxx")]
 position = Vector2(288, 1139)
-gun_scenes = Array[PackedScene]([ExtResource("7_1cabf"), ExtResource("8_ednb5"), ExtResource("9_ni3g6")])
+gun_scenes = Array[PackedScene]([ExtResource("7_w4yle"), ExtResource("8_et7fc"), ExtResource("9_jrfjk")])
 
-[node name="assault_rifle" parent="." instance=ExtResource("7_1cabf")]
+[node name="assault_rifle" parent="." instance=ExtResource("7_w4yle")]
 position = Vector2(759, 738)
 
-[node name="smg" parent="." instance=ExtResource("9_ni3g6")]
-position = Vector2(539, 1187)
-
-[node name="sniper" parent="." instance=ExtResource("10_ednb5")]
-position = Vector2(1109, 925)
-
-[node name="ExplosiveBarrel" parent="." instance=ExtResource("11_ni3g6")]
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("10_el7cg")]
 position = Vector2(1708, 1129)
 
-[node name="ExplosiveBarrel2" parent="." instance=ExtResource("11_ni3g6")]
+[node name="ExplosiveBarrel2" parent="." instance=ExtResource("10_el7cg")]
 position = Vector2(677, 1584)
 
-[node name="KleeEnemyBot" parent="." instance=ExtResource("13_e17vq")]
-position = Vector2(2283, 1132)
+[node name="EnemySpawner" parent="." instance=ExtResource("11_fw3hm")]
+position = Vector2(1678, 523)
 
-[node name="KleeEnemyBot2" parent="." instance=ExtResource("13_e17vq")]
-position = Vector2(1199, 1149)
+[node name="EnemySpawner2" parent="." instance=ExtResource("11_fw3hm")]
+position = Vector2(1053, 762)
+
+[node name="PlayerSpawnPoint1" parent="." instance=ExtResource("12_dyojt")]
+position = Vector2(693, 1141)
+
+[node name="PlayerSpawnPoint2" parent="." instance=ExtResource("12_dyojt")]
+position = Vector2(245, 342)
+
+[node name="Minigun" parent="." instance=ExtResource("13_34wxx")]
+position = Vector2(242, 713)
+
+[node name="grenade_launcher" parent="." instance=ExtResource("14_w4yle")]
+position = Vector2(254, 930)
+
+[node name="grenade_bullet" parent="." instance=ExtResource("15_et7fc")]
+position = Vector2(504, 1154)
+
+[node name="Minigun2" parent="." instance=ExtResource("13_34wxx")]
+position = Vector2(504, 1154)

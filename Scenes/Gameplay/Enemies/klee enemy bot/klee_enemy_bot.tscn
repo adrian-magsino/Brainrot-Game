@@ -106,6 +106,7 @@ collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_55cgj")
+enemy_type = "special"
 move_speed = 300.0
 can_destroy_objects = true
 

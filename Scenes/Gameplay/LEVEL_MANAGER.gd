@@ -8,6 +8,7 @@ class_name Level_Manager
 @onready var victory_panel = HUD.get_node("GameResults/VictoryPanel")
 @onready var defeat_panel = HUD.get_node("GameResults/DefeatPanel")
 @onready var PLAYER = get_node("PLAYER")
+
 @export var player_lives: int = 1
 
 var game_time := 0.0

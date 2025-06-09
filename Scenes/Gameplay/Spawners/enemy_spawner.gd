@@ -12,9 +12,6 @@ var active_enemies: Array[Node] = []
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
 func _ready():
-	if enemy_scenes.is_empty():
-		print("GUN SPAWNER IS EMPTY")
-		return
 	if collision_shape.shape is RectangleShape2D:
 		# Duplicate the shape so each spawner gets a unique instance
 		var shape = collision_shape.shape.duplicate()
@@ -29,7 +26,11 @@ func _ready():
 	print("ENEMY SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	spawn_timer.start()
+	
+		
+	if !enemy_scenes.is_empty():
+		print("ENEMY SPAWNER IS NOT EMPTY")
+		spawn_timer.start()
 	
 		
 func _on_spawn_timer_timeout():

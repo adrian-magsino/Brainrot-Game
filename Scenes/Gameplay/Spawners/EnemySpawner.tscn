@@ -69,7 +69,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gui7f"]
 
-[node name="EnemySpawner" type="Area2D"]
+[node name="EnemySpawner" type="Area2D" groups=["enemy_spawner"]]
 script = ExtResource("1_1h8pg")
 spawn_area_extents = Vector2(200, 200)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwrcwk6yvlqou"
-path="res://.godot/imported/char_tungsahur-Sheet.png-5fe04f2ab5d777a6dedc39181e78ac09.ctex"
+uid="uid://tvp5qywpkonn"
+path="res://.godot/imported/char_ballerinacapucina-Sheet.png-4da99397851044977dcd22dd59173dc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Character Sprites/char_tungsahur-Sheet.png"
-dest_files=["res://.godot/imported/char_tungsahur-Sheet.png-5fe04f2ab5d777a6dedc39181e78ac09.ctex"]
+source_file="res://Game Assets/Character Skins/sprite sheets/char_ballerinacapucina-Sheet.png"
+dest_files=["res://.godot/imported/char_ballerinacapucina-Sheet.png-4da99397851044977dcd22dd59173dc7.ctex"]
 
 [params]
 

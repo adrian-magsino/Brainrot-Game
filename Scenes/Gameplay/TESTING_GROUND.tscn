@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/HUD/HUD.tscn" id="2_8gj7g"]
 [ext_resource type="TileSet" uid="uid://b41wqudk8urvu" path="res://Game Assets/TileSets/TopDown StoneAndBridge - DungeonFloor GODOT/tileset_TopDown StoneAndBridge - DungeonFloor GODOT.tres" id="2_pu1t2"]
-[ext_resource type="PackedScene" uid="uid://y3mxgersl0op" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="4_alghn"]
+[ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="4_alghn"]
 [ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="5_fuc0x"]
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="6_woxdx"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="7_uhyla"]

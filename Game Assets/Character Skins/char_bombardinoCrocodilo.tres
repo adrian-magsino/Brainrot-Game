@@ -1,0 +1,79 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://ueonbt6kadwr"]
+
+[ext_resource type="Texture2D" uid="uid://d0w3hsx4emwm2" path="res://Game Assets/Character Skins/sprite sheets/bombardinoCrocodilo-Sheet.png" id="1_4wrkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odpm5"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(0, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reux4"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(115, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hwyc"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(230, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyaak"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(345, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bedm"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(0, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwwbf"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(115, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhdjg"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(230, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2cmv"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(345, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_124xk"]
+atlas = ExtResource("1_4wrkk")
+region = Rect2(460, 115, 115, 115)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odpm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reux4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hwyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyaak")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bedm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwwbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhdjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2cmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_124xk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

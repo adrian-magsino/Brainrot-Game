@@ -1,14 +1,12 @@
 class_name Player
 extends CharacterBody2D
-#extends "res://Scripts/Gameplay/Shared_Scripts/EntityHealthManager.gd"
-
 
 #Root Scene
 @onready var level_scene = get_parent()
 
 #Animations
 @export var BloodParticle: PackedScene
-@onready var animated_sprite = $AnimatedSprite2D2
+@onready var animated_sprite = $AnimatedSprite2D
 
 ##Nodes and Scenes
 @export var default_gun_scene: PackedScene
@@ -32,7 +30,7 @@ extends CharacterBody2D
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
-var player_name: String = "PLAYER"
+var player_name: String = PLAYER_DATA.player_name
 
 var is_a_player = true
 var player_score: int = 0
@@ -86,6 +84,7 @@ func _ready():
 	
 	#initialize UI elements
 	player_name_label.text = player_name
+	apply_selected_skin()
 	health_component.update_health_bar()
 	set_default_gun()
 	
@@ -117,10 +116,10 @@ func _physics_process(delta):
 		if input_vector != Vector2.ZERO:
 			input_vector = input_vector.normalized()
 			velocity = input_vector * move_speed
-			animated_sprite.play("Walk")
+			animated_sprite.play("walk")
 		else:
 			velocity = Vector2.ZERO
-			animated_sprite.play("Idle")
+			animated_sprite.play("idle")
 
 	move_and_slide()
 
@@ -167,7 +166,21 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("reload_gun"):
 			gun.start_reload()
 		game_ui.update_ammo(gun.current_magazine, gun.total_ammo)
-		
+
+func apply_selected_skin():
+	var skin_path = get_skin_path(PLAYER_DATA.current_character)
+	if skin_path != "":
+		var frames = load(skin_path)
+		if frames is SpriteFrames:
+			animated_sprite.sprite_frames = frames
+
+func get_skin_path(character_id: String) -> String:
+	match character_id:
+		"sahur": return "res://Game Assets/Character Skins/char_tungSahur.tres"
+		"ballerina": return "res://Game Assets/Character Skins/char_ballerinaCappuccina.tres"
+		"tralalero": return "res://Game Assets/Character Skins/char_tralaleloTralala.tres"
+		_: return "res://Game Assets/Character Skins/char_tungSahur.tres"  # fallback
+				
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(
 		Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left"),

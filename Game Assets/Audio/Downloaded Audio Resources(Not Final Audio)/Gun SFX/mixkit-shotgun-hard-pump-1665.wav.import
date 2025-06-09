@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cex0eo6nh0o3"
+path="res://.godot/imported/mixkit-shotgun-hard-pump-1665.wav-df8a20b08291bed8d4ab4482ffafa397.sample"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Gun SFX/mixkit-shotgun-hard-pump-1665.wav"
+dest_files=["res://.godot/imported/mixkit-shotgun-hard-pump-1665.wav-df8a20b08291bed8d4ab4482ffafa397.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

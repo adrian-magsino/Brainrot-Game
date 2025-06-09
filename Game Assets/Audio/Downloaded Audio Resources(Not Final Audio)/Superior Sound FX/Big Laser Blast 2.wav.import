@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buutlfe820dd0"
+path="res://.godot/imported/Big Laser Blast 2.wav-da2773afbcf31472b99511fdc6b40a9d.sample"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Superior Sound FX/Big Laser Blast 2.wav"
+dest_files=["res://.godot/imported/Big Laser Blast 2.wav-da2773afbcf31472b99511fdc6b40a9d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

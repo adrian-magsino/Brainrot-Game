@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8w6wdpne1kql"
+path="res://.godot/imported/Slap.wav-3347c1b5448d8c8a7477e1291a1a8659.sample"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Superior Sound FX/Slap.wav"
+dest_files=["res://.godot/imported/Slap.wav-3347c1b5448d8c8a7477e1291a1a8659.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

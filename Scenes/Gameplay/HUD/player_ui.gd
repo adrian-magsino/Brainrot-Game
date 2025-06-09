@@ -1,5 +1,11 @@
 extends Control
 
+@onready var game_time_label: Label = $GameTimeLabel
+
+
+func update_timer_label(time_string: String):
+	game_time_label.text = "Time: " + time_string
+	
 func update_ammo(current_mag: int, total_ammo: int):
 	$AmmoLabel.text = "Ammo: %d / %d" % [current_mag, total_ammo]
 

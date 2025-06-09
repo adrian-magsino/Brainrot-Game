@@ -1,12 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://csf0gcecsfgtt"]
+[gd_scene load_steps=13 format=3 uid="uid://csf0gcecsfgtt"]
 
-[ext_resource type="Script" path="res://enemy_spawner.gd" id="1_1h8pg"]
+[ext_resource type="Script" uid="uid://c8hy36yalcsfm" path="res://Scenes/Gameplay/Spawners/enemy_spawner.gd" id="1_1h8pg"]
+[ext_resource type="Texture2D" uid="uid://c2vx8irje4o81" path="res://Scenes/Gameplay/Spawners/enemy_spawner.png" id="2_scwnn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmly5"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(0, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t5bc"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(567, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w65r5"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(1134, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmhg5"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(1701, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fio2u"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(2268, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjy8l"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(2835, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a1ah"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(3402, 0, 567, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivvis"]
+atlas = ExtResource("2_scwnn")
+region = Rect2(3969, 0, 567, 567)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adqov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmly5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t5bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w65r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmhg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fio2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjy8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a1ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivvis")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gui7f"]
-size = Vector2(16.962, 8.17419)
 
 [node name="EnemySpawner" type="Area2D"]
 script = ExtResource("1_1h8pg")
+spawn_area_extents = Vector2(200, 200)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_adqov")
+autoplay = "default"
+frame_progress = 0.604473
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gui7f")

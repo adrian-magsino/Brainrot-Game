@@ -34,6 +34,7 @@ extends CharacterBody2D
 @onready var respawn_delay: float = 2.0
 var player_name: String = PLAYER_DATA.player_name
 
+@export var player_lives = 3
 var is_a_player = true
 var player_score: int = 0
 var player_deaths: int = 0
@@ -78,6 +79,8 @@ func _ready():
 	reload_button.pressed.connect(_on_reload_gun_pressed)
 	switch_gun_button.pressed.connect(_on_switch_gun_pressed)
 	dash_button.pressed.connect(_on_dash_button_pressed)
+	
+	
 	
 	hit_effect_timer = Timer.new()
 	hit_effect_timer.wait_time = hit_effect_duration
@@ -322,9 +325,9 @@ func increment_score(killer_id):
 	
 func increment_deaths():	
 	player_deaths += 1
-	if level_scene.player_lives > 0:
-		level_scene.player_lives -= 1
-		level_scene.update_player_lives()
+	if player_lives > 0:
+		player_lives -= 1
+		update_player_lives()
 	
 func hit_effect() -> void:
 	# Change sprite modulate to red
@@ -358,8 +361,8 @@ func die(attack: AttackComponent):
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	await get_tree().create_timer(respawn_delay).timeout
-	print("PLAYER LIVES: ", level_scene.player_lives)
-	if level_scene.player_lives > 0:
+	print("PLAYER LIVES: ", player_lives)
+	if player_lives > 0:
 		respawn()
 	else:
 		level_scene.game_defeat()
@@ -378,6 +381,9 @@ func respawn():
 	$CollisionShape2D.disabled = false
 	is_dead = false
 	set_default_gun()
+
+func update_player_lives():
+	level_scene.player_lives_label.text = "x %d" % player_lives
 	
 func switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:

@@ -9,7 +9,7 @@ class_name Level_Manager
 @onready var defeat_panel = HUD.get_node("GameResults/DefeatPanel")
 @onready var PLAYER = get_node("PLAYER")
 
-@export var player_lives: int = 1
+#@export var player_lives: int = 1
 
 var game_time := 0.0
 var formatted_time = ""
@@ -17,7 +17,8 @@ var enemies_killed: int = 0
 var level_cleared: bool = false
 
 func _ready() -> void:
-	update_player_lives()
+	PLAYER.update_player_lives()
+
 	
 func _process(delta):
 	game_time += delta
@@ -30,8 +31,7 @@ func update_game_time_display():
 
 	game_ui.update_timer_label(formatted_time)
 	
-func update_player_lives():
-	player_lives_label.text = "x %d" % player_lives
+
 	
 func register_enemy_kill(attacker: Node) -> void:
 	if attacker.is_in_group("player"):

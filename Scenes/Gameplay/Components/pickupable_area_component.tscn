@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6gw207pglb4u"]
+
+[ext_resource type="Script" uid="uid://drj178504ecuk" path="res://Scenes/Gameplay/Items and Attachments/Ammo Box/pickupable_area_component.gd" id="1_o6847"]
+
+[node name="PickupableArea" type="Area2D"]
+script = ExtResource("1_o6847")

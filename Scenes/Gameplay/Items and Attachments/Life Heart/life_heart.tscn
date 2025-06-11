@@ -1,3 +1,101 @@
-[gd_scene format=3 uid="uid://b6gl8mu4a6ouf"]
+[gd_scene load_steps=16 format=3 uid="uid://b6gl8mu4a6ouf"]
+
+[ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="1_6uw6m"]
+[ext_resource type="Script" uid="uid://q77mv75ed5h0" path="res://Scenes/Gameplay/Items and Attachments/Life Heart/life_heart.gd" id="1_slq7p"]
+[ext_resource type="Texture2D" uid="uid://chl8rspgd555y" path="res://Scenes/Gameplay/Items and Attachments/Life Heart/heart.blink.png" id="2_slq7p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq2e4"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypnvi"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwduw"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydnhv"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imv77"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t83da"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcp1k"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kfc7"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kyfp"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ki3k"]
+atlas = ExtResource("2_slq7p")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgo2d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq2e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypnvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwduw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydnhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imv77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t83da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcp1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kfc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kyfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ki3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uw6m"]
+radius = 20.0
 
 [node name="LifeHeart" type="Node2D"]
+script = ExtResource("1_slq7p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_hgo2d")
+autoplay = "default"
+frame_progress = 0.769334
+
+[node name="PickupableArea" parent="." instance=ExtResource("1_6uw6m")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupableArea"]
+shape = SubResource("CircleShape2D_6uw6m")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://batp0wi7giste"]
+[gd_scene load_steps=29 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Script" uid="uid://cjhifur52olen" path="res://Scenes/Levels/level_1.gd" id="1_8gj7g"]
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="21_woxdx"]
 [ext_resource type="PackedScene" uid="uid://hwuksxvjcwd1" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.tscn" id="24_a5c1v"]
 [ext_resource type="PackedScene" uid="uid://dt5fi8jc62q3c" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.tscn" id="25_5112j"]
+[ext_resource type="PackedScene" uid="uid://b6gl8mu4a6ouf" path="res://Scenes/Gameplay/Items and Attachments/Life Heart/life_heart.tscn" id="25_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="27_u55dd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
@@ -87,7 +88,6 @@ sources/0 = SubResource("TileSetAtlasSource_yth3r")
 
 [node name="TESTING_GROUND" type="Node2D"]
 script = ExtResource("1_8gj7g")
-player_lives = 3
 
 [node name="HUD" parent="." instance=ExtResource("2_8gj7g")]
 
@@ -185,3 +185,6 @@ position = Vector2(1812, 763)
 
 [node name="rocket_launcher" parent="." instance=ExtResource("25_5112j")]
 position = Vector2(1781, 849)
+
+[node name="LifeHeart" parent="." instance=ExtResource("25_kxyj4")]
+position = Vector2(1432, 910)

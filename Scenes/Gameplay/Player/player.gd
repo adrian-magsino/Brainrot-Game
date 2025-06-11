@@ -168,7 +168,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_pressed("reload_gun"):
 			gun.start_reload()
-		game_ui.update_ammo(gun.current_magazine, gun.total_ammo)
+		game_ui.update_ammo(gun.current_magazine, gun.current_total_ammo)
 
 func apply_selected_skin():
 	var skin_path = get_skin_path(PLAYER_DATA.current_character)
@@ -261,11 +261,7 @@ func equip_gun(gun: Node):
 			camera.zoom = Vector2.ONE * gun.zoom_distance[current_zoom_index]
 			update_zoom_button_label(current_zoom_index + 1)
 			
-func add_ammo_to_current_gun():
-	var gun = gun_inventory[current_gun_index]
-	if gun and gun is Gun:
-		gun.total_ammo += gun.max_ammo
-		gun.emit_signal("ammo_changed", gun.current_magazine, gun.total_ammo)
+
 		
 func cycle_zoom():
 	var gun = get_held_gun()
@@ -398,8 +394,8 @@ func update_gun_in_HUD():
 	if gun:
 		game_ui.update_current_gun(gun)
 	
-func _on_ammo_changed(current_mag, total_ammo):
-	game_ui.update_ammo(current_mag, total_ammo)
+func _on_ammo_changed(current_mag, current_total_ammo):
+	game_ui.update_ammo(current_mag, current_total_ammo)
 
 func _on_reload_started(duration: float):
 	game_ui.start_reload_bar(duration)

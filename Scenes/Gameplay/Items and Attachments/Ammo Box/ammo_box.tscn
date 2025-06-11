@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2ipd31cvr0ra"]
+[gd_scene load_steps=5 format=3 uid="uid://c2ipd31cvr0ra"]
 
 [ext_resource type="Script" uid="uid://b3qoxv178gfnp" path="res://Scenes/Gameplay/Items and Attachments/Ammo Box/ammo_box.gd" id="1_ebn3i"]
 [ext_resource type="Texture2D" uid="uid://do3puflmxwnmv" path="res://Scenes/Gameplay/Items and Attachments/Ammo Box/ammobox.png" id="1_selxs"]
+[ext_resource type="Script" uid="uid://drj178504ecuk" path="res://Scenes/Gameplay/Items and Attachments/Ammo Box/pickupable_area_component.gd" id="2_a1usm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebn3i"]
 size = Vector2(35, 25)
 
-[node name="AmmoBox" type="Area2D"]
+[node name="AmmoBox" type="Node2D"]
 script = ExtResource("1_ebn3i")
+
+[node name="PickupableArea" type="Area2D" parent="."]
+script = ExtResource("2_a1usm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupableArea"]
+shape = SubResource("RectangleShape2D_ebn3i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_selxs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ebn3i")

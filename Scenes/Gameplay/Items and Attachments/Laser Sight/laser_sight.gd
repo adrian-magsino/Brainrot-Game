@@ -42,9 +42,10 @@ func deactivate():
 	$LaserRay.enabled = false
 
 func can_be_picked_up() -> bool:
-	return !is_picked_up
+	#return !is_picked_up
+	return false
 	
-func pick_up(player: Node):
+func REMOVED_pick_up(player: Node):
 	is_picked_up = true
 	owner_player = player
 
@@ -59,7 +60,7 @@ func on_attach_to_gun(gun: Node, player: Node):
 	parent_gun = gun
 	owner_player = player
 
-func drop(drop_position: Vector2 = Vector2.ZERO, parent_node: Node = null):
+func REMOVED_drop(drop_position: Vector2 = Vector2.ZERO, parent_node: Node = null):
 	is_picked_up = false
 	is_active = false
 	call_deferred("_deferred_drop", drop_position, parent_node)

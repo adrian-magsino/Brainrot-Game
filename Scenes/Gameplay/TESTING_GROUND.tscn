@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://batp0wi7giste"]
+[gd_scene load_steps=28 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Script" uid="uid://cjhifur52olen" path="res://Scenes/Levels/level_1.gd" id="1_8gj7g"]
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Spawners/player_spawn_point_1.tscn" id="20_fuc0x"]
 [ext_resource type="PackedScene" uid="uid://odblr4vjp1tx" path="res://Scenes/Gameplay/Spawners/ItemSpawner.tscn" id="21_uhyla"]
 [ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="21_woxdx"]
-[ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items and Attachments/Laser Sight/LaserSight.tscn" id="22_8gj7g"]
 [ext_resource type="PackedScene" uid="uid://hwuksxvjcwd1" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.tscn" id="24_a5c1v"]
 [ext_resource type="PackedScene" uid="uid://dt5fi8jc62q3c" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.tscn" id="25_5112j"]
 [ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="27_u55dd"]
@@ -167,7 +166,7 @@ position = Vector2(2263, 1011)
 
 [node name="ItemSpawner" parent="." instance=ExtResource("21_uhyla")]
 position = Vector2(375, 797)
-item_scenes = Array[PackedScene]([ExtResource("16_yx4cu"), ExtResource("22_8gj7g")])
+item_scenes = Array[PackedScene]([ExtResource("16_yx4cu")])
 spawn_area_extents = Vector2(400, 400)
 
 [node name="GunSpawners" type="Node" parent="."]

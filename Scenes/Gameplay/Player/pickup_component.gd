@@ -10,9 +10,7 @@ func pickup_item():
 			if area.has_method("pick_up"):
 				if area is Gun:
 					_pickup_gun(area)
-				#elif area is Attachment:
-					#_pickup_attachment(area)
-				elif area is AmmoBox:
+				else:
 					area.pick_up(player)
 			return
 				

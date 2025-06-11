@@ -6,8 +6,8 @@ extends Control
 func update_timer_label(time_string: String):
 	game_time_label.text = "Time: " + time_string
 	
-func update_ammo(current_mag: int, total_ammo: int):
-	$AmmoLabel.text = "Ammo: %d / %d" % [current_mag, total_ammo]
+func update_ammo(current_mag: int, current_total_ammo: int):
+	$AmmoLabel.text = "Ammo: %d / %d" % [current_mag, current_total_ammo]
 
 func start_reload_bar(duration: float):
 	var progress_bar = $ReloadProgress

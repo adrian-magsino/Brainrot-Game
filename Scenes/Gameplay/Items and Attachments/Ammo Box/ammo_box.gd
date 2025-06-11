@@ -1,14 +1,16 @@
-extends Area2D
+extends Node2D
 class_name AmmoBox
 
-@export var pickup_amount_multiplier: float = 1.0
-var is_picked_up: bool = false
+@onready var pickupable_area: Area2D = $PickupableArea
 
-func can_be_picked_up() -> bool: return true
-
-func pick_up(player: Player):
-	if not player.has_method("add_ammo_to_current_gun"):
-		return
-	player.add_ammo_to_current_gun()
-	is_picked_up = true
-	queue_free()
+func on_picked_up(player: Player):
+	add_ammo_to_current_gun(player)
+	
+func add_ammo_to_current_gun(player: Player):
+	var gun = player.gun_inventory[player.current_gun_index]
+	if gun and gun is Gun:
+		if gun.max_ammo == 0: #for special types of gun 
+			gun.current_total_ammo += 100
+		else:
+			gun.current_total_ammo += gun.max_ammo
+		gun.emit_signal("ammo_changed", gun.current_magazine, gun.current_total_ammo)

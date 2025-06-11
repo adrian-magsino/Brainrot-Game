@@ -32,11 +32,11 @@ var owner_player: Node = null
 #SHOOTING
 var last_shot_time := 0.0
 var current_magazine: int
-var total_ammo: int
+var current_total_ammo: int
 var is_reloading: bool = false
 
 #SIGNALS
-signal ammo_changed(current_mag, total_ammo) #Update ammo label
+signal ammo_changed(current_mag, current_total_ammo) #Update ammo label
 signal reload_started(duration)
 
 func _process(delta):
@@ -60,7 +60,7 @@ func shoot(direction: Vector2):
 	else:
 		shoot_single_bullet(direction)
 
-	emit_signal("ammo_changed", current_magazine, total_ammo)
+	emit_signal("ammo_changed", current_magazine, current_total_ammo)
 	if current_magazine == 0:
 		start_reload()
 
@@ -109,23 +109,23 @@ func shoot_bullet_spread(direction: Vector2):
 		spawn_bullet(bullet_pos, spread_direction, spread_angle)
 		sfx_shoot.play()
 func start_reload():
-	if is_reloading or current_magazine == magazine_capacity or total_ammo == 0:
+	if is_reloading or current_magazine == magazine_capacity or current_total_ammo == 0:
 		return
 	is_reloading = true
 	emit_signal("reload_started", reload_time)
 	get_tree().create_timer(reload_time).connect("timeout", Callable(self, "_on_reload_timeout"))
-	emit_signal("ammo_changed", current_magazine, total_ammo)
+	emit_signal("ammo_changed", current_magazine, current_total_ammo)
 	
 func _on_reload_timeout():
 	var needed = magazine_capacity - current_magazine
-	var to_reload = min(needed, total_ammo)
+	var to_reload = min(needed, current_total_ammo)
 	current_magazine += to_reload
-	total_ammo -= to_reload
+	current_total_ammo -= to_reload
 	is_reloading = false
 
 func _ready():
 	current_magazine = magazine_capacity
-	total_ammo = max_ammo
+	current_total_ammo = max_ammo
 	
 func can_be_picked_up() -> bool:
 	return !is_picked_up
@@ -141,7 +141,7 @@ func pick_up(parent_node: Node2D):
 func drop(position: Vector2, parent_node: Node):
 	is_picked_up = false
 	owner_player = null
-	drop_attachments(position, parent_node)
+
 	# Defer reparenting and collision enabling to avoid physics flush conflict
 	call_deferred("_deferred_drop", position, parent_node)
 	
@@ -153,32 +153,7 @@ func _deferred_drop(position: Vector2, parent_node: Node):
 	self.global_position = position
 	get_node("CollisionShape2D").disabled = false
 	
-func drop_attachments(position: Vector2, parent_node: Node):
-	if has_node("BulletPos"):
-		for child in $BulletPos.get_children():
-			if child.has_method("drop"):
-				child.drop(position, parent_node)
-	
-func replace_attachment(new_attachment: Node, player: Node):
-	if not has_node("BulletPos"):
-		return
 
-	var bullet_pos = $BulletPos
-
-	# Drop existing attachment
-	for child in bullet_pos.get_children():
-		if child.has_method("drop"):
-			child.drop(self.global_position, player.get_parent())  # or get_tree().current_scene if needed
-
-	# Attach the new one
-	if new_attachment.get_parent():
-		new_attachment.get_parent().remove_child(new_attachment)
-	bullet_pos.add_child(new_attachment)
-	new_attachment.position = Vector2.ZERO
-
-	# Set ownership info
-	if new_attachment.has_method("on_attach_to_gun"):
-		new_attachment.on_attach_to_gun(self, player)
 
 
 

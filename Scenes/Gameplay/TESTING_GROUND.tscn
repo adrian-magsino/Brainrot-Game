@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://batp0wi7giste"]
+[gd_scene load_steps=29 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Script" uid="uid://cjhifur52olen" path="res://Scenes/Levels/level_1.gd" id="1_8gj7g"]
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="6_woxdx"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="7_uhyla"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.tscn" id="8_8gj7g"]
-[ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="9_a5c1v"]
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="10_5112j"]
 [ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_u55dd"]
@@ -25,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://8i2skftme4x6" path="res://Scenes/Gameplay/Items and Attachments/Laser Sight/LaserSight.tscn" id="22_8gj7g"]
 [ext_resource type="PackedScene" uid="uid://hwuksxvjcwd1" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.tscn" id="24_a5c1v"]
 [ext_resource type="PackedScene" uid="uid://dt5fi8jc62q3c" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.tscn" id="25_5112j"]
-[ext_resource type="PackedScene" uid="uid://ltx5iwgdosgm" path="res://Scenes/Gameplay/Enemies/fast enemy bot/fast_enemy_bot.tscn" id="26_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="27_u55dd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
@@ -115,9 +113,6 @@ position = Vector2(1282, 1262)
 [node name="SampleGun" parent="." instance=ExtResource("8_8gj7g")]
 position = Vector2(1430, 1144)
 
-[node name="TestBot" parent="." instance=ExtResource("9_a5c1v")]
-position = Vector2(1652, 1052)
-
 [node name="DestructibleObject" parent="." instance=ExtResource("10_5112j")]
 position = Vector2(1030, 1225)
 
@@ -142,9 +137,6 @@ position = Vector2(2031, 837)
 [node name="smg" parent="." instance=ExtResource("7_uhyla")]
 position = Vector2(2024, 915)
 
-[node name="EnemyBot" parent="." instance=ExtResource("15_55flw")]
-position = Vector2(2092, 1104)
-
 [node name="AmmoBox" parent="." instance=ExtResource("16_yx4cu")]
 position = Vector2(1465, 952)
 
@@ -155,7 +147,8 @@ position = Vector2(1564, 871)
 position = Vector2(1363, 729)
 enemy_scenes = Array[PackedScene]([ExtResource("15_55flw"), ExtResource("27_u55dd")])
 spawn_interval = 1.0
-max_enemies = 2
+max_enemies = 0
+spawn_count = 0
 
 [node name="ExitPortal" parent="." instance=ExtResource("18_uly7k")]
 position = Vector2(2240, 529)
@@ -193,9 +186,3 @@ position = Vector2(1812, 763)
 
 [node name="rocket_launcher" parent="." instance=ExtResource("25_5112j")]
 position = Vector2(1781, 849)
-
-[node name="FastEnemyBot" parent="." instance=ExtResource("26_kxyj4")]
-position = Vector2(1884, 984)
-
-[node name="KleeEnemyBot" parent="." instance=ExtResource("27_u55dd")]
-position = Vector2(1397, 1038)

@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var BloodParticle: PackedScene
 @onready var animated_sprite = $AnimatedSprite2D
 
-##Nodes and Scenes
+##COMPONENTS
 @export var default_gun_scene: PackedScene
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName
@@ -26,7 +26,9 @@ extends CharacterBody2D
 @onready var dash_progress_bar = HUD.get_node("PlayerControls/Dash Button/Dash Cooldown")
 @onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
 
+#Components
 @onready var health_component = get_node("HealthComponent")
+@onready var pickup_component: Area2D = $PickupArea
 
 #Other Properties
 @onready var respawn_delay: float = 2.0
@@ -61,6 +63,7 @@ var gun_inventory: Array[Node] = [null, null] # Two gun slots
 var current_gun_index: int = 0
 
 var facing_left: bool = false # Sprite flipping
+
 func _enter_tree():
 	print("PLAYER NAME: " + player_name)
 
@@ -125,13 +128,13 @@ func _physics_process(delta):
 
 	# Gun pickup/drop
 	if Input.is_action_just_pressed("pickup_or_drop"):
-		pickup_item()
+		pickup_component.pickup_item()
 	if Input.is_action_just_pressed("switch_gun"):
 		switch_gun()
 	if Input.is_action_just_pressed("zoom_in") or Input.is_action_just_pressed("zoom_out"):
 		cycle_zoom()
 
-	update_pickup_button_visibility()
+	pickup_component.update_pickup_button_visibility()
 
 	# Aiming logic
 	var aim_input = get_aim_input()
@@ -222,36 +225,6 @@ func show_gun_visual(gun: Node):
 		gun.visible = true
 		gun.set_physics_process(true)
 		
-func pickup_item():
-	var pickup_area = $PickupArea
-	var overlapping = pickup_area.get_overlapping_areas()
-	for area in overlapping:
-		if area.has_method("can_be_picked_up") and area.can_be_picked_up():
-			if area.has_method("pick_up"):
-				if area is Gun:
-					_pickup_gun(area)
-				elif area is Attachment:
-					_pickup_attachment(area)
-				elif area is AmmoBox:
-					area.pick_up(self)
-			return
-				
-func _pickup_gun(gun: Node):
-	if gun_inventory[0] == null:
-		gun_inventory[0] = gun
-		current_gun_index = 0
-	elif gun_inventory[1] == null:
-		gun_inventory[1] = gun
-		current_gun_index = 1
-	else:
-		drop_gun()
-		gun_inventory[current_gun_index] = gun
-	equip_gun(gun)
-	gun.pick_up($GunHolder)
-
-func _pickup_attachment(attachment: Node):
-	attachment.pick_up(self)
-	
 func drop_gun():
 	var gun = get_held_gun()
 	if gun:
@@ -348,12 +321,9 @@ func dash():
 	# Start the dash with collision enabled
 	start_dashing()
 
-
-
 func increment_score(killer_id):
 	player_score += 1
 	
-
 func increment_deaths():	
 	player_deaths += 1
 	if level_scene.player_lives > 0:
@@ -433,16 +403,6 @@ func _on_ammo_changed(current_mag, total_ammo):
 
 func _on_reload_started(duration: float):
 	game_ui.start_reload_bar(duration)
-
-func update_pickup_button_visibility():
-	var pickup_area = $PickupArea
-	var overlapping = pickup_area.get_overlapping_areas()
-	var found_gun = false
-	for area in overlapping:
-		if area.has_method("pick_up") and !area.is_picked_up:
-			found_gun = true
-			break
-	pickup_button.visible = found_gun
 	
 func _on_dash_cooldown_timeout():
 	can_dash = true
@@ -459,7 +419,7 @@ func update_zoom_button_label(level: int):
 func _on_pickup_gun_pressed() -> void:
 	if is_dead or get_held_gun() and get_held_gun().is_reloading:
 		return
-	pickup_item()
+	pickup_component.pickup_item()
 	update_gun_in_HUD()
 	
 func _on_reload_gun_pressed() -> void:
@@ -475,6 +435,5 @@ func _on_zoom_button_pressed() -> void:
 		return
 	cycle_zoom()
 	
-
 func _on_dash_button_pressed() -> void:
 	dash()

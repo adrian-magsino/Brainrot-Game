@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcj33fsck5nt3"]
+[gd_scene load_steps=13 format=3 uid="uid://dcj33fsck5nt3"]
 
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scenes/Gameplay/Player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]
 [ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/Components/interacting_component.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dx1yolru7i14y" path="res://Animations/Particles/BloodParticles.tscn" id="3_h3jkl"]
 [ext_resource type="SpriteFrames" uid="uid://cs1bowcr0v7w4" path="res://Game Assets/Character Skins/char_tungSahur.tres" id="4_h3jkl"]
+[ext_resource type="Script" uid="uid://0ogd2gcmkcm6" path="res://Scenes/Gameplay/Player/pickup_component.gd" id="5_fyedb"]
 [ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/blood-pop.wav" id="9_68apu"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="11_ibv1r"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="12_uy7c4"]
@@ -43,25 +44,17 @@ position = Vector2(3, 21)
 
 [node name="PickupArea" type="Area2D" parent="."]
 visible = false
+script = ExtResource("5_fyedb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, 14)
 shape = SubResource("CircleShape2D_onrkg")
 
-[node name="InteractingComponent" parent="." instance=ExtResource("3_6t5aa")]
-position = Vector2(0, 12)
-
-[node name="PlayerName" type="Label" parent="."]
-offset_left = -53.0
-offset_top = -107.0
-offset_right = 56.0
-offset_bottom = -84.0
-text = "PLAYER NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_68apu")
+
+[node name="InteractingComponent" parent="." instance=ExtResource("3_6t5aa")]
+position = Vector2(0, 12)
 
 [node name="HealthComponent" parent="." instance=ExtResource("11_ibv1r")]
 can_regenerate = true
@@ -77,3 +70,12 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CapsuleShape2D_h8qg6")
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = -53.0
+offset_top = -107.0
+offset_right = 56.0
+offset_bottom = -84.0
+text = "PLAYER NAME"
+horizontal_alignment = 1
+vertical_alignment = 1

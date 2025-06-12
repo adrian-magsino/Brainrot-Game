@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cdnqcvcntaphm"]
+[gd_scene load_steps=46 format=3 uid="uid://cdnqcvcntaphm"]
 
 [ext_resource type="Script" uid="uid://hdok02c2g8h5" path="res://Scripts/UI/settings_scene.gd" id="1_r0asf"]
 [ext_resource type="Texture2D" uid="uid://b1stfepqhhj1m" path="res://Game Assets/Settings Assets/game_title1.png" id="1_tyww6"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://i306sj6re2n8" path="res://Game Assets/Settings Assets/character1.png" id="12_qet1k"]
 [ext_resource type="Texture2D" uid="uid://bte6g1nv1m52b" path="res://Game Assets/Settings Assets/character2.png" id="13_lsvtm"]
 [ext_resource type="Texture2D" uid="uid://cyi3rjvc3y4es" path="res://Game Assets/Settings Assets/character3.png" id="14_6phi6"]
+[ext_resource type="Texture2D" uid="uid://uyb1u86ar05y" path="res://Game Assets/Settings Assets/character4.png" id="15_f5gxv"]
+[ext_resource type="Texture2D" uid="uid://dkwhlebe18g82" path="res://Game Assets/Settings Assets/character5.png" id="16_c1j78"]
 [ext_resource type="Texture2D" uid="uid://c7543aj0w56vj" path="res://Game Assets/Settings Assets/apply_button1.png" id="23_lsvtm"]
 [ext_resource type="Texture2D" uid="uid://b0cxhedv8nc31" path="res://Game Assets/Settings Assets/apply_button2.png" id="24_6phi6"]
 
@@ -60,6 +62,14 @@ region = Rect2(321, 346, 104, 112)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgngc"]
 atlas = ExtResource("14_6phi6")
 region = Rect2(321, 350, 111, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y6vx"]
+atlas = ExtResource("15_f5gxv")
+region = Rect2(321, 353, 111, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8chkk"]
+atlas = ExtResource("16_c1j78")
+region = Rect2(321, 346, 111, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8to8h"]
 atlas = ExtResource("2_benum")
@@ -248,40 +258,45 @@ theme_override_fonts/font = ExtResource("6_r0asf")
 theme_override_font_sizes/font_size = 25
 text = "Tralalero Tralala"
 
-[node name="Char4" type="TextureRect" parent="Player/Characters"]
+[node name="Crocodilo" type="TextureRect" parent="Player/Characters"]
 visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 321.0
+offset_top = 353.0
+offset_right = 432.0
+offset_bottom = 458.0
+texture = SubResource("AtlasTexture_7y6vx")
 
-[node name="Label" type="Label" parent="Player/Characters/Char4"]
+[node name="Label" type="Label" parent="Player/Characters/Crocodilo"]
 layout_mode = 0
-offset_left = 164.0
+offset_left = 178.0
+offset_top = -18.0
+offset_right = 565.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+text = "Bombardino Crocodilo"
+
+[node name="Chimpanzini" type="TextureRect" parent="Player/Characters"]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 346.0
+offset_right = 432.0
+offset_bottom = 458.0
+texture = SubResource("AtlasTexture_8chkk")
+
+[node name="Label" type="Label" parent="Player/Characters/Chimpanzini"]
+layout_mode = 0
+offset_left = 178.0
 offset_top = -11.0
-offset_right = 548.0
+offset_right = 562.0
 offset_bottom = 18.0
 theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
 theme_override_fonts/font = ExtResource("6_r0asf")
 theme_override_font_sizes/font_size = 25
-text = "Char4
-"
-
-[node name="Char5" type="TextureRect" parent="Player/Characters"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Player/Characters/Char5"]
-layout_mode = 0
-offset_left = 164.0
-offset_top = -11.0
-offset_right = 548.0
-offset_bottom = 18.0
-theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
-theme_override_fonts/font = ExtResource("6_r0asf")
-theme_override_font_sizes/font_size = 25
-text = "Char5"
+text = "Chimpanzini Bananini"
 
 [node name="Sound" type="Control" parent="."]
 visible = false

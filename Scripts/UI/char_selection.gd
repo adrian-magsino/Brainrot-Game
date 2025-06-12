@@ -3,7 +3,9 @@ extends HBoxContainer
 @onready var characters := {
 	"sahur": $"../Characters/Sahur",
 	"ballerina": $"../Characters/Ballerina",
-	"tralalero": $"../Characters/Tralalero"
+	"tralalero": $"../Characters/Tralalero",
+	"crocodilo": $"../Characters/Crocodilo",
+	"chimpanzini": $"../Characters/Chimpanzini"
 }
 
 func _ready():
@@ -26,6 +28,8 @@ func _get_character_name(id: int) -> String:
 		1: return "sahur"
 		2: return "ballerina"
 		3: return "tralalero"
+		4: return "crocodilo"
+		5: return "chimpanzini"
 		_: return "sahur"  # fallback
 
 func _on_character_selected(character_id: String) -> void:

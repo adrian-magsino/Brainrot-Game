@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_bvn0o"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_ncjgi"]
 [ext_resource type="AudioStream" uid="uid://b78ekcast2g72" path="res://Scenes/Gameplay/Enemies/enemy bot 1/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="6_qyqo8"]
-[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/blood-pop.wav" id="7_bvn0o"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="11_po3cx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kprd"]
 atlas = ExtResource("3_rl784")
@@ -251,9 +251,7 @@ stream = ExtResource("6_qyqo8")
 bus = &"SFX"
 parameters/looping = true
 
-[node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_bvn0o")
-bus = &"SFX"
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("11_po3cx")]
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

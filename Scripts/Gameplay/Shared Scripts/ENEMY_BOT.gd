@@ -8,13 +8,19 @@ var enemy_type: String
 @export var bot_name: String = "ENEMY BOT"
 @export var attack_cooldown: float = 1.0
 @export var can_destroy_objects: bool = false
-@onready var nav_agent := $NavigationAgent2D
-@onready var attack_cooldown_timer := $AttackCooldownTimer
-@onready var attack_area: Area2D = $AttackArea
+
 @onready var sfx_bot: AudioStreamPlayer2D = $SFX_bot
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+#Components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var attack_component: AttackComponent = $AttackComponent
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var bloody_death_animation: Node2D = $BloodyDeathAnimation
+
+@onready var attack_area: Area2D = $AttackArea
+@onready var attack_cooldown_timer := $AttackCooldownTimer
+@onready var nav_agent := $NavigationAgent2D
 
 var target_player: Node2D
 var can_attack: bool = true
@@ -125,6 +131,7 @@ func die(attack: AttackComponent):
 		return
 	is_dead = true
 	
+	bloody_death_animation.play_death_animation()
 	if attack.attacker and attack.attacker.is_in_group("player"):
 		var level_node = get_tree().current_scene
 		if level_node.has_method("register_enemy_kill"):

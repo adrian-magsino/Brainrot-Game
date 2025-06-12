@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b4oo2e0wu8nwe" path="res://Scenes/Gameplay/Enemies/fast enemy bot/toybonnie_run.png" id="4_vpxg5"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="7_cljdt"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="8_ircmn"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="9_gx00l"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="9_i1c1u"]
-[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/blood-pop.wav" id="10_c66cw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vpxg5"]
 atlas = ExtResource("2_gx00l")
@@ -309,9 +309,7 @@ shape = SubResource("CapsuleShape2D_rl784")
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
-[node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_c66cw")
-bus = &"SFX"
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("9_gx00l")]
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

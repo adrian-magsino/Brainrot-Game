@@ -5,9 +5,7 @@ extends CharacterBody2D
 @onready var level_scene = get_parent()
 
 #Animations and SFX components
-@export var BloodParticle: PackedScene
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
 
 #HUD and Controls
 @onready var HUD = get_parent().get_node("HUD")
@@ -28,6 +26,7 @@ extends CharacterBody2D
 @onready var notification_node = HUD.get_node("Notification")
 
 #Components
+@onready var bloody_death_animation: Node2D = $BloodyDeathAnimation
 @onready var health_component = get_node("HealthComponent")
 @onready var pickup_component: Area2D = $PickupArea
 
@@ -342,13 +341,6 @@ func _on_hit_effect_timeout() -> void:
 	# Reset sprite color to normal
 	animated_sprite.modulate = Color(1, 1, 1)  # white (default)
 	
-func play_death_animation():
-	var _particle = BloodParticle.instantiate()
-	_particle.position = global_position
-	_particle.rotation = global_rotation
-	_particle.emitting = true
-	get_tree().current_scene.add_child(_particle)
-	sfx_blood.play()
 	
 func die(attack: AttackComponent):
 	if is_dead:
@@ -356,7 +348,7 @@ func die(attack: AttackComponent):
 	is_dead = true
 	
 	increment_deaths()
-	play_death_animation()
+	bloody_death_animation.play_death_animation()
 	drop_guns_on_death()
 
 	game_ui.reset_display()

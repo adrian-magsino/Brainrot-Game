@@ -1,15 +1,15 @@
 [gd_scene load_steps=36 format=3 uid="uid://l3qn4yfj57o6"]
 
-[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared_Scripts/ENEMY_BOT.gd" id="1_uh7xe"]
+[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_uh7xe"]
 [ext_resource type="Texture2D" uid="uid://b4ilsyj2n8n77" path="res://Game Assets/Bot_sprites/FREDDY_face.jpg" id="2_ft6ej"]
-[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_ft6ej"]
 [ext_resource type="Texture2D" uid="uid://rjw7myh1by12" path="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_run.png" id="3_op5pa"]
 [ext_resource type="Texture2D" uid="uid://0rlo1jgfmi4s" path="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_attack.png" id="3_rl784"]
 [ext_resource type="Texture2D" uid="uid://btpt75aqhhkmm" path="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_idle.png" id="4_qyqo8"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_uh7xe"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_bvn0o"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_ncjgi"]
-[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/SFX/blood-pop.wav" id="7_bvn0o"]
+[ext_resource type="AudioStream" uid="uid://b78ekcast2g72" path="res://Scenes/Gameplay/Enemies/enemy bot 1/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="6_qyqo8"]
+[ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/blood-pop.wav" id="7_bvn0o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kprd"]
 atlas = ExtResource("3_rl784")
@@ -192,6 +192,7 @@ collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_uh7xe")
+enemy_type = "normal_enemy"
 can_destroy_objects = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -224,10 +225,6 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
-[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ft6ej")
-parameters/looping = true
-
 [node name="AttackComponent" parent="." instance=ExtResource("4_uh7xe")]
 attack_damage = 10.0
 
@@ -249,8 +246,14 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(6, 18)
 shape = SubResource("CapsuleShape2D_rl784")
 
+[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qyqo8")
+bus = &"SFX"
+parameters/looping = true
+
 [node name="SFX_blood" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_bvn0o")
+bus = &"SFX"
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5nwptgpukc8b"
+path="res://.godot/imported/SFX_explosion2.mp3-e935b326a73552e91e9c8af0d8666796.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Gameplay/Enemies/klee enemy bot/SFX_explosion2.mp3"
+dest_files=["res://.godot/imported/SFX_explosion2.mp3-e935b326a73552e91e9c8af0d8666796.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

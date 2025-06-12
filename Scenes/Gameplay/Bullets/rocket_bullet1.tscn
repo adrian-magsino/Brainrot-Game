@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bc5i0633n0as2"]
 
-[ext_resource type="Script" uid="uid://cmcbjpp2ggtmx" path="res://Scripts/Gameplay/Bullets/explosive_bullet.gd" id="1_dvc1t"]
+[ext_resource type="Script" uid="uid://cmcbjpp2ggtmx" path="res://Scripts/Gameplay/Shared Scripts/Bullet Scripts/explosive_bullet.gd" id="1_dvc1t"]
 [ext_resource type="PackedScene" uid="uid://dcta0op34obh3" path="res://Animations/Particles/BulletParticles.tscn" id="2_7vhry"]
 [ext_resource type="Texture2D" uid="uid://cyp2h7a5uwq5v" path="res://Scenes/Gameplay/Bullets/rocket_bullet.png" id="3_dvc1t"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_plrpr"]
 [ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="5_utf1m"]
 [ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="6_uoa1d"]
-[ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/SFX_explosion.mp3" id="7_67tjq"]
+[ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Game Assets/Audio/Shared SFX/SFX_explosion.mp3" id="7_67tjq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m36q"]
 radius = 3.08626
@@ -41,6 +41,7 @@ shape = SubResource("CircleShape2D_xk666")
 [node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_67tjq")
 volume_db = 5.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

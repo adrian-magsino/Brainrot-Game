@@ -29,6 +29,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_hkytx")
 
+[node name="GameTimeLabel" type="Label" parent="GameUI"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 52.0
+offset_right = 464.0
+offset_bottom = 75.0
+text = "Time: 00:00"
+
 [node name="ScoreLabel" type="Label" parent="GameUI"]
 layout_mode = 0
 offset_left = 465.0

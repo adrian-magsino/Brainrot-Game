@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt5fi8jc62q3c"]
 
-[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_v3bpe"]
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Shared Scripts/GUN.gd" id="1_v3bpe"]
 [ext_resource type="PackedScene" uid="uid://bc5i0633n0as2" path="res://Scenes/Gameplay/Bullets/rocket_bullet1.tscn" id="2_v3bpe"]
 [ext_resource type="Texture2D" uid="uid://by36ak6erpjd7" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.png" id="3_22xx4"]
 [ext_resource type="AudioStream" uid="uid://bkknk6ceapxk0" path="res://Scenes/Gameplay/Weapons/rocket laucher/rpg_launch.mp3" id="4_v3bpe"]
@@ -37,3 +37,4 @@ position = Vector2(87, -10)
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_v3bpe")
 volume_db = 8.0
+bus = &"SFX"

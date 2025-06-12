@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7ocaoh6b0jdq"]
 
-[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_v2s45"]
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Shared Scripts/GUN.gd" id="1_v2s45"]
 [ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/Gameplay/Bullets/sample_bullet.tscn" id="2_ct3ky"]
 [ext_resource type="Texture2D" uid="uid://r0pfyhotm48i" path="res://Game Assets/guns_gameassets/PNG/Alternative color/assaultrifle2.png" id="3_l2qdo"]
 
@@ -26,3 +26,4 @@ shape = SubResource("RectangleShape2D_5pdue")
 position = Vector2(39, -2)
 
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

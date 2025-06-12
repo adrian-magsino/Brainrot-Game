@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://hwuksxvjcwd1"]
 
-[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_v3bpe"]
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Shared Scripts/GUN.gd" id="1_v3bpe"]
 [ext_resource type="PackedScene" uid="uid://bfdb2ju1736w" path="res://Scenes/Gameplay/Bullets/grenade_bullet.tscn" id="2_m1gv8"]
 [ext_resource type="Texture2D" uid="uid://0upjngdbvqyg" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.png" id="3_m1gv8"]
 [ext_resource type="AudioStream" uid="uid://wore1cy2wk25" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade-launcher-106342.mp3" id="4_m1gv8"]
@@ -36,3 +36,4 @@ position = Vector2(70, -5)
 
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_m1gv8")
+bus = &"SFX"

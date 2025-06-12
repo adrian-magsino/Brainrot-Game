@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhr1m5abae3cq" path="res://Scripts/fast_bot.gd" id="1_obu4m"]
 [ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="2_ftpvc"]
-[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_dvjgi"]
+[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_dvjgi"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_s4soc"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_t185y"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_f6d5o"]

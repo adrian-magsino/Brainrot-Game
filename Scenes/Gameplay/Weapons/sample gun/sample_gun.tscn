@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://d38bbldhidf1x"]
 
-[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Weapons/GUN.gd" id="1_t3dk5"]
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Shared Scripts/GUN.gd" id="1_t3dk5"]
 [ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/Gameplay/Bullets/sample_bullet.tscn" id="2_m1oal"]
 [ext_resource type="Texture2D" uid="uid://d06oyp2ic78dm" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.png" id="3_t3dk5"]
-[ext_resource type="AudioStream" uid="uid://bb4yx0ugrfsgm" path="res://Game Assets/Audio/Gun SFX/laser-weapon-shot-1681.wav" id="4_qp1jv"]
+[ext_resource type="AudioStream" uid="uid://cn4jluiwfqann" path="res://Scenes/Gameplay/Weapons/sample gun/laser-weapon-shot-1681.wav" id="4_t3dk5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
 size = Vector2(360, 145)
@@ -33,4 +33,5 @@ shape = SubResource("RectangleShape2D_5pdue")
 position = Vector2(37, -12)
 
 [node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_qp1jv")
+stream = ExtResource("4_t3dk5")
+bus = &"SFX"

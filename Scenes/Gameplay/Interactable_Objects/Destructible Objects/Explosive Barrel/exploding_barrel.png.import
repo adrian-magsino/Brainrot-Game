@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkf4ejyuspcyn"
-path="res://.godot/imported/exploding_barrel.png-dfa7f191ea7f9b9e9d5b97e343fb349b.ctex"
+path="res://.godot/imported/exploding_barrel.png-cc91e642d39c88283eb8aa0c5cb08dab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/exploding_barrel.png"
-dest_files=["res://.godot/imported/exploding_barrel.png-dfa7f191ea7f9b9e9d5b97e343fb349b.ctex"]
+source_file="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/exploding_barrel.png"
+dest_files=["res://.godot/imported/exploding_barrel.png-cc91e642d39c88283eb8aa0c5cb08dab.ctex"]
 
 [params]
 

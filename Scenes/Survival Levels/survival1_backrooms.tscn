@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="7_w4yle"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="8_et7fc"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="9_jrfjk"]
-[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="10_el7cg"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="10_el7cg"]
 [ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="11_fw3hm"]
 [ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Spawners/player_spawn_point_1.tscn" id="12_dyojt"]
 [ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="13_34wxx"]

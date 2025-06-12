@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://batp0wi7giste"]
+[gd_scene load_steps=31 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Script" uid="uid://cjhifur52olen" path="res://Scenes/Levels/level_1.gd" id="1_8gj7g"]
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="6_woxdx"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="7_uhyla"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.tscn" id="8_8gj7g"]
-[ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/destructible_object.tscn" id="10_5112j"]
-[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_kxyj4"]
+[ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/destructible_object.tscn" id="10_5112j"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_u55dd"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="13_r8tjn"]
 [ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="14_vfnxh"]
@@ -24,8 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://hwuksxvjcwd1" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.tscn" id="24_a5c1v"]
 [ext_resource type="PackedScene" uid="uid://dt5fi8jc62q3c" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.tscn" id="25_5112j"]
 [ext_resource type="PackedScene" uid="uid://b6gl8mu4a6ouf" path="res://Scenes/Gameplay/Items and Attachments/Life Heart/life_heart.tscn" id="25_kxyj4"]
-[ext_resource type="PackedScene" uid="uid://ltx5iwgdosgm" path="res://Scenes/Gameplay/Enemies/fast enemy bot/fast_enemy_bot.tscn" id="26_kxyj4"]
+[ext_resource type="PackedScene" uid="uid://wgxgfe2mhqhv" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/crate.tscn" id="27_r8tjn"]
 [ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="27_u55dd"]
+[ext_resource type="PackedScene" uid="uid://b0jr0rgti86s2" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/barrel.tscn" id="27_vfnxh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -190,8 +191,17 @@ position = Vector2(1781, 849)
 [node name="LifeHeart" parent="." instance=ExtResource("25_kxyj4")]
 position = Vector2(1432, 910)
 
-[node name="EnemyBot" parent="." instance=ExtResource("15_55flw")]
-position = Vector2(2073, 1097)
+[node name="Crate" parent="." instance=ExtResource("27_r8tjn")]
+position = Vector2(829, 1218)
 
-[node name="FastEnemyBot" parent="." instance=ExtResource("26_kxyj4")]
-position = Vector2(1895, 977)
+[node name="Crate2" parent="." instance=ExtResource("27_r8tjn")]
+position = Vector2(927, 1226)
+
+[node name="Barrel" parent="." instance=ExtResource("27_vfnxh")]
+position = Vector2(879, 1324)
+
+[node name="Barrel2" parent="." instance=ExtResource("27_vfnxh")]
+position = Vector2(969, 1330)
+
+[node name="EnemyBot" parent="." instance=ExtResource("15_55flw")]
+position = Vector2(2075, 1182)

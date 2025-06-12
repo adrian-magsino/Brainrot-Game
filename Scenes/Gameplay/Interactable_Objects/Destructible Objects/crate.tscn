@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://wgxgfe2mhqhv"]
+
+[ext_resource type="Script" uid="uid://bh38arxl8ywjs" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/destructible_object.gd" id="1_ln515"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="2_75hkl"]
+[ext_resource type="Texture2D" uid="uid://b1g7wm0spt5ga" path="res://Game Assets/Destructibles/Destructible Objects Sprite Sheet.png" id="2_q2gx5"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="3_kgvtw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67lej"]
+atlas = ExtResource("2_q2gx5")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnj22"]
+atlas = ExtResource("2_q2gx5")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0umq3"]
+atlas = ExtResource("2_q2gx5")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0g3b"]
+atlas = ExtResource("2_q2gx5")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsj6y"]
+atlas = ExtResource("2_q2gx5")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gudn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67lej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnj22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0umq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0g3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsj6y")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8yrm"]
+size = Vector2(65, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0lsu"]
+size = Vector2(65, 65)
+
+[node name="Crate" type="StaticBody2D"]
+script = ExtResource("1_ln515")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -11)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_gudn0")
+animation = &"destroy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j8yrm")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_75hkl")]
+MAX_HEALTH = 50.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -33.0
+offset_top = -60.0
+offset_right = 33.0
+offset_bottom = -33.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent/HealthBar"]
+wait_time = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_kgvtw")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_p0lsu")

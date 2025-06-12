@@ -182,10 +182,12 @@ func apply_selected_skin():
 
 func get_skin_path(character_id: String) -> String:
 	match character_id:
-		"sahur": return "res://Game Assets/Character Skins/char_tungSahur.tres"
-		"ballerina": return "res://Game Assets/Character Skins/char_ballerinaCappuccina.tres"
-		"tralalero": return "res://Game Assets/Character Skins/char_tralaleloTralala.tres"
-		_: return "res://Game Assets/Character Skins/char_tungSahur.tres"  # fallback
+		"sahur": return "res://Game Assets/Character Skins/char_sahur.tres"
+		"ballerina": return "res://Game Assets/Character Skins/char_ballerina.tres"
+		"tralalero": return "res://Game Assets/Character Skins/char_tralalero.tres"
+		"crocodilo": return "res://Game Assets/Character Skins/char_crocodilo.tres"
+		"chimpanzini": return "res://Game Assets/Character Skins/char_chimpanzini.tres"
+		_: return "res://Game Assets/Character Skins/char_sahur.tres" # fallback
 				
 func get_aim_input() -> Dictionary:
 	var aim_vector = Vector2(

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]
 [ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/Components/interacting_component.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dx1yolru7i14y" path="res://Animations/Particles/BloodParticles.tscn" id="3_h3jkl"]
-[ext_resource type="SpriteFrames" uid="uid://cs1bowcr0v7w4" path="res://Game Assets/Character Skins/char_tungSahur.tres" id="4_h3jkl"]
+[ext_resource type="SpriteFrames" uid="uid://5dna1yvwjlyv" path="res://Game Assets/Character Skins/char_chimpanzini.tres" id="4_fyedb"]
 [ext_resource type="Script" uid="uid://0ogd2gcmkcm6" path="res://Scenes/Gameplay/Player/pickup_component.gd" id="5_fyedb"]
 [ext_resource type="AudioStream" uid="uid://cejd14t6yoirg" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/blood-pop.wav" id="9_68apu"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="11_ibv1r"]
@@ -29,9 +29,10 @@ BloodParticle = ExtResource("3_h3jkl")
 default_gun_scene = ExtResource("2_skuam")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("4_h3jkl")
+sprite_frames = ExtResource("4_fyedb")
 animation = &"walk"
-frame_progress = 0.0317105
+frame = 2
+frame_progress = 0.124878
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 24)

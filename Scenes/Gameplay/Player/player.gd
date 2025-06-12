@@ -4,14 +4,10 @@ extends CharacterBody2D
 #Root Scene
 @onready var level_scene = get_parent()
 
-#Animations
+#Animations and SFX components
 @export var BloodParticle: PackedScene
 @onready var animated_sprite = $AnimatedSprite2D
-
-##COMPONENTS
-@export var default_gun_scene: PackedScene
-@onready var camera = $Camera2D
-@onready var player_name_label = $PlayerName
+@onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
 
 #HUD and Controls
 @onready var HUD = get_parent().get_node("HUD")
@@ -24,7 +20,12 @@ extends CharacterBody2D
 @onready var switch_gun_button = HUD.get_node("PlayerControls/Switch Gun")
 @onready var dash_button = HUD.get_node("PlayerControls/Dash Button")
 @onready var dash_progress_bar = HUD.get_node("PlayerControls/Dash Button/Dash Cooldown")
-@onready var sfx_blood: AudioStreamPlayer2D = $SFX_blood
+
+@onready var camera = $Camera2D
+@onready var player_name_label = $PlayerName
+
+#Notifications
+@onready var notification_node = HUD.get_node("Notification")
 
 #Components
 @onready var health_component = get_node("HealthComponent")
@@ -60,6 +61,7 @@ var is_dashing = false
 var dash_time_remaining = 0.0
 
 #Gun Inventory System
+@export var default_gun_scene: PackedScene
 var gun_inventory: Array[Node] = [null, null] # Two gun slots
 var current_gun_index: int = 0
 

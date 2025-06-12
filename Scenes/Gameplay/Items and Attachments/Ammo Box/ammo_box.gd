@@ -1,6 +1,7 @@
 extends Node2D
 class_name AmmoBox
 
+@export var item_name = "Ammo Box"
 @onready var pickupable_area: Area2D = $PickupableArea
 
 func on_picked_up(player: Player):

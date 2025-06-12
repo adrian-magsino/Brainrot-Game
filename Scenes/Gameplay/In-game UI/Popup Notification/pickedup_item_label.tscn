@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dapt7i2yqn0c3"]
+
+[ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="1_cuiwx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5fje"]
+font = ExtResource("1_cuiwx")
+font_size = 12
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ItemLabel" type="Label"]
+text = "ITEM"
+label_settings = SubResource("LabelSettings_v5fje")
+horizontal_alignment = 1

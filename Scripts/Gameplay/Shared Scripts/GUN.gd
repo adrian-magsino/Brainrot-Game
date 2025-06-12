@@ -2,6 +2,7 @@ extends Area2D
 class_name Gun
 
 @export var gun_name: String = "SampleGun"
+@onready var item_name = gun_name
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.05
 @export var range: float = 500.0

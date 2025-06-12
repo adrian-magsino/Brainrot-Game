@@ -1,6 +1,7 @@
 extends Area2D
 class_name Attachment
 
+@export var item_name = "Laser Sight"
 var range: float = 500
 var is_active: bool = false
 var owner_player: Node = null

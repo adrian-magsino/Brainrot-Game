@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=4 uid="uid://bavbqahq25ptn"]
 
 [ext_resource type="Texture2D" uid="uid://b4g2u1rubqk1a" path="res://Game Assets/TileSets/TopDown StoneAndBridge - DungeonFloor GODOT/tileset_TopDown StoneAndBridge - DungeonFloor GODOT.png" id="1_6nt6t"]
-[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/HUD/HUD.gd" id="1_tihws"]
-[ext_resource type="PackedScene" uid="uid://2ieahs4qt14v" path="res://Scenes/Gameplay/HUD/TRASHED_touch_controls.tscn" id="2_lplw8"]
+[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_tihws"]
+[ext_resource type="PackedScene" path="res://Scenes/Gameplay/HUD/TRASHED_touch_controls.tscn" id="2_lplw8"]
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="2_uubsx"]
-[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/HUD/player_ui.gd" id="3_6nt6t"]
+[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/In-game UI/HUD/player_ui.gd" id="3_6nt6t"]
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_uubsx"]
 [ext_resource type="PackedScene" path="res://Scenes/Gameplay/Scoreboard.tscn" id="5_4nmwt"]
-[ext_resource type="PackedScene" uid="uid://co8v4w5m1wt3h" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="6_080b4"]
+[ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/PLAYER.tscn" id="6_080b4"]
 [ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/enemy bot 1/enemy_bot.tscn" id="9_uubsx"]
 [ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="12_guuxl"]
 

@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var item_name = "Life Heart"
 @export var life_amount = 1
 
 func on_picked_up(player: Player):

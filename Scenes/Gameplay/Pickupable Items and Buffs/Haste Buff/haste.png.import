@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu2ypyawe6s7w"
-path="res://.godot/imported/pngwing.com.png-237998450c5735262c7c2038d3232cd7.ctex"
+uid="uid://blagwbofqrh0n"
+path="res://.godot/imported/haste.png-b6db74c65d3cc1b69e91e42f96da6657.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/pngwing.com.png"
-dest_files=["res://.godot/imported/pngwing.com.png-237998450c5735262c7c2038d3232cd7.ctex"]
+source_file="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste.png"
+dest_files=["res://.godot/imported/haste.png-b6db74c65d3cc1b69e91e42f96da6657.ctex"]
 
 [params]
 

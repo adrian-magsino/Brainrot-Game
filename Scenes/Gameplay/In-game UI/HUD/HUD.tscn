@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcdvaas54iiga"]
+[gd_scene load_steps=15 format=3 uid="uid://bcdvaas54iiga"]
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_smues"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/In-game UI/HUD/player_ui.gd" id="5_hkytx"]
 [ext_resource type="PackedScene" uid="uid://deaj1tohywpen" path="res://Scenes/Gameplay/In-game UI/Popup Notification/Notification.tscn" id="7_a4jdu"]
 [ext_resource type="Script" uid="uid://ni41yrjihv0o" path="res://Scenes/Gameplay/In-game UI/HUD/player_status.gd" id="8_3qtty"]
-[ext_resource type="Texture2D" uid="uid://blagwbofqrh0n" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/totsugepixels-bootsofspeed2.png" id="9_034d7"]
+[ext_resource type="Texture2D" uid="uid://blagwbofqrh0n" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste.png" id="9_034d7"]
+[ext_resource type="Texture2D" uid="uid://b1og857xcmc0e" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/hide_eye_icon_238775 (1).png" id="10_b55vn"]
 
 [sub_resource type="SystemFont" id="SystemFont_voerl"]
 subpixel_positioning = 0
@@ -447,6 +448,12 @@ offset_bottom = 513.0
 visible = false
 layout_mode = 2
 texture = ExtResource("9_034d7")
+stretch_mode = 5
+
+[node name="Invisible" type="TextureRect" parent="PlayerStatus/StatusContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_b55vn")
 stretch_mode = 5
 
 [connection signal="pressed" from="Menu/MenuButton" to="." method="_on_menu_button_pressed"]

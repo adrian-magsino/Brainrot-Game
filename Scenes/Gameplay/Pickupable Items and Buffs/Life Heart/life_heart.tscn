@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="1_6uw6m"]
 [ext_resource type="Script" uid="uid://q77mv75ed5h0" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Life Heart/life_heart.gd" id="1_slq7p"]
 [ext_resource type="Texture2D" uid="uid://chl8rspgd555y" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Life Heart/heart.blink.png" id="2_slq7p"]
-[ext_resource type="Script" uid="uid://cutp8vt7t8qes" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/floating_sprite_animation.gd" id="3_p22ws"]
+[ext_resource type="Script" uid="uid://cutp8vt7t8qes" path="res://Scenes/Gameplay/Pickupable Items and Buffs/floating_sprite_animation.gd" id="3_p22ws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oq2e4"]
 atlas = ExtResource("2_slq7p")

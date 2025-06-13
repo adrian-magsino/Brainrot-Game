@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://batp0wi7giste"]
+[gd_scene load_steps=33 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Script" uid="uid://cjhifur52olen" path="res://Scenes/Levels/level_1.gd" id="1_8gj7g"]
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bn83teut6ypt7" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn" id="27_u55dd"]
 [ext_resource type="PackedScene" uid="uid://b0jr0rgti86s2" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/barrel.tscn" id="27_vfnxh"]
 [ext_resource type="PackedScene" uid="uid://cafjiicm4nmm1" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste_buff.tscn" id="28_r8tjn"]
+[ext_resource type="PackedScene" uid="uid://c2lcmfs437y6j" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/invisibility_buff.tscn" id="29_vfnxh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f4fwx"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -212,3 +213,12 @@ position = Vector2(1420, 816)
 
 [node name="HasteBuff3" parent="." instance=ExtResource("28_r8tjn")]
 position = Vector2(1544, 809)
+
+[node name="EnemyBot" parent="." instance=ExtResource("15_55flw")]
+position = Vector2(2027, 1222)
+
+[node name="InvisibilityBuff" parent="." instance=ExtResource("29_vfnxh")]
+position = Vector2(1384, 1049)
+
+[node name="InvisibilityBuff2" parent="." instance=ExtResource("29_vfnxh")]
+position = Vector2(1477, 1046)

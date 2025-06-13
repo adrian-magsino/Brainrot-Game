@@ -22,7 +22,7 @@ var enemy_type: String
 @onready var attack_cooldown_timer := $AttackCooldownTimer
 @onready var nav_agent := $NavigationAgent2D
 
-var target_player: Node2D
+var target_player: Player
 var can_attack: bool = true
 var is_attacking: bool = false
 var damageable_in_range: Node = null
@@ -50,6 +50,9 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if is_dead:
+		return
+	
+	if !target_player.is_detectable or target_player.is_dead:
 		return
 
 	if is_attacking:
@@ -81,6 +84,8 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 			return
 
 		if target == target_player:
+			if !target_player.is_detectable or target_player.is_dead:
+				return
 			damageable_in_range = target
 			object_timer.stop()
 			pending_object_target = null

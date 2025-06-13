@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blagwbofqrh0n"
-path="res://.godot/imported/totsugepixels-bootsofspeed2.png-1bdfa74f051b44cd61787b51cfc2acf1.ctex"
+uid="uid://b1og857xcmc0e"
+path="res://.godot/imported/hide_eye_icon_238775 (1).png-7a823d6deb1b35e4631b9cab114c1d23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/totsugepixels-bootsofspeed2.png"
-dest_files=["res://.godot/imported/totsugepixels-bootsofspeed2.png-1bdfa74f051b44cd61787b51cfc2acf1.ctex"]
+source_file="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/hide_eye_icon_238775 (1).png"
+dest_files=["res://.godot/imported/hide_eye_icon_238775 (1).png-7a823d6deb1b35e4631b9cab114c1d23.ctex"]
 
 [params]
 

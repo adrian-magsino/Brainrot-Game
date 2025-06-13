@@ -39,6 +39,7 @@ var is_a_player = true
 var player_score: int = 0
 var player_deaths: int = 0
 var is_dead: bool = false
+var is_detectable: bool = true
 
 var hit_effect_duration: float = 0.2
 var hit_effect_timer: Timer

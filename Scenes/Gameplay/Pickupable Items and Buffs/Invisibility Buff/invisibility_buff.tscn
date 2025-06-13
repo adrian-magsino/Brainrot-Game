@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2lcmfs437y6j"]
+
+[ext_resource type="Script" uid="uid://ddohx5vfm3fx0" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/invisibility_buff.gd" id="1_p8iar"]
+[ext_resource type="Texture2D" uid="uid://b1og857xcmc0e" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/hide_eye_icon_238775 (1).png" id="2_7s5t5"]
+[ext_resource type="Script" uid="uid://cutp8vt7t8qes" path="res://Scenes/Gameplay/Pickupable Items and Buffs/floating_sprite_animation.gd" id="3_dwc5x"]
+[ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="3_x66gj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwc5x"]
+
+[node name="InvisibilityBuff" type="Node2D"]
+script = ExtResource("1_p8iar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7s5t5")
+script = ExtResource("3_dwc5x")
+
+[node name="PickupableArea" parent="." instance=ExtResource("3_x66gj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupableArea"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_dwc5x")

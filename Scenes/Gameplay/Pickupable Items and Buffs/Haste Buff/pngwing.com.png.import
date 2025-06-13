@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do3puflmxwnmv"
-path="res://.godot/imported/ammobox.png-a952a3366a6d0a5350db75a3c02de4ec.ctex"
+uid="uid://bu2ypyawe6s7w"
+path="res://.godot/imported/pngwing.com.png-237998450c5735262c7c2038d3232cd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Items and Attachments/Ammo Box/ammobox.png"
-dest_files=["res://.godot/imported/ammobox.png-a952a3366a6d0a5350db75a3c02de4ec.ctex"]
+source_file="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/pngwing.com.png"
+dest_files=["res://.godot/imported/pngwing.com.png-237998450c5735262c7c2038d3232cd7.ctex"]
 
 [params]
 

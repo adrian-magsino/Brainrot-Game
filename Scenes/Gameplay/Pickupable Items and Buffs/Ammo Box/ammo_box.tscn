@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2ipd31cvr0ra"]
 
-[ext_resource type="Script" uid="uid://b3qoxv178gfnp" path="res://Scenes/Gameplay/Items and Attachments/Ammo Box/ammo_box.gd" id="1_ebn3i"]
-[ext_resource type="Texture2D" uid="uid://do3puflmxwnmv" path="res://Scenes/Gameplay/Items and Attachments/Ammo Box/ammobox.png" id="1_selxs"]
+[ext_resource type="Script" uid="uid://b3qoxv178gfnp" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Ammo Box/ammo_box.gd" id="1_ebn3i"]
+[ext_resource type="Texture2D" uid="uid://do3puflmxwnmv" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Ammo Box/ammobox.png" id="1_selxs"]
 [ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="2_a1usm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebn3i"]

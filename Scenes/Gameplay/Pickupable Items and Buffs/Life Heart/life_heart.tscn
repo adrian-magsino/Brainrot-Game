@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6gl8mu4a6ouf"]
+[gd_scene load_steps=17 format=3 uid="uid://b6gl8mu4a6ouf"]
 
 [ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="1_6uw6m"]
-[ext_resource type="Script" uid="uid://q77mv75ed5h0" path="res://Scenes/Gameplay/Items and Attachments/Life Heart/life_heart.gd" id="1_slq7p"]
-[ext_resource type="Texture2D" uid="uid://chl8rspgd555y" path="res://Scenes/Gameplay/Items and Attachments/Life Heart/heart.blink.png" id="2_slq7p"]
+[ext_resource type="Script" uid="uid://q77mv75ed5h0" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Life Heart/life_heart.gd" id="1_slq7p"]
+[ext_resource type="Texture2D" uid="uid://chl8rspgd555y" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Life Heart/heart.blink.png" id="2_slq7p"]
+[ext_resource type="Script" uid="uid://cutp8vt7t8qes" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/floating_sprite_animation.gd" id="3_p22ws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oq2e4"]
 atlas = ExtResource("2_slq7p")
@@ -93,7 +94,7 @@ position = Vector2(0, 2)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_hgo2d")
 autoplay = "default"
-frame_progress = 0.769334
+script = ExtResource("3_p22ws")
 
 [node name="PickupableArea" parent="." instance=ExtResource("1_6uw6m")]
 

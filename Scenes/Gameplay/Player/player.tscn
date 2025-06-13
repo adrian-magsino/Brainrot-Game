@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcj33fsck5nt3"]
+[gd_scene load_steps=13 format=3 uid="uid://dcj33fsck5nt3"]
 
 [ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scenes/Gameplay/Player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://5dna1yvwjlyv" path="res://Game Assets/Character Skins/char_chimpanzini.tres" id="4_fyedb"]
 [ext_resource type="Script" uid="uid://0ogd2gcmkcm6" path="res://Scenes/Gameplay/Player/pickup_component.gd" id="5_fyedb"]
 [ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="8_h3jkl"]
+[ext_resource type="Script" uid="uid://c6few33t8kdnr" path="res://Scenes/Gameplay/Player/status_effect_manager.gd" id="9_fyedb"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="11_ibv1r"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="12_uy7c4"]
 
@@ -77,3 +78,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BloodyDeathAnimation" parent="." instance=ExtResource("8_h3jkl")]
+
+[node name="StatusEffectManager" type="Node2D" parent="."]
+script = ExtResource("9_fyedb")

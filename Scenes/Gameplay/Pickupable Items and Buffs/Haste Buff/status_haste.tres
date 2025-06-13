@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="status_haste" load_steps=2 format=3 uid="uid://l24ylwi4jys5"]
+
+[ext_resource type="Script" uid="uid://gkhgmuckg65k" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/status_haste.gd" id="1_hot6c"]
+
+[resource]
+script = ExtResource("1_hot6c")
+status_name = "Haste"
+metadata/_custom_type_script = "uid://gkhgmuckg65k"

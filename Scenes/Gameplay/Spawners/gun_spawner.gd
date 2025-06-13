@@ -25,6 +25,8 @@ func _ready():
 		color_rect.size = shape.extents * 2
 		color_rect.position = -shape.extents
 		color_rect.color = Color(0, 0, 1, 0.3) # semi-transparent blue
+		if GAME_DEBUG_SCRIPT.game_debug_mode == false:
+			color_rect.visible = false
 		
 	print("GUN SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval

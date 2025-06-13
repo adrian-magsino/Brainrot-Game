@@ -48,6 +48,9 @@ func _ready() -> void:
 	object_timer.connect("timeout", Callable(self, "_on_object_timer_timeout"))
 	add_child(object_timer)
 	
+	#shows pathfinding visuals if debugging is enabled globally
+	nav_agent.debug_enabled = GAME_DEBUG_SCRIPT.game_debug_mode
+	
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return

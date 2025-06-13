@@ -23,6 +23,8 @@ func _ready():
 		color_rect.size = shape.extents * 2
 		color_rect.position = -shape.extents
 		color_rect.color = Color(1, 0, 0, 0.3) # semi-transparent red
+		if GAME_DEBUG_SCRIPT.game_debug_mode == false:
+			color_rect.visible = false
 		
 	print("ENEMY SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval

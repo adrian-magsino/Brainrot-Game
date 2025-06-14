@@ -1,6 +1,5 @@
 [gd_scene load_steps=51 format=3 uid="uid://bcdvaas54iiga"]
 
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_smues"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
 [ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="4_b55vn"]
 [ext_resource type="Script" uid="uid://dc0vdfdhdsaac" path="res://Scenes/Gameplay/In-game UI/HUD/level_objectives_display.gd" id="4_o4oii"]
@@ -26,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://gwbprfr0ibj0" path="res://Game Assets/HUD design/zoom2.png" id="16_4igmu"]
 [ext_resource type="Texture2D" uid="uid://c50h20ywkw4tt" path="res://Game Assets/HUD design/dash2.png" id="16_irehg"]
 [ext_resource type="FontFile" uid="uid://dfq18ugigfu7e" path="res://Game Assets/HUD design/pixelmix.ttf" id="17_irehg"]
+[ext_resource type="PackedScene" uid="uid://dkhh0ne8dlwbd" path="res://addons/virtual_joystick/movement_joystick_scene.tscn" id="19_astq8"]
 [ext_resource type="Texture2D" uid="uid://ol6y4vagkfsi" path="res://Game Assets/Circular Progress Bar/progress-bar-circle.png" id="22_astq8"]
 [ext_resource type="Texture2D" uid="uid://bgpccqtna5mgb" path="res://Game Assets/Circular Progress Bar/progress-bar-frame.png" id="23_l7b1a"]
 
@@ -47,24 +47,6 @@ font = ExtResource("17_irehg")
 font_size = 20
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_h4w42"]
-font = ExtResource("17_irehg")
-font_size = 20
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_astq8"]
-atlas = ExtResource("7_5a5hv")
-region = Rect2(501, 515, 234, 115)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l7b1a"]
-atlas = ExtResource("8_h4w42")
-region = Rect2(504, 519, 231, 111)
-
-[sub_resource type="LabelSettings" id="LabelSettings_5a5hv"]
-font = ExtResource("17_irehg")
-font_size = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgnav"]
 atlas = ExtResource("11_astq8")
@@ -112,6 +94,24 @@ region = Rect2(810, 231, 116, 115)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tp5v"]
 atlas = ExtResource("16_irehg")
 region = Rect2(810, 231, 116, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_astq8"]
+atlas = ExtResource("7_5a5hv")
+region = Rect2(501, 515, 234, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7b1a"]
+atlas = ExtResource("8_h4w42")
+region = Rect2(504, 519, 231, 111)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5a5hv"]
+font = ExtResource("17_irehg")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_h4w42"]
+font = ExtResource("17_irehg")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22qo4"]
 atlas = ExtResource("11_22qo4")
@@ -178,57 +178,111 @@ vertical_alignment = 1
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_hkytx")
 
-[node name="GameTimeLabel" type="Label" parent="GameUI"]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 30.0
-offset_right = 438.0
-offset_bottom = 53.0
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.5
+offset_top = 15.0
+offset_right = 199.5
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="GameTimeLabel" type="Label" parent="GameUI/HBoxContainer"]
+layout_mode = 2
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_astq8")
 
-[node name="ScoreLabel" type="Label" parent="GameUI"]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 2.0
-offset_right = 603.0
-offset_bottom = 78.0
+[node name="ScoreLabel" type="Label" parent="GameUI/HBoxContainer"]
+layout_mode = 2
 text = "KILLS: 0"
 label_settings = SubResource("LabelSettings_kpvtn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AmmoLabel" type="Label" parent="GameUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -3.175
-anchor_top = 0.925
-anchor_right = -1.825
-anchor_bottom = 0.925
-offset_left = 634.0
-offset_top = 467.0
-offset_right = 754.0
-offset_bottom = 490.0
-text = "Ammo: -- / --"
-label_settings = SubResource("LabelSettings_h4w42")
-metadata/_edit_use_anchors_ = true
+[node name="PlayerLivesImage" type="TextureRect" parent="GameUI/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vgnav")
 
-[node name="ReloadProgress" type="ProgressBar" parent="GameUI"]
-modulate = Color(0, 1, 1, 1)
+[node name="PlayerLivesLabel" type="Label" parent="GameUI/HBoxContainer/PlayerLivesImage"]
 layout_mode = 0
-offset_left = 703.0
-offset_top = 459.0
-offset_right = 856.0
-offset_bottom = 486.0
+offset_left = 75.0
+offset_top = 10.0
+offset_right = 139.0
+offset_bottom = 52.0
+text = "x 0"
+label_settings = SubResource("LabelSettings_gl8s0")
+horizontal_alignment = 1
+
+[node name="GunDisplay" type="Control" parent="GameUI"]
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 33.0
+offset_right = 22.0
+offset_bottom = 33.0
+
+[node name="PlayerControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pickup Button" type="TextureButton" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -274.0
+offset_top = -130.0
+offset_right = -147.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_mkqvc")
+texture_pressed = SubResource("AtlasTexture_8ovj1")
+
+[node name="Reload Gun" type="TextureButton" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = -158.0
+offset_right = 282.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+texture_normal = SubResource("AtlasTexture_1jxoy")
+texture_pressed = SubResource("AtlasTexture_s03w6")
+
+[node name="ReloadProgressasdasd" type="ProgressBar" parent="PlayerControls/Reload Gun"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+layout_mode = 1
+offset_left = -35.0
+offset_top = -45.0
+offset_right = 118.0
+offset_bottom = -18.0
 max_value = 1.0
 show_percentage = false
 
-[node name="ReloadBarLabel" type="Label" parent="GameUI/ReloadProgress"]
+[node name="ReloadBarLabel" type="Label" parent="PlayerControls/Reload Gun/ReloadProgressasdasd"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 3.0
@@ -238,23 +292,114 @@ text = "RELOADING..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GunDisplay" type="Control" parent="GameUI"]
-anchors_preset = 0
-offset_left = 22.0
-offset_top = 33.0
-offset_right = 22.0
-offset_bottom = 33.0
-
-[node name="Switch Gun" type="TextureButton" parent="GameUI/GunDisplay"]
+[node name="ReloadProgress" type="TextureProgressBar" parent="PlayerControls/Reload Gun"]
+visible = false
 layout_mode = 0
-offset_left = 459.0
-offset_top = 496.0
-offset_right = 693.0
-offset_bottom = 611.0
+offset_left = -2.5
+offset_top = -12.5
+offset_right = 125.5
+offset_bottom = 115.5
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("22_astq8")
+texture_over = ExtResource("23_l7b1a")
+texture_progress = ExtResource("22_astq8")
+tint_under = Color(0, 0, 0, 0.546)
+tint_over = Color(1, 1, 1, 0.493)
+tint_progress = Color(0.166785, 0.340472, 0.777626, 1)
+
+[node name="Zoom Button" type="TextureButton" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -179.0
+offset_top = 27.0
+offset_right = -64.0
+offset_bottom = 142.0
+grow_horizontal = 0
+texture_normal = SubResource("AtlasTexture_n6rmw")
+texture_pressed = SubResource("AtlasTexture_68cqt")
+
+[node name="ZoomLabel" type="Label" parent="PlayerControls/Zoom Button"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 15.0
+offset_right = 82.0
+offset_bottom = 96.0
+text = "1"
+label_settings = SubResource("LabelSettings_4igmu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dash Button" type="TextureButton" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = 22.0
+offset_right = -269.0
+offset_bottom = 137.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture_normal = SubResource("AtlasTexture_ifv1l")
+texture_pressed = SubResource("AtlasTexture_2tp5v")
+
+[node name="Dash Cooldown" type="TextureProgressBar" parent="PlayerControls/Dash Button"]
+layout_mode = 0
+offset_left = -2.5
+offset_top = -12.5
+offset_right = 125.5
+offset_bottom = 115.5
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 4
+texture_under = ExtResource("22_astq8")
+texture_over = ExtResource("23_l7b1a")
+texture_progress = ExtResource("22_astq8")
+tint_under = Color(0, 0, 0, 0.546)
+tint_over = Color(1, 1, 1, 0.493)
+tint_progress = Color(0.166785, 0.340472, 0.777626, 1)
+
+[node name="Movement Joystick" parent="PlayerControls" instance=ExtResource("19_astq8")]
+layout_mode = 1
+offset_top = -300.0
+offset_bottom = 0.0
+
+[node name="Aim Joystick" parent="PlayerControls" instance=ExtResource("10_ov0tc")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+
+[node name="Switch Gun" type="TextureButton" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -128.0
+offset_right = 117.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_astq8")
 texture_pressed = SubResource("AtlasTexture_l7b1a")
 
-[node name="CurrentGunIcon" type="TextureRect" parent="GameUI/GunDisplay/Switch Gun"]
+[node name="CurrentGunIcon" type="TextureRect" parent="PlayerControls/Switch Gun"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -272,7 +417,7 @@ expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="CurrentGunLabel" type="Label" parent="GameUI/GunDisplay/Switch Gun"]
+[node name="CurrentGunLabel" type="Label" parent="PlayerControls/Switch Gun"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -291,118 +436,20 @@ horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayerLivesImage" type="TextureRect" parent="GameUI"]
-layout_mode = 0
-offset_left = 625.0
-offset_top = 19.0
-offset_right = 683.0
-offset_bottom = 69.0
-texture = SubResource("AtlasTexture_vgnav")
-
-[node name="PlayerLivesLabel" type="Label" parent="GameUI/PlayerLivesImage"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 10.0
-offset_right = 139.0
-offset_bottom = 52.0
-text = "x 0"
-label_settings = SubResource("LabelSettings_gl8s0")
-horizontal_alignment = 1
-
-[node name="PlayerControls" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Movement Joystick" parent="PlayerControls" instance=ExtResource("1_smues")]
+[node name="AmmoLabel" type="Label" parent="PlayerControls/Switch Gun"]
 layout_mode = 1
-offset_left = 3.0
-offset_top = 305.0
-offset_right = 303.0
-offset_bottom = 605.0
-pressed_color = Color(0.205352, 0.818775, 1, 1)
-action_left = "move_left"
-action_right = "move_right"
-action_up = "move_up"
-action_down = "move_down"
-
-[node name="Aim Joystick" parent="PlayerControls" instance=ExtResource("10_ov0tc")]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 808.0
-offset_top = 308.0
-offset_right = 1108.0
-offset_bottom = 608.0
-grow_horizontal = 0
-
-[node name="Pickup Gun" type="TextureButton" parent="PlayerControls"]
-layout_mode = 0
-offset_left = 324.0
-offset_top = 507.0
-offset_right = 451.0
-offset_bottom = 622.0
-texture_normal = SubResource("AtlasTexture_mkqvc")
-texture_pressed = SubResource("AtlasTexture_8ovj1")
-
-[node name="Reload Gun" type="TextureButton" parent="PlayerControls"]
-layout_mode = 0
-offset_left = 731.0
-offset_top = 495.0
-offset_right = 846.0
-offset_bottom = 610.0
-scale = Vector2(0.8, 0.8)
-texture_normal = SubResource("AtlasTexture_1jxoy")
-texture_pressed = SubResource("AtlasTexture_s03w6")
-
-[node name="Zoom Button" type="TextureButton" parent="PlayerControls"]
-layout_mode = 0
-offset_left = 954.0
-offset_top = 49.0
-offset_right = 1007.0
-offset_bottom = 80.0
-texture_normal = SubResource("AtlasTexture_n6rmw")
-texture_pressed = SubResource("AtlasTexture_68cqt")
-
-[node name="ZoomLabel" type="Label" parent="PlayerControls/Zoom Button"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 15.0
-offset_right = 82.0
-offset_bottom = 96.0
-text = "1"
-label_settings = SubResource("LabelSettings_4igmu")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Dash Button" type="TextureButton" parent="PlayerControls"]
-layout_mode = 0
-offset_left = 788.0
-offset_top = 357.0
-offset_right = 904.0
-offset_bottom = 472.0
-scale = Vector2(0.8, 0.8)
-texture_normal = SubResource("AtlasTexture_ifv1l")
-texture_pressed = SubResource("AtlasTexture_2tp5v")
-
-[node name="Dash Cooldown" type="TextureProgressBar" parent="PlayerControls/Dash Button"]
-layout_mode = 0
-offset_left = -2.5
-offset_top = -12.5
-offset_right = 125.5
-offset_bottom = 115.5
-max_value = 1.0
-step = 0.01
-value = 0.5
-fill_mode = 4
-texture_under = ExtResource("22_astq8")
-texture_over = ExtResource("23_l7b1a")
-texture_progress = ExtResource("22_astq8")
-tint_under = Color(0, 0, 0, 0.546)
-tint_over = Color(1, 1, 1, 0.493)
-tint_progress = Color(0.166785, 0.340472, 0.777626, 1)
+anchors_preset = -1
+anchor_left = -0.111111
+anchor_top = 0.0632716
+anchor_right = 1.23889
+anchor_bottom = 0.0632716
+offset_left = 51.0
+offset_top = -28.2762
+offset_right = -90.8999
+offset_bottom = -8.27623
+text = "Ammo: -- / --"
+label_settings = SubResource("LabelSettings_h4w42")
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3

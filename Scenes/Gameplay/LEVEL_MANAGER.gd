@@ -3,8 +3,8 @@ class_name Level_Manager
 
 @onready var HUD = get_node("HUD")
 @onready var game_ui = HUD.get_node("GameUI")
-@onready var score_label = HUD.get_node("GameUI/ScoreLabel")
-@onready var player_lives_label = HUD.get_node("GameUI/PlayerLivesImage/PlayerLivesLabel")
+@onready var score_label = HUD.get_node("GameUI/HBoxContainer/ScoreLabel")
+@onready var player_lives_label = HUD.get_node("GameUI/HBoxContainer/PlayerLivesImage/PlayerLivesLabel")
 @onready var victory_panel = HUD.get_node("GameResults/VictoryPanel")
 @onready var defeat_panel = HUD.get_node("GameResults/DefeatPanel")
 @onready var PLAYER = get_node("PLAYER")

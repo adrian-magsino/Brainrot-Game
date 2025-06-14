@@ -26,8 +26,8 @@ CharacterButtonClick="*res://Scripts/UI/character_button_click.gd"
 
 [display]
 
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [global_group]
 

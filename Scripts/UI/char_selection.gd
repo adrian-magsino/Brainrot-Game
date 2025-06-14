@@ -33,6 +33,7 @@ func _get_character_name(id: int) -> String:
 		_: return "sahur"  # fallback
 
 func _on_character_selected(character_id: String) -> void:
+	CharacterButtonClick.play_button_click()
 	_show_character(character_id)
 	PLAYER_DATA.current_character = character_id
 

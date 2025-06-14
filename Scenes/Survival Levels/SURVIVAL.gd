@@ -27,6 +27,7 @@ func _ready() -> void:
 	print("SURVIVAL READY")
 	change_difficulty_stage(0)
 
+
 	
 func _process(delta):
 	super._process(delta)

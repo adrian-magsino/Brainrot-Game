@@ -20,7 +20,21 @@ func save_game():
 	file.store_string(JSON.stringify(save_data))
 	file.close()
 	print("SAVED PLAYER DATA")
+	
+func apply_saved_audio_settings():
+	for bus_name in audio_settings.keys():
+		var settings = audio_settings[bus_name]
+		if typeof(settings) == TYPE_DICTIONARY:
+			var volume = settings.get("volume", 1.0)
+			var muted = settings.get("muted", false)
+			var bus_index = AudioServer.get_bus_index(bus_name)
 
+			if muted:
+				AudioServer.set_bus_volume_db(bus_index, linear_to_db(0.0))
+			else:
+				AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume))
+
+			
 func load_game():
 	if FileAccess.file_exists("user://save_data.json"):
 		var file = FileAccess.open("user://save_data.json", FileAccess.READ)

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var interact_label: Button = $InteractLabel
+@onready var interact_label: Button = $CanvasLayer/InteractLabel
 
 var current_interactions : = []
 var can_interact:= true

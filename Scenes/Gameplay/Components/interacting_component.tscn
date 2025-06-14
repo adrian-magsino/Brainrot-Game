@@ -16,15 +16,25 @@ collision_mask = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
 shape = SubResource("CircleShape2D_lqmmv")
 
-[node name="InteractLabel" type="Button" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="InteractLabel" type="Button" parent="CanvasLayer"]
 z_index = 10
-offset_left = 383.0
-offset_top = -64.0
-offset_right = 489.0
-offset_bottom = -33.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -15.0
+offset_right = -146.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Q to Interact"
 
 [connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]
-[connection signal="pressed" from="InteractLabel" to="." method="_on_interact_label_pressed"]
+[connection signal="pressed" from="CanvasLayer/InteractLabel" to="." method="_on_interact_label_pressed"]

@@ -12,16 +12,18 @@ var difficulty_stages = [
 	{ "time": 0, "interval": 10.0, "spawn_count": 1, "max_enemies": 3, "enemy_types": ["normal_enemy"] as Array[String] },
 	{ "time": 30, "interval": 7.0, "spawn_count": 2, "max_enemies": 5, "enemy_types": ["normal_enemy", "fast_enemy"] as Array[String] },
 	{ "time": 60, "interval": 1.0, "spawn_count": 3, "max_enemies": 10, "enemy_types": ["normal_enemy", "fast_enemy", "special"] as Array[String]},
-	{ "time": 360, "interval": 5.0, "spawn_count": 4, "max_enemies": 8, "enemy_types": ["normal_enemy", "ranged_enemy", "elite"] as Array[String], "spawn_boss": true }
+	#{ "time": 360, "interval": 5.0, "spawn_count": 4, "max_enemies": 8, "enemy_types": ["normal_enemy", "ranged_enemy", "elite"] as Array[String], "spawn_boss": true }
 ]
 
 var current_difficulty_stage = 0
 
 func _ready() -> void:
-	super._ready()
+	PLAYER.update_player_lives()
+	level_objectives = "SURVIVE\nSTAGE %d" % (current_difficulty_stage+1)
+	update_objectives_display(level_objectives)
 	await get_tree().process_frame
 	print("SURVIVAL READY")
-	apply_difficulty_stage(0)
+	change_difficulty_stage(0)
 
 	
 func _process(delta):
@@ -31,9 +33,9 @@ func _process(delta):
 		var next_stage = difficulty_stages[current_difficulty_stage + 1]
 		if game_time >= next_stage.time:
 			current_difficulty_stage += 1
-			apply_difficulty_stage(current_difficulty_stage)
+			change_difficulty_stage(current_difficulty_stage)
 
-func apply_difficulty_stage(stage_index: int):
+func change_difficulty_stage(stage_index: int):
 	var stage = difficulty_stages[stage_index]
 	print("Applying difficulty stage:", stage_index, "with tags:", stage.enemy_types)
 	for spawner in get_tree().get_nodes_in_group("enemy_spawner"):
@@ -46,6 +48,8 @@ func apply_difficulty_stage(stage_index: int):
 			spawner.spawn_timer.wait_time = stage.interval
 			spawner.spawn_timer.start()
 	print("DIFFICULTY HAS BEEN INCREASED")
+	level_objectives = "SURVIVE\nSTAGE %d" % (current_difficulty_stage+1)
+	update_objectives_display(level_objectives)
 	if stage.has("spawn_boss"):
 		pass
 		#spawn_boss()

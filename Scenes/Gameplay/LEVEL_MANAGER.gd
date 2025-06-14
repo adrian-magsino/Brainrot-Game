@@ -9,7 +9,7 @@ class_name Level_Manager
 @onready var defeat_panel = HUD.get_node("GameResults/DefeatPanel")
 @onready var PLAYER = get_node("PLAYER")
 @onready var objectives_display = HUD.get_node("ObjectivesContainer")
-@export var level_objectives: String = "LEVEL OBJECTIVES"
+@export var level_objectives: String = "CLEAR THE LEVEL"
 
 #@export var player_lives: int = 1
 

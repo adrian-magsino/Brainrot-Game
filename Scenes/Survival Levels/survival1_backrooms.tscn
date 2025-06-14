@@ -144,7 +144,7 @@ pattern_7 = SubResource("TileMapPattern_liyvd")
 pattern_8 = SubResource("TileMapPattern_ui4jt")
 pattern_9 = SubResource("TileMapPattern_b7yio")
 
-[node name="backroom_map" type="Node2D"]
+[node name="Survival_Backrooms" type="Node2D"]
 script = ExtResource("1_fw3hm")
 
 [node name="HUD" parent="." instance=ExtResource("2_fw3hm")]

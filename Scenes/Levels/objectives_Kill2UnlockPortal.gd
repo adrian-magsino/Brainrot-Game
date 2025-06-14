@@ -9,7 +9,9 @@ var portal_unlocked: bool = false
 var updated_objectives_text = "PORTAL IS NOW OPEN!\nFIND THE PORTAL"
 
 func _ready() -> void:
-	super._ready()
+	PLAYER.update_player_lives()
+	level_objectives = "KILL %d ENEMIES\nTO UNLOCK THE PORTAL" % required_kills
+	update_objectives_display(level_objectives)
 	exit_portal.visible = false
 	portal_interactable_component.set_deferred("monitorable", false)
 	portal_interactable_component.set_deferred("monitoring", false)

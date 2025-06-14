@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bcdvaas54iiga"]
+[gd_scene load_steps=67 format=3 uid="uid://bcdvaas54iiga"]
 
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
 [ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="4_b55vn"]
@@ -28,6 +28,14 @@
 [ext_resource type="PackedScene" uid="uid://dkhh0ne8dlwbd" path="res://addons/virtual_joystick/movement_joystick_scene.tscn" id="19_astq8"]
 [ext_resource type="Texture2D" uid="uid://ol6y4vagkfsi" path="res://Game Assets/Circular Progress Bar/progress-bar-circle.png" id="22_astq8"]
 [ext_resource type="Texture2D" uid="uid://bgpccqtna5mgb" path="res://Game Assets/Circular Progress Bar/progress-bar-frame.png" id="23_l7b1a"]
+[ext_resource type="Texture2D" uid="uid://1g1qq3bvi0uv" path="res://Game Assets/Pause Menu Assets/container1.png" id="26_l64xq"]
+[ext_resource type="Texture2D" uid="uid://dhau3yxmcig74" path="res://Game Assets/Pause Menu Assets/quit1.png" id="27_aoj1i"]
+[ext_resource type="Texture2D" uid="uid://dhtga3haklmdr" path="res://Game Assets/Pause Menu Assets/quit2.png" id="28_p1ej7"]
+[ext_resource type="Texture2D" uid="uid://b1nw20aftd7wx" path="res://Game Assets/Pause Menu Assets/settings1.png" id="29_5lfd3"]
+[ext_resource type="Texture2D" uid="uid://0yerxldh8cov" path="res://Game Assets/Pause Menu Assets/game_title.png" id="29_aoj1i"]
+[ext_resource type="Texture2D" uid="uid://c87qvrt83l4gw" path="res://Game Assets/Pause Menu Assets/settings2.png" id="30_rgdqc"]
+[ext_resource type="Texture2D" uid="uid://c233vghwbfa11" path="res://Game Assets/Pause Menu Assets/resume1.png" id="31_i1acc"]
+[ext_resource type="Texture2D" uid="uid://d3xi6fhgapo3y" path="res://Game Assets/Pause Menu Assets/resume2.png" id="32_wmv3y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4oii"]
 font = ExtResource("4_b55vn")
@@ -57,6 +65,22 @@ font = ExtResource("17_irehg")
 font_size = 30
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a5hv"]
+atlas = ExtResource("14_mkqvc")
+region = Rect2(58, 198, 115, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4w42"]
+atlas = ExtResource("15_8ovj1")
+region = Rect2(58, 198, 115, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22qo4"]
+atlas = ExtResource("11_22qo4")
+region = Rect2(18, 18, 126, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqepd"]
+atlas = ExtResource("12_mqepd")
+region = Rect2(18, 18, 126, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkqvc"]
 atlas = ExtResource("11_8ovj1")
@@ -113,21 +137,37 @@ font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_22qo4"]
-atlas = ExtResource("11_22qo4")
-region = Rect2(18, 18, 126, 76)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1ej7"]
+atlas = ExtResource("29_aoj1i")
+region = Rect2(0, 0, 1152, 115)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqepd"]
-atlas = ExtResource("12_mqepd")
-region = Rect2(18, 18, 126, 76)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhyot"]
+atlas = ExtResource("26_l64xq")
+region = Rect2(350, 155, 450, 241)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5a5hv"]
-atlas = ExtResource("14_mkqvc")
-region = Rect2(58, 198, 115, 116)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6vqx"]
+atlas = ExtResource("27_aoj1i")
+region = Rect2(378, 234, 116, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4w42"]
-atlas = ExtResource("15_8ovj1")
-region = Rect2(58, 198, 115, 116)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kkgm"]
+atlas = ExtResource("28_p1ej7")
+region = Rect2(378, 234, 116, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b2ur"]
+atlas = ExtResource("29_5lfd3")
+region = Rect2(519, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x1j0"]
+atlas = ExtResource("30_rgdqc")
+region = Rect2(519, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd5ni"]
+atlas = ExtResource("31_i1acc")
+region = Rect2(659, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62s6c"]
+atlas = ExtResource("32_wmv3y")
+region = Rect2(659, 234, 115, 80)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xn0sg")
@@ -237,6 +277,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelObjectivesButton" type="TextureButton" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -178.0
+offset_right = 115.0
+offset_bottom = -62.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_5a5hv")
+texture_pressed = SubResource("AtlasTexture_h4w42")
+
+[node name="MenuButton" type="TextureButton" parent="PlayerControls"]
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 76.0
+texture_normal = SubResource("AtlasTexture_22qo4")
+texture_pressed = SubResource("AtlasTexture_mqepd")
 
 [node name="Pickup Button" type="TextureButton" parent="PlayerControls"]
 layout_mode = 1
@@ -451,52 +511,79 @@ text = "Ammo: -- / --"
 label_settings = SubResource("LabelSettings_h4w42")
 metadata/_edit_use_anchors_ = true
 
+[node name="Notification" parent="." instance=ExtResource("7_a4jdu")]
+
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MenuButton" type="TextureButton" parent="Menu"]
-layout_mode = 0
-offset_right = 57.0
-offset_bottom = 31.0
-texture_normal = SubResource("AtlasTexture_22qo4")
-texture_pressed = SubResource("AtlasTexture_mqepd")
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.733)
 
-[node name="MenuPanel" type="Panel" parent="Menu"]
-visible = false
+[node name="GameTitleLabel" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 115.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_p1ej7")
+
+[node name="MenuPanel" type="TextureRect" parent="Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 376.0
-offset_top = 91.0
-offset_right = 376.0
-offset_bottom = 91.0
+offset_left = -225.0
+offset_top = -120.5
+offset_right = 225.0
+offset_bottom = 120.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.78829, 3.91214)
+texture = SubResource("AtlasTexture_dhyot")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/MenuPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -50.5
+offset_right = 177.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ResumeButton" type="Button" parent="Menu/MenuPanel/VBoxContainer"]
+[node name="ExitButton" type="TextureButton" parent="Menu/MenuPanel/HBoxContainer"]
 layout_mode = 2
-text = "RESUME
-"
+texture_normal = SubResource("AtlasTexture_d6vqx")
+texture_pressed = SubResource("AtlasTexture_0kkgm")
 
-[node name="SettingsButton" type="Button" parent="Menu/MenuPanel/VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="Menu/MenuPanel/HBoxContainer"]
 layout_mode = 2
-text = "SETTINGS"
+texture_normal = SubResource("AtlasTexture_0b2ur")
+texture_pressed = SubResource("AtlasTexture_0x1j0")
 
-[node name="ExitButton" type="Button" parent="Menu/MenuPanel/VBoxContainer"]
+[node name="ResumeButton" type="TextureButton" parent="Menu/MenuPanel/HBoxContainer"]
 layout_mode = 2
-text = "EXIT"
+texture_normal = SubResource("AtlasTexture_bd5ni")
+texture_pressed = SubResource("AtlasTexture_62s6c")
 
 [node name="GameResults" type="Control" parent="."]
 layout_mode = 3
@@ -643,26 +730,12 @@ offset_bottom = 268.0
 text = "Exit
 "
 
-[node name="Notification" parent="." instance=ExtResource("7_a4jdu")]
-
-[node name="LevelObjectivesButton" type="TextureButton" parent="."]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -178.0
-offset_right = 115.0
-offset_bottom = -62.0
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture_normal = SubResource("AtlasTexture_5a5hv")
-texture_pressed = SubResource("AtlasTexture_h4w42")
-
-[connection signal="pressed" from="Menu/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Menu/MenuPanel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PlayerControls/LevelObjectivesButton" to="ObjectivesContainer" method="_on_level_objectives_button_pressed"]
+[connection signal="pressed" from="PlayerControls/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="GameResults/VictoryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="GameResults/VictoryPanel/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="GameResults/DefeatPanel/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameResults/DefeatPanel/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="LevelObjectivesButton" to="ObjectivesContainer" method="_on_level_objectives_button_pressed"]

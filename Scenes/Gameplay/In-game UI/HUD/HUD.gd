@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var menu_panel = $Menu/MenuPanel
+@onready var menu_panel = $Menu
 @onready var victory_panel: Control = $GameResults/VictoryPanel
 @onready var defeat_panel: Control = $GameResults/DefeatPanel
 @onready var game_scene = get_parent()

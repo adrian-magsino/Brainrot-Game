@@ -38,8 +38,6 @@ func update_game_time_display():
 
 	game_ui.update_timer_label(formatted_time)
 	
-
-	
 func register_enemy_kill(attacker: Node) -> void:
 	if attacker.is_in_group("player"):
 		enemies_killed += 1

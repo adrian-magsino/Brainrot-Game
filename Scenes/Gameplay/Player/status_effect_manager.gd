@@ -36,4 +36,11 @@ func apply_status_effect(effect):
 func reset_effect():
 	for i in status_effects:
 		i.apply(target)
+		
+func clear_effects():
+	for i in range(status_effects.size()):
+		var effect = status_effects[i]
+		effect.remove(target)
+		status_effects.remove_at(i)
+	print("CLEARED EFFECTS")
 	

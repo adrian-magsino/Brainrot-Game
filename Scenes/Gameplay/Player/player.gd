@@ -124,7 +124,7 @@ func _physics_process(delta):
 		if input_vector != Vector2.ZERO:
 			input_vector = input_vector.normalized()
 			velocity = input_vector * move_speed
-			animated_sprite.play("walk")
+			animated_sprite.play("run")
 		else:
 			velocity = Vector2.ZERO
 			animated_sprite.play("idle")
@@ -347,7 +347,7 @@ func die(attack: AttackComponent):
 	if is_dead:
 		return
 	is_dead = true
-	
+	$StatusEffectManager.clear_effects()
 	increment_deaths()
 	bloody_death_animation.play_death_animation()
 	drop_guns_on_death()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bigbp4wnpxlrx"
-path="res://.godot/imported/klee_run.png-d8bb5158ad86dd6599b6e7060e956ba5.ctex"
+uid="uid://hsvysgjmhsc0"
+path="res://.godot/imported/springtrap_attack.png-2b5b1862d79b3ac014d2a6ac64df0d84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_run.png"
-dest_files=["res://.godot/imported/klee_run.png-d8bb5158ad86dd6599b6e7060e956ba5.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/sprites/springtrap_attack.png"
+dest_files=["res://.godot/imported/springtrap_attack.png-2b5b1862d79b3ac014d2a6ac64df0d84.ctex"]
 
 [params]
 

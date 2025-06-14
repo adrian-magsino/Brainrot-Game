@@ -1,98 +1,98 @@
-[gd_scene load_steps=36 format=3 uid="uid://l3qn4yfj57o6"]
+[gd_scene load_steps=36 format=3 uid="uid://db517srtyyn31"]
 
-[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_uh7xe"]
-[ext_resource type="Texture2D" uid="uid://b4ilsyj2n8n77" path="res://Game Assets/Bot_sprites/FREDDY_face.jpg" id="2_ft6ej"]
-[ext_resource type="Texture2D" uid="uid://rjw7myh1by12" path="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_run.png" id="3_op5pa"]
-[ext_resource type="Texture2D" uid="uid://0rlo1jgfmi4s" path="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_attack.png" id="3_rl784"]
-[ext_resource type="Texture2D" uid="uid://btpt75aqhhkmm" path="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_idle.png" id="4_qyqo8"]
-[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_uh7xe"]
-[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_bvn0o"]
-[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_ncjgi"]
-[ext_resource type="AudioStream" uid="uid://b78ekcast2g72" path="res://Scenes/Gameplay/Enemies/enemy bot 1/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="6_qyqo8"]
-[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="11_po3cx"]
+[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_u8y07"]
+[ext_resource type="Texture2D" uid="uid://b4ilsyj2n8n77" path="res://Game Assets/Bot_sprites/FREDDY_face.jpg" id="2_6np0n"]
+[ext_resource type="Texture2D" uid="uid://0rlo1jgfmi4s" path="res://Scenes/Gameplay/Enemies/normal enemy bot 1/sprites/springtrap_attack.png" id="3_w3ex7"]
+[ext_resource type="Texture2D" uid="uid://btpt75aqhhkmm" path="res://Scenes/Gameplay/Enemies/normal enemy bot 1/sprites/springtrap_idle.png" id="4_vvo58"]
+[ext_resource type="Texture2D" uid="uid://rjw7myh1by12" path="res://Scenes/Gameplay/Enemies/normal enemy bot 1/sprites/springtrap_run.png" id="5_imgl8"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="6_a6nw2"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="7_hfytg"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="8_bg8jw"]
+[ext_resource type="AudioStream" uid="uid://b78ekcast2g72" path="res://Scenes/Gameplay/Enemies/normal enemy bot 1/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="9_k1g78"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="10_cxtuf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kprd"]
-atlas = ExtResource("3_rl784")
+atlas = ExtResource("3_w3ex7")
 region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epkko"]
-atlas = ExtResource("3_rl784")
+atlas = ExtResource("3_w3ex7")
 region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ko6x"]
-atlas = ExtResource("3_rl784")
+atlas = ExtResource("3_w3ex7")
 region = Rect2(384, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t5gs"]
-atlas = ExtResource("3_rl784")
+atlas = ExtResource("3_w3ex7")
 region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uag5"]
-atlas = ExtResource("3_rl784")
+atlas = ExtResource("3_w3ex7")
 region = Rect2(768, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uxjw"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k01i8"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_exchf"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(384, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yvrt"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mvww"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(768, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1dji"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mamyg"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(1152, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5a2ng"]
-atlas = ExtResource("4_qyqo8")
+atlas = ExtResource("4_vvo58")
 region = Rect2(1344, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl784"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyqo8"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po3cx"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(384, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4qde"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4puuo"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(768, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijm7d"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpaa5"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(1152, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fby7g"]
-atlas = ExtResource("3_op5pa")
+atlas = ExtResource("5_imgl8")
 region = Rect2(1344, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1kprd"]
@@ -186,19 +186,19 @@ radius = 80.0
 radius = 56.0
 height = 158.0
 
-[node name="EnemyBot" type="CharacterBody2D"]
+[node name="SpringTrapEnemyBot" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_uh7xe")
-enemy_type = "normal_enemy"
+script = ExtResource("1_u8y07")
+enemy_type = "special"
 can_destroy_objects = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.0861754, 0.101357)
-texture = ExtResource("2_ft6ej")
+texture = ExtResource("2_6np0n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1kprd")
@@ -225,10 +225,10 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
-[node name="AttackComponent" parent="." instance=ExtResource("4_uh7xe")]
+[node name="AttackComponent" parent="." instance=ExtResource("6_a6nw2")]
 attack_damage = 10.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_bvn0o")]
+[node name="HealthComponent" parent="." instance=ExtResource("7_hfytg")]
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
 offset_left = -50.0
@@ -239,7 +239,7 @@ offset_bottom = -55.0
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
 wait_time = 3.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ncjgi")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_bg8jw")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -247,11 +247,12 @@ position = Vector2(6, 18)
 shape = SubResource("CapsuleShape2D_rl784")
 
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_qyqo8")
+stream = ExtResource("9_k1g78")
+volume_db = -5.0
 bus = &"SFX"
 parameters/looping = true
 
-[node name="BloodyDeathAnimation" parent="." instance=ExtResource("11_po3cx")]
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("10_cxtuf")]
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0rlo1jgfmi4s"
-path="res://.godot/imported/springtrap_attack.png-e9fc26fb3f159ebdadaa55bb8fb2c723.ctex"
+uid="uid://bf7hyjj0otegu"
+path="res://.godot/imported/toybonnie_attack.png-757e841f97490877cfc449b9a98c3041.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/enemy bot 1/sprites/springtrap_attack.png"
-dest_files=["res://.godot/imported/springtrap_attack.png-e9fc26fb3f159ebdadaa55bb8fb2c723.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_bonnie enemy bot/toybonnie_attack.png"
+dest_files=["res://.godot/imported/toybonnie_attack.png-757e841f97490877cfc449b9a98c3041.ctex"]
 
 [params]
 

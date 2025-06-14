@@ -1,132 +1,132 @@
-[gd_scene load_steps=43 format=3 uid="uid://ltx5iwgdosgm"]
+[gd_scene load_steps=43 format=3 uid="uid://blt3w3032p5ux"]
 
-[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_01rsn"]
-[ext_resource type="Texture2D" uid="uid://cb54bjk5aem26" path="res://Scenes/Gameplay/Enemies/fast enemy bot/toybonnie_attack.png" id="2_gx00l"]
-[ext_resource type="Texture2D" uid="uid://dqx0ka5x7v5gm" path="res://Scenes/Gameplay/Enemies/fast enemy bot/toybonnie_idle.png" id="3_gx00l"]
-[ext_resource type="Texture2D" uid="uid://b4oo2e0wu8nwe" path="res://Scenes/Gameplay/Enemies/fast enemy bot/toybonnie_run.png" id="4_vpxg5"]
-[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="7_cljdt"]
-[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="8_ircmn"]
-[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="9_gx00l"]
-[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="9_i1c1u"]
+[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_tbaic"]
+[ext_resource type="Texture2D" uid="uid://cb54bjk5aem26" path="res://Scenes/Gameplay/Enemies/fast enemy bot 1/toybonnie_attack.png" id="2_p65mr"]
+[ext_resource type="Texture2D" uid="uid://dqx0ka5x7v5gm" path="res://Scenes/Gameplay/Enemies/fast enemy bot 1/toybonnie_idle.png" id="3_3ut6q"]
+[ext_resource type="Texture2D" uid="uid://b4oo2e0wu8nwe" path="res://Scenes/Gameplay/Enemies/fast enemy bot 1/toybonnie_run.png" id="4_n30mx"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="5_3mn1n"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="6_jwrt8"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="7_5oopc"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="8_ayo44"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vpxg5"]
-atlas = ExtResource("2_gx00l")
+atlas = ExtResource("2_p65mr")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vuqg"]
-atlas = ExtResource("2_gx00l")
+atlas = ExtResource("2_p65mr")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ig0v5"]
-atlas = ExtResource("2_gx00l")
+atlas = ExtResource("2_p65mr")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfon8"]
-atlas = ExtResource("2_gx00l")
+atlas = ExtResource("2_p65mr")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5j35"]
-atlas = ExtResource("2_gx00l")
+atlas = ExtResource("2_p65mr")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ww6f"]
-atlas = ExtResource("2_gx00l")
+atlas = ExtResource("2_p65mr")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoadw"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ra31i"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uys5q"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldfjr"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bit2o"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otf6m"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yevjw"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dy0t0"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4htl"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxgjb"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8r7p"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bwgt"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vwstv"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(384, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqg1y"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nire"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(448, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmffy"]
-atlas = ExtResource("3_gx00l")
+atlas = ExtResource("3_3ut6q")
 region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngkjw"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u60l"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywj4n"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2hyq"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgvsv"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hysg0"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xre37"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ev4m2"]
-atlas = ExtResource("4_vpxg5")
+atlas = ExtResource("4_n30mx")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1kprd"]
@@ -247,13 +247,13 @@ radius = 60.0
 radius = 28.0
 height = 98.0
 
-[node name="FastEnemyBot" type="CharacterBody2D"]
+[node name="BonnieEnemyBot" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_01rsn")
-enemy_type = "fast_enemy"
+script = ExtResource("1_tbaic")
+enemy_type = "special"
 move_speed = 300.0
 attack_cooldown = 0.5
 can_destroy_objects = true
@@ -284,10 +284,10 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
-[node name="AttackComponent" parent="." instance=ExtResource("7_cljdt")]
+[node name="AttackComponent" parent="." instance=ExtResource("5_3mn1n")]
 attack_damage = 5.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("8_ircmn")]
+[node name="HealthComponent" parent="." instance=ExtResource("6_jwrt8")]
 MAX_HEALTH = 60.0
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
@@ -299,7 +299,7 @@ offset_bottom = -55.0
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
 wait_time = 3.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_i1c1u")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_5oopc")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -309,7 +309,7 @@ shape = SubResource("CapsuleShape2D_rl784")
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
-[node name="BloodyDeathAnimation" parent="." instance=ExtResource("9_gx00l")]
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("8_ayo44")]
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

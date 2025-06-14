@@ -19,6 +19,7 @@ var enemies_killed: int = 0
 var level_cleared: bool = false
 
 func _ready() -> void:
+	Bgm.stop()
 	PLAYER.update_player_lives()
 	update_objectives_display(level_objectives)
 	

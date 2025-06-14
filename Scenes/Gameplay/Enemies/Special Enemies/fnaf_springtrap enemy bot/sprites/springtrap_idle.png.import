@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqx0ka5x7v5gm"
-path="res://.godot/imported/toybonnie_idle.png-0a900412201a961251baea5845319a2a.ctex"
+uid="uid://clo36phc81e2h"
+path="res://.godot/imported/springtrap_idle.png-26a2344cc3ef80cf14e28e329d74ef1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/fast enemy bot/toybonnie_idle.png"
-dest_files=["res://.godot/imported/toybonnie_idle.png-0a900412201a961251baea5845319a2a.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/sprites/springtrap_idle.png"
+dest_files=["res://.godot/imported/springtrap_idle.png-26a2344cc3ef80cf14e28e329d74ef1d.ctex"]
 
 [params]
 

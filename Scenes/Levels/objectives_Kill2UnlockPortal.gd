@@ -9,6 +9,7 @@ var portal_unlocked: bool = false
 var updated_objectives_text = "PORTAL IS NOW OPEN!\nFIND THE PORTAL"
 
 func _ready() -> void:
+	Bgm.stop()
 	PLAYER.update_player_lives()
 	level_objectives = "KILL %d ENEMIES\nTO UNLOCK THE PORTAL" % required_kills
 	update_objectives_display(level_objectives)

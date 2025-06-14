@@ -20,6 +20,7 @@ var next_dynamic_stage_time = 90  # After the last manual stage ends at 60s
 var dynamic_stage_interval = 30   # Every 30 seconds afterward
 
 func _ready() -> void:
+	Bgm.stop()
 	PLAYER.update_player_lives()
 	level_objectives = "SURVIVE\nSTAGE %d" % (current_difficulty_stage+1)
 	update_objectives_display(level_objectives)

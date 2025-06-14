@@ -3,6 +3,7 @@ extends Level_Manager
 @export var level_id: int
 
 func _ready() -> void:
+	Bgm.stop()
 	PLAYER.update_player_lives()
 	level_objectives = "FIND THE PORTAL"
 	update_objectives_display(level_objectives)

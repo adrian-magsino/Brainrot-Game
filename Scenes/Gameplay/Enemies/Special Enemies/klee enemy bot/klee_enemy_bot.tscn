@@ -1,13 +1,13 @@
 [gd_scene load_steps=25 format=3 uid="uid://bn83teut6ypt7"]
 
-[ext_resource type="Script" uid="uid://j4fmb8wc7kae" path="res://Scenes/Gameplay/Enemies/klee enemy bot/explosive_bot.gd" id="1_55cgj"]
-[ext_resource type="AudioStream" uid="uid://dn5x0sb6fag77" path="res://Scenes/Gameplay/Enemies/klee enemy bot/Let's Go, Crimson Knight!.mp3" id="3_55cgj"]
-[ext_resource type="Texture2D" uid="uid://bigbp4wnpxlrx" path="res://Scenes/Gameplay/Enemies/klee enemy bot/klee_run.png" id="4_55cgj"]
-[ext_resource type="AudioStream" uid="uid://dyreb1rd5pkpl" path="res://Scenes/Gameplay/Enemies/klee enemy bot/unyah-boom-boom-bakudan-notification-sound_469OAOSs.mp3" id="7_04xes"]
+[ext_resource type="Script" uid="uid://j4fmb8wc7kae" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/explosive_bot.gd" id="1_55cgj"]
+[ext_resource type="AudioStream" uid="uid://dn5x0sb6fag77" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/Let's Go, Crimson Knight!.mp3" id="3_55cgj"]
+[ext_resource type="Texture2D" uid="uid://bigbp4wnpxlrx" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/klee_run.png" id="4_55cgj"]
+[ext_resource type="AudioStream" uid="uid://dyreb1rd5pkpl" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/unyah-boom-boom-bakudan-notification-sound_469OAOSs.mp3" id="7_04xes"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="7_b254j"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="8_ax1ys"]
 [ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="8_divsg"]
-[ext_resource type="AudioStream" uid="uid://5nwptgpukc8b" path="res://Scenes/Gameplay/Enemies/klee enemy bot/SFX_explosion2.mp3" id="8_pr5bs"]
+[ext_resource type="AudioStream" uid="uid://5nwptgpukc8b" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/SFX_explosion2.mp3" id="8_pr5bs"]
 [ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="9_55cgj"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="9_180sk"]
 
@@ -163,6 +163,7 @@ shape = SubResource("CircleShape2D_55cgj")
 
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_55cgj")
+volume_db = -10.0
 bus = &"SFX"
 parameters/looping = true
 
@@ -173,7 +174,6 @@ bus = &"SFX"
 
 [node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_pr5bs")
-volume_db = 4.0
 bus = &"SFX"
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]

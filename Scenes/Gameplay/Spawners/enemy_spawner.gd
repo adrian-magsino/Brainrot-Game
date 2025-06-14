@@ -13,12 +13,13 @@ var active_enemies: Array[Node] = []
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
 func _ready():
+	add_to_group("pauseable") #This node will pause along with the game
 	if collision_shape.shape is RectangleShape2D:
 		# Duplicate the shape so each spawner gets a unique instance
 		var shape = collision_shape.shape.duplicate()
 		shape.extents = spawn_area_extents / 2
 		collision_shape.shape = shape
-		print("CUSTOM EXTENTS SET TO:", shape.extents)
+		#print("CUSTOM EXTENTS SET TO:", shape.extents)
 		
 		color_rect.size = shape.extents * 2
 		color_rect.position = -shape.extents
@@ -26,13 +27,14 @@ func _ready():
 		if GAME_DEBUG_SCRIPT.game_debug_mode == false:
 			color_rect.visible = false
 		
-	print("ENEMY SPAWN TIMER SET")
+	#print("ENEMY SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	
+	if enemy_scenes.is_empty():
+		print("ENEMY SPAWNER IS EMPTY")
 		
-	if !enemy_scenes.is_empty():
-		print("ENEMY SPAWNER IS NOT EMPTY")
+	else:
 		spawn_timer.start()
 	
 		
@@ -40,7 +42,7 @@ func _on_spawn_timer_timeout():
 	var available_slots = max_enemies - active_enemies.size()
 	#print("GUN SPAWNER TIMEOUT")
 	if available_slots <= 0:
-		print("MAX LIMIT REACHED")
+		print("ENEMY MAX LIMIT REACHED")
 		# Don't spawn more enemies yet
 		spawn_timer.start()
 		return
@@ -82,5 +84,5 @@ func spawn_enemy():
 
 
 func _on_enemy_removed(enemy: Node):
-	print("Enemy removed:", enemy.name)
+	#print("Enemy removed:", enemy.name)
 	active_enemies.erase(enemy)

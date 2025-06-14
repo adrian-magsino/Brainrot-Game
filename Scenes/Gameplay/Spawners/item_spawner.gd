@@ -12,15 +12,16 @@ var current_items: Array[Node] = []
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
 func _ready():
+	add_to_group("pauseable") #This node will pause along with the game
 	if item_scenes.is_empty():
-		print("GUN SPAWNER IS EMPTY")
+		print("ITEM SPAWNER IS EMPTY")
 		return
 	if collision_shape.shape is RectangleShape2D:
 		# Duplicate the shape so each spawner gets a unique instance
 		var shape = collision_shape.shape.duplicate()
 		shape.extents = spawn_area_extents / 2
 		collision_shape.shape = shape
-		print("CUSTOM EXTENTS SET TO:", shape.extents)
+		#print("CUSTOM EXTENTS SET TO:", shape.extents)
 		
 		color_rect.size = shape.extents * 2
 		color_rect.position = -shape.extents
@@ -28,16 +29,16 @@ func _ready():
 		if GAME_DEBUG_SCRIPT.game_debug_mode == false:
 			color_rect.visible = false
 			
-	print("ITEM SPAWN TIMER SET")
+	#print("ITEM SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
 	
 		
 func _on_spawn_timer_timeout():
-	#print("GUN SPAWNER TIMEOUT")
+
 	if current_items.size() >= max_items:
-		#print("MAX LIMIT REACHED")
+		print("ITEM MAX LIMIT REACHED")
 		# Don't spawn more items yet
 		spawn_timer.start()
 		return
@@ -70,5 +71,5 @@ func spawn_items():
 
 
 func _on_item_removed(item: Node):
-	print("ITEM REMOVED FROM SPAWNER")
+	#print("ITEM REMOVED FROM SPAWNER")
 	current_items.erase(item)

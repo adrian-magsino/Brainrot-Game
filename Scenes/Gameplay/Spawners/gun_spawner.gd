@@ -12,6 +12,7 @@ var current_guns: Array[Node] = []
 @onready var color_rect: ColorRect = $CollisionShape2D/ColorRect
 
 func _ready():
+	add_to_group("pauseable") #This node will pause along with the game
 	if gun_scenes.is_empty():
 		print("GUN SPAWNER IS EMPTY")
 		return
@@ -20,7 +21,7 @@ func _ready():
 		var shape = collision_shape.shape.duplicate()
 		shape.extents = spawn_area_extents / 2
 		collision_shape.shape = shape
-		print("CUSTOM EXTENTS SET TO:", shape.extents)
+		#print("CUSTOM EXTENTS SET TO:", shape.extents)
 		
 		color_rect.size = shape.extents * 2
 		color_rect.position = -shape.extents
@@ -28,7 +29,7 @@ func _ready():
 		if GAME_DEBUG_SCRIPT.game_debug_mode == false:
 			color_rect.visible = false
 		
-	print("GUN SPAWN TIMER SET")
+	#print("GUN SPAWN TIMER SET")
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
@@ -37,7 +38,7 @@ func _ready():
 func _on_spawn_timer_timeout():
 	#print("GUN SPAWNER TIMEOUT")
 	if current_guns.size() >= max_guns:
-		#print("MAX LIMIT REACHED")
+		print("GUN MAX LIMIT REACHED")
 		# Don't spawn more guns yet
 		spawn_timer.start()
 		return

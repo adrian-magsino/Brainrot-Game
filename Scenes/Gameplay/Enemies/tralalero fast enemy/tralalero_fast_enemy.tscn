@@ -1,39 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://l3qn4yfj57o6"]
+[gd_scene load_steps=10 format=3 uid="uid://ltx5iwgdosgm"]
 
-[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_uh7xe"]
-[ext_resource type="SpriteFrames" uid="uid://cs1bowcr0v7w4" path="res://Game Assets/Character Skins/char_sahur.tres" id="2_c0k15"]
-[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_uh7xe"]
-[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_bvn0o"]
-[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_ncjgi"]
-[ext_resource type="AudioStream" uid="uid://b78ekcast2g72" path="res://Scenes/Gameplay/Enemies/normal enemy bot 1/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="6_qyqo8"]
-[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="11_po3cx"]
+[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_12037"]
+[ext_resource type="SpriteFrames" uid="uid://co5uko8k1x86i" path="res://Game Assets/Character Skins/char_tralalero.tres" id="2_c3v14"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="5_c6d1s"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="6_xexdm"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="7_acfdb"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="8_iv2ae"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
-radius = 50.0
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
-radius = 80.0
+radius = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl784"]
-radius = 56.0
-height = 158.0
+radius = 28.0
+height = 98.0
 
-[node name="EnemyBot1" type="CharacterBody2D"]
+[node name="TralaleroFastEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_uh7xe")
-enemy_type = "normal_enemy"
+script = ExtResource("1_12037")
+enemy_type = "fast_enemy"
+move_speed = 300.0
+attack_cooldown = 0.5
 can_destroy_objects = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_c0k15")
-animation = &"run"
-frame_progress = 0.454903
+modulate = Color(0.996078, 0.415686, 0.34902, 1)
+sprite_frames = ExtResource("2_c3v14")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 35)
+position = Vector2(1, 28)
 shape = SubResource("CircleShape2D_exuau")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -51,10 +52,11 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_g8hl7")
 
-[node name="AttackComponent" parent="." instance=ExtResource("4_uh7xe")]
+[node name="AttackComponent" parent="." instance=ExtResource("5_c6d1s")]
 attack_damage = 10.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_bvn0o")]
+[node name="HealthComponent" parent="." instance=ExtResource("6_xexdm")]
+MAX_HEALTH = 60.0
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
 offset_left = -50.0
@@ -65,20 +67,17 @@ offset_bottom = -55.0
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
 wait_time = 3.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ncjgi")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_acfdb")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(6, 18)
+position = Vector2(2, 3)
 shape = SubResource("CapsuleShape2D_rl784")
 
 [node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_qyqo8")
-volume_db = -5.0
 bus = &"SFX"
-parameters/looping = true
 
-[node name="BloodyDeathAnimation" parent="." instance=ExtResource("11_po3cx")]
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("8_iv2ae")]
 
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

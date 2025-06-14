@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btpt75aqhhkmm"
-path="res://.godot/imported/springtrap_idle.png-0fbf6d7190fc6ee6b3e122854d458846.ctex"
+uid="uid://b6ghc7pxn7gbd"
+path="res://.godot/imported/toybonnie_attack.png-79698c647c4564e258de47bb73c75905.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/normal enemy bot 1/sprites/springtrap_idle.png"
-dest_files=["res://.godot/imported/springtrap_idle.png-0fbf6d7190fc6ee6b3e122854d458846.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/chimpanzini fast enemy/toybonnie_attack.png"
+dest_files=["res://.godot/imported/toybonnie_attack.png-79698c647c4564e258de47bb73c75905.ctex"]
 
 [params]
 

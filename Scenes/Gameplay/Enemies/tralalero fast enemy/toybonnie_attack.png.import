@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rjw7myh1by12"
-path="res://.godot/imported/springtrap_run.png-1ca1f4f55b749fb6b44c37debfaa5d0a.ctex"
+uid="uid://cb54bjk5aem26"
+path="res://.godot/imported/toybonnie_attack.png-6dc0556bc1040a354f432f4c79ad09bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/normal enemy bot 1/sprites/springtrap_run.png"
-dest_files=["res://.godot/imported/springtrap_run.png-1ca1f4f55b749fb6b44c37debfaa5d0a.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/tralalero fast enemy/toybonnie_attack.png"
+dest_files=["res://.godot/imported/toybonnie_attack.png-6dc0556bc1040a354f432f4c79ad09bf.ctex"]
 
 [params]
 

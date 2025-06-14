@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_uubsx"]
 [ext_resource type="PackedScene" path="res://Scenes/Gameplay/Scoreboard.tscn" id="5_4nmwt"]
 [ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="6_080b4"]
-[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/normal enemy bot 1/enemy_bot_1.tscn" id="9_uubsx"]
+[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/sahur normal enemy/sahur_normal_enemy.tscn" id="9_uubsx"]
 [ext_resource type="PackedScene" uid="uid://c22dkn44mb617" path="res://Scenes/Gameplay/Enemies/test_bot.tscn" id="12_guuxl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uubsx"]

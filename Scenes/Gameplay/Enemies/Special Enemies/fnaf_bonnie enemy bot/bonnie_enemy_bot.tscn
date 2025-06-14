@@ -1,9 +1,9 @@
 [gd_scene load_steps=43 format=3 uid="uid://blt3w3032p5ux"]
 
 [ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_tbaic"]
-[ext_resource type="Texture2D" uid="uid://cb54bjk5aem26" path="res://Scenes/Gameplay/Enemies/fast enemy bot 1/toybonnie_attack.png" id="2_p65mr"]
-[ext_resource type="Texture2D" uid="uid://dqx0ka5x7v5gm" path="res://Scenes/Gameplay/Enemies/fast enemy bot 1/toybonnie_idle.png" id="3_3ut6q"]
-[ext_resource type="Texture2D" uid="uid://b4oo2e0wu8nwe" path="res://Scenes/Gameplay/Enemies/fast enemy bot 1/toybonnie_run.png" id="4_n30mx"]
+[ext_resource type="Texture2D" uid="uid://cb54bjk5aem26" path="res://Scenes/Gameplay/Enemies/tralalero fast enemy/toybonnie_attack.png" id="2_p65mr"]
+[ext_resource type="Texture2D" uid="uid://dqx0ka5x7v5gm" path="res://Scenes/Gameplay/Enemies/tralalero fast enemy/toybonnie_idle.png" id="3_3ut6q"]
+[ext_resource type="Texture2D" uid="uid://b4oo2e0wu8nwe" path="res://Scenes/Gameplay/Enemies/tralalero fast enemy/toybonnie_run.png" id="4_n30mx"]
 [ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="5_3mn1n"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="6_jwrt8"]
 [ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="7_5oopc"]

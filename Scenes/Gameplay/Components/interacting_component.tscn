@@ -18,11 +18,11 @@ shape = SubResource("CircleShape2D_lqmmv")
 
 [node name="InteractLabel" type="Button" parent="."]
 z_index = 10
-offset_left = 292.0
-offset_top = -131.0
-offset_right = 398.0
-offset_bottom = -100.0
-scale = Vector2(2.16311, 4.20735)
+offset_left = 383.0
+offset_top = -64.0
+offset_right = 489.0
+offset_bottom = -33.0
+scale = Vector2(2, 2)
 text = "Q to Interact"
 
 [connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]

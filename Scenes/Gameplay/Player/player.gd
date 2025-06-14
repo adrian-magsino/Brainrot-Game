@@ -15,7 +15,7 @@ extends CharacterBody2D
 @onready var pickup_button = HUD.get_node("PlayerControls/Pickup Gun")
 @onready var zoom_button = HUD.get_node("PlayerControls/Zoom Button")
 @onready var reload_button = HUD.get_node("PlayerControls/Reload Gun")
-@onready var switch_gun_button = HUD.get_node("PlayerControls/Switch Gun")
+@onready var switch_gun_button = game_ui.get_node("GunDisplay/Switch Gun")
 @onready var dash_button = HUD.get_node("PlayerControls/Dash Button")
 @onready var dash_progress_bar = HUD.get_node("PlayerControls/Dash Button/Dash Cooldown")
 
@@ -411,7 +411,7 @@ func update_dash_cooldown_progress(value: float):
 	
 func update_zoom_button_label(level: int):
 	if zoom_button:
-		zoom_button.text = "Zoom x%d" % level
+		zoom_button.get_node("ZoomLabel").text = str(level)
 		
 #BUTTON PRESS FUNCTION
 

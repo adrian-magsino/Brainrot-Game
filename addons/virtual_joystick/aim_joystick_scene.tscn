@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmr0fcamx7t56"]
+[gd_scene load_steps=6 format=3 uid="uid://bfqcrm48j1lyu"]
 
-[ext_resource type="Script" uid="uid://27ank2pums8k" path="res://addons/virtual_joystick/virtual_joystick.gd" id="1_8x4dy"]
-[ext_resource type="Texture2D" uid="uid://d0j1enn6ojfdk" path="res://Game Assets/HUD design/move_rim1.png" id="2_ettsy"]
-[ext_resource type="Texture2D" uid="uid://bp06wa3y4ka1b" path="res://Game Assets/HUD design/move_knob1.png" id="3_0bity"]
+[ext_resource type="Script" uid="uid://27ank2pums8k" path="res://addons/virtual_joystick/virtual_joystick.gd" id="1_hsga4"]
+[ext_resource type="Texture2D" uid="uid://bwv734n8f43t7" path="res://Game Assets/HUD design/aim_rim1.png" id="2_hsga4"]
+[ext_resource type="Texture2D" uid="uid://dto0wkrvxsj2k" path="res://Game Assets/HUD design/aim_knob1.png" id="3_ubvur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ettsy"]
-atlas = ExtResource("2_ettsy")
-region = Rect2(72, 389, 202, 187)
+atlas = ExtResource("2_hsga4")
+region = Rect2(854, 389, 201, 187)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0bity"]
-atlas = ExtResource("3_0bity")
-region = Rect2(116, 429, 115, 115)
+atlas = ExtResource("3_ubvur")
+region = Rect2(897, 425, 115, 115)
 
-[node name="Virtual Joystick" type="Control"]
+[node name="Aim Joystick" type="Control"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -21,7 +21,11 @@ offset_top = -308.0
 offset_right = 300.0
 offset_bottom = -8.0
 grow_vertical = 0
-script = ExtResource("1_8x4dy")
+script = ExtResource("1_hsga4")
+action_left = "aim_left"
+action_right = "aim_right"
+action_up = "aim_up"
+action_down = "aim_down"
 
 [node name="Base" type="TextureRect" parent="."]
 layout_mode = 1

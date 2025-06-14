@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d06oyp2ic78dm"
-path="res://.godot/imported/sample_gun.png-6db5b21a4c2a9bbd7daacf634cdc0fcd.ctex"
+uid="uid://bgpccqtna5mgb"
+path="res://.godot/imported/progress-bar-frame.png-a9482fff6d659b5c11922f9c2c0dcf90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.png"
-dest_files=["res://.godot/imported/sample_gun.png-6db5b21a4c2a9bbd7daacf634cdc0fcd.ctex"]
+source_file="res://Game Assets/Circular Progress Bar/progress-bar-frame.png"
+dest_files=["res://.godot/imported/progress-bar-frame.png-a9482fff6d659b5c11922f9c2c0dcf90.ctex"]
 
 [params]
 

@@ -44,10 +44,10 @@ func update_current_gun(gun: Node):
 	var texture_size = texture.get_size()
 	var icon_size = Vector2(32, 32)
 	if gun:
-		$GunDisplay/Panel/CurrentGunIcon.texture = texture
-		$GunDisplay/Panel/CurrentGunIcon.custom_minimum_size = icon_size
-		$GunDisplay/Panel/CurrentGunLabel.text = gun.gun_name
+		$"GunDisplay/Switch Gun/CurrentGunIcon".texture = texture
+		$"GunDisplay/Switch Gun/CurrentGunIcon".custom_minimum_size = icon_size
+		$"GunDisplay/Switch Gun/CurrentGunLabel".text = gun.gun_name
 		
 	else:
-		$GunDisplay/CurrentGunIcon.texture = null
-		$GunDisplay/CurrentGunLabel.text = ""
+		$"GunDisplay/Switch Gun/CurrentGunIcon".texture = null
+		$"GunDisplay/Switch Gun/CurrentGunLabel".text = ""

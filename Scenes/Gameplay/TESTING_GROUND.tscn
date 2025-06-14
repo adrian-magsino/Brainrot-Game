@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="5_fuc0x"]
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="6_woxdx"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="7_uhyla"]
-[ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/sample_gun.tscn" id="8_8gj7g"]
+[ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.tscn" id="8_8gj7g"]
 [ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/destructible_object.tscn" id="10_5112j"]
 [ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_u55dd"]

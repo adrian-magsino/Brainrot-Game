@@ -52,6 +52,12 @@ shape = SubResource("CircleShape2D_onrkg")
 [node name="InteractingComponent" parent="." instance=ExtResource("3_6t5aa")]
 position = Vector2(0, 12)
 
+[node name="InteractLabel" parent="InteractingComponent" index="1"]
+offset_left = 364.0
+offset_top = -78.0
+offset_right = 470.0
+offset_bottom = -47.0
+
 [node name="HealthComponent" parent="." instance=ExtResource("11_ibv1r")]
 can_regenerate = true
 
@@ -80,3 +86,5 @@ vertical_alignment = 1
 
 [node name="StatusEffectManager" type="Node2D" parent="."]
 script = ExtResource("9_fyedb")
+
+[editable path="InteractingComponent"]

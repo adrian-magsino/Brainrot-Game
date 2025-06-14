@@ -8,6 +8,8 @@ class_name Level_Manager
 @onready var victory_panel = HUD.get_node("GameResults/VictoryPanel")
 @onready var defeat_panel = HUD.get_node("GameResults/DefeatPanel")
 @onready var PLAYER = get_node("PLAYER")
+@onready var objectives_display = HUD.get_node("ObjectivesContainer")
+@export var level_objectives: String = "LEVEL OBJECTIVES"
 
 #@export var player_lives: int = 1
 
@@ -18,12 +20,17 @@ var level_cleared: bool = false
 
 func _ready() -> void:
 	PLAYER.update_player_lives()
-
+	update_objectives_display(level_objectives)
 	
 func _process(delta):
 	game_time += delta
 	update_game_time_display()
-	
+
+func update_objectives_display(text: String):
+	var objectives_label = objectives_display.get_node("Objectives")
+	objectives_label.text = text
+	objectives_display.show_objectives()
+
 func update_game_time_display():
 	var minutes = int(game_time) / 60
 	var seconds = int(game_time) % 60

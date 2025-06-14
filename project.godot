@@ -20,6 +20,9 @@ config/icon="res://icon.svg"
 GAME_PROGRESS="*res://Scripts/UI/GAME_PROGRESS.gd"
 PLAYER_DATA="*res://Scripts/UI/PLAYER_DATA.gd"
 GAME_DEBUG_SCRIPT="*res://Scripts/Gameplay/GAME_DEBUG_SCRIPT.gd"
+Bgm="*res://Scenes/UI/BGM.tscn"
+ButtonClick="*res://Scripts/UI/button_click.gd"
+CharacterButtonClick="*res://Scripts/UI/character_button_click.gd"
 
 [display]
 

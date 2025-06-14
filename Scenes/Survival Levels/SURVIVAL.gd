@@ -22,7 +22,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	print("SURVIVAL READY")
 	apply_difficulty_stage(0)
-
+	
 	
 func _process(delta):
 	super._process(delta)

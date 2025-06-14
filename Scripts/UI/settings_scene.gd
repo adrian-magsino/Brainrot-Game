@@ -19,6 +19,7 @@ func _on_sound_button_pressed() -> void:
 	player.visible = false
 
 func _on_back_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	get_tree().change_scene_to_file("res://Scenes/UI/MainmenuScene.tscn")
 
 
@@ -27,6 +28,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 
 func _on_apply_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	PLAYER_DATA.player_name = input_box.text
 	PLAYER_DATA.save_game()
 	

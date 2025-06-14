@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://br8i8eaf3wqau"
+path="res://.godot/imported/ButtonClick.mp3-4688a6b2d4f9fb2a1b95964c8b793a99.mp3str"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/SFX/ButtonClick.mp3"
+dest_files=["res://.godot/imported/ButtonClick.mp3-4688a6b2d4f9fb2a1b95964c8b793a99.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

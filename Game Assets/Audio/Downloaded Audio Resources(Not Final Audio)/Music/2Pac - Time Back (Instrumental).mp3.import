@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dq8yj52jhqe8h"
+path="res://.godot/imported/2Pac - Time Back (Instrumental).mp3-73acc9d11149cdfb67bad0e45bd7c96c.mp3str"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Music/2Pac - Time Back (Instrumental).mp3"
+dest_files=["res://.godot/imported/2Pac - Time Back (Instrumental).mp3-73acc9d11149cdfb67bad0e45bd7c96c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

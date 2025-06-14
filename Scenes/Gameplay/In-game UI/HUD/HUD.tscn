@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bcdvaas54iiga"]
+[gd_scene load_steps=86 format=3 uid="uid://bcdvaas54iiga"]
 
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
 [ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="4_b55vn"]
@@ -36,6 +36,13 @@
 [ext_resource type="Texture2D" uid="uid://c87qvrt83l4gw" path="res://Game Assets/Pause Menu Assets/settings2.png" id="30_rgdqc"]
 [ext_resource type="Texture2D" uid="uid://c233vghwbfa11" path="res://Game Assets/Pause Menu Assets/resume1.png" id="31_i1acc"]
 [ext_resource type="Texture2D" uid="uid://d3xi6fhgapo3y" path="res://Game Assets/Pause Menu Assets/resume2.png" id="32_wmv3y"]
+[ext_resource type="Texture2D" uid="uid://bl01d466l5gcv" path="res://Game Assets/GameResults Assets/container.png" id="37_wmv3y"]
+[ext_resource type="Texture2D" uid="uid://cn3xmqanak8a0" path="res://Game Assets/GameResults Assets/next1.png" id="38_dhyot"]
+[ext_resource type="Texture2D" uid="uid://yw4h05hcwafl" path="res://Game Assets/GameResults Assets/next2.png" id="39_d6vqx"]
+[ext_resource type="Texture2D" uid="uid://bh6enbd1rn3y4" path="res://Game Assets/GameResults Assets/quit1.png" id="40_0kkgm"]
+[ext_resource type="Texture2D" uid="uid://by6xu0hh4yax6" path="res://Game Assets/GameResults Assets/quit2.png" id="41_0b2ur"]
+[ext_resource type="Texture2D" uid="uid://cv1s33qby0sar" path="res://Game Assets/GameResults Assets/retry1.png" id="42_d6vqx"]
+[ext_resource type="Texture2D" uid="uid://cjwcojvvyebi6" path="res://Game Assets/GameResults Assets/retry2.png" id="43_0kkgm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4oii"]
 font = ExtResource("4_b55vn")
@@ -168,6 +175,66 @@ region = Rect2(659, 234, 115, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_62s6c"]
 atlas = ExtResource("32_wmv3y")
 region = Rect2(659, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3pss"]
+atlas = ExtResource("37_wmv3y")
+region = Rect2(350, 123, 450, 504)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0kkgm"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.234785, 0.76427, 7.70092e-07, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmv3y"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.176419, 0.176419, 0.176419, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhyot"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.176419, 0.176419, 0.176419, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6vqx"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.176419, 0.176419, 0.176419, 1)
+outline_size = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpre0"]
+atlas = ExtResource("38_dhyot")
+region = Rect2(494, 501, 295, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbbdt"]
+atlas = ExtResource("39_d6vqx")
+region = Rect2(494, 501, 295, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djibf"]
+atlas = ExtResource("40_0kkgm")
+region = Rect2(368, 497, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv7v7"]
+atlas = ExtResource("41_0b2ur")
+region = Rect2(368, 497, 115, 79)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0b2ur"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.984242, 0.181831, 0.332863, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1g6q"]
+atlas = ExtResource("42_d6vqx")
+region = Rect2(602, 501, 187, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc5dw"]
+atlas = ExtResource("43_0kkgm")
+region = Rect2(602, 501, 187, 75)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xn0sg")
@@ -514,6 +581,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Notification" parent="." instance=ExtResource("7_a4jdu")]
 
 [node name="Menu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -586,12 +654,15 @@ texture_normal = SubResource("AtlasTexture_bd5ni")
 texture_pressed = SubResource("AtlasTexture_62s6c")
 
 [node name="GameResults" type="Control" parent="."]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VictoryPanel" type="Control" parent="GameResults"]
+[node name="VictoryPanel" type="TextureRect" parent="GameResults"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -599,68 +670,87 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 275.0
-offset_top = 140.0
-offset_right = 275.0
-offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="GameResults/VictoryPanel"]
-layout_mode = 0
-offset_right = 500.0
-offset_bottom = 300.0
-color = Color(0, 0.321511, 0.321511, 1)
+texture = SubResource("AtlasTexture_s3pss")
 
 [node name="Message" type="Label" parent="GameResults/VictoryPanel"]
-layout_mode = 0
-offset_left = 179.0
-offset_top = 10.0
-offset_right = 298.0
-offset_bottom = 33.0
-text = "LEVEL CLEARED"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 105.0
+grow_horizontal = 2
+text = "LEVEL CLEARED!"
+label_settings = SubResource("LabelSettings_0kkgm")
 horizontal_alignment = 1
 
 [node name="Scoreboard" type="VBoxContainer" parent="GameResults/VictoryPanel"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 83.0
-offset_right = 315.0
-offset_bottom = 186.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -102.0
+offset_right = 160.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TotalKillsLabel" type="Label" parent="GameResults/VictoryPanel/Scoreboard"]
 layout_mode = 2
 text = "ENEMIES KILLED: 0"
+label_settings = SubResource("LabelSettings_wmv3y")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerDeathsLabel" type="Label" parent="GameResults/VictoryPanel/Scoreboard"]
 layout_mode = 2
 text = "DEATHS: 0"
+label_settings = SubResource("LabelSettings_dhyot")
 
 [node name="TotalGameTimeLabel" type="Label" parent="GameResults/VictoryPanel/Scoreboard"]
 layout_mode = 2
 text = "GAME TIME: 0
 "
+label_settings = SubResource("LabelSettings_d6vqx")
 
-[node name="NextLevelButton" type="Button" parent="GameResults/VictoryPanel"]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 235.0
-offset_right = 442.0
-offset_bottom = 266.0
-text = "Next Level
-"
+[node name="NextLevelButton" type="TextureButton" parent="GameResults/VictoryPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -134.0
+offset_right = -20.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_gpre0")
+texture_pressed = SubResource("AtlasTexture_fbbdt")
 
-[node name="ExitButton" type="Button" parent="GameResults/VictoryPanel"]
+[node name="ExitButton" type="TextureButton" parent="GameResults/VictoryPanel"]
 process_mode = 3
-layout_mode = 0
-offset_left = 71.0
-offset_top = 237.0
-offset_right = 108.0
-offset_bottom = 268.0
-text = "Exit
-"
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -134.0
+offset_right = 125.0
+offset_bottom = -55.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_djibf")
+texture_pressed = SubResource("AtlasTexture_fv7v7")
 
-[node name="DefeatPanel" type="Control" parent="GameResults"]
+[node name="DefeatPanel" type="TextureRect" parent="GameResults"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -668,67 +758,86 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 275.0
-offset_top = 140.0
-offset_right = 275.0
-offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="GameResults/DefeatPanel"]
-layout_mode = 0
-offset_right = 500.0
-offset_bottom = 300.0
-color = Color(0, 0.321511, 0.321511, 1)
+texture = SubResource("AtlasTexture_s3pss")
 
 [node name="Message" type="Label" parent="GameResults/DefeatPanel"]
-layout_mode = 0
-offset_left = 179.0
-offset_top = 10.0
-offset_right = 298.0
-offset_bottom = 33.0
-text = "DEFEAT
-SKILL ISSUE BRO"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 105.0
+grow_horizontal = 2
+text = "YOU LOST!
+SKILL ISSUE"
+label_settings = SubResource("LabelSettings_0b2ur")
 horizontal_alignment = 1
 
 [node name="Scoreboard" type="VBoxContainer" parent="GameResults/DefeatPanel"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 83.0
-offset_right = 315.0
-offset_bottom = 186.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -92.0
+offset_right = 160.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TotalKillsLabel" type="Label" parent="GameResults/DefeatPanel/Scoreboard"]
 layout_mode = 2
 text = "ENEMIES KILLED: 0"
+label_settings = SubResource("LabelSettings_wmv3y")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerDeathsLabel" type="Label" parent="GameResults/DefeatPanel/Scoreboard"]
 layout_mode = 2
 text = "DEATHS: 0"
+label_settings = SubResource("LabelSettings_dhyot")
 
 [node name="TotalGameTimeLabel" type="Label" parent="GameResults/DefeatPanel/Scoreboard"]
 layout_mode = 2
 text = "GAME TIME: 0
 "
+label_settings = SubResource("LabelSettings_d6vqx")
 
-[node name="RetryButton" type="Button" parent="GameResults/DefeatPanel"]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 235.0
-offset_right = 442.0
-offset_bottom = 266.0
-text = "RETRY
-"
+[node name="RetryButton" type="TextureButton" parent="GameResults/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -134.0
+offset_right = -23.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_h1g6q")
+texture_pressed = SubResource("AtlasTexture_tc5dw")
 
-[node name="ExitButton" type="Button" parent="GameResults/DefeatPanel"]
+[node name="ExitButton" type="TextureButton" parent="GameResults/DefeatPanel"]
 process_mode = 3
-layout_mode = 0
-offset_left = 71.0
-offset_top = 237.0
-offset_right = 108.0
-offset_bottom = 268.0
-text = "Exit
-"
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -134.0
+offset_right = 145.0
+offset_bottom = -55.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_djibf")
+texture_pressed = SubResource("AtlasTexture_fv7v7")
 
 [connection signal="pressed" from="PlayerControls/LevelObjectivesButton" to="ObjectivesContainer" method="_on_level_objectives_button_pressed"]
 [connection signal="pressed" from="PlayerControls/MenuButton" to="." method="_on_menu_button_pressed"]

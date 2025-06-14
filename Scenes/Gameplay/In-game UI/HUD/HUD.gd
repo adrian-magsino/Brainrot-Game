@@ -8,6 +8,7 @@ extends CanvasLayer
 func _ready():
 	victory_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 	defeat_panel.process_mode = Node.PROCESS_MODE_ALWAYS
+	menu_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func _on_menu_button_pressed() -> void:
 	menu_panel.visible = not menu_panel.visible

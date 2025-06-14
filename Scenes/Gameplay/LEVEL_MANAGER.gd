@@ -5,8 +5,9 @@ class_name Level_Manager
 @onready var game_ui = HUD.get_node("GameUI")
 @onready var score_label = HUD.get_node("GameUI/HBoxContainer/ScoreLabel")
 @onready var player_lives_label = HUD.get_node("GameUI/HBoxContainer/PlayerLivesImage/PlayerLivesLabel")
-@onready var victory_panel = HUD.get_node("GameResults/VictoryPanel")
-@onready var defeat_panel = HUD.get_node("GameResults/DefeatPanel")
+@onready var game_results_container = HUD.get_node("GameResults")
+@onready var victory_panel = game_results_container.get_node("VictoryPanel")
+@onready var defeat_panel = game_results_container.get_node("DefeatPanel")
 @onready var PLAYER = get_node("PLAYER")
 @onready var objectives_display = HUD.get_node("ObjectivesContainer")
 @export var level_objectives: String = "CLEAR THE LEVEL"
@@ -53,6 +54,7 @@ func game_victory():
 	
 	level_cleared = true
 	pause_level()
+	game_results_container.visible = true
 	victory_panel.visible = true
 	message_label.text = "LEVEL CLEARED!"  
 	total_kills_label.text = "ENEMIES KILLED: %d" % enemies_killed
@@ -67,8 +69,9 @@ func game_defeat():
 	
 	level_cleared = false
 	pause_level()
+	game_results_container.visible = true
 	defeat_panel.visible = true
-	message_label.text = "GAME OVER \n SKILL ISSUE BRO"  
+	message_label.text = "YOU LOST! \n SKILL ISSUE"  
 	total_kills_label.text = "ENEMIES KILLED: %d" % enemies_killed
 	player_deaths_label.text = "DEATHS: %d" % PLAYER.player_deaths
 	total_game_time_label.text = "GAME TIME: " + formatted_time

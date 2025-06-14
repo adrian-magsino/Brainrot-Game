@@ -1,16 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcdvaas54iiga"]
+[gd_scene load_steps=19 format=3 uid="uid://bcdvaas54iiga"]
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_smues"]
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
 [ext_resource type="Script" uid="uid://dgh120kriwdvv" path="res://addons/virtual_joystick/aiming_joystick.gd" id="2_xn0sg"]
 [ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="4_b55vn"]
 [ext_resource type="Texture2D" uid="uid://dm4u3hmrwaxmu" path="res://Game Assets/guns_gameassets/PNG/shotgun.png" id="4_gl8s0"]
-[ext_resource type="Texture2D" uid="uid://sseodi2s5r2t" path="res://Scenes/Gameplay/In-game UI/HUD/HUD assets/player life heart/heart.png" id="4_hkytx"]
+[ext_resource type="Texture2D" uid="uid://sseodi2s5r2t" path="res://Scenes/Gameplay/In-game UI/HUD/player life heart/heart.png" id="4_hkytx"]
 [ext_resource type="Script" uid="uid://dc0vdfdhdsaac" path="res://Scenes/Gameplay/In-game UI/HUD/level_objectives_display.gd" id="4_o4oii"]
 [ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/In-game UI/HUD/player_ui.gd" id="5_hkytx"]
 [ext_resource type="PackedScene" uid="uid://deaj1tohywpen" path="res://Scenes/Gameplay/In-game UI/Popup Notification/Notification.tscn" id="7_a4jdu"]
 [ext_resource type="Texture2D" uid="uid://blagwbofqrh0n" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste.png" id="9_034d7"]
 [ext_resource type="Texture2D" uid="uid://b1og857xcmc0e" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/hide_eye_icon_238775 (1).png" id="10_b55vn"]
+[ext_resource type="Texture2D" uid="uid://bsmeup584fett" path="res://Game Assets/HUD design/menu1.png" id="11_22qo4"]
+[ext_resource type="Texture2D" uid="uid://bd7xg2u6k2r13" path="res://Game Assets/HUD design/menu2.png" id="12_mqepd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4oii"]
 font = ExtResource("4_b55vn")
@@ -291,13 +293,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuButton" type="Button" parent="Menu"]
+[node name="MenuButton" type="TextureButton" parent="Menu"]
 layout_mode = 0
 offset_right = 57.0
 offset_bottom = 31.0
-scale = Vector2(2.19225, 2.27682)
-text = "MENU
-"
+texture_normal = ExtResource("11_22qo4")
+texture_pressed = ExtResource("12_mqepd")
 
 [node name="MenuPanel" type="Panel" parent="Menu"]
 visible = false

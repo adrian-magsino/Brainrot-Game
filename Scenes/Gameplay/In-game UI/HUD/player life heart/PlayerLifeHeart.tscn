@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cl56omthbxguf"]
 
-[ext_resource type="Texture2D" uid="uid://sseodi2s5r2t" path="res://Scenes/Gameplay/In-game UI/HUD/HUD assets/player life heart/heart.png" id="1_pl41w"]
+[ext_resource type="Texture2D" uid="uid://sseodi2s5r2t" path="res://Scenes/Gameplay/In-game UI/HUD/player life heart/heart.png" id="1_pl41w"]
 
 [node name="PlayerLifeHeart" type="TextureRect"]
 texture = ExtResource("1_pl41w")

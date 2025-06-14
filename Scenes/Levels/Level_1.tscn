@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="2_87l2y"]
 [ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="3_qpfou"]
 
-[node name="Level1" type="Node2D"]
+[node name="lvl1" type="Node2D"]
 script = ExtResource("1_87l2y")
 
 [node name="HUD" parent="." instance=ExtResource("1_q8yj7")]

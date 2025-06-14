@@ -16,7 +16,7 @@ var enemy_type: String
 #Components
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var attack_component: AttackComponent = $AttackComponent
-@onready var bloody_death_animation: Node2D = $BloodyDeathAnimation
+@onready var bloody_death_animation: Node2D = get_node_or_null("BloodyDeathAnimation")
 
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_cooldown_timer := $AttackCooldownTimer
@@ -139,7 +139,8 @@ func die(attack: AttackComponent):
 		return
 	is_dead = true
 	
-	bloody_death_animation.play_death_animation()
+	if bloody_death_animation:
+		bloody_death_animation.play_death_animation()
 	if attack.attacker and attack.attacker.is_in_group("player"):
 		var level_node = get_tree().current_scene
 		if level_node.has_method("register_enemy_kill"):

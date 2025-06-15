@@ -3,7 +3,7 @@ class_name HealthComponent
 
 @export var MAX_HEALTH := 10.0
 @export var can_regenerate := false
-@export_range(0.0, 1.0) var regeneration_percent := 0.05 # 5% of max health per tick
+@export_range(0.0, 1.0) var regeneration_percent := 0.10 # 10% of max health per tick
 @export var regeneration_interval := 1.0 # seconds between regen ticks
 @export var regeneration_delay := 3.0 # seconds after taking damage before regen starts
 

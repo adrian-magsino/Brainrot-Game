@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfvuffcccfn10" path="res://Scenes/Levels/objectives_Kill2UnlockPortal.gd" id="1_sq4dd"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="2_5tbx3"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/Maps/level_10.tscn" id="2_rmdh6"]
+[ext_resource type="PackedScene" uid="uid://b6on6bcfip44n" path="res://Scenes/Levels/Maps/level_10.tscn" id="2_rmdh6"]
 [ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="3_rmdh6"]
 [ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="4_njlpq"]
 [ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="6_le2xt"]

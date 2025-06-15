@@ -19,6 +19,7 @@
 
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_qpfou")
+level_id = 1
 
 [node name="level1" parent="." instance=ExtResource("1_87l2y")]
 
@@ -26,7 +27,6 @@ script = ExtResource("1_qpfou")
 
 [node name="PLAYER" parent="." instance=ExtResource("2_87l2y")]
 position = Vector2(280, 257)
-collision_mask = 29
 
 [node name="ExitPortal" parent="." instance=ExtResource("3_qpfou")]
 position = Vector2(795, 305)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lb1jhcrn6ru6"
+path="res://.godot/imported/map1.mp3-e7ff345bb2cce7966540be515987e7dc.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Levels/Background Music/map1.mp3"
+dest_files=["res://.godot/imported/map1.mp3-e7ff345bb2cce7966540be515987e7dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

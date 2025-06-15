@@ -1,7 +1,6 @@
 extends Level_Manager
 
-@export var level_id: int
-@export var require_lighting: bool
+
 
 func _ready() -> void:
 	Bgm.stop()
@@ -12,6 +11,7 @@ func _ready() -> void:
 		LightingManager.set_lighting_enabled(true)
 	else:
 		LightingManager.set_lighting_enabled(false)
+	play_level_bgm()
 
 func game_victory():
 	super.game_victory()
@@ -23,3 +23,4 @@ func save_level_progress():
 		print(level_name + " CLEARED!")
 		GAME_PROGRESS.level_completed[level_name] = true
 		GAME_PROGRESS.save_progress()
+		

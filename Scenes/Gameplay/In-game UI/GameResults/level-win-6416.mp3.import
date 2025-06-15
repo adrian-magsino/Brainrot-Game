@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chvq3i63sabjp"
+path="res://.godot/imported/level-win-6416.mp3-eebac9e82e4abca6c6e6da9f4ebe4733.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Gameplay/In-game UI/GameResults/level-win-6416.mp3"
+dest_files=["res://.godot/imported/level-win-6416.mp3-eebac9e82e4abca6c6e6da9f4ebe4733.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

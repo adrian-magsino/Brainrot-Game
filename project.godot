@@ -30,6 +30,12 @@ PickupGunSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/pickup_g
 PickupItemSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/pickup_item_sound.tscn"
 PlayerDashSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/player_dash_sound.tscn"
 ZoomSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/zoom_sound.tscn"
+GameVictory="*res://Scenes/Gameplay/In-game UI/GameResults/GameVictory.tscn"
+GameDefeat="*res://Scenes/Gameplay/In-game UI/GameResults/GameDefeat.tscn"
+Map1Music="*res://Scenes/Levels/Background Music/map1_music.tscn"
+Map2Music="*res://Scenes/Levels/Background Music/map2_music.tscn"
+Map3Music="*res://Scenes/Levels/Background Music/map3_music.tscn"
+SurvivalMusic="*res://Scenes/Levels/Background Music/survival_music.tscn"
 
 [display]
 

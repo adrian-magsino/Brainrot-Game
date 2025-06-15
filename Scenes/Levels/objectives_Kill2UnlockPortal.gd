@@ -1,6 +1,6 @@
 extends Level_Manager
 
-@export var level_id: int
+
 
 @export var required_kills: int = 5
 @onready var exit_portal: Node2D = $ExitPortal
@@ -16,6 +16,11 @@ func _ready() -> void:
 	exit_portal.visible = false
 	portal_interactable_component.set_deferred("monitorable", false)
 	portal_interactable_component.set_deferred("monitoring", false)
+	if require_lighting:
+		LightingManager.set_lighting_enabled(true)
+	else:
+		LightingManager.set_lighting_enabled(false)
+	play_level_bgm()
 	
 func check_win_condition():
 	if enemies_killed >= required_kills:

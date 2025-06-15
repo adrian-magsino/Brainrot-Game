@@ -12,7 +12,8 @@ class_name Level_Manager
 @onready var objectives_display = HUD.get_node("ObjectivesContainer")
 @export var level_objectives: String = "CLEAR THE LEVEL"
 
-#@export var player_lives: int = 1
+@export var level_id: int
+@export var require_lighting: bool
 
 var game_time := 0.0
 var formatted_time = ""
@@ -53,6 +54,7 @@ func game_victory():
 	var player_deaths_label = victory_panel.get_node("Scoreboard/PlayerDeathsLabel")
 	
 	level_cleared = true
+	GameVictory.play()
 	pause_level()
 	game_results_container.visible = true
 	victory_panel.visible = true
@@ -68,6 +70,7 @@ func game_defeat():
 	var player_deaths_label = victory_panel.get_node("Scoreboard/PlayerDeathsLabel")
 	
 	level_cleared = false
+	GameDefeat.play()
 	pause_level()
 	game_results_container.visible = true
 	defeat_panel.visible = true
@@ -85,3 +88,12 @@ func unpause_level():
 	for node in get_tree().get_nodes_in_group("pauseable"):
 		node.process_mode = Node.PROCESS_MODE_INHERIT
 	set_process(true)
+	
+func play_level_bgm():
+	if level_id in range(1,4):
+		Map1Music.play()
+	elif level_id in range(4,7):
+		Map2Music.play()
+	else:
+		Map3Music.play()
+	

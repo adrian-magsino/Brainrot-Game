@@ -8,6 +8,7 @@
 
 [node name="lvl4" type="Node2D"]
 script = ExtResource("1_5mdho")
+level_id = 4
 
 [node name="level4" parent="." instance=ExtResource("2_wirjb")]
 

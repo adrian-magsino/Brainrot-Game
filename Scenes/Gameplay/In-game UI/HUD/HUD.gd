@@ -29,6 +29,10 @@ func _on_settings_button_pressed() -> void:
 	
 func _on_exit_button_pressed() -> void:
 	ButtonClick.play_button_click()
+	Map1Music.stop()
+	Map2Music.stop()
+	Map3Music.stop()
+	SurvivalMusic.stop()
 	get_tree().change_scene_to_file("res://Scenes/UI/MainmenuScene.tscn")
 	
 func _on_next_level_button_pressed() -> void:

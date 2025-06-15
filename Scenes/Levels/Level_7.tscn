@@ -19,6 +19,7 @@
 
 [node name="lvl7" type="Node2D"]
 script = ExtResource("1_4obqa")
+level_id = 7
 require_lighting = true
 
 [node name="level7" parent="." instance=ExtResource("2_5n468")]

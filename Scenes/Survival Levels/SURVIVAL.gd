@@ -27,6 +27,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	print("SURVIVAL READY")
 	change_difficulty_stage(0)
+	SurvivalMusic.play()
 
 
 	

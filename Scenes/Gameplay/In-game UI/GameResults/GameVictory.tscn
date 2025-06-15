@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq3kcrvxxjpmj"]
+
+[ext_resource type="AudioStream" uid="uid://chvq3i63sabjp" path="res://Scenes/Gameplay/In-game UI/GameResults/level-win-6416.mp3" id="1_aepol"]
+
+[node name="GameVictory" type="AudioStreamPlayer"]
+stream = ExtResource("1_aepol")

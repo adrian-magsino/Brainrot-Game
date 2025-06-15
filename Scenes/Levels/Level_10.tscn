@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://5sm1cjly7vs7"]
+[gd_scene load_steps=34 format=3 uid="uid://5sm1cjly7vs7"]
 
 [ext_resource type="Script" uid="uid://cfvuffcccfn10" path="res://Scenes/Levels/objectives_Kill2UnlockPortal.gd" id="1_sq4dd"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="2_5tbx3"]
@@ -32,11 +32,13 @@
 [ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="30_sq4dd"]
 [ext_resource type="PackedScene" uid="uid://b0jr0rgti86s2" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/barrel.tscn" id="31_l2rhb"]
 [ext_resource type="PackedScene" uid="uid://wgxgfe2mhqhv" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/crate.tscn" id="32_26enl"]
+[ext_resource type="PackedScene" uid="uid://bd4aqlsgemo8m" path="res://Scenes/Gameplay/Spawners/player_spawn_point_1.tscn" id="33_l2rhb"]
 
 [node name="lvl10" type="Node2D"]
 script = ExtResource("1_sq4dd")
 required_kills = 40
 level_id = 10
+require_lighting = true
 
 [node name="level10" parent="." instance=ExtResource("2_rmdh6")]
 
@@ -290,3 +292,12 @@ position = Vector2(3683, 3643)
 
 [node name="Crate9" parent="." instance=ExtResource("32_26enl")]
 position = Vector2(3679, 3717)
+
+[node name="PlayerSpawnPoint1" parent="." instance=ExtResource("33_l2rhb")]
+position = Vector2(2809, 2773)
+
+[node name="PlayerSpawnPoint2" parent="." instance=ExtResource("33_l2rhb")]
+position = Vector2(1705, 4169)
+
+[node name="PlayerSpawnPoint3" parent="." instance=ExtResource("33_l2rhb")]
+position = Vector2(3393, 4104)

@@ -37,6 +37,7 @@
 script = ExtResource("1_lthc3")
 required_kills = 25
 level_id = 9
+require_lighting = true
 
 [node name="level9" parent="." instance=ExtResource("2_mmgbh")]
 

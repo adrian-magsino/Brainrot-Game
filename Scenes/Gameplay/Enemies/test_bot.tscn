@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c22dkn44mb617"]
+
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="2_1q4ax"]
+[ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="2_um6no"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="3_7pkap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xl7ab"]
+radius = 70.0
+
+[node name="TestBot" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_um6no")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g8hl7")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_1q4ax")]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -57.0
+offset_top = -92.0
+offset_right = 57.0
+offset_bottom = -65.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent/HealthBar"]
+wait_time = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_7pkap")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_xl7ab")

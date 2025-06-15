@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgsm8p7u7tj5b"]
+
+[ext_resource type="Script" uid="uid://dhr1m5abae3cq" path="res://Scripts/fast_bot.gd" id="1_obu4m"]
+[ext_resource type="Texture2D" uid="uid://cqs8vtsnmnxtg" path="res://icon.svg" id="2_ftpvc"]
+[ext_resource type="AudioStream" uid="uid://bh7difu80fg4x" path="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3" id="3_dvjgi"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="4_s4soc"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="5_t185y"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="6_f6d5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
+radius = 200.0
+
+[node name="DashingBot" type="CharacterBody2D"]
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_obu4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.852, 1)
+texture = ExtResource("2_ftpvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_exuau")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+modulate = Color(1, 0, 0, 1)
+shape = SubResource("CircleShape2D_g8hl7")
+
+[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dvjgi")
+parameters/looping = true
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_s4soc")]
+attack_damage = 10.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_t185y")]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -50.0
+offset_top = -82.0
+offset_right = 48.0
+offset_bottom = -55.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
+wait_time = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_f6d5o")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_exuau")
+
+[connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_damage_area_body_exited"]

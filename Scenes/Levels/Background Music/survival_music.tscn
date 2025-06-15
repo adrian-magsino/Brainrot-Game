@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://pce8utx2hn71"]
+
+[ext_resource type="AudioStream" uid="uid://cftr7b2b3tp6i" path="res://Scenes/Levels/Background Music/survival.mp3" id="1_b3wj8"]
+
+[node name="Survival_music" type="AudioStreamPlayer"]
+stream = ExtResource("1_b3wj8")
+volume_db = -7.0
+bus = &"Music"
+parameters/looping = true

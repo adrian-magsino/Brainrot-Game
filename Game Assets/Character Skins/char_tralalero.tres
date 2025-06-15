@@ -1,0 +1,79 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://co5uko8k1x86i"]
+
+[ext_resource type="Texture2D" uid="uid://cqbd8q0v12ny6" path="res://Game Assets/Character Skins/sprite sheets/traleleroTralala-Sheet.png" id="1_s04ey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1l6u"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(0, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnqlp"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(115, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwcdd"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(230, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26hi1"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(345, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stjo3"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(0, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiwad"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(115, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjq7q"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(230, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i5cg"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(345, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vne7"]
+atlas = ExtResource("1_s04ey")
+region = Rect2(460, 115, 115, 115)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1l6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnqlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwcdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26hi1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stjo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiwad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjq7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i5cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vne7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

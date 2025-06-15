@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfn8iq3v527bc"
+path="res://.godot/imported/TomC_ItchSFX_Guns_62.mp3-0d5c0363717126abdddab7b9699b1f8f.mp3str"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Gun vol 1/TomC_ItchSFX_Guns_62.mp3"
+dest_files=["res://.godot/imported/TomC_ItchSFX_Guns_62.mp3-0d5c0363717126abdddab7b9699b1f8f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://bt4ynb6x2tpf7"]
+
+[ext_resource type="Script" uid="uid://dppo6yplor1ak" path="res://Scenes/Gameplay/Exit Portal/exit_portal.gd" id="1_c18fn"]
+[ext_resource type="Texture2D" uid="uid://e3otjpcgqoyn" path="res://Scenes/Gameplay/Exit Portal/scifi_portal_spritesheet_cropped-removebg-preview.png" id="2_ywqkk"]
+[ext_resource type="PackedScene" uid="uid://ngtkvkt1lv61" path="res://Scenes/Gameplay/Components/interactable.tscn" id="3_7hxko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaqhf"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(993, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbyne"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(806, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahflf"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(619, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdoqj"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(432, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwk0v"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(245, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx3mc"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(58, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hxko"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(58, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2e5t"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(245, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg60k"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(432, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dkui"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(619, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8p8h"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(806, 0, 187, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy10m"]
+atlas = ExtResource("2_ywqkk")
+region = Rect2(993, 0, 187, 201)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xaqhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaqhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbyne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahflf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdoqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwk0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx3mc")
+}],
+"loop": false,
+"name": &"close_portal",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hxko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2e5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg60k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dkui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8p8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy10m")
+}],
+"loop": false,
+"name": &"open_portal",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l68ln"]
+size = Vector2(100, 100)
+
+[node name="ExitPortal" type="Node2D"]
+script = ExtResource("1_c18fn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -33)
+sprite_frames = SubResource("SpriteFrames_xaqhf")
+animation = &"open_portal"
+
+[node name="Interactable" parent="." instance=ExtResource("3_7hxko")]
+collision_layer = 8
+interact_name = "Enter Portal"
+is_interactable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_l68ln")
+
+[node name="ColorRect" type="ColorRect" parent="Interactable/CollisionShape2D"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[connection signal="body_entered" from="Interactable" to="." method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interactable" to="." method="_on_interactable_body_exited"]

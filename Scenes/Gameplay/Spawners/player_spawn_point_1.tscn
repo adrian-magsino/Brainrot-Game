@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd4aqlsgemo8m"]
+
+[ext_resource type="Texture2D" uid="uid://csa5txdlxyyex" path="res://Scenes/Gameplay/Spawners/player_spawn.png" id="1_lf56u"]
+
+[node name="PlayerSpawnPoint1" type="Node2D" groups=["player_spawners"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lf56u")

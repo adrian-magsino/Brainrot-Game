@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ipd31cvr0ra"]
+
+[ext_resource type="Script" uid="uid://b3qoxv178gfnp" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Ammo Box/ammo_box.gd" id="1_ebn3i"]
+[ext_resource type="Texture2D" uid="uid://do3puflmxwnmv" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Ammo Box/ammobox.png" id="1_selxs"]
+[ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="2_a1usm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebn3i"]
+size = Vector2(55, 35)
+
+[node name="AmmoBox" type="Node2D"]
+script = ExtResource("1_ebn3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_selxs")
+
+[node name="PickupableArea" parent="." instance=ExtResource("2_a1usm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupableArea"]
+shape = SubResource("RectangleShape2D_ebn3i")

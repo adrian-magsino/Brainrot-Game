@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfauuxkvqgmw6"]
+
+[ext_resource type="Script" uid="uid://bhpnql27w4ss7" path="res://Scenes/Gameplay/Components/explosive_component.gd" id="1_2v0ht"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="2_ebh4f"]
+
+[node name="ExplosiveComponent" type="Area2D"]
+script = ExtResource("1_2v0ht")
+
+[node name="AttackComponent" parent="." instance=ExtResource("2_ebh4f")]

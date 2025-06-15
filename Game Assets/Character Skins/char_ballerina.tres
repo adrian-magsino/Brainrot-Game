@@ -1,0 +1,79 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bal6hmquu8at3"]
+
+[ext_resource type="Texture2D" uid="uid://tvp5qywpkonn" path="res://Game Assets/Character Skins/sprite sheets/char_ballerinacapucina-Sheet.png" id="1_bmmfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mgox"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(0, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrrb"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(115, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvyn6"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(230, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lkmd"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(345, 0, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndw37"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(0, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1itx3"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(115, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfspp"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(230, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqrp"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(345, 115, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rag15"]
+atlas = ExtResource("1_bmmfl")
+region = Rect2(460, 115, 115, 115)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mgox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvyn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lkmd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndw37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1itx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfspp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbqrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rag15")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

@@ -1,0 +1,183 @@
+[gd_scene load_steps=26 format=3 uid="uid://75p78212eqdw"]
+
+[ext_resource type="Script" uid="uid://b46losmqe2ea0" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/explosive_barrel.gd" id="1_cqdxx"]
+[ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="2_yu8lb"]
+[ext_resource type="Texture2D" uid="uid://bkf4ejyuspcyn" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/exploding_barrel.png" id="3_fomm0"]
+[ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="3_xwx1j"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="4_r8cg1"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="5_h4i7n"]
+[ext_resource type="AudioStream" uid="uid://ccilayj6rkgb5" path="res://Game Assets/Audio/Shared SFX/SFX_explosion.mp3" id="7_xwx1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fomm0"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(0, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8x55"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(0, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ede"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(96, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfq1g"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(192, 0, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2j47"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(0, 160, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k632"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(96, 160, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytuh2"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(192, 160, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kqmj"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(0, 320, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0gi0"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(96, 320, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u12y"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(192, 320, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbf7j"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(0, 480, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gedmy"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(96, 480, 96, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u1cr"]
+atlas = ExtResource("3_fomm0")
+region = Rect2(192, 480, 96, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_54oye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fomm0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8x55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ede")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfq1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2j47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k632")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytuh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kqmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0gi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u12y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbf7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gedmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u1cr")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cqdxx"]
+radius = 40.0
+height = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu8lb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki8cu"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pyiy"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
+[node name="ExplosiveBarrel" type="StaticBody2D"]
+script = ExtResource("1_cqdxx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -45)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_54oye")
+animation = &"explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cqdxx")
+
+[node name="ExplosiveComponent" parent="." instance=ExtResource("3_xwx1j")]
+explosion_particles = ExtResource("2_yu8lb")
+can_damage_attacker = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveComponent"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_yu8lb")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_r8cg1")]
+MAX_HEALTH = 50.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_ki8cu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7pyiy")
+value = 70.0
+show_percentage = false
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_h4i7n")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_cqdxx")
+
+[node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xwx1j")
+volume_db = 5.0
+bus = &"SFX"

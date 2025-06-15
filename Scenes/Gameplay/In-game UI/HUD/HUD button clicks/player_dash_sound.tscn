@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x2nhswlj3bn"]
+
+[ext_resource type="AudioStream" uid="uid://6vodkeuy8xuu" path="res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/player-dash-sound.mp3" id="1_wsang"]
+
+[node name="PlayerDashSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_wsang")

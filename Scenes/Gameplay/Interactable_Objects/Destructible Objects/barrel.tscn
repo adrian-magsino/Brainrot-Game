@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://b0jr0rgti86s2"]
+
+[ext_resource type="Script" uid="uid://bh38arxl8ywjs" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/destructible_object.gd" id="1_bdpkb"]
+[ext_resource type="Texture2D" uid="uid://b1g7wm0spt5ga" path="res://Game Assets/Destructibles/Destructible Objects Sprite Sheet.png" id="2_pfidq"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="3_mf8xb"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="4_kq3e6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdpkb"]
+atlas = ExtResource("2_pfidq")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfidq"]
+atlas = ExtResource("2_pfidq")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf8xb"]
+atlas = ExtResource("2_pfidq")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq3e6"]
+atlas = ExtResource("2_pfidq")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6nsw"]
+atlas = ExtResource("2_pfidq")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gudn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdpkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfidq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf8xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq3e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6nsw")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8yrm"]
+size = Vector2(80, 100)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdpkb"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfidq"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0lsu"]
+size = Vector2(80, 100)
+
+[node name="Barrel" type="StaticBody2D"]
+script = ExtResource("1_bdpkb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -11)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_gudn0")
+animation = &"destroy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j8yrm")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_mf8xb")]
+MAX_HEALTH = 50.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_bdpkb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pfidq")
+value = 70.0
+show_percentage = false
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent/HealthBar"]
+wait_time = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_kq3e6")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_p0lsu")

@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://ltx5iwgdosgm"]
+
+[ext_resource type="Script" uid="uid://cin1tcmqbaqj0" path="res://Scripts/Gameplay/Shared Scripts/ENEMY_BOT.gd" id="1_12037"]
+[ext_resource type="SpriteFrames" uid="uid://co5uko8k1x86i" path="res://Game Assets/Character Skins/char_tralalero.tres" id="2_c3v14"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="5_c6d1s"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="6_xexdm"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="7_acfdb"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="8_iv2ae"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
+radius = 60.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3v14"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r3qg"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl784"]
+radius = 28.0
+height = 98.0
+
+[node name="TralaleroFastEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 19
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_12037")
+enemy_type = "fast_enemy"
+move_speed = 300.0
+attack_cooldown = 0.5
+can_destroy_objects = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.996078, 0.415686, 0.34902, 1)
+sprite_frames = ExtResource("2_c3v14")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 28)
+shape = SubResource("CircleShape2D_exuau")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_g8hl7")
+
+[node name="AttackComponent" parent="." instance=ExtResource("5_c6d1s")]
+attack_damage = 10.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_xexdm")]
+MAX_HEALTH = 60.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
+wait_time = 3.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_c3v14")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7r3qg")
+show_percentage = false
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_acfdb")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(2, 3)
+shape = SubResource("CapsuleShape2D_rl784")
+
+[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("8_iv2ae")]
+
+[connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_damage_area_body_exited"]

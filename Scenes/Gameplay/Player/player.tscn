@@ -1,26 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://bki2lv8s3kkvd"]
+[gd_scene load_steps=16 format=3 uid="uid://dcj33fsck5nt3"]
 
-[ext_resource type="Texture2D" uid="uid://dsynif5pd5iv" path="res://Game Assets/GodotPlatformerAssets/Sprites/Player_Idle.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scripts/Gameplay/Player/player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/interaction_components/interacting_component.tscn" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://djdt4wbwhiq2o" path="res://Scenes/Gameplay/Player/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="2_skuam"]
+[ext_resource type="PackedScene" uid="uid://cnsyorrcrvea4" path="res://Scenes/Gameplay/Components/interacting_component.tscn" id="3_6t5aa"]
+[ext_resource type="SpriteFrames" uid="uid://5dna1yvwjlyv" path="res://Game Assets/Character Skins/char_chimpanzini.tres" id="4_fyedb"]
+[ext_resource type="Script" uid="uid://0ogd2gcmkcm6" path="res://Scenes/Gameplay/Player/pickup_component.gd" id="5_fyedb"]
+[ext_resource type="PackedScene" uid="uid://c3wlrr16mnn6l" path="res://Animations/Components/BloodyDeathAnimation.tscn" id="8_h3jkl"]
+[ext_resource type="Script" uid="uid://c6few33t8kdnr" path="res://Scenes/Gameplay/Player/status_effect_manager.gd" id="9_fyedb"]
+[ext_resource type="Texture2D" uid="uid://cyrft2gche2pc" path="res://Game Assets/Lighting/light.png" id="10_t5q72"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="11_ibv1r"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="12_uy7c4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 41.0
-height = 82.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqmmt"]
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 50.04
 
-[node name="player" type="CharacterBody2D"]
-z_index = 1
-script = ExtResource("1_onrkg")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5q72"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_4flbx")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mgp1"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8qg6"]
+radius = 30.0
+height = 100.0
+
+[node name="PLAYER" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+collision_layer = 3
+collision_mask = 29
+script = ExtResource("1_onrkg")
+move_speed = 250
+default_gun_scene = ExtResource("2_skuam")
+
+[node name="PointLight2D" type="PointLight2D" parent="." groups=["lighting"]]
+energy = 0.5
+texture = ExtResource("10_t5q72")
+texture_scale = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("4_fyedb")
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14)
-shape = SubResource("CapsuleShape2D_onrkg")
+position = Vector2(1, 24)
+shape = SubResource("CapsuleShape2D_rqmmt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -28,11 +65,45 @@ shape = SubResource("CapsuleShape2D_onrkg")
 position = Vector2(3, 21)
 
 [node name="PickupArea" type="Area2D" parent="."]
+visible = false
+script = ExtResource("5_fyedb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(0, 14)
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="InteractingComponent" parent="." instance=ExtResource("3_6t5aa")]
-visible = false
-position = Vector2(0, 12)
+
+[node name="HealthComponent" parent="." instance=ExtResource("11_ibv1r")]
+can_regenerate = true
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_t5q72")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8mgp1")
+value = 70.0
+show_percentage = false
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_uy7c4")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_h8qg6")
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = -53.0
+offset_top = -114.0
+offset_right = 56.0
+offset_bottom = -91.0
+text = "PLAYER NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BloodyDeathAnimation" parent="." instance=ExtResource("8_h3jkl")]
+
+[node name="StatusEffectManager" type="Node2D" parent="."]
+script = ExtResource("9_fyedb")

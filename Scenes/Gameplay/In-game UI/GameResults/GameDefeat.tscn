@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb5chjtxbu3k3"]
+
+[ext_resource type="AudioStream" uid="uid://b6clnk6eil25m" path="res://Scenes/Gameplay/In-game UI/GameResults/080205_life-lost-game-over-89697 (1).mp3" id="1_db5j5"]
+
+[node name="GameDefeat" type="AudioStreamPlayer"]
+stream = ExtResource("1_db5j5")

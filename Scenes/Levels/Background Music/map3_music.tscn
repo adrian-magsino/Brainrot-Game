@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpyl5d282v6h"]
+
+[ext_resource type="AudioStream" uid="uid://bgtljm1i5bq4b" path="res://Scenes/Levels/Background Music/map3.mp3" id="1_qts8n"]
+
+[node name="Map3" type="AudioStreamPlayer"]
+stream = ExtResource("1_qts8n")
+bus = &"Music"
+parameters/looping = true

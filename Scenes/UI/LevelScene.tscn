@@ -1,0 +1,324 @@
+[gd_scene load_steps=68 format=3 uid="uid://cqjea3koedy0e"]
+
+[ext_resource type="Script" uid="uid://dusaysracghyj" path="res://Scripts/UI/level_scene.gd" id="1_h211i"]
+[ext_resource type="Texture2D" uid="uid://dcnr6ouprotxc" path="res://Game Assets/LevelScene Assets/container1.png" id="2_34oas"]
+[ext_resource type="Texture2D" uid="uid://poarhlftdhh4" path="res://Game Assets/Main Menu Assets/background.png" id="2_phcwl"]
+[ext_resource type="Texture2D" uid="uid://ci5m7hoxb4ck8" path="res://Game Assets/LevelScene Assets/1_lvl1.png" id="3_dufyk"]
+[ext_resource type="Texture2D" uid="uid://ca4vkqmwm6glq" path="res://Game Assets/LevelScene Assets/1_lvl3.png" id="4_41pgu"]
+[ext_resource type="Texture2D" uid="uid://c52qcl75sf3cg" path="res://Game Assets/LevelScene Assets/1_lvl2.png" id="5_phcwl"]
+[ext_resource type="Texture2D" uid="uid://db2dspyc4sj5u" path="res://Game Assets/LevelScene Assets/3_lvl1.png" id="6_2s6wc"]
+[ext_resource type="Texture2D" uid="uid://d3xpaxr5jtya8" path="res://Game Assets/LevelScene Assets/3_lvl3.png" id="7_hnjno"]
+[ext_resource type="Texture2D" uid="uid://cufrr77sb82q2" path="res://Game Assets/LevelScene Assets/3_lvl2.png" id="8_2cgr8"]
+[ext_resource type="Texture2D" uid="uid://0b4vuoq1yta7" path="res://Game Assets/LevelScene Assets/5_lvl1.png" id="9_ak8i7"]
+[ext_resource type="Texture2D" uid="uid://sfx6oh6qke2l" path="res://Game Assets/LevelScene Assets/5_lvl3.png" id="10_bt7bi"]
+[ext_resource type="Texture2D" uid="uid://csa06p1geucnn" path="res://Game Assets/LevelScene Assets/5_lvl2.png" id="11_fv8vy"]
+[ext_resource type="Texture2D" uid="uid://ciwkawmskhxer" path="res://Game Assets/LevelScene Assets/7_lvl1.png" id="12_2f3hi"]
+[ext_resource type="Texture2D" uid="uid://d1qrsasqyuggt" path="res://Game Assets/LevelScene Assets/7_lvl3.png" id="13_n4inj"]
+[ext_resource type="Texture2D" uid="uid://b2xbbfjb2yvv4" path="res://Game Assets/LevelScene Assets/7_lvl2.png" id="14_mwu1k"]
+[ext_resource type="Texture2D" uid="uid://r8llxna3p8hb" path="res://Game Assets/LevelScene Assets/9_lvl1.png" id="15_rwedi"]
+[ext_resource type="Texture2D" uid="uid://bo6iqwg5a0gcm" path="res://Game Assets/LevelScene Assets/9_lvl3.png" id="16_0wofe"]
+[ext_resource type="Texture2D" uid="uid://8pprnftodsls" path="res://Game Assets/LevelScene Assets/9_lvl2.png" id="17_0msc0"]
+[ext_resource type="Texture2D" uid="uid://cwpflucgcsryk" path="res://Game Assets/LevelScene Assets/2_lvl1.png" id="18_h5un4"]
+[ext_resource type="Texture2D" uid="uid://br4iy2ghgyr16" path="res://Game Assets/LevelScene Assets/2_lvl3.png" id="19_e002q"]
+[ext_resource type="Texture2D" uid="uid://ctkk557gdy1xt" path="res://Game Assets/LevelScene Assets/2_lvl2.png" id="20_3grmi"]
+[ext_resource type="Texture2D" uid="uid://njded3vr1u8m" path="res://Game Assets/LevelScene Assets/4_lvl1.png" id="21_lc0oa"]
+[ext_resource type="Texture2D" uid="uid://bldfih1klghxc" path="res://Game Assets/LevelScene Assets/4_lvl3.png" id="22_1e2dh"]
+[ext_resource type="Texture2D" uid="uid://c5dyxcgqgwih4" path="res://Game Assets/LevelScene Assets/4_lvl2.png" id="23_n8i8d"]
+[ext_resource type="Texture2D" uid="uid://fwiopwxo7xlt" path="res://Game Assets/LevelScene Assets/6_lvl1.png" id="24_t5xkr"]
+[ext_resource type="Texture2D" uid="uid://cvygsf5k510jx" path="res://Game Assets/LevelScene Assets/6_lvl3.png" id="25_0iju4"]
+[ext_resource type="Texture2D" uid="uid://cmyxfqvuvv6rj" path="res://Game Assets/LevelScene Assets/6_lvl2.png" id="26_6sffw"]
+[ext_resource type="Texture2D" uid="uid://42aottrfoxob" path="res://Game Assets/LevelScene Assets/8_lvl1.png" id="27_tos7w"]
+[ext_resource type="Texture2D" uid="uid://b71c4wfb471xx" path="res://Game Assets/LevelScene Assets/8_lvl3.png" id="28_la0vf"]
+[ext_resource type="Texture2D" uid="uid://bfvie11pftmky" path="res://Game Assets/LevelScene Assets/8_lvl2.png" id="29_n4ooj"]
+[ext_resource type="Texture2D" uid="uid://bbyiu41i6c76q" path="res://Game Assets/LevelScene Assets/10_lvl1.png" id="30_3kh5s"]
+[ext_resource type="Texture2D" uid="uid://c2j5fqhsxlgfs" path="res://Game Assets/LevelScene Assets/10_lvl3.png" id="31_dcr3i"]
+[ext_resource type="Texture2D" uid="uid://bdmj48flvcnjr" path="res://Game Assets/LevelScene Assets/10_lvl2.png" id="32_lr3f2"]
+[ext_resource type="Texture2D" uid="uid://hia2vtwaacf7" path="res://Game Assets/LevelScene Assets/back1.png" id="33_41pgu"]
+[ext_resource type="Texture2D" uid="uid://qvgvf0j82xk3" path="res://Game Assets/LevelScene Assets/back2.png" id="34_phcwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dowxu"]
+atlas = ExtResource("3_dufyk")
+region = Rect2(162, 152, 80, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3e6a"]
+atlas = ExtResource("4_41pgu")
+region = Rect2(162, 152, 80, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j68sh"]
+atlas = ExtResource("5_phcwl")
+region = Rect2(162, 152, 80, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aolr"]
+atlas = ExtResource("6_2s6wc")
+region = Rect2(335, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq176"]
+atlas = ExtResource("7_hnjno")
+region = Rect2(335, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jv38"]
+atlas = ExtResource("8_2cgr8")
+region = Rect2(335, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdleq"]
+atlas = ExtResource("9_ak8i7")
+region = Rect2(508, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3lyo"]
+atlas = ExtResource("10_bt7bi")
+region = Rect2(508, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bchue"]
+atlas = ExtResource("11_fv8vy")
+region = Rect2(508, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfxmi"]
+atlas = ExtResource("12_2f3hi")
+region = Rect2(681, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyjd3"]
+atlas = ExtResource("13_n4inj")
+region = Rect2(681, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5yhx"]
+atlas = ExtResource("14_mwu1k")
+region = Rect2(681, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buylw"]
+atlas = ExtResource("15_rwedi")
+region = Rect2(854, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4bp8"]
+atlas = ExtResource("16_0wofe")
+region = Rect2(854, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60qwf"]
+atlas = ExtResource("17_0msc0")
+region = Rect2(854, 152, 79, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejoxp"]
+atlas = ExtResource("18_h5un4")
+region = Rect2(220, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bshi"]
+atlas = ExtResource("19_e002q")
+region = Rect2(220, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uciy6"]
+atlas = ExtResource("20_3grmi")
+region = Rect2(220, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5eyx"]
+atlas = ExtResource("21_lc0oa")
+region = Rect2(393, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uykgf"]
+atlas = ExtResource("22_1e2dh")
+region = Rect2(393, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6ucq"]
+atlas = ExtResource("23_n8i8d")
+region = Rect2(393, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8twvw"]
+atlas = ExtResource("24_t5xkr")
+region = Rect2(566, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mni74"]
+atlas = ExtResource("25_0iju4")
+region = Rect2(566, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy43v"]
+atlas = ExtResource("26_6sffw")
+region = Rect2(566, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ursh4"]
+atlas = ExtResource("27_tos7w")
+region = Rect2(738, 324, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ffu6"]
+atlas = ExtResource("28_la0vf")
+region = Rect2(738, 324, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5hv7"]
+atlas = ExtResource("29_n4ooj")
+region = Rect2(738, 324, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phgic"]
+atlas = ExtResource("30_3kh5s")
+region = Rect2(911, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r7fs"]
+atlas = ExtResource("31_dcr3i")
+region = Rect2(911, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yso3c"]
+atlas = ExtResource("32_lr3f2")
+region = Rect2(911, 324, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s6wc"]
+atlas = ExtResource("33_41pgu")
+region = Rect2(58, 490, 144, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnjno"]
+atlas = ExtResource("34_phcwl")
+region = Rect2(58, 490, 144, 58)
+
+[node name="LevelScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h211i")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_phcwl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_34oas")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.140625
+anchor_top = 0.234568
+anchor_right = 0.810764
+anchor_bottom = 0.356481
+offset_top = -0.000183105
+offset_bottom = 0.000198364
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 94
+metadata/_edit_use_anchors_ = true
+
+[node name="Level1" type="TextureButton" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_dowxu")
+texture_pressed = SubResource("AtlasTexture_l3e6a")
+texture_disabled = SubResource("AtlasTexture_j68sh")
+
+[node name="Level3" type="TextureButton" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_3aolr")
+texture_pressed = SubResource("AtlasTexture_wq176")
+texture_disabled = SubResource("AtlasTexture_4jv38")
+
+[node name="Level5" type="TextureButton" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_tdleq")
+texture_pressed = SubResource("AtlasTexture_b3lyo")
+texture_disabled = SubResource("AtlasTexture_bchue")
+
+[node name="Level7" type="TextureButton" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_yfxmi")
+texture_pressed = SubResource("AtlasTexture_lyjd3")
+texture_disabled = SubResource("AtlasTexture_j5yhx")
+
+[node name="Level9" type="TextureButton" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_buylw")
+texture_pressed = SubResource("AtlasTexture_t4bp8")
+texture_disabled = SubResource("AtlasTexture_60qwf")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.190972
+anchor_top = 0.5
+anchor_right = 0.778646
+anchor_bottom = 0.5
+offset_right = 95.0
+offset_bottom = 80.0
+theme_override_constants/separation = 94
+metadata/_edit_use_anchors_ = true
+
+[node name="Level2" type="TextureButton" parent="TextureRect/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_ejoxp")
+texture_pressed = SubResource("AtlasTexture_4bshi")
+texture_disabled = SubResource("AtlasTexture_uciy6")
+
+[node name="Level4" type="TextureButton" parent="TextureRect/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_p5eyx")
+texture_pressed = SubResource("AtlasTexture_uykgf")
+texture_disabled = SubResource("AtlasTexture_e6ucq")
+
+[node name="Level6" type="TextureButton" parent="TextureRect/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_8twvw")
+texture_pressed = SubResource("AtlasTexture_mni74")
+texture_disabled = SubResource("AtlasTexture_yy43v")
+
+[node name="Level8" type="TextureButton" parent="TextureRect/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_ursh4")
+texture_pressed = SubResource("AtlasTexture_0ffu6")
+texture_disabled = SubResource("AtlasTexture_f5hv7")
+
+[node name="Level10" type="TextureButton" parent="TextureRect/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_phgic")
+texture_pressed = SubResource("AtlasTexture_1r7fs")
+texture_disabled = SubResource("AtlasTexture_yso3c")
+
+[node name="BackButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 2
+offset_left = 70.0
+offset_top = 516.0
+offset_right = 214.0
+offset_bottom = 574.0
+texture_normal = SubResource("AtlasTexture_2s6wc")
+texture_pressed = SubResource("AtlasTexture_hnjno")
+
+[connection signal="pressed" from="TextureRect/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer/Level7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer/Level9" to="." method="_on_level_9_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer2/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer2/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer2/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer2/Level8" to="." method="_on_level_8_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer2/Level10" to="." method="_on_level_10_pressed"]
+[connection signal="pressed" from="TextureRect/BackButton" to="." method="_on_back_button_pressed"]

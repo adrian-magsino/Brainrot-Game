@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcta0op34obh3"]
+
+[ext_resource type="Script" uid="uid://daumj1b2far7f" path="res://Animations/Particles/animated_particles.gd" id="1_0cmu6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1svab"]
+
+[sub_resource type="Curve" id="Curve_lx0r7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BulletParticle" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_1svab")
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_lx0r7")
+color = Color(1, 0.741176, 0.196078, 1)
+script = ExtResource("1_0cmu6")

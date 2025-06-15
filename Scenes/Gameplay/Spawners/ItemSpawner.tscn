@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://odblr4vjp1tx"]
+
+[ext_resource type="Script" uid="uid://bwjycvocoycdo" path="res://Scenes/Gameplay/Spawners/item_spawner.gd" id="1_40oro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udtfo"]
+
+[node name="ItemSpawner" type="Area2D"]
+script = ExtResource("1_40oro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_udtfo")
+
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+color = Color(0, 1, 0, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="SpawnTimer" type="Timer" parent="."]

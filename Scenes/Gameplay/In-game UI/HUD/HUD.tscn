@@ -1,0 +1,1069 @@
+[gd_scene load_steps=102 format=3 uid="uid://bcdvaas54iiga"]
+
+[ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
+[ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="4_b55vn"]
+[ext_resource type="Script" uid="uid://dc0vdfdhdsaac" path="res://Scenes/Gameplay/In-game UI/HUD/level_objectives_display.gd" id="4_o4oii"]
+[ext_resource type="Script" uid="uid://crcr8jtqc2pil" path="res://Scenes/Gameplay/In-game UI/HUD/player_ui.gd" id="5_hkytx"]
+[ext_resource type="Texture2D" uid="uid://c2l0cyem8wqmx" path="res://Game Assets/HUD design/gun_container1.png" id="7_5a5hv"]
+[ext_resource type="PackedScene" uid="uid://deaj1tohywpen" path="res://Scenes/Gameplay/In-game UI/Popup Notification/Notification.tscn" id="7_a4jdu"]
+[ext_resource type="Texture2D" uid="uid://dxkjvpso2mdqr" path="res://Game Assets/HUD design/gun_container2.png" id="8_h4w42"]
+[ext_resource type="Texture2D" uid="uid://d06oyp2ic78dm" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.png" id="9_5a5hv"]
+[ext_resource type="Texture2D" uid="uid://blagwbofqrh0n" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste.png" id="9_034d7"]
+[ext_resource type="Texture2D" uid="uid://b1og857xcmc0e" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/hide_eye_icon_238775 (1).png" id="10_b55vn"]
+[ext_resource type="PackedScene" uid="uid://bfqcrm48j1lyu" path="res://addons/virtual_joystick/aim_joystick_scene.tscn" id="10_ov0tc"]
+[ext_resource type="Texture2D" uid="uid://bkcnnk0ey5hdw" path="res://Game Assets/HUD design/pickup1.png" id="11_8ovj1"]
+[ext_resource type="Texture2D" uid="uid://bsmeup584fett" path="res://Game Assets/HUD design/menu1.png" id="11_22qo4"]
+[ext_resource type="Texture2D" uid="uid://e7rn5e7c765w" path="res://Game Assets/HUD design/health1.png" id="11_astq8"]
+[ext_resource type="Texture2D" uid="uid://c2a4wy5qcp7e0" path="res://Game Assets/HUD design/pickup2.png" id="12_ifv1l"]
+[ext_resource type="Texture2D" uid="uid://bd7xg2u6k2r13" path="res://Game Assets/HUD design/menu2.png" id="12_mqepd"]
+[ext_resource type="Texture2D" uid="uid://433nxw7q8xfv" path="res://Game Assets/HUD design/reload1.png" id="13_2tp5v"]
+[ext_resource type="Texture2D" uid="uid://cro6snp8rfb61" path="res://Game Assets/HUD design/i1.png" id="14_mkqvc"]
+[ext_resource type="Texture2D" uid="uid://whemutdwwdkk" path="res://Game Assets/HUD design/reload2.png" id="14_ov0tc"]
+[ext_resource type="Texture2D" uid="uid://c8yedt5mk4qr8" path="res://Game Assets/HUD design/i2.png" id="15_8ovj1"]
+[ext_resource type="Texture2D" uid="uid://c50k58simur47" path="res://Game Assets/HUD design/zoom1.png" id="15_irehg"]
+[ext_resource type="Texture2D" uid="uid://dd5fuiyko7gpa" path="res://Game Assets/HUD design/dash1.png" id="15_ov0tc"]
+[ext_resource type="Texture2D" uid="uid://gwbprfr0ibj0" path="res://Game Assets/HUD design/zoom2.png" id="16_4igmu"]
+[ext_resource type="Texture2D" uid="uid://c50h20ywkw4tt" path="res://Game Assets/HUD design/dash2.png" id="16_irehg"]
+[ext_resource type="FontFile" uid="uid://dfq18ugigfu7e" path="res://Game Assets/HUD design/pixelmix.ttf" id="17_irehg"]
+[ext_resource type="PackedScene" uid="uid://dkhh0ne8dlwbd" path="res://addons/virtual_joystick/movement_joystick_scene.tscn" id="19_astq8"]
+[ext_resource type="Texture2D" uid="uid://ol6y4vagkfsi" path="res://Game Assets/Circular Progress Bar/progress-bar-circle.png" id="22_astq8"]
+[ext_resource type="Texture2D" uid="uid://bgpccqtna5mgb" path="res://Game Assets/Circular Progress Bar/progress-bar-frame.png" id="23_l7b1a"]
+[ext_resource type="Texture2D" uid="uid://1g1qq3bvi0uv" path="res://Game Assets/Pause Menu Assets/container1.png" id="26_l64xq"]
+[ext_resource type="Texture2D" uid="uid://dhau3yxmcig74" path="res://Game Assets/Pause Menu Assets/quit1.png" id="27_aoj1i"]
+[ext_resource type="Texture2D" uid="uid://dhtga3haklmdr" path="res://Game Assets/Pause Menu Assets/quit2.png" id="28_p1ej7"]
+[ext_resource type="Texture2D" uid="uid://b1nw20aftd7wx" path="res://Game Assets/Pause Menu Assets/settings1.png" id="29_5lfd3"]
+[ext_resource type="Texture2D" uid="uid://0yerxldh8cov" path="res://Game Assets/Pause Menu Assets/game_title.png" id="29_aoj1i"]
+[ext_resource type="Texture2D" uid="uid://c87qvrt83l4gw" path="res://Game Assets/Pause Menu Assets/settings2.png" id="30_rgdqc"]
+[ext_resource type="Texture2D" uid="uid://c233vghwbfa11" path="res://Game Assets/Pause Menu Assets/resume1.png" id="31_i1acc"]
+[ext_resource type="Texture2D" uid="uid://d3xi6fhgapo3y" path="res://Game Assets/Pause Menu Assets/resume2.png" id="32_wmv3y"]
+[ext_resource type="Texture2D" uid="uid://dssrwwa1wwccb" path="res://Game Assets/Pause Menu Assets/sound_container.png" id="37_djibf"]
+[ext_resource type="Texture2D" uid="uid://bl01d466l5gcv" path="res://Game Assets/GameResults Assets/container.png" id="37_wmv3y"]
+[ext_resource type="Texture2D" uid="uid://cn3xmqanak8a0" path="res://Game Assets/GameResults Assets/next1.png" id="38_dhyot"]
+[ext_resource type="Script" uid="uid://7b5erfey163b" path="res://Scripts/UI/audio_slider_settings.gd" id="38_fv7v7"]
+[ext_resource type="Texture2D" uid="uid://yw4h05hcwafl" path="res://Game Assets/GameResults Assets/next2.png" id="39_d6vqx"]
+[ext_resource type="Texture2D" uid="uid://b6cypce55w3k" path="res://Game Assets/Settings Assets/sound_switch2.png" id="39_h1g6q"]
+[ext_resource type="Texture2D" uid="uid://bh6enbd1rn3y4" path="res://Game Assets/GameResults Assets/quit1.png" id="40_0kkgm"]
+[ext_resource type="Texture2D" uid="uid://bygyhnkpvnvup" path="res://Game Assets/Settings Assets/sound_switch1.png" id="40_tc5dw"]
+[ext_resource type="Texture2D" uid="uid://by6xu0hh4yax6" path="res://Game Assets/GameResults Assets/quit2.png" id="41_0b2ur"]
+[ext_resource type="Texture2D" uid="uid://d0efpyo18dax2" path="res://Game Assets/Settings Assets/sidebar.png" id="41_t4j27"]
+[ext_resource type="Texture2D" uid="uid://cv1s33qby0sar" path="res://Game Assets/GameResults Assets/retry1.png" id="42_d6vqx"]
+[ext_resource type="Texture2D" uid="uid://dhk05vwwdpclf" path="res://Game Assets/Settings Assets/back_button1.png" id="42_xytd7"]
+[ext_resource type="Texture2D" uid="uid://cjwcojvvyebi6" path="res://Game Assets/GameResults Assets/retry2.png" id="43_0kkgm"]
+[ext_resource type="Texture2D" uid="uid://dfnx7ytnih511" path="res://Game Assets/Settings Assets/back_button2.png" id="43_roooo"]
+[ext_resource type="Texture2D" uid="uid://c7543aj0w56vj" path="res://Game Assets/Settings Assets/apply_button1.png" id="44_x2kv1"]
+[ext_resource type="Texture2D" uid="uid://b0cxhedv8nc31" path="res://Game Assets/Settings Assets/apply_button2.png" id="45_8e1xu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4oii"]
+font = ExtResource("4_b55vn")
+font_size = 32
+font_color = Color(0.995853, 0.37943, 0.311737, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_astq8"]
+font = ExtResource("17_irehg")
+font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpvtn"]
+font = ExtResource("17_irehg")
+font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgnav"]
+atlas = ExtResource("11_astq8")
+region = Rect2(634, 40, 58, 50)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gl8s0"]
+font = ExtResource("17_irehg")
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a5hv"]
+atlas = ExtResource("14_mkqvc")
+region = Rect2(58, 198, 115, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4w42"]
+atlas = ExtResource("15_8ovj1")
+region = Rect2(58, 198, 115, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22qo4"]
+atlas = ExtResource("11_22qo4")
+region = Rect2(18, 18, 126, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqepd"]
+atlas = ExtResource("12_mqepd")
+region = Rect2(18, 18, 126, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkqvc"]
+atlas = ExtResource("11_8ovj1")
+region = Rect2(346, 490, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ovj1"]
+atlas = ExtResource("12_ifv1l")
+region = Rect2(346, 490, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxoy"]
+atlas = ExtResource("13_2tp5v")
+region = Rect2(695, 371, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s03w6"]
+atlas = ExtResource("14_ov0tc")
+region = Rect2(695, 371, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6rmw"]
+atlas = ExtResource("15_irehg")
+region = Rect2(904, 58, 115, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68cqt"]
+atlas = ExtResource("16_4igmu")
+region = Rect2(904, 58, 115, 115)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4igmu"]
+font = ExtResource("17_irehg")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifv1l"]
+atlas = ExtResource("15_ov0tc")
+region = Rect2(810, 231, 116, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tp5v"]
+atlas = ExtResource("16_irehg")
+region = Rect2(810, 231, 116, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_astq8"]
+atlas = ExtResource("7_5a5hv")
+region = Rect2(501, 515, 234, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7b1a"]
+atlas = ExtResource("8_h4w42")
+region = Rect2(504, 519, 231, 111)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5a5hv"]
+font = ExtResource("17_irehg")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_h4w42"]
+font = ExtResource("17_irehg")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1ej7"]
+atlas = ExtResource("29_aoj1i")
+region = Rect2(0, 0, 1152, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhyot"]
+atlas = ExtResource("26_l64xq")
+region = Rect2(350, 155, 450, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6vqx"]
+atlas = ExtResource("27_aoj1i")
+region = Rect2(378, 234, 116, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kkgm"]
+atlas = ExtResource("28_p1ej7")
+region = Rect2(378, 234, 116, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b2ur"]
+atlas = ExtResource("29_5lfd3")
+region = Rect2(519, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x1j0"]
+atlas = ExtResource("30_rgdqc")
+region = Rect2(519, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd5ni"]
+atlas = ExtResource("31_i1acc")
+region = Rect2(659, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62s6c"]
+atlas = ExtResource("32_wmv3y")
+region = Rect2(659, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ieo"]
+atlas = ExtResource("39_h1g6q")
+region = Rect2(404, 188, 97, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mirbq"]
+atlas = ExtResource("40_tc5dw")
+region = Rect2(404, 188, 97, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5g8"]
+atlas = ExtResource("41_t4j27")
+region = Rect2(749, 310, 36, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4jv0"]
+atlas = ExtResource("42_xytd7")
+region = Rect2(216, 515, 173, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ef6"]
+atlas = ExtResource("43_roooo")
+region = Rect2(216, 519, 173, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rndbg"]
+atlas = ExtResource("44_x2kv1")
+region = Rect2(724, 515, 202, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7prf"]
+atlas = ExtResource("45_8e1xu")
+region = Rect2(724, 515, 202, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3pss"]
+atlas = ExtResource("37_wmv3y")
+region = Rect2(350, 123, 450, 504)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0kkgm"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.234785, 0.76427, 7.70092e-07, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmv3y"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.176419, 0.176419, 0.176419, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhyot"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.176419, 0.176419, 0.176419, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6vqx"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.176419, 0.176419, 0.176419, 1)
+outline_size = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpre0"]
+atlas = ExtResource("38_dhyot")
+region = Rect2(494, 501, 295, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbbdt"]
+atlas = ExtResource("39_d6vqx")
+region = Rect2(494, 501, 295, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djibf"]
+atlas = ExtResource("40_0kkgm")
+region = Rect2(368, 497, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv7v7"]
+atlas = ExtResource("41_0b2ur")
+region = Rect2(368, 497, 115, 79)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0b2ur"]
+font = ExtResource("4_b55vn")
+font_size = 20
+font_color = Color(0.984242, 0.181831, 0.332863, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1g6q"]
+atlas = ExtResource("42_d6vqx")
+region = Rect2(602, 501, 187, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc5dw"]
+atlas = ExtResource("43_0kkgm")
+region = Rect2(602, 501, 187, 75)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xn0sg")
+
+[node name="PlayerStatusContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_top = 197.0
+offset_right = 1.0
+offset_bottom = 597.0
+grow_horizontal = 0
+
+[node name="Haste" type="TextureRect" parent="PlayerStatusContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_034d7")
+stretch_mode = 5
+
+[node name="Invisible" type="TextureRect" parent="PlayerStatusContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("10_b55vn")
+stretch_mode = 5
+
+[node name="ObjectivesContainer" type="CenterContainer" parent="."]
+layout_direction = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -174.0
+offset_right = 232.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_o4oii")
+
+[node name="Objectives" type="Label" parent="ObjectivesContainer"]
+layout_mode = 2
+text = "GAME OBJECTIVES"
+label_settings = SubResource("LabelSettings_o4oii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_hkytx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.5
+offset_top = 15.0
+offset_right = 199.5
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="GameTimeLabel" type="Label" parent="GameUI/HBoxContainer"]
+layout_mode = 2
+text = "Time: 00:00"
+label_settings = SubResource("LabelSettings_astq8")
+
+[node name="ScoreLabel" type="Label" parent="GameUI/HBoxContainer"]
+layout_mode = 2
+text = "KILLS: 0"
+label_settings = SubResource("LabelSettings_kpvtn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLivesImage" type="TextureRect" parent="GameUI/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vgnav")
+
+[node name="PlayerLivesLabel" type="Label" parent="GameUI/HBoxContainer/PlayerLivesImage"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 10.0
+offset_right = 139.0
+offset_bottom = 52.0
+text = "x 0"
+label_settings = SubResource("LabelSettings_gl8s0")
+horizontal_alignment = 1
+
+[node name="GunDisplay" type="Control" parent="GameUI"]
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 33.0
+offset_right = 22.0
+offset_bottom = 33.0
+
+[node name="PlayerControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control6" type="Control" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -198.0
+offset_right = 41.0
+offset_bottom = -158.0
+grow_vertical = 2
+
+[node name="LevelObjectivesButton" type="TouchScreenButton" parent="PlayerControls/Control6"]
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_5a5hv")
+texture_pressed = SubResource("AtlasTexture_h4w42")
+
+[node name="MenuButton" type="TextureButton" parent="PlayerControls"]
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 76.0
+texture_normal = SubResource("AtlasTexture_22qo4")
+texture_pressed = SubResource("AtlasTexture_mqepd")
+
+[node name="Control" type="Control" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -140.0
+offset_right = -214.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Pickup Button" type="TouchScreenButton" parent="PlayerControls/Control"]
+texture_normal = SubResource("AtlasTexture_mkqvc")
+texture_pressed = SubResource("AtlasTexture_8ovj1")
+
+[node name="Control4" type="Control" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = -206.0
+offset_right = 154.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Reload Gun" type="TouchScreenButton" parent="PlayerControls/Control4"]
+scale = Vector2(0.8, 0.8)
+texture_normal = SubResource("AtlasTexture_1jxoy")
+texture_pressed = SubResource("AtlasTexture_s03w6")
+
+[node name="ReloadProgressasdasd" type="ProgressBar" parent="PlayerControls/Control4/Reload Gun"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+offset_left = -35.0
+offset_top = -45.0
+offset_right = 118.0
+offset_bottom = -18.0
+max_value = 1.0
+show_percentage = false
+
+[node name="ReloadBarLabel" type="Label" parent="PlayerControls/Control4/Reload Gun/ReloadProgressasdasd"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 3.0
+offset_right = 130.0
+offset_bottom = 26.0
+text = "RELOADING..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReloadProgress" type="TextureProgressBar" parent="PlayerControls/Control4/Reload Gun"]
+visible = false
+offset_left = -2.5
+offset_top = -12.5
+offset_right = 125.5
+offset_bottom = 115.5
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("22_astq8")
+texture_over = ExtResource("23_l7b1a")
+texture_progress = ExtResource("22_astq8")
+tint_under = Color(0, 0, 0, 0.546)
+tint_over = Color(1, 1, 1, 0.493)
+tint_progress = Color(0.166785, 0.340472, 0.777626, 1)
+
+[node name="Control2" type="Control" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 27.0
+offset_right = -101.0
+offset_bottom = 67.0
+grow_horizontal = 0
+
+[node name="Zoom Button" type="TouchScreenButton" parent="PlayerControls/Control2"]
+texture_normal = SubResource("AtlasTexture_n6rmw")
+texture_pressed = SubResource("AtlasTexture_68cqt")
+
+[node name="ZoomLabel" type="Label" parent="PlayerControls/Control2/Zoom Button"]
+offset_left = 37.0
+offset_top = 15.0
+offset_right = 82.0
+offset_bottom = 96.0
+text = "1"
+label_settings = SubResource("LabelSettings_4igmu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = 29.0
+offset_right = -318.0
+offset_bottom = 69.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Dash Button" type="TouchScreenButton" parent="PlayerControls/Control3"]
+scale = Vector2(0.8, 0.8)
+texture_normal = SubResource("AtlasTexture_ifv1l")
+texture_pressed = SubResource("AtlasTexture_2tp5v")
+
+[node name="Dash Cooldown" type="TextureProgressBar" parent="PlayerControls/Control3/Dash Button"]
+offset_left = -2.5
+offset_top = -12.5
+offset_right = 125.5
+offset_bottom = 115.5
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 4
+texture_under = ExtResource("22_astq8")
+texture_over = ExtResource("23_l7b1a")
+texture_progress = ExtResource("22_astq8")
+tint_under = Color(0, 0, 0, 0.546)
+tint_over = Color(1, 1, 1, 0.493)
+tint_progress = Color(0.166785, 0.340472, 0.777626, 1)
+
+[node name="Movement Joystick" parent="PlayerControls" instance=ExtResource("19_astq8")]
+layout_mode = 1
+offset_top = -300.0
+offset_bottom = 0.0
+
+[node name="Aim Joystick" parent="PlayerControls" instance=ExtResource("10_ov0tc")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+
+[node name="Control5" type="Control" parent="PlayerControls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -122.0
+offset_right = -79.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Switch Gun" type="TouchScreenButton" parent="PlayerControls/Control5"]
+texture_normal = SubResource("AtlasTexture_astq8")
+texture_pressed = SubResource("AtlasTexture_l7b1a")
+
+[node name="CurrentGunIcon" type="TextureRect" parent="PlayerControls/Control5/Switch Gun"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.806
+offset_top = -32.5
+offset_right = 126.806
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_5a5hv")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentGunLabel" type="Label" parent="PlayerControls/Control5/Switch Gun"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -7.5
+offset_right = 71.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sample Gun"
+label_settings = SubResource("LabelSettings_5a5hv")
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoLabel" type="Label" parent="PlayerControls/Control5/Switch Gun"]
+anchors_preset = -1
+anchor_left = -0.111111
+anchor_top = 0.0632716
+anchor_right = 1.23889
+anchor_bottom = 0.0632716
+offset_left = 51.0
+offset_top = -28.2762
+offset_right = -90.8999
+offset_bottom = -8.27623
+text = "Ammo: -- / --"
+label_settings = SubResource("LabelSettings_h4w42")
+metadata/_edit_use_anchors_ = true
+
+[node name="Notification" parent="." instance=ExtResource("7_a4jdu")]
+
+[node name="Menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.733)
+
+[node name="GameTitleLabel" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 115.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_p1ej7")
+
+[node name="MenuPanel" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -120.5
+offset_right = 225.0
+offset_bottom = 120.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_dhyot")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/MenuPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -50.5
+offset_right = 177.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitButton" type="TextureButton" parent="Menu/MenuPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_d6vqx")
+texture_pressed = SubResource("AtlasTexture_0kkgm")
+
+[node name="SettingsButton" type="TextureButton" parent="Menu/MenuPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_0b2ur")
+texture_pressed = SubResource("AtlasTexture_0x1j0")
+
+[node name="ResumeButton" type="TextureButton" parent="Menu/MenuPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_bd5ni")
+texture_pressed = SubResource("AtlasTexture_62s6c")
+
+[node name="Settings" type="Control" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SoundContainer" type="TextureRect" parent="Menu/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("37_djibf")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Settings/SoundContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 115
+
+[node name="Master" type="Control" parent="Menu/Settings/SoundContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("38_fv7v7")
+bus_name = "Master"
+
+[node name="TextContainer" type="HBoxContainer" parent="Menu/Settings/SoundContainer/VBoxContainer/Master"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Menu/Settings/SoundContainer/VBoxContainer/Master/TextContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_b55vn")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer/Master/TextContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_n1ieo")
+texture_pressed = SubResource("AtlasTexture_mirbq")
+
+[node name="HSlider" type="HSlider" parent="Menu/Settings/SoundContainer/VBoxContainer/Master/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_icons/grabber = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_gm5g8")
+max_value = 1.0
+step = 0.001
+
+[node name="Music" type="Control" parent="Menu/Settings/SoundContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("38_fv7v7")
+bus_name = "Music"
+
+[node name="TextContainer" type="HBoxContainer" parent="Menu/Settings/SoundContainer/VBoxContainer/Music"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Menu/Settings/SoundContainer/VBoxContainer/Music/TextContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_b55vn")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer/Music/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_n1ieo")
+texture_pressed = SubResource("AtlasTexture_mirbq")
+
+[node name="HSlider" type="HSlider" parent="Menu/Settings/SoundContainer/VBoxContainer/Music/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_gm5g8")
+max_value = 1.0
+step = 0.001
+
+[node name="SFX" type="Control" parent="Menu/Settings/SoundContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("38_fv7v7")
+bus_name = "SFX"
+
+[node name="TextContainer" type="HBoxContainer" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX/TextContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_b55vn")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_n1ieo")
+texture_pressed = SubResource("AtlasTexture_mirbq")
+
+[node name="HSlider" type="HSlider" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_gm5g8")
+max_value = 1.0
+step = 0.001
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="Menu/Settings/SoundContainer"]
+layout_mode = 2
+anchor_left = 0.203125
+anchor_top = 0.816358
+anchor_right = 0.328125
+anchor_bottom = 0.905864
+offset_right = 531.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 300
+
+[node name="Back" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_x4jv0")
+texture_pressed = SubResource("AtlasTexture_t4ef6")
+
+[node name="Apply" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = SubResource("AtlasTexture_rndbg")
+texture_pressed = SubResource("AtlasTexture_r7prf")
+
+[node name="GameResults" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VictoryPanel" type="TextureRect" parent="GameResults"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_s3pss")
+
+[node name="Message" type="Label" parent="GameResults/VictoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 105.0
+grow_horizontal = 2
+text = "LEVEL CLEARED!"
+label_settings = SubResource("LabelSettings_0kkgm")
+horizontal_alignment = 1
+
+[node name="Scoreboard" type="VBoxContainer" parent="GameResults/VictoryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -102.0
+offset_right = 160.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TotalKillsLabel" type="Label" parent="GameResults/VictoryPanel/Scoreboard"]
+layout_mode = 2
+text = "ENEMIES KILLED: 0"
+label_settings = SubResource("LabelSettings_wmv3y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerDeathsLabel" type="Label" parent="GameResults/VictoryPanel/Scoreboard"]
+layout_mode = 2
+text = "DEATHS: 0"
+label_settings = SubResource("LabelSettings_dhyot")
+
+[node name="TotalGameTimeLabel" type="Label" parent="GameResults/VictoryPanel/Scoreboard"]
+layout_mode = 2
+text = "GAME TIME: 0
+"
+label_settings = SubResource("LabelSettings_d6vqx")
+
+[node name="NextLevelButton" type="TextureButton" parent="GameResults/VictoryPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -134.0
+offset_right = -20.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_gpre0")
+texture_pressed = SubResource("AtlasTexture_fbbdt")
+
+[node name="ExitButton" type="TextureButton" parent="GameResults/VictoryPanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -134.0
+offset_right = 125.0
+offset_bottom = -55.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_djibf")
+texture_pressed = SubResource("AtlasTexture_fv7v7")
+
+[node name="DefeatPanel" type="TextureRect" parent="GameResults"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_s3pss")
+
+[node name="Message" type="Label" parent="GameResults/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 105.0
+grow_horizontal = 2
+text = "YOU LOST!
+SKILL ISSUE"
+label_settings = SubResource("LabelSettings_0b2ur")
+horizontal_alignment = 1
+
+[node name="Scoreboard" type="VBoxContainer" parent="GameResults/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -92.0
+offset_right = 160.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TotalKillsLabel" type="Label" parent="GameResults/DefeatPanel/Scoreboard"]
+layout_mode = 2
+text = "ENEMIES KILLED: 0"
+label_settings = SubResource("LabelSettings_wmv3y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerDeathsLabel" type="Label" parent="GameResults/DefeatPanel/Scoreboard"]
+layout_mode = 2
+text = "DEATHS: 0"
+label_settings = SubResource("LabelSettings_dhyot")
+
+[node name="TotalGameTimeLabel" type="Label" parent="GameResults/DefeatPanel/Scoreboard"]
+layout_mode = 2
+text = "GAME TIME: 0
+"
+label_settings = SubResource("LabelSettings_d6vqx")
+
+[node name="RetryButton" type="TextureButton" parent="GameResults/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -134.0
+offset_right = -23.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_h1g6q")
+texture_pressed = SubResource("AtlasTexture_tc5dw")
+
+[node name="ExitButton" type="TextureButton" parent="GameResults/DefeatPanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -134.0
+offset_right = 145.0
+offset_bottom = -55.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_djibf")
+texture_pressed = SubResource("AtlasTexture_fv7v7")
+
+[connection signal="pressed" from="PlayerControls/Control6/LevelObjectivesButton" to="ObjectivesContainer" method="_on_level_objectives_button_pressed"]
+[connection signal="pressed" from="PlayerControls/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/Settings/SoundContainer/VBoxContainer2/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/Settings/SoundContainer/VBoxContainer2/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="GameResults/VictoryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="GameResults/VictoryPanel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="GameResults/DefeatPanel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameResults/DefeatPanel/ExitButton" to="." method="_on_exit_button_pressed"]

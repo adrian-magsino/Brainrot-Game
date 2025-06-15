@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co3iwxfl355hs"]
+
+[ext_resource type="AudioStream" uid="uid://p0noa22gqaiq" path="res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/pickup_gun_sound.mp3" id="1_5sanu"]
+
+[node name="PickupGunSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_5sanu")

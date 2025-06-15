@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d03ff0727erwr"]
+
+[ext_resource type="Texture2D" uid="uid://cmrpv08x6ql3y" path="res://Game Assets/GodotPlatformerAssets/Sprites/Tile.png" id="1_1tq3b"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="3_ti55l"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="4_ot0bg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8yrm"]
+size = Vector2(65, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0lsu"]
+size = Vector2(65, 65)
+
+[node name="DestructibleObject" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1tq3b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j8yrm")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_ti55l")]
+MAX_HEALTH = 50.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -33.0
+offset_top = -60.0
+offset_right = 33.0
+offset_bottom = -33.0
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent/HealthBar"]
+wait_time = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ot0bg")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_p0lsu")

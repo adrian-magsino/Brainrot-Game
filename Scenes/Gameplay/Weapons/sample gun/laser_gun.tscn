@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://d38bbldhidf1x"]
+
+[ext_resource type="Script" uid="uid://lsmidhselcfa" path="res://Scripts/Gameplay/Shared Scripts/GUN.gd" id="1_t3dk5"]
+[ext_resource type="PackedScene" uid="uid://bc04tqmejn02p" path="res://Scenes/Gameplay/Bullets/laser_bullet.tscn" id="2_m1oal"]
+[ext_resource type="Texture2D" uid="uid://d06oyp2ic78dm" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.png" id="3_t3dk5"]
+[ext_resource type="AudioStream" uid="uid://cn4jluiwfqann" path="res://Scenes/Gameplay/Weapons/sample gun/laser-weapon-shot-1681.wav" id="4_t3dk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdue"]
+size = Vector2(360, 145)
+
+[node name="LaserGun" type="Area2D"]
+script = ExtResource("1_t3dk5")
+gun_name = "Laser Gun"
+bullet_scene = ExtResource("2_m1oal")
+fire_rate = 0.09
+range = 1000.0
+max_ammo = 240
+magazine_capacity = 60
+zoom_distance = Array[float]([1.0, 0.9, 0.8])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(3, 3)
+texture = ExtResource("3_t3dk5")
+flip_h = true
+region_rect = Rect2(96, 0, 24, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_5pdue")
+
+[node name="BulletPos" type="Node2D" parent="."]
+position = Vector2(37, -12)
+
+[node name="SFX_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t3dk5")
+bus = &"SFX"

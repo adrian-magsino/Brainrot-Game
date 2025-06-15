@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bh7difu80fg4x"
+path="res://.godot/imported/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3-8c71d072a2b742b960ef42a0e4cf4cdf.mp3str"
+
+[deps]
+
+source_file="res://Game Assets/Audio/Downloaded Audio Resources(Not Final Audio)/Music/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3"
+dest_files=["res://.godot/imported/Five Nights at Freddy's Soundtrack - Music Box (Freddy's Music).mp3-8c71d072a2b742b960ef42a0e4cf4cdf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

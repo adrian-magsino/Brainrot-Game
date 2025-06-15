@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cafjiicm4nmm1"]
+
+[ext_resource type="Script" uid="uid://ic6iyimy4qqr" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste_buff.gd" id="1_cpvny"]
+[ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="2_0d8q0"]
+[ext_resource type="Texture2D" uid="uid://blagwbofqrh0n" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste.png" id="2_44d02"]
+[ext_resource type="Script" uid="uid://cutp8vt7t8qes" path="res://Scenes/Gameplay/Pickupable Items and Buffs/floating_sprite_animation.gd" id="3_44d02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44d02"]
+
+[node name="HasteBuff" type="Node2D"]
+script = ExtResource("1_cpvny")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_44d02")
+region_rect = Rect2(64, 160, 32, 32)
+script = ExtResource("3_44d02")
+
+[node name="PickupableArea" parent="." instance=ExtResource("2_0d8q0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupableArea"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_44d02")

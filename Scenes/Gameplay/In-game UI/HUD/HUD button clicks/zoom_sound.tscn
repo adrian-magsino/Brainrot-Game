@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brmcak0ulg410"]
+
+[ext_resource type="AudioStream" uid="uid://crkmsamvjtftl" path="res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/zoom_sound.mp3" id="1_gla8j"]
+
+[node name="ZoomSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_gla8j")

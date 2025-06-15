@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dn5x0sb6fag77"
+path="res://.godot/imported/Let's Go, Crimson Knight!.mp3-e810eb556d7316be8d06a99cbe887ae7.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/Let's Go, Crimson Knight!.mp3"
+dest_files=["res://.godot/imported/Let's Go, Crimson Knight!.mp3-e810eb556d7316be8d06a99cbe887ae7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

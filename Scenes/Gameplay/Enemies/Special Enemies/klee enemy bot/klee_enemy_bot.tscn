@@ -1,0 +1,206 @@
+[gd_scene load_steps=27 format=3 uid="uid://bn83teut6ypt7"]
+
+[ext_resource type="Script" uid="uid://j4fmb8wc7kae" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/explosive_bot.gd" id="1_55cgj"]
+[ext_resource type="AudioStream" uid="uid://dn5x0sb6fag77" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/Let's Go, Crimson Knight!.mp3" id="3_55cgj"]
+[ext_resource type="Texture2D" uid="uid://bigbp4wnpxlrx" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/klee_run.png" id="4_55cgj"]
+[ext_resource type="AudioStream" uid="uid://dyreb1rd5pkpl" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/unyah-boom-boom-bakudan-notification-sound_469OAOSs.mp3" id="7_04xes"]
+[ext_resource type="PackedScene" uid="uid://ncfc7h4rqc8n" path="res://Scenes/Gameplay/Components/attack_component.tscn" id="7_b254j"]
+[ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="8_ax1ys"]
+[ext_resource type="PackedScene" uid="uid://bfauuxkvqgmw6" path="res://Scenes/Gameplay/Components/explosive_component.tscn" id="8_divsg"]
+[ext_resource type="AudioStream" uid="uid://5nwptgpukc8b" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/SFX_explosion2.mp3" id="8_pr5bs"]
+[ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="9_55cgj"]
+[ext_resource type="PackedScene" uid="uid://cmc3yidsl6sba" path="res://Scenes/Gameplay/Components/hitbox_component.tscn" id="9_180sk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf15y"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55cgj"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04xes"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr5bs"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23uxr"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohryo"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umf4r"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dox2e"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhgpm"]
+atlas = ExtResource("4_55cgj")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kprd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf15y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55cgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04xes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr5bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23uxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohryo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umf4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dox2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhgpm")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exuau"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
+radius = 80.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2uja"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n85bi"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl784"]
+radius = 56.0
+height = 158.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55cgj"]
+radius = 200.0
+
+[node name="KleeEnemyBot" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 19
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_55cgj")
+enemy_type = "special"
+move_speed = 300.0
+can_destroy_objects = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1kprd")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 35)
+shape = SubResource("CircleShape2D_exuau")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_g8hl7")
+
+[node name="AttackComponent" parent="." instance=ExtResource("7_b254j")]
+attack_damage = 10.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_ax1ys")]
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
+wait_time = 3.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_d2uja")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n85bi")
+value = 70.0
+show_percentage = false
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_180sk")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(6, 18)
+shape = SubResource("CapsuleShape2D_rl784")
+
+[node name="ExplosiveComponent" parent="." instance=ExtResource("8_divsg")]
+explosion_damage = 80.0
+explosion_particles = ExtResource("9_55cgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveComponent"]
+shape = SubResource("CircleShape2D_55cgj")
+
+[node name="SFX_bot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_55cgj")
+volume_db = -10.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="SFX_boom_boom_bakudan" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_04xes")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="SFX_explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pr5bs")
+bus = &"SFX"
+
+[connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_damage_area_body_exited"]

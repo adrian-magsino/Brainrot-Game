@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6clnk6eil25m"
+path="res://.godot/imported/080205_life-lost-game-over-89697 (1).mp3-cc896ac18a67ca219baac9d0d476778d.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Gameplay/In-game UI/GameResults/080205_life-lost-game-over-89697 (1).mp3"
+dest_files=["res://.godot/imported/080205_life-lost-game-over-89697 (1).mp3-cc896ac18a67ca219baac9d0d476778d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

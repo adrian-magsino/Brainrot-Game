@@ -1,0 +1,495 @@
+[gd_scene load_steps=47 format=3 uid="uid://cdnqcvcntaphm"]
+
+[ext_resource type="Script" uid="uid://hdok02c2g8h5" path="res://Scripts/UI/settings_scene.gd" id="1_r0asf"]
+[ext_resource type="Texture2D" uid="uid://b1stfepqhhj1m" path="res://Game Assets/Settings Assets/game_title1.png" id="1_tyww6"]
+[ext_resource type="Texture2D" uid="uid://b6cypce55w3k" path="res://Game Assets/Settings Assets/sound_switch2.png" id="2_benum"]
+[ext_resource type="Texture2D" uid="uid://ckryadlt7r1pp" path="res://Game Assets/Main Menu Assets/background1.png" id="2_c1j78"]
+[ext_resource type="Texture2D" uid="uid://ejxu4p4p32yi" path="res://Game Assets/Settings Assets/container1.png" id="2_vv02w"]
+[ext_resource type="Texture2D" uid="uid://4f6dya252yse" path="res://Game Assets/Settings Assets/char_select1.png" id="3_wi6u5"]
+[ext_resource type="Texture2D" uid="uid://bt4jyguf48160" path="res://Game Assets/Settings Assets/container2.png" id="4_benum"]
+[ext_resource type="Texture2D" uid="uid://dhk05vwwdpclf" path="res://Game Assets/Settings Assets/back_button1.png" id="5_oi1yp"]
+[ext_resource type="Texture2D" uid="uid://dfnx7ytnih511" path="res://Game Assets/Settings Assets/back_button2.png" id="6_6hje0"]
+[ext_resource type="Texture2D" uid="uid://bygyhnkpvnvup" path="res://Game Assets/Settings Assets/sound_switch1.png" id="6_oi1yp"]
+[ext_resource type="Script" uid="uid://x42i5rfilejh" path="res://Scripts/UI/char_selection.gd" id="6_pf8tm"]
+[ext_resource type="FontFile" uid="uid://d11ytsfnlya2e" path="res://Game Assets/Settings Assets/PKMN RBYGSC.ttf" id="6_r0asf"]
+[ext_resource type="Texture2D" uid="uid://ki302yb7nis" path="res://Game Assets/Settings Assets/char_select2.png" id="6_t4los"]
+[ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="7_8gcs1"]
+[ext_resource type="Script" uid="uid://7b5erfey163b" path="res://Scripts/UI/audio_slider_settings.gd" id="7_8to8h"]
+[ext_resource type="Texture2D" uid="uid://clj88d1c2xv7p" path="res://Game Assets/Settings Assets/char_select3.png" id="7_w6wam"]
+[ext_resource type="Texture2D" uid="uid://vgdptpraty7r" path="res://Game Assets/Settings Assets/char_select4.png" id="8_irfp8"]
+[ext_resource type="Texture2D" uid="uid://d0efpyo18dax2" path="res://Game Assets/Settings Assets/sidebar.png" id="8_r0asf"]
+[ext_resource type="Texture2D" uid="uid://dobaiqhf64b24" path="res://Game Assets/Settings Assets/char_select5.png" id="9_p1225"]
+[ext_resource type="Texture2D" uid="uid://cj2jg1m0s6jo8" path="res://Game Assets/Settings Assets/char_select6.png" id="10_pf8tm"]
+[ext_resource type="Texture2D" uid="uid://i306sj6re2n8" path="res://Game Assets/Settings Assets/character1.png" id="12_qet1k"]
+[ext_resource type="Texture2D" uid="uid://bte6g1nv1m52b" path="res://Game Assets/Settings Assets/character2.png" id="13_lsvtm"]
+[ext_resource type="Texture2D" uid="uid://cyi3rjvc3y4es" path="res://Game Assets/Settings Assets/character3.png" id="14_6phi6"]
+[ext_resource type="Texture2D" uid="uid://uyb1u86ar05y" path="res://Game Assets/Settings Assets/character4.png" id="15_f5gxv"]
+[ext_resource type="Texture2D" uid="uid://dkwhlebe18g82" path="res://Game Assets/Settings Assets/character5.png" id="16_c1j78"]
+[ext_resource type="Texture2D" uid="uid://c7543aj0w56vj" path="res://Game Assets/Settings Assets/apply_button1.png" id="23_lsvtm"]
+[ext_resource type="Texture2D" uid="uid://b0cxhedv8nc31" path="res://Game Assets/Settings Assets/apply_button2.png" id="24_6phi6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8to8h"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_w6wam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lixxv"]
+atlas = ExtResource("6_t4los")
+region = Rect2(512, 393, 72, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rj2l"]
+atlas = ExtResource("7_w6wam")
+region = Rect2(587, 393, 72, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qet1k"]
+atlas = ExtResource("8_irfp8")
+region = Rect2(663, 393, 72, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsvtm"]
+atlas = ExtResource("9_p1225")
+region = Rect2(738, 393, 72, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phi6"]
+atlas = ExtResource("10_pf8tm")
+region = Rect2(814, 393, 72, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5gxv"]
+atlas = ExtResource("12_qet1k")
+region = Rect2(335, 346, 76, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1j78"]
+atlas = ExtResource("13_lsvtm")
+region = Rect2(321, 346, 104, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgngc"]
+atlas = ExtResource("14_6phi6")
+region = Rect2(321, 350, 111, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y6vx"]
+atlas = ExtResource("15_f5gxv")
+region = Rect2(321, 353, 111, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8chkk"]
+atlas = ExtResource("16_c1j78")
+region = Rect2(321, 346, 111, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8to8h"]
+atlas = ExtResource("2_benum")
+region = Rect2(404, 188, 97, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lta2"]
+atlas = ExtResource("6_oi1yp")
+region = Rect2(404, 188, 97, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4los"]
+atlas = ExtResource("8_r0asf")
+region = Rect2(749, 310, 36, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0asf"]
+atlas = ExtResource("5_oi1yp")
+region = Rect2(216, 515, 173, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gcs1"]
+atlas = ExtResource("6_6hje0")
+region = Rect2(216, 519, 173, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evbu0"]
+atlas = ExtResource("23_lsvtm")
+region = Rect2(724, 515, 202, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1k80"]
+atlas = ExtResource("24_6phi6")
+region = Rect2(724, 515, 202, 61)
+
+[node name="SettingsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0asf")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_c1j78")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tyww6")
+
+[node name="Player" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerContainer" type="TextureRect" parent="Player"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_vv02w")
+
+[node name="CharSelectionImage" type="TextureRect" parent="Player"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_wi6u5")
+
+[node name="LineEdit" type="LineEdit" parent="Player"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 0
+offset_left = 265.0
+offset_top = 248.0
+offset_right = 905.0
+offset_bottom = 285.0
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8to8h")
+placeholder_text = "PlayerName_"
+max_length = 25
+expand_to_text_length = true
+
+[node name="CharSelection" type="HBoxContainer" parent="Player"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 393.0
+offset_right = 884.0
+offset_bottom = 472.0
+theme_override_constants/separation = 3
+script = ExtResource("6_pf8tm")
+
+[node name="Char1" type="TextureButton" parent="Player/CharSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_w6wam")
+texture_pressed = SubResource("AtlasTexture_lixxv")
+
+[node name="Char2" type="TextureButton" parent="Player/CharSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_w6wam")
+texture_pressed = SubResource("AtlasTexture_5rj2l")
+
+[node name="Char3" type="TextureButton" parent="Player/CharSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_w6wam")
+texture_pressed = SubResource("AtlasTexture_qet1k")
+
+[node name="Char4" type="TextureButton" parent="Player/CharSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_w6wam")
+texture_pressed = SubResource("AtlasTexture_lsvtm")
+
+[node name="Char5" type="TextureButton" parent="Player/CharSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_w6wam")
+texture_pressed = SubResource("AtlasTexture_6phi6")
+
+[node name="Characters" type="Control" parent="Player"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sahur" type="TextureRect" parent="Player/Characters"]
+visible = false
+layout_mode = 0
+offset_left = 335.0
+offset_top = 346.0
+offset_right = 411.0
+offset_bottom = 454.0
+texture = SubResource("AtlasTexture_f5gxv")
+
+[node name="Label" type="Label" parent="Player/Characters/Sahur"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = -11.0
+offset_right = 548.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+text = "Tung Tung Tung Sahur"
+
+[node name="Ballerina" type="TextureRect" parent="Player/Characters"]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 346.0
+offset_right = 425.0
+offset_bottom = 458.0
+texture = SubResource("AtlasTexture_c1j78")
+
+[node name="Label" type="Label" parent="Player/Characters/Ballerina"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -11.0
+offset_right = 562.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+text = "Ballerina Cappuccina"
+
+[node name="Tralalero" type="TextureRect" parent="Player/Characters"]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 350.0
+offset_right = 432.0
+offset_bottom = 454.0
+texture = SubResource("AtlasTexture_rgngc")
+
+[node name="Label" type="Label" parent="Player/Characters/Tralalero"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -15.0
+offset_right = 562.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+text = "Tralalero Tralala"
+
+[node name="Crocodilo" type="TextureRect" parent="Player/Characters"]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 353.0
+offset_right = 432.0
+offset_bottom = 458.0
+texture = SubResource("AtlasTexture_7y6vx")
+
+[node name="Label" type="Label" parent="Player/Characters/Crocodilo"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -18.0
+offset_right = 565.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+text = "Bombardino Crocodilo"
+
+[node name="Chimpanzini" type="TextureRect" parent="Player/Characters"]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 346.0
+offset_right = 432.0
+offset_bottom = 458.0
+texture = SubResource("AtlasTexture_8chkk")
+
+[node name="Label" type="Label" parent="Player/Characters/Chimpanzini"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -11.0
+offset_right = 562.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.164706, 0.156863, 0.219608, 1)
+theme_override_fonts/font = ExtResource("6_r0asf")
+theme_override_font_sizes/font_size = 25
+text = "Chimpanzini Bananini"
+
+[node name="Sound" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SoundContainer" type="TextureRect" parent="Sound"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_benum")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sound"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 115
+
+[node name="Master" type="Control" parent="Sound/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("7_8to8h")
+bus_name = "Master"
+
+[node name="TextContainer" type="HBoxContainer" parent="Sound/VBoxContainer/Master"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Sound/VBoxContainer/Master/TextContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("7_8gcs1")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Sound/VBoxContainer/Master/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_8to8h")
+texture_pressed = SubResource("AtlasTexture_3lta2")
+
+[node name="HSlider" type="HSlider" parent="Sound/VBoxContainer/Master/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_t4los")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_t4los")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_t4los")
+max_value = 1.0
+step = 0.001
+
+[node name="Music" type="Control" parent="Sound/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_8to8h")
+bus_name = "Music"
+
+[node name="TextContainer" type="HBoxContainer" parent="Sound/VBoxContainer/Music"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Sound/VBoxContainer/Music/TextContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("7_8gcs1")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Sound/VBoxContainer/Music/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_8to8h")
+texture_pressed = SubResource("AtlasTexture_3lta2")
+
+[node name="HSlider" type="HSlider" parent="Sound/VBoxContainer/Music/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_t4los")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_t4los")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_t4los")
+max_value = 1.0
+step = 0.001
+
+[node name="SFX" type="Control" parent="Sound/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("7_8to8h")
+bus_name = "SFX"
+
+[node name="TextContainer" type="HBoxContainer" parent="Sound/VBoxContainer/SFX"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Sound/VBoxContainer/SFX/TextContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("7_8gcs1")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Sound/VBoxContainer/SFX/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_8to8h")
+texture_pressed = SubResource("AtlasTexture_3lta2")
+
+[node name="HSlider" type="HSlider" parent="Sound/VBoxContainer/SFX/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_t4los")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_t4los")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_t4los")
+max_value = 1.0
+step = 0.001
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 515.0
+offset_right = 389.0
+offset_bottom = 576.0
+texture_normal = SubResource("AtlasTexture_r0asf")
+texture_pressed = SubResource("AtlasTexture_8gcs1")
+
+[node name="PlayerSection" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 196.0
+offset_top = 100.0
+offset_right = 204.0
+offset_bottom = 108.0
+scale = Vector2(29.0067, 8.97488)
+
+[node name="SoundSection" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 438.0
+offset_top = 100.0
+offset_right = 446.0
+offset_bottom = 108.0
+scale = Vector2(29.0067, 8.97488)
+
+[node name="ApplyButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 515.0
+offset_right = 926.0
+offset_bottom = 576.0
+texture_normal = SubResource("AtlasTexture_evbu0")
+texture_pressed = SubResource("AtlasTexture_q1k80")
+
+[node name="SavedText" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 708.0
+offset_top = 493.0
+offset_right = 940.0
+offset_bottom = 516.0
+theme_override_fonts/font = ExtResource("7_8gcs1")
+text = "Settings Saved!"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="text_submitted" from="Player/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PlayerSection" to="." method="_on_player_button_pressed"]
+[connection signal="pressed" from="SoundSection" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="ApplyButton" to="." method="_on_apply_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

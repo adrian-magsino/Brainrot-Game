@@ -24,6 +24,12 @@ Bgm="*res://Scenes/UI/BGM.tscn"
 ButtonClick="*res://Scripts/UI/button_click.gd"
 CharacterButtonClick="*res://Scripts/UI/character_button_click.gd"
 LightingManager="*res://Scripts/LightingManager.gd"
+ReloadSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/Reload_sound.tscn"
+SwitchGunSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/SwitchGun_sound.tscn"
+PickupGunSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/pickup_gun_sound.tscn"
+PickupItemSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/pickup_item_sound.tscn"
+PlayerDashSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/player_dash_sound.tscn"
+ZoomSound="*res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/zoom_sound.tscn"
 
 [display]
 

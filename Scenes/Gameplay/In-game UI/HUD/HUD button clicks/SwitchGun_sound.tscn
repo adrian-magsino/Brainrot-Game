@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8cldxrgvdfg3"]
+
+[ext_resource type="AudioStream" uid="uid://d0ubho35w664g" path="res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/switchgun_sound.wav" id="1_g3y6r"]
+
+[node name="SwitchGunSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_g3y6r")
+pitch_scale = 1.5

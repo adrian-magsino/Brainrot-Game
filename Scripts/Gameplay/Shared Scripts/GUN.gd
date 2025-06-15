@@ -113,6 +113,7 @@ func start_reload():
 	if is_reloading or current_magazine == magazine_capacity or current_total_ammo == 0:
 		return
 	is_reloading = true
+	ReloadSound.play()
 	emit_signal("reload_started", reload_time)
 	get_tree().create_timer(reload_time).connect("timeout", Callable(self, "_on_reload_timeout"))
 	emit_signal("ammo_changed", current_magazine, current_total_ammo)

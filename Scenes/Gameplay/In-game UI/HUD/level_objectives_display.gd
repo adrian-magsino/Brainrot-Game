@@ -21,4 +21,5 @@ func show_objectives():
 	objectives_label.visible = false
 	
 func _on_level_objectives_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	show_objectives()

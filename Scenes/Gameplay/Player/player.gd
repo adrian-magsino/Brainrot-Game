@@ -274,7 +274,8 @@ func cycle_zoom():
 	var gun = get_held_gun()
 	if not gun or not ("zoom_distance" in gun):
 		return
-
+		
+	ZoomSound.play()
 	var distances: Array = gun.zoom_distance
 	if distances.size() == 0:
 		return
@@ -290,6 +291,7 @@ func cycle_zoom():
 	update_zoom_button_label(current_zoom_index + 1)
 	
 func start_dashing():
+	PlayerDashSound.play()
 	is_dashing = true
 	dash_time_remaining = dash_duration
 	
@@ -384,6 +386,7 @@ func update_player_lives():
 	
 func switch_gun():
 	if gun_inventory[0] != null and gun_inventory[1] != null:
+		SwitchGunSound.play()
 		var prev_gun = get_held_gun()
 		hide_gun_visual(prev_gun)
 		current_gun_index = 1 - current_gun_index

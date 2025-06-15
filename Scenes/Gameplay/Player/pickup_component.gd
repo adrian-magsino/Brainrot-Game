@@ -10,11 +10,13 @@ func pickup_item():
 			if area.has_method("pick_up"):
 				if area is Gun:
 					_pickup_gun(area)
+					PickupGunSound.play()
 					print(area.item_name)
 					player.notification_node.show_pickup_notif(area.item_name)
 					
 				else:
 					area.pick_up(player)
+					PickupItemSound.play()
 					print(area.get_parent().item_name)
 					player.notification_node.show_pickup_notif(area.get_parent().item_name)
 			

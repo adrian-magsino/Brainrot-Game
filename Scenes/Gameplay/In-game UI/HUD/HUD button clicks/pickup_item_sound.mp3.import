@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://84lo2u3ebooc"
+path="res://.godot/imported/pickup_item_sound.mp3-4e83d91036fffa6bc713b31d0e95457d.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/pickup_item_sound.mp3"
+dest_files=["res://.godot/imported/pickup_item_sound.mp3-4e83d91036fffa6bc713b31d0e95457d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

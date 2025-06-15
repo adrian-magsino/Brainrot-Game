@@ -12,25 +12,31 @@ func _ready():
 	menu_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func _on_menu_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	menu_panel.visible = not menu_panel.visible
 	if game_scene.has_method("pause_level"):
 		game_scene.pause_level()
 	
 func _on_resume_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	menu_panel.visible = false
 	if game_scene.has_method("unpause_level"):
 		game_scene.unpause_level()
 
 func _on_settings_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	settings.visible = true
 	
 func _on_exit_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	get_tree().change_scene_to_file("res://Scenes/UI/MainmenuScene.tscn")
 	
 func _on_next_level_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	get_tree().change_scene_to_file("res://Scenes/UI/LevelScene.tscn")
 
 func _on_retry_button_pressed() -> void:
+	ButtonClick.play_button_click()
 	var current_scene = get_tree().current_scene
 	var scene_path = current_scene.scene_file_path
 	get_tree().change_scene_to_file(scene_path)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://s6atp72c7ahm"]
+
+[ext_resource type="AudioStream" uid="uid://bpamtwe1s4tu1" path="res://Scenes/Gameplay/In-game UI/HUD/HUD button clicks/reload sound.mp3" id="1_2csbm"]
+
+[node name="ReloadSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_2csbm")

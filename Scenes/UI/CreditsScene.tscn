@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bytlj3vwxq0gd"]
+[gd_scene load_steps=9 format=3 uid="uid://bytlj3vwxq0gd"]
 
 [ext_resource type="Texture2D" uid="uid://0qui6yik21eu" path="res://Game Assets/Credits Assets/container1.png" id="1_4bjjv"]
 [ext_resource type="Script" uid="uid://e4hd4ary326p" path="res://Scripts/UI/credits_scene.gd" id="1_icwtj"]
+[ext_resource type="Texture2D" uid="uid://ckryadlt7r1pp" path="res://Game Assets/Main Menu Assets/background1.png" id="2_m83rs"]
 [ext_resource type="Texture2D" uid="uid://4vlrievpdpe3" path="res://Game Assets/Credits Assets/game_title1.png" id="2_mhpd3"]
 [ext_resource type="Texture2D" uid="uid://brgajv30ewjj2" path="res://Game Assets/Credits Assets/back1.png" id="3_eyfim"]
 [ext_resource type="Texture2D" uid="uid://dw80puyccn2rl" path="res://Game Assets/Credits Assets/back2.png" id="4_icwtj"]
@@ -23,33 +24,48 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_icwtj")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 648.0
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Container" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_4bjjv")
+texture = ExtResource("2_m83rs")
 
 [node name="Title" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 648.0
+grow_horizontal = 2
 texture = ExtResource("2_mhpd3")
 
-[node name="Back" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 377.0
-offset_top = 502.0
-offset_right = 550.0
-offset_bottom = 563.0
+[node name="Container" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4bjjv")
+
+[node name="Back" type="TextureButton" parent="Container"]
+layout_mode = 2
+offset_left = 376.0
+offset_top = 512.0
+offset_right = 549.0
+offset_bottom = 573.0
+size_flags_horizontal = 3
 texture_normal = SubResource("AtlasTexture_m83rs")
 texture_pressed = SubResource("AtlasTexture_hhjcr")
 
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Container/Back" to="." method="_on_back_pressed"]

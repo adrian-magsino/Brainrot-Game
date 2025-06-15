@@ -9,6 +9,8 @@ extends Control
 var bus_index: int = 0
 var is_muted := false
 var last_volume: float = 1.0  # Default to max
+var original_volume: float = 1.0
+var original_muted: bool = false
 
 func _ready():
 	h_slider.value_changed.connect(on_value_changed)
@@ -59,7 +61,26 @@ func sync_with_saved_data():
 	if settings:
 		last_volume = settings.get("volume", 1.0)
 		is_muted = settings.get("muted", false)
+
+		# Store original values for restore
+		original_volume = last_volume
+		original_muted = is_muted
+
 		h_slider.editable = not is_muted
 		h_slider.value = 0.0 if is_muted else last_volume
 		sound_button.set_pressed_no_signal(is_muted)
 		AudioServer.set_bus_volume_db(bus_index, linear_to_db(h_slider.value))
+
+func reset_to_original():
+	is_muted = original_muted
+	last_volume = original_volume
+
+	sound_button.set_pressed_no_signal(is_muted)
+	h_slider.value = 0.0 if is_muted else original_volume
+	h_slider.editable = not is_muted
+
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(h_slider.value))
+
+	# Also update the saved data so it's reverted in PLAYER_DATA
+	PLAYER_DATA.audio_settings[bus_name]["volume"] = original_volume
+	PLAYER_DATA.audio_settings[bus_name]["muted"] = original_muted

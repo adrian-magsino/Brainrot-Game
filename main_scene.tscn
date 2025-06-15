@@ -3,8 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dnywk8mh7gv0s" path="res://Scenes/UI/MainmenuScene.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://dmffu5evb5paa" path="res://Scenes/UI/BGM.tscn" id="2_2c62f"]
 
-[node name="MainScene" type="Node2D"]
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MainmenuScene" parent="." instance=ExtResource("1_0f027")]
+layout_mode = 1
 
 [node name="Bgm" parent="." instance=ExtResource("2_2c62f")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxhfj32yqoj7n"
-path="res://.godot/imported/Window.png-170f6daa50bf546feeb0f82d14c9f342.ctex"
+uid="uid://c2j5fqhsxlgfs"
+path="res://.godot/imported/10_lvl3.png-697c2ff44e9e66c9177ee03512ca297f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/LevelScenePlaceholder/Window.png"
-dest_files=["res://.godot/imported/Window.png-170f6daa50bf546feeb0f82d14c9f342.ctex"]
+source_file="res://Game Assets/LevelScene Assets/10_lvl3.png"
+dest_files=["res://.godot/imported/10_lvl3.png-697c2ff44e9e66c9177ee03512ca297f.ctex"]
 
 [params]
 

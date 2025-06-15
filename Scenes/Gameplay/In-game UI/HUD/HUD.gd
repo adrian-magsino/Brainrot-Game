@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var victory_panel: Control = $GameResults/VictoryPanel
 @onready var defeat_panel: Control = $GameResults/DefeatPanel
 @onready var game_scene = get_parent()
+@onready var settings: Control = $Menu/Settings
 
 func _ready():
 	victory_panel.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -21,8 +22,8 @@ func _on_resume_button_pressed() -> void:
 		game_scene.unpause_level()
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
-
+	settings.visible = true
+	
 func _on_exit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/MainmenuScene.tscn")
 	
@@ -33,3 +34,19 @@ func _on_retry_button_pressed() -> void:
 	var current_scene = get_tree().current_scene
 	var scene_path = current_scene.scene_file_path
 	get_tree().change_scene_to_file(scene_path)
+	
+func _on_back_pressed() -> void:
+	ButtonClick.play_button_click()
+
+	# Revert all audio settings
+	$Menu/Settings/SoundContainer/VBoxContainer/Master.reset_to_original()
+	$Menu/Settings/SoundContainer/VBoxContainer/Music.reset_to_original()
+	$Menu/Settings/SoundContainer/VBoxContainer/SFX.reset_to_original()
+	
+	settings.visible = false
+
+func _on_apply_pressed() -> void:
+	ButtonClick.play_button_click()
+	PLAYER_DATA.save_game()
+	
+	settings.visible = false

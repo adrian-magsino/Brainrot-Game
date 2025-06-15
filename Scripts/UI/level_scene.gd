@@ -29,35 +29,34 @@ func _ready() -> void:
 
 
 func _on_level_1_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Gameplay/TESTING_GROUND.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")
 
 func _on_level_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_2.tscn")
-	print("level2")
 	
 func _on_level_3_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_3.tscn")
 
 func _on_level_4_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_4.tscn")
 
 func _on_level_5_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_5.tscn")
 
 func _on_level_6_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_6.tscn")
 
 func _on_level_7_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_7.tscn")
 
 func _on_level_8_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_8.tscn")
 
 func _on_level_9_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_9.tscn")
 
 func _on_level_10_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_10.tscn")
 
 func _on_back_button_pressed() -> void:
 	ButtonClick.play_button_click()

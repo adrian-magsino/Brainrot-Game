@@ -1,6 +1,7 @@
 extends Node2D
 
-var game_debug_mode: bool = true
+var game_debug_mode: bool = false
+
 
 
 

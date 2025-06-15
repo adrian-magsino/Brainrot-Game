@@ -3,20 +3,26 @@ class_name SurvivalMode
 
 # Declare all enemy scene paths (ideally use an EnemyRegistry for large games)
 var all_enemy_scene_paths = [
-	"res://Scenes/Gameplay/Enemies/enemy bot 1/enemy_bot.tscn",
-	"res://Scenes/Gameplay/Enemies/fast enemy bot/fast_enemy_bot.tscn",
-	"res://Scenes/Gameplay/Enemies/klee enemy bot/klee_enemy_bot.tscn",
+	"res://Scenes/Gameplay/Enemies/capuccina normal enemy/capuccina_normal_enemy.tscn",
+	"res://Scenes/Gameplay/Enemies/chimpanzini fast enemy/chimpanzini_fast_enemy.tscn",
+	"res://Scenes/Gameplay/Enemies/crocodilo normal enemy/crocodilo_normal_enemy.tscn",
+	"res://Scenes/Gameplay/Enemies/sahur normal enemy/sahur_normal_enemy.tscn",
+	"res://Scenes/Gameplay/Enemies/tralalero fast enemy/tralalero_fast_enemy.tscn",
+	"res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_bonnie enemy bot/bonnie_enemy_bot.tscn",
+	"res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/springtrap_enemy_bot.tscn",
+	"res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/klee_enemy_bot.tscn",
 ]
 
 var difficulty_stages = [
-	{ "time": 0, "interval": 10.0, "spawn_count": 1, "max_enemies": 3, "enemy_types": ["normal_enemy"] as Array[String] },
-	{ "time": 30, "interval": 7.0, "spawn_count": 2, "max_enemies": 5, "enemy_types": ["normal_enemy", "fast_enemy"] as Array[String] },
-	{ "time": 60, "interval": 1.0, "spawn_count": 3, "max_enemies": 10, "enemy_types": ["normal_enemy", "fast_enemy", "special"] as Array[String]},
+	{ "time": 0, "interval": 15.0, "spawn_count": 1, "max_enemies": 2, "enemy_types": ["normal_enemy"] as Array[String] },
+	{ "time": 30, "interval": 15.0, "spawn_count": 1, "max_enemies": 3, "enemy_types": ["normal_enemy", "fast_enemy"] as Array[String] },
+	{ "time": 60, "interval": 10.0, "spawn_count": 2, "max_enemies": 4, "enemy_types": ["normal_enemy", "fast_enemy", "special"] as Array[String]},
+	{ "time": 90, "interval": 7.0, "spawn_count": 2, "max_enemies": 6, "enemy_types": ["normal_enemy", "fast_enemy", "special"] as Array[String]},
 	#{ "time": 360, "interval": 5.0, "spawn_count": 4, "max_enemies": 8, "enemy_types": ["normal_enemy", "ranged_enemy", "elite"] as Array[String], "spawn_boss": true }
 ]
 
 var current_difficulty_stage = 0
-var next_dynamic_stage_time = 90  # After the last manual stage ends at 60s
+var next_dynamic_stage_time = 120  # After the last manual stage ends at 90s
 var dynamic_stage_interval = 30   # Every 30 seconds afterward
 
 func _ready() -> void:
@@ -28,6 +34,7 @@ func _ready() -> void:
 	print("SURVIVAL READY")
 	change_difficulty_stage(0)
 	SurvivalMusic.play()
+	LightingManager.set_lighting_enabled(false)
 
 
 	

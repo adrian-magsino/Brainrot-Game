@@ -14,7 +14,7 @@ var current_guns: Array[Node] = []
 func _ready():
 	add_to_group("pauseable") #This node will pause along with the game
 	if gun_scenes.is_empty():
-		print("GUN SPAWNER IS EMPTY")
+		#print("GUN SPAWNER IS EMPTY")
 		return
 	if collision_shape.shape is RectangleShape2D:
 		# Duplicate the shape so each spawner gets a unique instance
@@ -38,7 +38,7 @@ func _ready():
 func _on_spawn_timer_timeout():
 	#print("GUN SPAWNER TIMEOUT")
 	if current_guns.size() >= max_guns:
-		print("GUN MAX LIMIT REACHED")
+		#print("GUN MAX LIMIT REACHED")
 		# Don't spawn more guns yet
 		spawn_timer.start()
 		return
@@ -64,12 +64,11 @@ func spawn_gun():
 	#print("SPAWNED GUN IN: ", spawn_position)
 	gun.global_position = spawn_position
 	add_child(gun, true) # replicate ownership if needed
-	print("GUN HAS BEEN SPAWNED: ", gun.get_path())
+	#print("GUN HAS BEEN SPAWNED: ", gun.get_path())
 	current_guns.append(gun)
 	if gun.has_signal("tree_exited"):
 		gun.tree_exited.connect(_on_gun_removed.bind(gun))
 
 
 func _on_gun_removed(gun: Node):
-	print("GUN REMOVED FROM SPAWNER")
 	current_guns.erase(gun)

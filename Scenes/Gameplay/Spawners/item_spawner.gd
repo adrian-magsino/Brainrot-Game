@@ -14,7 +14,7 @@ var current_items: Array[Node] = []
 func _ready():
 	add_to_group("pauseable") #This node will pause along with the game
 	if item_scenes.is_empty():
-		print("ITEM SPAWNER IS EMPTY")
+		#print("ITEM SPAWNER IS EMPTY")
 		return
 	if collision_shape.shape is RectangleShape2D:
 		# Duplicate the shape so each spawner gets a unique instance
@@ -38,7 +38,7 @@ func _ready():
 func _on_spawn_timer_timeout():
 
 	if current_items.size() >= max_items:
-		print("ITEM MAX LIMIT REACHED")
+		#print("ITEM MAX LIMIT REACHED")
 		# Don't spawn more items yet
 		spawn_timer.start()
 		return
@@ -64,7 +64,7 @@ func spawn_items():
 	#print("SPAWNED GUN IN: ", spawn_position)
 	item.global_position = spawn_position
 	add_child(item, true) 
-	print("ITEM HAS BEEN SPAWNED: ", item.get_path())
+	#print("ITEM HAS BEEN SPAWNED: ", item.get_path())
 	current_items.append(item)
 	if item.has_signal("tree_exited"):
 		item.tree_exited.connect(_on_item_removed.bind(item))

@@ -4,5 +4,6 @@
 
 [node name="Survival_music" type="AudioStreamPlayer"]
 stream = ExtResource("1_b3wj8")
+volume_db = -7.0
 bus = &"Music"
 parameters/looping = true

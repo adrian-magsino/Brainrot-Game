@@ -34,6 +34,7 @@ func _ready():
 	if enemy_scenes.is_empty():
 		print("ENEMY SPAWNER IS EMPTY")
 		
+		
 	else:
 		spawn_timer.start()
 	
@@ -42,7 +43,7 @@ func _on_spawn_timer_timeout():
 	var available_slots = max_enemies - active_enemies.size()
 	#print("GUN SPAWNER TIMEOUT")
 	if available_slots <= 0:
-		print("ENEMY MAX LIMIT REACHED")
+		#print("ENEMY MAX LIMIT REACHED")
 		# Don't spawn more enemies yet
 		spawn_timer.start()
 		return
@@ -66,7 +67,7 @@ func spawn_enemy():
 	if player:
 		enemy.target_player = player
 	else:
-		print("Player not found!")
+		#print("Player not found!")
 		return
 	
 	var shape: RectangleShape2D = collision_shape.shape
@@ -77,7 +78,7 @@ func spawn_enemy():
 	)
 	enemy.global_position = spawn_position
 	add_child(enemy, true) # replicate ownership if needed
-	print("ENEMY HAS BEEN SPAWNED: ", enemy.get_path())
+	#print("ENEMY HAS BEEN SPAWNED: ", enemy.get_path())
 	active_enemies.append(enemy)
 	if enemy.has_signal("tree_exited"):
 		enemy.tree_exited.connect(_on_enemy_removed.bind(enemy))

@@ -67,8 +67,6 @@ var current_gun_index: int = 0
 
 var facing_left: bool = false # Sprite flipping
 
-func _enter_tree():
-	print("PLAYER NAME: " + player_name)
 
 func _ready():
 	add_to_group("pauseable") #This node will pause along with the game
@@ -360,7 +358,7 @@ func die(attack: AttackComponent):
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	await get_tree().create_timer(respawn_delay).timeout
-	print("PLAYER LIVES: ", player_lives)
+	#print("PLAYER LIVES: ", player_lives)
 	if player_lives > 0:
 		respawn()
 	else:

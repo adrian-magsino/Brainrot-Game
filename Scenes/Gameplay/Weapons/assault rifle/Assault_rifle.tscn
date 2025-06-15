@@ -14,6 +14,7 @@ gun_name = "Assault Rifle"
 bullet_scene = ExtResource("2_0t6po")
 fire_rate = 0.1
 range = 1000.0
+max_ammo = 200
 reload_time = 2.0
 zoom_distance = Array[float]([1.0, 0.9, 0.8])
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7cvmwwwvp5tq"]
+
+[ext_resource type="Script" uid="uid://cfvuffcccfn10" path="res://Scenes/Levels/objectives_Kill2UnlockPortal.gd" id="1_ckbkd"]
+[ext_resource type="PackedScene" uid="uid://c0d2lyhwqbc5r" path="res://Scenes/Levels/Maps/level_3.tscn" id="2_x5s1r"]
+[ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="3_lk1ev"]
+[ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="4_cbup6"]
+[ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="5_x6m50"]
+
+[node name="lvl3" type="Node2D"]
+script = ExtResource("1_ckbkd")
+
+[node name="level3" parent="." instance=ExtResource("2_x5s1r")]
+
+[node name="HUD" parent="." instance=ExtResource("3_lk1ev")]
+
+[node name="PLAYER" parent="." instance=ExtResource("4_cbup6")]
+position = Vector2(230, 305)
+
+[node name="ExitPortal" parent="." instance=ExtResource("5_x6m50")]
+position = Vector2(741, 362)

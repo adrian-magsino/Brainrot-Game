@@ -16,6 +16,11 @@ var shooter: Node = null
 var shooter_id: int
 
 @onready var attack_component = $AttackComponent
+@onready var bullet_light: PointLight2D = $BulletLight
+@onready var surrounding_light: PointLight2D = $SurroundingLight
+func _ready() -> void:
+	bullet_light.visible = LightingManager.lights_enabled
+	surrounding_light.visible = LightingManager.lights_enabled
 
 func initialize(dir: Vector2, gun_range: float, can_pass_walls: bool, shooter_node: Node, allow_self_damage: bool = false):
 	direction = dir.normalized()

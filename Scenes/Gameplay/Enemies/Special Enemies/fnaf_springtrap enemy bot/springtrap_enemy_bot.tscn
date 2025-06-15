@@ -196,11 +196,12 @@ data = PackedByteArray("SUQzBAAAAAABAFRYWFgAAAASAAADbWFqb3JfYnJhbmQAbXA0MgBUWFhY
 
 [node name="SpringTrapEnemyBot" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_u8y07")
 enemy_type = "special"
+move_speed = 220.0
 can_destroy_objects = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -234,9 +235,10 @@ autostart = true
 shape = SubResource("CircleShape2D_g8hl7")
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_a6nw2")]
-attack_damage = 10.0
+attack_damage = 40.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_hfytg")]
+MAX_HEALTH = 200.0
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
 offset_left = -50.0

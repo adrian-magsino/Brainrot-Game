@@ -5,16 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://6gw207pglb4u" path="res://Scenes/Gameplay/Components/pickupable_area_component.tscn" id="2_a1usm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebn3i"]
-size = Vector2(35, 25)
+size = Vector2(55, 35)
 
 [node name="AmmoBox" type="Node2D"]
 script = ExtResource("1_ebn3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_selxs")
 
 [node name="PickupableArea" parent="." instance=ExtResource("2_a1usm")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupableArea"]
 shape = SubResource("RectangleShape2D_ebn3i")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_selxs")

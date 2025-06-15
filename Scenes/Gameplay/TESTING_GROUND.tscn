@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://batp0wi7giste"]
+[gd_scene load_steps=35 format=4 uid="uid://batp0wi7giste"]
 
 [ext_resource type="Texture2D" uid="uid://bwjs38new8jjw" path="res://Game Assets/TileSets/Other Engines (32x32)/SpriteSheet_C_32x32_VerzatileDev.png" id="1_n3n5l"]
 [ext_resource type="Script" uid="uid://cfvuffcccfn10" path="res://Scenes/Levels/objectives_Kill2UnlockPortal.gd" id="1_vfnxh"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="6_woxdx"]
 [ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="7_uhyla"]
 [ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.tscn" id="8_8gj7g"]
-[ext_resource type="PackedScene" uid="uid://25tf56nj8mou" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/destructible_object.tscn" id="10_5112j"]
 [ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="11_kxyj4"]
 [ext_resource type="PackedScene" uid="uid://c7ocaoh6b0jdq" path="res://Scenes/Gameplay/Weapons/sample_gun2.tscn" id="12_u55dd"]
 [ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="13_r8tjn"]
@@ -115,13 +114,10 @@ tile_set = ExtResource("2_pu1t2")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
 
 [node name="PLAYER" parent="." instance=ExtResource("4_alghn")]
-position = Vector2(1282, 1262)
+position = Vector2(1037, 1230)
 
 [node name="SampleGun" parent="." instance=ExtResource("8_8gj7g")]
 position = Vector2(1430, 1144)
-
-[node name="DestructibleObject" parent="." instance=ExtResource("10_5112j")]
-position = Vector2(1030, 1225)
 
 [node name="ExplosiveBarrel" parent="." instance=ExtResource("11_kxyj4")]
 position = Vector2(1679, 1190)

@@ -24,7 +24,7 @@ scale = Vector2(3.24862, 0.74789)
 shape = SubResource("CircleShape2D_8m36q")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_rpmqb")]
-attack_damage = 5.0
+attack_damage = 10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

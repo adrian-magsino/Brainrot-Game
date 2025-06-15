@@ -45,7 +45,7 @@ func register_enemy_kill(attacker: Node) -> void:
 	if attacker.is_in_group("player"):
 		enemies_killed += 1
 		score_label.text = "KILLS: %d" % enemies_killed
-		print("Enemies killed: ", enemies_killed)
+		#print("Enemies killed: ", enemies_killed)
 
 func game_victory():
 	var message_label = victory_panel.get_node("Message")

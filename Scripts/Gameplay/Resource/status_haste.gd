@@ -8,10 +8,10 @@ func _init(time=3):
 func apply(target):
 	super.apply(target)
 	target.move_speed = target.move_speed * 1.5
-	print("move speed: ", target.move_speed)
+	#print("move speed: ", target.move_speed)
 	
 func remove(target):
 	super.remove(target)
 	target.move_speed = target.move_speed / 1.5
-	print("move speed: ", target.move_speed)
+	#print("move speed: ", target.move_speed)
 	

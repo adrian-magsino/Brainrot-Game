@@ -9,10 +9,6 @@ extends Control
 @onready var current_gun_label: Label = $"../PlayerControls/Switch Gun/CurrentGunLabel"
 
 
-
-
-
-
 func update_timer_label(time_string: String):
 	game_time_label.text = "Time: " + time_string
 	

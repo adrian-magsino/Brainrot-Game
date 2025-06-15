@@ -10,7 +10,7 @@ func _ready():
 	
 func _on_interact():
 	if interactable.is_interactable:
-		print("Victory")
+		#print("Victory")
 		var level_node = get_tree().current_scene
 		if level_node.has_method("game_victory"):
 			level_node.game_victory()

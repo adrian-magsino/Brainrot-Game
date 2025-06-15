@@ -31,7 +31,7 @@ func _ready() -> void:
 	level_objectives = "SURVIVE\nSTAGE %d" % (current_difficulty_stage+1)
 	update_objectives_display(level_objectives)
 	await get_tree().process_frame
-	print("SURVIVAL READY")
+
 	change_difficulty_stage(0)
 	SurvivalMusic.play()
 	LightingManager.set_lighting_enabled(false)
@@ -57,18 +57,18 @@ func change_difficulty_stage(stage_index: int, is_infinite := false):
 		increase_infinite_stage(stage_index)
 	else:
 		var stage = difficulty_stages[stage_index]
-		print("Applying difficulty stage:", stage_index, "with tags:", stage.enemy_types)
+		#print("Applying difficulty stage:", stage_index, "with tags:", stage.enemy_types)
 		for spawner in get_tree().get_nodes_in_group("enemy_spawner"):
 			spawner.spawn_interval = stage.interval
 			spawner.spawn_count = stage.spawn_count
 			spawner.max_enemies = stage.max_enemies
 			spawner.enemy_scenes = load_enemy_scenes_by_tags(stage.enemy_types)
-			print("Spawner:", spawner.name, "assigned enemies:", spawner.enemy_scenes.size())
+			#print("Spawner:", spawner.name, "assigned enemies:", spawner.enemy_scenes.size())
 			if !spawner.enemy_scenes.is_empty():
 				spawner.spawn_timer.wait_time = stage.interval
 				spawner.spawn_timer.start()
 				
-	print("DIFFICULTY HAS BEEN INCREASED")
+	
 	level_objectives = "SURVIVE\nSTAGE %d" % (current_difficulty_stage+1)
 	update_objectives_display(level_objectives)
 
@@ -80,17 +80,14 @@ func increase_infinite_stage(stage_index: int):
 	var max_enemies = base_stage.max_enemies + int((stage_index - difficulty_stages.size()) * 1.5)
 	var interval = max(0.5, base_stage.interval)  # Optional: clamp to prevent too-fast spawning
 	
-	print("Applying DYNAMIC difficulty stage:", stage_index)
-	print("NEW SPAWN COUNT: ", spawn_count)
-	print("NEW MAX ENEMIES: ", max_enemies )
-	print("NEW INTERVAL: ", interval)
+
 
 	for spawner in get_tree().get_nodes_in_group("enemy_spawner"):
 		spawner.spawn_interval = interval
 		spawner.spawn_count = spawn_count
 		spawner.max_enemies = max_enemies
 		spawner.enemy_scenes = load_enemy_scenes_by_tags(["normal_enemy", "fast_enemy", "special"])  # or choose based on your logic
-		print("Spawner:", spawner.name, "assigned enemies:", spawner.enemy_scenes.size())
+		#print("Spawner:", spawner.name, "assigned enemies:", spawner.enemy_scenes.size())
 		if !spawner.enemy_scenes.is_empty():
 			spawner.spawn_timer.wait_time = interval
 			spawner.spawn_timer.start()

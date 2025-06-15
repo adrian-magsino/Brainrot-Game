@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		if effect.duration < 0:
 			effect.remove(target)
 			status_effects.remove_at(i)
-			print("STATUS EFFECTS: ", status_effects)
+			#print("STATUS EFFECTS: ", status_effects)
 			reset_effect
 			break
 
@@ -27,11 +27,11 @@ func apply_status_effect(effect):
 	for i in range(status_effects.size()):
 		if status_effects[i].get_status_name() == effect.get_status_name():
 			status_effects[i].duration = effect.duration
-			print("REAPPLIED STATUS EFFECT: ", status_effects)
+			#print("REAPPLIED STATUS EFFECT: ", status_effects)
 			return
 	status_effects.append(effect)
 	effect.apply(target)
-	print("STATUS EFFECTS: ", status_effects)
+	#print("STATUS EFFECTS: ", status_effects)
 
 func reset_effect():
 	for i in status_effects:
@@ -42,5 +42,5 @@ func clear_effects():
 		var effect = status_effects[i]
 		effect.remove(target)
 		status_effects.remove_at(i)
-	print("CLEARED EFFECTS")
+	#print("CLEARED EFFECTS")
 	

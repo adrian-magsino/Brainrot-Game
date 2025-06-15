@@ -42,6 +42,6 @@ func game_victory():
 func save_level_progress():
 	if level_cleared:
 		var level_name = get_name()
-		print(level_name + " CLEARED!")
+		#print(level_name + " CLEARED!")
 		GAME_PROGRESS.level_completed[level_name] = true
 		GAME_PROGRESS.save_progress()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bcdvaas54iiga"]
+[gd_scene load_steps=102 format=3 uid="uid://bcdvaas54iiga"]
 
 [ext_resource type="Script" uid="uid://blnmu2nwa1y2i" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.gd" id="1_xn0sg"]
 [ext_resource type="FontFile" uid="uid://vv0ovu682x5h" path="res://Game Assets/Settings Assets/Early GameBoy.ttf" id="4_b55vn"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d06oyp2ic78dm" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.png" id="9_5a5hv"]
 [ext_resource type="Texture2D" uid="uid://blagwbofqrh0n" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste.png" id="9_034d7"]
 [ext_resource type="Texture2D" uid="uid://b1og857xcmc0e" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/hide_eye_icon_238775 (1).png" id="10_b55vn"]
-[ext_resource type="PackedScene" uid="uid://bfqcrm48j1lyu" path="res://addons/virtual_joystick/aim_joystick_scene.tscn" id="10_ov0tc"]
+[ext_resource type="PackedScene" path="res://addons/virtual_joystick/aim_joystick_scene.tscn" id="10_ov0tc"]
 [ext_resource type="Texture2D" uid="uid://bkcnnk0ey5hdw" path="res://Game Assets/HUD design/pickup1.png" id="11_8ovj1"]
 [ext_resource type="Texture2D" uid="uid://bsmeup584fett" path="res://Game Assets/HUD design/menu1.png" id="11_22qo4"]
 [ext_resource type="Texture2D" uid="uid://e7rn5e7c765w" path="res://Game Assets/HUD design/health1.png" id="11_astq8"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://gwbprfr0ibj0" path="res://Game Assets/HUD design/zoom2.png" id="16_4igmu"]
 [ext_resource type="Texture2D" uid="uid://c50h20ywkw4tt" path="res://Game Assets/HUD design/dash2.png" id="16_irehg"]
 [ext_resource type="FontFile" uid="uid://dfq18ugigfu7e" path="res://Game Assets/HUD design/pixelmix.ttf" id="17_irehg"]
-[ext_resource type="PackedScene" uid="uid://dkhh0ne8dlwbd" path="res://addons/virtual_joystick/movement_joystick_scene.tscn" id="19_astq8"]
+[ext_resource type="PackedScene" path="res://addons/virtual_joystick/movement_joystick_scene.tscn" id="19_astq8"]
 [ext_resource type="Texture2D" uid="uid://ol6y4vagkfsi" path="res://Game Assets/Circular Progress Bar/progress-bar-circle.png" id="22_astq8"]
 [ext_resource type="Texture2D" uid="uid://bgpccqtna5mgb" path="res://Game Assets/Circular Progress Bar/progress-bar-frame.png" id="23_l7b1a"]
 [ext_resource type="Texture2D" uid="uid://1g1qq3bvi0uv" path="res://Game Assets/Pause Menu Assets/container1.png" id="26_l64xq"]
@@ -36,13 +36,22 @@
 [ext_resource type="Texture2D" uid="uid://c87qvrt83l4gw" path="res://Game Assets/Pause Menu Assets/settings2.png" id="30_rgdqc"]
 [ext_resource type="Texture2D" uid="uid://c233vghwbfa11" path="res://Game Assets/Pause Menu Assets/resume1.png" id="31_i1acc"]
 [ext_resource type="Texture2D" uid="uid://d3xi6fhgapo3y" path="res://Game Assets/Pause Menu Assets/resume2.png" id="32_wmv3y"]
+[ext_resource type="Texture2D" uid="uid://dssrwwa1wwccb" path="res://Game Assets/Pause Menu Assets/sound_container.png" id="37_djibf"]
 [ext_resource type="Texture2D" uid="uid://bl01d466l5gcv" path="res://Game Assets/GameResults Assets/container.png" id="37_wmv3y"]
 [ext_resource type="Texture2D" uid="uid://cn3xmqanak8a0" path="res://Game Assets/GameResults Assets/next1.png" id="38_dhyot"]
+[ext_resource type="Script" uid="uid://7b5erfey163b" path="res://Scripts/UI/audio_slider_settings.gd" id="38_fv7v7"]
 [ext_resource type="Texture2D" uid="uid://yw4h05hcwafl" path="res://Game Assets/GameResults Assets/next2.png" id="39_d6vqx"]
+[ext_resource type="Texture2D" uid="uid://b6cypce55w3k" path="res://Game Assets/Settings Assets/sound_switch2.png" id="39_h1g6q"]
 [ext_resource type="Texture2D" uid="uid://bh6enbd1rn3y4" path="res://Game Assets/GameResults Assets/quit1.png" id="40_0kkgm"]
+[ext_resource type="Texture2D" uid="uid://bygyhnkpvnvup" path="res://Game Assets/Settings Assets/sound_switch1.png" id="40_tc5dw"]
 [ext_resource type="Texture2D" uid="uid://by6xu0hh4yax6" path="res://Game Assets/GameResults Assets/quit2.png" id="41_0b2ur"]
+[ext_resource type="Texture2D" uid="uid://d0efpyo18dax2" path="res://Game Assets/Settings Assets/sidebar.png" id="41_t4j27"]
 [ext_resource type="Texture2D" uid="uid://cv1s33qby0sar" path="res://Game Assets/GameResults Assets/retry1.png" id="42_d6vqx"]
+[ext_resource type="Texture2D" uid="uid://dhk05vwwdpclf" path="res://Game Assets/Settings Assets/back_button1.png" id="42_xytd7"]
 [ext_resource type="Texture2D" uid="uid://cjwcojvvyebi6" path="res://Game Assets/GameResults Assets/retry2.png" id="43_0kkgm"]
+[ext_resource type="Texture2D" uid="uid://dfnx7ytnih511" path="res://Game Assets/Settings Assets/back_button2.png" id="43_roooo"]
+[ext_resource type="Texture2D" uid="uid://c7543aj0w56vj" path="res://Game Assets/Settings Assets/apply_button1.png" id="44_x2kv1"]
+[ext_resource type="Texture2D" uid="uid://b0cxhedv8nc31" path="res://Game Assets/Settings Assets/apply_button2.png" id="45_8e1xu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4oii"]
 font = ExtResource("4_b55vn")
@@ -175,6 +184,34 @@ region = Rect2(659, 234, 115, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_62s6c"]
 atlas = ExtResource("32_wmv3y")
 region = Rect2(659, 234, 115, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ieo"]
+atlas = ExtResource("39_h1g6q")
+region = Rect2(404, 188, 97, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mirbq"]
+atlas = ExtResource("40_tc5dw")
+region = Rect2(404, 188, 97, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5g8"]
+atlas = ExtResource("41_t4j27")
+region = Rect2(749, 310, 36, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4jv0"]
+atlas = ExtResource("42_xytd7")
+region = Rect2(216, 515, 173, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ef6"]
+atlas = ExtResource("43_roooo")
+region = Rect2(216, 519, 173, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rndbg"]
+atlas = ExtResource("44_x2kv1")
+region = Rect2(724, 515, 202, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7prf"]
+atlas = ExtResource("45_8e1xu")
+region = Rect2(724, 515, 202, 61)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3pss"]
 atlas = ExtResource("37_wmv3y")
@@ -653,6 +690,180 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_bd5ni")
 texture_pressed = SubResource("AtlasTexture_62s6c")
 
+[node name="Settings" type="Control" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SoundContainer" type="TextureRect" parent="Menu/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("37_djibf")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Settings/SoundContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 115
+
+[node name="Master" type="Control" parent="Menu/Settings/SoundContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("38_fv7v7")
+bus_name = "Master"
+
+[node name="TextContainer" type="HBoxContainer" parent="Menu/Settings/SoundContainer/VBoxContainer/Master"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Menu/Settings/SoundContainer/VBoxContainer/Master/TextContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_b55vn")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer/Master/TextContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_n1ieo")
+texture_pressed = SubResource("AtlasTexture_mirbq")
+
+[node name="HSlider" type="HSlider" parent="Menu/Settings/SoundContainer/VBoxContainer/Master/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_icons/grabber = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_gm5g8")
+max_value = 1.0
+step = 0.001
+
+[node name="Music" type="Control" parent="Menu/Settings/SoundContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("38_fv7v7")
+bus_name = "Music"
+
+[node name="TextContainer" type="HBoxContainer" parent="Menu/Settings/SoundContainer/VBoxContainer/Music"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Menu/Settings/SoundContainer/VBoxContainer/Music/TextContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_b55vn")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer/Music/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_n1ieo")
+texture_pressed = SubResource("AtlasTexture_mirbq")
+
+[node name="HSlider" type="HSlider" parent="Menu/Settings/SoundContainer/VBoxContainer/Music/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_gm5g8")
+max_value = 1.0
+step = 0.001
+
+[node name="SFX" type="Control" parent="Menu/Settings/SoundContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("38_fv7v7")
+bus_name = "SFX"
+
+[node name="TextContainer" type="HBoxContainer" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 192.0
+offset_right = 925.0
+offset_bottom = 260.0
+theme_override_constants/separation = 26
+
+[node name="Audio_Name_Lbl" type="Label" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX/TextContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.215686, 0.2, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_b55vn")
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="SoundButton" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX/TextContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_n1ieo")
+texture_pressed = SubResource("AtlasTexture_mirbq")
+
+[node name="HSlider" type="HSlider" parent="Menu/Settings/SoundContainer/VBoxContainer/SFX/TextContainer"]
+custom_minimum_size = Vector2(405, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_gm5g8")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_gm5g8")
+max_value = 1.0
+step = 0.001
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="Menu/Settings/SoundContainer"]
+layout_mode = 2
+anchor_left = 0.203125
+anchor_top = 0.816358
+anchor_right = 0.328125
+anchor_bottom = 0.905864
+offset_right = 531.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 300
+
+[node name="Back" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_x4jv0")
+texture_pressed = SubResource("AtlasTexture_t4ef6")
+
+[node name="Apply" type="TextureButton" parent="Menu/Settings/SoundContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = SubResource("AtlasTexture_rndbg")
+texture_pressed = SubResource("AtlasTexture_r7prf")
+
 [node name="GameResults" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -844,6 +1055,8 @@ texture_pressed = SubResource("AtlasTexture_fv7v7")
 [connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/Settings/SoundContainer/VBoxContainer2/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/Settings/SoundContainer/VBoxContainer2/Apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="GameResults/VictoryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="GameResults/VictoryPanel/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="GameResults/DefeatPanel/RetryButton" to="." method="_on_retry_button_pressed"]

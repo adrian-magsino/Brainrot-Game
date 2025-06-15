@@ -1,8 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://cdnqcvcntaphm"]
+[gd_scene load_steps=47 format=3 uid="uid://cdnqcvcntaphm"]
 
 [ext_resource type="Script" uid="uid://hdok02c2g8h5" path="res://Scripts/UI/settings_scene.gd" id="1_r0asf"]
 [ext_resource type="Texture2D" uid="uid://b1stfepqhhj1m" path="res://Game Assets/Settings Assets/game_title1.png" id="1_tyww6"]
 [ext_resource type="Texture2D" uid="uid://b6cypce55w3k" path="res://Game Assets/Settings Assets/sound_switch2.png" id="2_benum"]
+[ext_resource type="Texture2D" uid="uid://ckryadlt7r1pp" path="res://Game Assets/Main Menu Assets/background1.png" id="2_c1j78"]
 [ext_resource type="Texture2D" uid="uid://ejxu4p4p32yi" path="res://Game Assets/Settings Assets/container1.png" id="2_vv02w"]
 [ext_resource type="Texture2D" uid="uid://4f6dya252yse" path="res://Game Assets/Settings Assets/char_select1.png" id="3_wi6u5"]
 [ext_resource type="Texture2D" uid="uid://bt4jyguf48160" path="res://Game Assets/Settings Assets/container2.png" id="4_benum"]
@@ -108,18 +109,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r0asf")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_c1j78")
 
 [node name="Title" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_tyww6")
 
 [node name="Player" type="Control" parent="."]
@@ -135,8 +146,8 @@ texture = ExtResource("2_vv02w")
 
 [node name="CharSelectionImage" type="TextureRect" parent="Player"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1152.0
+offset_bottom = 648.0
 texture = ExtResource("3_wi6u5")
 
 [node name="LineEdit" type="LineEdit" parent="Player"]
@@ -144,7 +155,7 @@ custom_minimum_size = Vector2(640, 0)
 layout_mode = 0
 offset_left = 265.0
 offset_top = 248.0
-offset_right = 509.0
+offset_right = 905.0
 offset_bottom = 285.0
 theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_r0asf")
@@ -158,7 +169,7 @@ expand_to_text_length = true
 layout_mode = 0
 offset_left = 512.0
 offset_top = 393.0
-offset_right = 584.0
+offset_right = 884.0
 offset_bottom = 472.0
 theme_override_constants/separation = 3
 script = ExtResource("6_pf8tm")

@@ -1,15 +1,16 @@
 extends Control
 
-@onready var level_1: TextureButton = $LevelContainer/HBoxContainer/Theme1/Level1
-@onready var level_2: TextureButton = $LevelContainer/HBoxContainer/Theme1/Level2
-@onready var level_3: TextureButton = $LevelContainer/HBoxContainer/Theme1/Level3
-@onready var level_4: TextureButton = $LevelContainer/HBoxContainer/Theme2/Level4
-@onready var level_5: TextureButton = $LevelContainer/HBoxContainer/Theme2/Level5
-@onready var level_6: TextureButton = $LevelContainer/HBoxContainer/Theme2/Level6
-@onready var level_7: TextureButton = $LevelContainer/HBoxContainer/Theme3/Level7
-@onready var level_8: TextureButton = $LevelContainer/HBoxContainer/Theme3/Level8
-@onready var level_9: TextureButton = $LevelContainer/HBoxContainer/Theme3/Level9
-@onready var level_10: TextureButton = $LevelContainer/HBoxContainer/Theme3/Level10
+@onready var level_1: TextureButton = $TextureRect/HBoxContainer/Level1
+@onready var level_3: TextureButton = $TextureRect/HBoxContainer/Level3
+@onready var level_5: TextureButton = $TextureRect/HBoxContainer/Level5
+@onready var level_7: TextureButton = $TextureRect/HBoxContainer/Level7
+@onready var level_9: TextureButton = $TextureRect/HBoxContainer/Level9
+@onready var level_2: TextureButton = $TextureRect/HBoxContainer2/Level2
+@onready var level_4: TextureButton = $TextureRect/HBoxContainer2/Level4
+@onready var level_6: TextureButton = $TextureRect/HBoxContainer2/Level6
+@onready var level_8: TextureButton = $TextureRect/HBoxContainer2/Level8
+@onready var level_10: TextureButton = $TextureRect/HBoxContainer2/Level10
+
 
 func _ready() -> void:
 	# Load progress first if not done already
@@ -57,3 +58,7 @@ func _on_level_9_pressed() -> void:
 
 func _on_level_10_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_back_button_pressed() -> void:
+	ButtonClick.play_button_click()
+	get_tree().change_scene_to_file("res://Scenes/UI/ModemenuScene.tscn")

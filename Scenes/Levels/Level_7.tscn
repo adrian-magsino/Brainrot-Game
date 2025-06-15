@@ -173,3 +173,21 @@ position = Vector2(198, 340)
 
 [node name="ExplosiveBarrel" parent="." instance=ExtResource("26_28wng")]
 position = Vector2(2027, 2731)
+
+[node name="ExplosiveBarrel2" parent="." instance=ExtResource("26_28wng")]
+position = Vector2(3413, 3651)
+
+[node name="ExplosiveBarrel3" parent="." instance=ExtResource("26_28wng")]
+position = Vector2(1995, 3267)
+
+[node name="ExplosiveBarrel4" parent="." instance=ExtResource("26_28wng")]
+position = Vector2(2979, 4931)
+
+[node name="ExplosiveBarrel5" parent="." instance=ExtResource("26_28wng")]
+position = Vector2(2374, 4952)
+
+[node name="ExplosiveBarrel6" parent="." instance=ExtResource("26_28wng")]
+position = Vector2(3745, 4839)
+
+[node name="ExplosiveBarrel7" parent="." instance=ExtResource("26_28wng")]
+position = Vector2(2257, 836)

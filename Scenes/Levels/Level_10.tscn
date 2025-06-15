@@ -301,6 +301,3 @@ position = Vector2(1705, 4169)
 
 [node name="PlayerSpawnPoint3" parent="." instance=ExtResource("33_l2rhb")]
 position = Vector2(3393, 4104)
-
-[node name="SpringTrapEnemyBot" parent="." instance=ExtResource("13_ojdic")]
-position = Vector2(2970, 2637)

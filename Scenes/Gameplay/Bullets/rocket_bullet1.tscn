@@ -32,6 +32,7 @@ shape = SubResource("CircleShape2D_8m36q")
 attack_damage = 0.0
 
 [node name="ExplosiveComponent" parent="." instance=ExtResource("5_utf1m")]
+explosion_damage = 100.0
 explosion_particles = ExtResource("6_uoa1d")
 can_damage_attacker = true
 

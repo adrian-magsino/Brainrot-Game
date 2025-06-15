@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi3f6mdvr6cf4"
-path="res://.godot/imported/springtrap_run.png-8f1dcc65e40f7aaef087d9a831f946b2.ctex"
+uid="uid://hsvysgjmhsc0"
+path="res://.godot/imported/springtrap_attack.png-22e68742c4314c498a8648f5021dc09e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/sprites/springtrap_run.png"
-dest_files=["res://.godot/imported/springtrap_run.png-8f1dcc65e40f7aaef087d9a831f946b2.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/springtrap_attack.png"
+dest_files=["res://.godot/imported/springtrap_attack.png-22e68742c4314c498a8648f5021dc09e.ctex"]
 
 [params]
 

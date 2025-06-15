@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clo36phc81e2h"
-path="res://.godot/imported/springtrap_idle.png-26a2344cc3ef80cf14e28e329d74ef1d.ctex"
+path="res://.godot/imported/springtrap_idle.png-951b0946e3f51d26340b5d806781d4a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/sprites/springtrap_idle.png"
-dest_files=["res://.godot/imported/springtrap_idle.png-26a2344cc3ef80cf14e28e329d74ef1d.ctex"]
+source_file="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/springtrap_idle.png"
+dest_files=["res://.godot/imported/springtrap_idle.png-951b0946e3f51d26340b5d806781d4a1.ctex"]
 
 [params]
 

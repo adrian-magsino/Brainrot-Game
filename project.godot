@@ -23,15 +23,17 @@ GAME_DEBUG_SCRIPT="*res://Scripts/Gameplay/GAME_DEBUG_SCRIPT.gd"
 Bgm="*res://Scenes/UI/BGM.tscn"
 ButtonClick="*res://Scripts/UI/button_click.gd"
 CharacterButtonClick="*res://Scripts/UI/character_button_click.gd"
+LightingManager="*res://Scripts/LightingManager.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [global_group]
 
 player=""
+lighting=""
 
 [input]
 

@@ -1,11 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://dho3xdejj8pki"]
+[gd_scene load_steps=17 format=3 uid="uid://dho3xdejj8pki"]
 
 [ext_resource type="PackedScene" uid="uid://bwopoex1qdj8c" path="res://Scenes/Levels/Maps/level_1.tscn" id="1_87l2y"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="1_q8yj7"]
 [ext_resource type="Script" uid="uid://ch8tjfc0ga1d0" path="res://Scenes/Levels/objectives_FindPortal.gd" id="1_qpfou"]
 [ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="2_87l2y"]
 [ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="3_qpfou"]
-[ext_resource type="PackedScene" uid="uid://db517srtyyn31" path="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/springtrap_enemy_bot.tscn" id="6_ybqp2"]
+[ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="6_ybqp2"]
+[ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="7_iyh3f"]
+[ext_resource type="PackedScene" uid="uid://dt5fi8jc62q3c" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.tscn" id="8_ducwx"]
+[ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.tscn" id="9_hs11j"]
+[ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="10_o5ofx"]
+[ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="11_34y5i"]
+[ext_resource type="PackedScene" uid="uid://cafjiicm4nmm1" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste_buff.tscn" id="12_trw0a"]
+[ext_resource type="PackedScene" uid="uid://c2lcmfs437y6j" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/invisibility_buff.tscn" id="13_tjcye"]
+[ext_resource type="PackedScene" uid="uid://b6gl8mu4a6ouf" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Life Heart/life_heart.tscn" id="14_557vl"]
+[ext_resource type="PackedScene" uid="uid://c2ipd31cvr0ra" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Ammo Box/ammo_box.tscn" id="15_tjj3e"]
+[ext_resource type="PackedScene" uid="uid://hwuksxvjcwd1" path="res://Scenes/Gameplay/Weapons/grenade launcher/grenade_launcher.tscn" id="16_tjcye"]
 
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_qpfou")
@@ -21,5 +31,35 @@ collision_mask = 29
 [node name="ExitPortal" parent="." instance=ExtResource("3_qpfou")]
 position = Vector2(795, 305)
 
-[node name="SpringTrapEnemyBot" parent="." instance=ExtResource("6_ybqp2")]
-position = Vector2(1431, 311)
+[node name="assault_rifle" parent="." instance=ExtResource("6_ybqp2")]
+position = Vector2(501, 269)
+
+[node name="Minigun" parent="." instance=ExtResource("7_iyh3f")]
+position = Vector2(497, 354)
+
+[node name="rocket_launcher" parent="." instance=ExtResource("8_ducwx")]
+position = Vector2(456, 311)
+
+[node name="LaserGun" parent="." instance=ExtResource("9_hs11j")]
+position = Vector2(649, 230)
+
+[node name="sniper" parent="." instance=ExtResource("10_o5ofx")]
+position = Vector2(526, 432)
+
+[node name="shotgun" parent="." instance=ExtResource("11_34y5i")]
+position = Vector2(648, 425)
+
+[node name="HasteBuff" parent="." instance=ExtResource("12_trw0a")]
+position = Vector2(331, 457)
+
+[node name="InvisibilityBuff" parent="." instance=ExtResource("13_tjcye")]
+position = Vector2(359, 350)
+
+[node name="LifeHeart" parent="." instance=ExtResource("14_557vl")]
+position = Vector2(254, 404)
+
+[node name="AmmoBox" parent="." instance=ExtResource("15_tjj3e")]
+position = Vector2(403, 415)
+
+[node name="grenade_launcher" parent="." instance=ExtResource("16_tjcye")]
+position = Vector2(727, 480)

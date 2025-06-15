@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://25tf56nj8mou"]
+[gd_scene load_steps=6 format=3 uid="uid://d03ff0727erwr"]
 
 [ext_resource type="Texture2D" uid="uid://cmrpv08x6ql3y" path="res://Game Assets/GodotPlatformerAssets/Sprites/Tile.png" id="1_1tq3b"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="3_ti55l"]

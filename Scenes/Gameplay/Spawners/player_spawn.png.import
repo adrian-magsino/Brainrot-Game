@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csa5txdlxyyex"
-path="res://.godot/imported/Enemy.png-b1c817a194444032fc182d1060efa920.ctex"
+path="res://.godot/imported/player_spawn.png-f4d13f8a51b42231c8e519caaa36c961.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/GodotPlatformerAssets/Sprites/Enemy.png"
-dest_files=["res://.godot/imported/Enemy.png-b1c817a194444032fc182d1060efa920.ctex"]
+source_file="res://Scenes/Gameplay/Spawners/player_spawn.png"
+dest_files=["res://.godot/imported/player_spawn.png-f4d13f8a51b42231c8e519caaa36c961.ctex"]
 
 [params]
 

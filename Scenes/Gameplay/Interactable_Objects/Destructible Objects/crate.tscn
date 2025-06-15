@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wgxgfe2mhqhv"]
+[gd_scene load_steps=15 format=3 uid="uid://wgxgfe2mhqhv"]
 
 [ext_resource type="Script" uid="uid://bh38arxl8ywjs" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/destructible_object.gd" id="1_ln515"]
 [ext_resource type="PackedScene" uid="uid://c372fbrfcc2lq" path="res://Scenes/Gameplay/Components/health_component.tscn" id="2_75hkl"]
@@ -51,6 +51,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8yrm"]
 size = Vector2(90, 90)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2gx5"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e18hx"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0lsu"]
 size = Vector2(90, 90)
 
@@ -70,10 +87,15 @@ shape = SubResource("RectangleShape2D_j8yrm")
 MAX_HEALTH = 50.0
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
-offset_left = -33.0
-offset_top = -60.0
-offset_right = 33.0
-offset_bottom = -33.0
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_q2gx5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e18hx")
+value = 70.0
+show_percentage = false
 
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent/HealthBar"]
 wait_time = 3.0

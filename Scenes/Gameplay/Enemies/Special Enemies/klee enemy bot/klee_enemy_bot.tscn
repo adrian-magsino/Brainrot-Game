@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bn83teut6ypt7"]
+[gd_scene load_steps=27 format=3 uid="uid://bn83teut6ypt7"]
 
 [ext_resource type="Script" uid="uid://j4fmb8wc7kae" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/explosive_bot.gd" id="1_55cgj"]
 [ext_resource type="AudioStream" uid="uid://dn5x0sb6fag77" path="res://Scenes/Gameplay/Enemies/Special Enemies/klee enemy bot/Let's Go, Crimson Knight!.mp3" id="3_55cgj"]
@@ -93,6 +93,23 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8hl7"]
 radius = 80.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2uja"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n85bi"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl784"]
 radius = 56.0
 height = 158.0
@@ -138,14 +155,19 @@ attack_damage = 10.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_ax1ys")]
 
-[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
-offset_left = -50.0
-offset_top = -82.0
-offset_right = 48.0
-offset_bottom = -55.0
-
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
 wait_time = 3.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_d2uja")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n85bi")
+value = 70.0
+show_percentage = false
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_180sk")]
 health_component = NodePath("../HealthComponent")

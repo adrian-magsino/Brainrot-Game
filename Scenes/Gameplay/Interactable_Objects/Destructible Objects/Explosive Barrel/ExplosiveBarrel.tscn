@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://75p78212eqdw"]
+[gd_scene load_steps=26 format=3 uid="uid://75p78212eqdw"]
 
 [ext_resource type="Script" uid="uid://b46losmqe2ea0" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/explosive_barrel.gd" id="1_cqdxx"]
 [ext_resource type="PackedScene" uid="uid://bhuqs1txoiufj" path="res://Animations/Particles/ExplosionParticles.tscn" id="2_yu8lb"]
@@ -118,6 +118,23 @@ height = 90.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yu8lb"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki8cu"]
+bg_color = Color(0.258082, 0.258082, 0.258082, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pyiy"]
+bg_color = Color(0.914, 0, 0.177, 1)
+
 [node name="ExplosiveBarrel" type="StaticBody2D"]
 script = ExtResource("1_cqdxx")
 
@@ -141,13 +158,18 @@ shape = SubResource("CircleShape2D_yu8lb")
 [node name="HealthComponent" parent="." instance=ExtResource("4_r8cg1")]
 MAX_HEALTH = 50.0
 
-[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
-offset_left = -33.0
-offset_top = -67.0
-offset_right = 32.0
-offset_bottom = -40.0
-
 [node name="HideHealthBarTimer" type="Timer" parent="HealthComponent"]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
+offset_left = -39.0
+offset_top = -85.0
+offset_right = 44.0
+offset_bottom = -58.0
+scale = Vector2(1, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_ki8cu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7pyiy")
+value = 70.0
+show_percentage = false
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_h4i7n")]
 health_component = NodePath("../HealthComponent")

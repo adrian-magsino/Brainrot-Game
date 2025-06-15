@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhr2jnyulubb2"]
+
+[ext_resource type="Script" uid="uid://ch8tjfc0ga1d0" path="res://Scenes/Levels/objectives_FindPortal.gd" id="1_4obqa"]
+[ext_resource type="PackedScene" uid="uid://dpesgkbl3lqie" path="res://Scenes/Levels/Maps/level_7.tscn" id="2_5n468"]
+[ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="2_x0leq"]
+[ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="3_5n468"]
+[ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="4_nsth2"]
+
+[node name="lvl7" type="Node2D"]
+script = ExtResource("1_4obqa")
+
+[node name="level7" parent="." instance=ExtResource("2_5n468")]
+
+[node name="HUD" parent="." instance=ExtResource("2_x0leq")]
+
+[node name="PLAYER" parent="." instance=ExtResource("3_5n468")]
+position = Vector2(230, 305)
+
+[node name="ExitPortal" parent="." instance=ExtResource("4_nsth2")]
+position = Vector2(741, 362)

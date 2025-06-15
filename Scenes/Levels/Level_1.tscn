@@ -1,14 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4ifxmgu2lkaa"]
+[gd_scene load_steps=7 format=3 uid="uid://dho3xdejj8pki"]
 
+[ext_resource type="PackedScene" uid="uid://bwopoex1qdj8c" path="res://Scenes/Levels/Maps/level_1.tscn" id="1_87l2y"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="1_q8yj7"]
+[ext_resource type="Script" uid="uid://ch8tjfc0ga1d0" path="res://Scenes/Levels/objectives_FindPortal.gd" id="1_qpfou"]
 [ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="2_87l2y"]
 [ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="3_qpfou"]
+[ext_resource type="PackedScene" uid="uid://db517srtyyn31" path="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/springtrap_enemy_bot.tscn" id="6_ybqp2"]
 
 [node name="lvl1" type="Node2D"]
+script = ExtResource("1_qpfou")
+
+[node name="level1" parent="." instance=ExtResource("1_87l2y")]
 
 [node name="HUD" parent="." instance=ExtResource("1_q8yj7")]
 
 [node name="PLAYER" parent="." instance=ExtResource("2_87l2y")]
+position = Vector2(280, 257)
+collision_mask = 29
 
 [node name="ExitPortal" parent="." instance=ExtResource("3_qpfou")]
-position = Vector2(515, 48)
+position = Vector2(795, 305)
+
+[node name="SpringTrapEnemyBot" parent="." instance=ExtResource("6_ybqp2")]
+position = Vector2(1431, 311)

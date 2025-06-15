@@ -249,12 +249,12 @@ height = 98.0
 
 [node name="BonnieEnemyBot" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_tbaic")
 enemy_type = "special"
-move_speed = 300.0
+move_speed = 320.0
 attack_cooldown = 0.5
 can_destroy_objects = true
 
@@ -285,10 +285,9 @@ autostart = true
 shape = SubResource("CircleShape2D_g8hl7")
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_3mn1n")]
-attack_damage = 5.0
+attack_damage = 20.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_jwrt8")]
-MAX_HEALTH = 60.0
 
 [node name="HealthBar" type="ProgressBar" parent="HealthComponent"]
 offset_left = -50.0

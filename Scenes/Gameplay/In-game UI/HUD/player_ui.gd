@@ -1,12 +1,12 @@
 extends Control
 
 @onready var game_time_label: Label = $HBoxContainer/GameTimeLabel
-@onready var ammo_label: Label = $"../PlayerControls/Switch Gun/AmmoLabel"
+@onready var ammo_label: Label = $"../PlayerControls/Control5/Switch Gun/AmmoLabel"
 
-@onready var reload_progress_bar: TextureProgressBar = $"../PlayerControls/Reload Gun/ReloadProgress"
+@onready var reload_progress_bar: TextureProgressBar = $"../PlayerControls/Control4/Reload Gun/ReloadProgress"
 #@onready var reload_bar_label: Label = $ReloadProgress/ReloadBarLabel
-@onready var current_gun_icon: TextureRect = $"../PlayerControls/Switch Gun/CurrentGunIcon"
-@onready var current_gun_label: Label = $"../PlayerControls/Switch Gun/CurrentGunLabel"
+@onready var current_gun_icon: TextureRect = $"../PlayerControls/Control5/Switch Gun/CurrentGunIcon"
+@onready var current_gun_label: Label = $"../PlayerControls/Control5/Switch Gun/CurrentGunLabel"
 
 
 func update_timer_label(time_string: String):

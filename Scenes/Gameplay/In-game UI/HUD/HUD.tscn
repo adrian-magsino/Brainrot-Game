@@ -382,15 +382,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelObjectivesButton" type="TextureButton" parent="PlayerControls"]
+[node name="Control6" type="Control" parent="PlayerControls"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -178.0
-offset_right = 115.0
-offset_bottom = -62.0
+offset_left = 1.0
+offset_top = -198.0
+offset_right = 41.0
+offset_bottom = -158.0
 grow_vertical = 2
+
+[node name="LevelObjectivesButton" type="TouchScreenButton" parent="PlayerControls/Control6"]
 scale = Vector2(0.5, 0.5)
 texture_normal = SubResource("AtlasTexture_5a5hv")
 texture_pressed = SubResource("AtlasTexture_h4w42")
@@ -402,43 +405,46 @@ offset_bottom = 76.0
 texture_normal = SubResource("AtlasTexture_22qo4")
 texture_pressed = SubResource("AtlasTexture_mqepd")
 
-[node name="Pickup Button" type="TextureButton" parent="PlayerControls"]
+[node name="Control" type="Control" parent="PlayerControls"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -274.0
-offset_top = -130.0
-offset_right = -147.0
-offset_bottom = -15.0
+offset_left = -254.0
+offset_top = -140.0
+offset_right = -214.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Pickup Button" type="TouchScreenButton" parent="PlayerControls/Control"]
 texture_normal = SubResource("AtlasTexture_mkqvc")
 texture_pressed = SubResource("AtlasTexture_8ovj1")
 
-[node name="Reload Gun" type="TextureButton" parent="PlayerControls"]
+[node name="Control4" type="Control" parent="PlayerControls"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 167.0
-offset_top = -158.0
-offset_right = 282.0
-offset_bottom = -43.0
+offset_left = 114.0
+offset_top = -206.0
+offset_right = 154.0
+offset_bottom = -166.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Reload Gun" type="TouchScreenButton" parent="PlayerControls/Control4"]
 scale = Vector2(0.8, 0.8)
 texture_normal = SubResource("AtlasTexture_1jxoy")
 texture_pressed = SubResource("AtlasTexture_s03w6")
 
-[node name="ReloadProgressasdasd" type="ProgressBar" parent="PlayerControls/Reload Gun"]
+[node name="ReloadProgressasdasd" type="ProgressBar" parent="PlayerControls/Control4/Reload Gun"]
 visible = false
 modulate = Color(0, 1, 1, 1)
-layout_mode = 1
 offset_left = -35.0
 offset_top = -45.0
 offset_right = 118.0
@@ -446,7 +452,7 @@ offset_bottom = -18.0
 max_value = 1.0
 show_percentage = false
 
-[node name="ReloadBarLabel" type="Label" parent="PlayerControls/Reload Gun/ReloadProgressasdasd"]
+[node name="ReloadBarLabel" type="Label" parent="PlayerControls/Control4/Reload Gun/ReloadProgressasdasd"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 3.0
@@ -456,9 +462,8 @@ text = "RELOADING..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ReloadProgress" type="TextureProgressBar" parent="PlayerControls/Reload Gun"]
+[node name="ReloadProgress" type="TextureProgressBar" parent="PlayerControls/Control4/Reload Gun"]
 visible = false
-layout_mode = 0
 offset_left = -2.5
 offset_top = -12.5
 offset_right = 125.5
@@ -473,21 +478,22 @@ tint_under = Color(0, 0, 0, 0.546)
 tint_over = Color(1, 1, 1, 0.493)
 tint_progress = Color(0.166785, 0.340472, 0.777626, 1)
 
-[node name="Zoom Button" type="TextureButton" parent="PlayerControls"]
+[node name="Control2" type="Control" parent="PlayerControls"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -179.0
+offset_left = -141.0
 offset_top = 27.0
-offset_right = -64.0
-offset_bottom = 142.0
+offset_right = -101.0
+offset_bottom = 67.0
 grow_horizontal = 0
+
+[node name="Zoom Button" type="TouchScreenButton" parent="PlayerControls/Control2"]
 texture_normal = SubResource("AtlasTexture_n6rmw")
 texture_pressed = SubResource("AtlasTexture_68cqt")
 
-[node name="ZoomLabel" type="Label" parent="PlayerControls/Zoom Button"]
-layout_mode = 0
+[node name="ZoomLabel" type="Label" parent="PlayerControls/Control2/Zoom Button"]
 offset_left = 37.0
 offset_top = 15.0
 offset_right = 82.0
@@ -497,25 +503,26 @@ label_settings = SubResource("LabelSettings_4igmu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dash Button" type="TextureButton" parent="PlayerControls"]
+[node name="Control3" type="Control" parent="PlayerControls"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -385.0
-offset_top = 22.0
-offset_right = -269.0
-offset_bottom = 137.0
+offset_left = -358.0
+offset_top = 29.0
+offset_right = -318.0
+offset_bottom = 69.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="Dash Button" type="TouchScreenButton" parent="PlayerControls/Control3"]
 scale = Vector2(0.8, 0.8)
 texture_normal = SubResource("AtlasTexture_ifv1l")
 texture_pressed = SubResource("AtlasTexture_2tp5v")
 
-[node name="Dash Cooldown" type="TextureProgressBar" parent="PlayerControls/Dash Button"]
-layout_mode = 0
+[node name="Dash Cooldown" type="TextureProgressBar" parent="PlayerControls/Control3/Dash Button"]
 offset_left = -2.5
 offset_top = -12.5
 offset_right = 125.5
@@ -547,24 +554,25 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 
-[node name="Switch Gun" type="TextureButton" parent="PlayerControls"]
+[node name="Control5" type="Control" parent="PlayerControls"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -117.0
-offset_top = -128.0
-offset_right = 117.0
-offset_bottom = -13.0
+offset_left = -119.0
+offset_top = -122.0
+offset_right = -79.0
+offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Switch Gun" type="TouchScreenButton" parent="PlayerControls/Control5"]
 texture_normal = SubResource("AtlasTexture_astq8")
 texture_pressed = SubResource("AtlasTexture_l7b1a")
 
-[node name="CurrentGunIcon" type="TextureRect" parent="PlayerControls/Switch Gun"]
-layout_mode = 1
+[node name="CurrentGunIcon" type="TextureRect" parent="PlayerControls/Control5/Switch Gun"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -581,8 +589,7 @@ expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="CurrentGunLabel" type="Label" parent="PlayerControls/Switch Gun"]
-layout_mode = 1
+[node name="CurrentGunLabel" type="Label" parent="PlayerControls/Control5/Switch Gun"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -600,8 +607,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="AmmoLabel" type="Label" parent="PlayerControls/Switch Gun"]
-layout_mode = 1
+[node name="AmmoLabel" type="Label" parent="PlayerControls/Control5/Switch Gun"]
 anchors_preset = -1
 anchor_left = -0.111111
 anchor_top = 0.0632716
@@ -1050,7 +1056,7 @@ grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_djibf")
 texture_pressed = SubResource("AtlasTexture_fv7v7")
 
-[connection signal="pressed" from="PlayerControls/LevelObjectivesButton" to="ObjectivesContainer" method="_on_level_objectives_button_pressed"]
+[connection signal="pressed" from="PlayerControls/Control6/LevelObjectivesButton" to="ObjectivesContainer" method="_on_level_objectives_button_pressed"]
 [connection signal="pressed" from="PlayerControls/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Menu/MenuPanel/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

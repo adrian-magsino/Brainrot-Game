@@ -12,12 +12,12 @@ extends CharacterBody2D
 @onready var game_ui = HUD.get_node("GameUI") #Contains Player exclusive HUD elements
 
 @onready var player_controls = HUD.get_node("PlayerControls")
-@onready var pickup_button = HUD.get_node("PlayerControls/Pickup Button")
-@onready var zoom_button = HUD.get_node("PlayerControls/Zoom Button")
-@onready var reload_button = HUD.get_node("PlayerControls/Reload Gun")
-@onready var switch_gun_button = HUD.get_node("PlayerControls/Switch Gun")
-@onready var dash_button = HUD.get_node("PlayerControls/Dash Button")
-@onready var dash_progress_bar = HUD.get_node("PlayerControls/Dash Button/Dash Cooldown")
+@onready var pickup_button = HUD.get_node("PlayerControls/Control/Pickup Button")
+@onready var zoom_button = HUD.get_node("PlayerControls//Control2/Zoom Button")
+@onready var reload_button = HUD.get_node("PlayerControls/Control4/Reload Gun")
+@onready var switch_gun_button = HUD.get_node("PlayerControls/Control5/Switch Gun")
+@onready var dash_button = HUD.get_node("PlayerControls/Control3/Dash Button")
+@onready var dash_progress_bar = HUD.get_node("PlayerControls/Control3/Dash Button/Dash Cooldown")
 
 @onready var camera = $Camera2D
 @onready var player_name_label = $PlayerName

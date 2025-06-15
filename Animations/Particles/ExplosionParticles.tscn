@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhuqs1txoiufj"]
+[gd_scene load_steps=5 format=3 uid="uid://bhuqs1txoiufj"]
 
 [ext_resource type="Script" uid="uid://daumj1b2far7f" path="res://Animations/Particles/animated_particles.gd" id="1_bq8vt"]
+[ext_resource type="Texture2D" uid="uid://cyrft2gche2pc" path="res://Game Assets/Lighting/light.png" id="2_2qaly"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1svab"]
 
@@ -21,5 +22,9 @@ initial_velocity_min = 100.0
 initial_velocity_max = 500.0
 scale_amount_max = 40.0
 scale_amount_curve = SubResource("Curve_lx0r7")
-color = Color(1, 0.839216, 0.196078, 1)
+color = Color(1, 0.839, 0.196, 1)
 script = ExtResource("1_bq8vt")
+
+[node name="SurroundingLight" type="PointLight2D" parent="." groups=["lighting"]]
+texture = ExtResource("2_2qaly")
+texture_scale = 2.0

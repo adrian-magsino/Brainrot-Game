@@ -34,9 +34,5 @@ scale = Vector2(1, 0.3125)
 texture = ExtResource("5_ad5ie")
 texture_scale = 0.05
 
-[node name="SurroundingLight" type="PointLight2D" parent="." groups=["lighting"]]
-energy = 0.1
-texture = ExtResource("5_ad5ie")
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

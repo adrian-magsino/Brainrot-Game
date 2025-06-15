@@ -1,13 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://cam4k2cfl8iet"]
+[gd_scene load_steps=27 format=3 uid="uid://cam4k2cfl8iet"]
 
-[ext_resource type="Script" uid="uid://ch8tjfc0ga1d0" path="res://Scenes/Levels/objectives_FindPortal.gd" id="1_61c5p"]
+[ext_resource type="Script" uid="uid://cfvuffcccfn10" path="res://Scenes/Levels/objectives_Kill2UnlockPortal.gd" id="1_r56ta"]
 [ext_resource type="PackedScene" uid="uid://bcdvaas54iiga" path="res://Scenes/Gameplay/In-game UI/HUD/HUD.tscn" id="2_1rdpw"]
 [ext_resource type="PackedScene" uid="uid://ci2ypgntlg4d7" path="res://Scenes/Levels/Maps/level_6.tscn" id="2_x426a"]
 [ext_resource type="PackedScene" uid="uid://dcj33fsck5nt3" path="res://Scenes/Gameplay/Player/player.tscn" id="3_x426a"]
 [ext_resource type="PackedScene" uid="uid://bt4ynb6x2tpf7" path="res://Scenes/Gameplay/Exit Portal/ExitPortal.tscn" id="4_gps55"]
+[ext_resource type="PackedScene" uid="uid://csf0gcecsfgtt" path="res://Scenes/Gameplay/Spawners/EnemySpawner.tscn" id="6_r56ta"]
+[ext_resource type="PackedScene" uid="uid://l3qn4yfj57o6" path="res://Scenes/Gameplay/Enemies/sahur normal enemy/sahur_normal_enemy.tscn" id="7_oib5v"]
+[ext_resource type="PackedScene" uid="uid://ltx5iwgdosgm" path="res://Scenes/Gameplay/Enemies/tralalero fast enemy/tralalero_fast_enemy.tscn" id="8_khfvo"]
+[ext_resource type="PackedScene" uid="uid://db517srtyyn31" path="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_springtrap enemy bot/springtrap_enemy_bot.tscn" id="9_nb8rt"]
+[ext_resource type="PackedScene" uid="uid://crxcd61w70ajk" path="res://Scenes/Gameplay/Enemies/chimpanzini fast enemy/chimpanzini_fast_enemy.tscn" id="9_oib5v"]
+[ext_resource type="PackedScene" uid="uid://blt3w3032p5ux" path="res://Scenes/Gameplay/Enemies/Special Enemies/fnaf_bonnie enemy bot/bonnie_enemy_bot.tscn" id="10_dna4e"]
+[ext_resource type="PackedScene" uid="uid://dhym4hmx5jhhh" path="res://Scenes/Gameplay/Spawners/GunSpawner.tscn" id="12_mfd76"]
+[ext_resource type="PackedScene" uid="uid://uayfr1hfdiff" path="res://Scenes/Gameplay/Weapons/assault rifle/Assault_rifle.tscn" id="13_8ib17"]
+[ext_resource type="PackedScene" uid="uid://dkos0tuvjuqaf" path="res://Scenes/Gameplay/Weapons/pistol/pistol.tscn" id="14_wi2j7"]
+[ext_resource type="PackedScene" uid="uid://d38bbldhidf1x" path="res://Scenes/Gameplay/Weapons/sample gun/laser_gun.tscn" id="15_ugon3"]
+[ext_resource type="PackedScene" uid="uid://bf0k1aij0btjt" path="res://Scenes/Gameplay/Weapons/shotgun/shotgun.tscn" id="16_n3unq"]
+[ext_resource type="PackedScene" uid="uid://brdif4njw8dbr" path="res://Scenes/Gameplay/Weapons/smg/smg.tscn" id="17_b7w1m"]
+[ext_resource type="PackedScene" uid="uid://odblr4vjp1tx" path="res://Scenes/Gameplay/Spawners/ItemSpawner.tscn" id="18_b7w1m"]
+[ext_resource type="PackedScene" uid="uid://c2ipd31cvr0ra" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Ammo Box/ammo_box.tscn" id="19_ufppx"]
+[ext_resource type="PackedScene" uid="uid://cafjiicm4nmm1" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Haste Buff/haste_buff.tscn" id="20_pecrr"]
+[ext_resource type="PackedScene" uid="uid://c2lcmfs437y6j" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Invisibility Buff/invisibility_buff.tscn" id="21_m7ynw"]
+[ext_resource type="PackedScene" uid="uid://b6gl8mu4a6ouf" path="res://Scenes/Gameplay/Pickupable Items and Buffs/Life Heart/life_heart.tscn" id="22_37xir"]
+[ext_resource type="PackedScene" uid="uid://dulufh7d3shm" path="res://Scenes/Gameplay/Weapons/minigun/minigun.tscn" id="23_m7ynw"]
+[ext_resource type="PackedScene" uid="uid://cvc2gysmcvaxv" path="res://Scenes/Gameplay/Weapons/sniper/sniper.tscn" id="24_37xir"]
+[ext_resource type="PackedScene" uid="uid://dt5fi8jc62q3c" path="res://Scenes/Gameplay/Weapons/rocket laucher/rocket_launcher.tscn" id="25_u6n7r"]
+[ext_resource type="PackedScene" uid="uid://75p78212eqdw" path="res://Scenes/Gameplay/Interactable_Objects/Destructible Objects/Explosive Barrel/ExplosiveBarrel.tscn" id="26_37xir"]
 
 [node name="lvl6" type="Node2D"]
-script = ExtResource("1_61c5p")
+script = ExtResource("1_r56ta")
+required_kills = 30
 level_id = 6
 
 [node name="level6" parent="." instance=ExtResource("2_x426a")]
@@ -18,4 +40,141 @@ level_id = 6
 position = Vector2(230, 305)
 
 [node name="ExitPortal" parent="." instance=ExtResource("4_gps55")]
-position = Vector2(741, 362)
+position = Vector2(4851, 4400)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(2045, 380)
+enemy_scenes = Array[PackedScene]([ExtResource("7_oib5v")])
+max_enemies = 4
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(1478, 1605)
+enemy_scenes = Array[PackedScene]([ExtResource("7_oib5v"), ExtResource("8_khfvo"), ExtResource("9_oib5v")])
+max_enemies = 4
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(4848, 342)
+enemy_scenes = Array[PackedScene]([ExtResource("7_oib5v"), ExtResource("8_khfvo")])
+max_enemies = 4
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(293, 2732)
+enemy_scenes = Array[PackedScene]([ExtResource("7_oib5v"), ExtResource("8_khfvo")])
+max_enemies = 4
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(3710, 4900)
+enemy_scenes = Array[PackedScene]([ExtResource("7_oib5v"), ExtResource("8_khfvo")])
+max_enemies = 4
+
+[node name="EnemySpawner6" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(2585, 3253)
+enemy_scenes = Array[PackedScene]([ExtResource("9_nb8rt"), ExtResource("10_dna4e")])
+max_enemies = 2
+
+[node name="EnemySpawner7" parent="." instance=ExtResource("6_r56ta")]
+position = Vector2(1462, 4857)
+enemy_scenes = Array[PackedScene]([ExtResource("9_nb8rt"), ExtResource("10_dna4e")])
+max_enemies = 2
+
+[node name="GunSpawner" parent="." instance=ExtResource("12_mfd76")]
+position = Vector2(923, 976)
+gun_scenes = Array[PackedScene]([ExtResource("13_8ib17"), ExtResource("14_wi2j7"), ExtResource("15_ugon3"), ExtResource("16_n3unq"), ExtResource("17_b7w1m")])
+spawn_area_extents = Vector2(400, 400)
+
+[node name="GunSpawner2" parent="." instance=ExtResource("12_mfd76")]
+position = Vector2(4227, 1590)
+gun_scenes = Array[PackedScene]([ExtResource("13_8ib17"), ExtResource("14_wi2j7"), ExtResource("15_ugon3"), ExtResource("16_n3unq"), ExtResource("17_b7w1m")])
+spawn_area_extents = Vector2(400, 400)
+
+[node name="GunSpawner3" parent="." instance=ExtResource("12_mfd76")]
+position = Vector2(2058, 2154)
+gun_scenes = Array[PackedScene]([ExtResource("13_8ib17"), ExtResource("14_wi2j7"), ExtResource("15_ugon3"), ExtResource("16_n3unq"), ExtResource("17_b7w1m")])
+spawn_area_extents = Vector2(400, 400)
+
+[node name="GunSpawner4" parent="." instance=ExtResource("12_mfd76")]
+position = Vector2(4293, 2688)
+gun_scenes = Array[PackedScene]([ExtResource("13_8ib17"), ExtResource("14_wi2j7"), ExtResource("15_ugon3"), ExtResource("16_n3unq"), ExtResource("17_b7w1m")])
+spawn_area_extents = Vector2(400, 400)
+
+[node name="GunSpawner5" parent="." instance=ExtResource("12_mfd76")]
+position = Vector2(1998, 3266)
+gun_scenes = Array[PackedScene]([ExtResource("13_8ib17"), ExtResource("14_wi2j7"), ExtResource("15_ugon3"), ExtResource("16_n3unq"), ExtResource("17_b7w1m")])
+spawn_area_extents = Vector2(400, 400)
+
+[node name="ItemSpawner" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(3709, 1507)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="ItemSpawner2" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(3128, 2658)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="ItemSpawner3" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(2007, 1588)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="ItemSpawner4" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(1442, 2678)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="ItemSpawner5" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(3124, 3822)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="ItemSpawner6" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(4846, 3223)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="ItemSpawner7" parent="." instance=ExtResource("18_b7w1m")]
+position = Vector2(4827, 2116)
+item_scenes = Array[PackedScene]([ExtResource("19_ufppx"), ExtResource("20_pecrr"), ExtResource("21_m7ynw"), ExtResource("22_37xir")])
+max_items = 1
+
+[node name="Minigun" parent="." instance=ExtResource("23_m7ynw")]
+position = Vector2(3604, 3827)
+
+[node name="sniper" parent="." instance=ExtResource("24_37xir")]
+position = Vector2(3606, 2153)
+
+[node name="sniper2" parent="." instance=ExtResource("24_37xir")]
+position = Vector2(942, 2706)
+
+[node name="rocket_launcher" parent="." instance=ExtResource("25_u6n7r")]
+position = Vector2(2603, 373)
+
+[node name="Minigun2" parent="." instance=ExtResource("23_m7ynw")]
+position = Vector2(3665, 1025)
+
+[node name="assault_rifle" parent="." instance=ExtResource("13_8ib17")]
+position = Vector2(902, 1559)
+
+[node name="LaserGun" parent="." instance=ExtResource("15_ugon3")]
+position = Vector2(1435, 397)
+
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(1496, 2118)
+
+[node name="ExplosiveBarrel2" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(896, 3237)
+
+[node name="ExplosiveBarrel3" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(4290, 3425)
+
+[node name="ExplosiveBarrel4" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(4165, 4656)
+
+[node name="ExplosiveBarrel5" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(4410, 4616)
+
+[node name="ExplosiveBarrel6" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(4289, 4600)
+
+[node name="ExplosiveBarrel7" parent="." instance=ExtResource("26_37xir")]
+position = Vector2(2874, 4669)
